@@ -2,8 +2,6 @@
 
 I see problems. I build solutions. I ship.
 
-This repo is a collection of tools I've built to solve real pain points I've encountered across data infrastructure, operations, analytics, and product teams. Some use AI, some don't — whatever gets the job done.
-
 ---
 
 ## Data Infrastructure
