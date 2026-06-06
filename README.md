@@ -1,6 +1,6 @@
 # phoebe-the-builder
 
-I see problems. I build solutions. I ship.
+I see problems as opportunities. I build solutions to solve them. I ship products.
 
 ---
 
