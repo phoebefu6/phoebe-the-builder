@@ -1,14 +1,14 @@
 # FDE Portfolio Tracker
 
-**Started:** ____-__-__
-**Current Streak:** 0 days
-**Total Completed:** 0 / 60
+**Started:** 2026-06-07
+**Current Streak:** 1 day
+**Total Completed:** 1 / 60
 
 ---
 
 ## Month 1: Data Infrastructure Toolkit
 
-- [ ] Day 1 — csv-loader: CSV to PostgreSQL Loader
+- [x] Day 1 — csv-loader: CSV to PostgreSQL Loader (2026-06-07)
 - [ ] Day 2 — schema-diff: Schema Diff Tool
 - [ ] Day 3 — api-warehouse-connector: API to Warehouse Connector
 - [ ] Day 4 — data-freshness-monitor: Data Freshness Monitor
