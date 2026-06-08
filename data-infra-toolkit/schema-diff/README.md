@@ -1,5 +1,8 @@
 # Schema Diff Tool
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-infra-toolkit/schema-diff/demo.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/phoebefu6/phoebe-the-builder/main?labpath=data-infra-toolkit/schema-diff/demo.ipynb)
+
 > Database migrations break things silently — catch schema changes before they hit production.
 
 ## Business Impact
