@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "data-infra-toolkit/api-warehouse-connector/**"
+  pull_request:
+    paths:
+      - "data-infra-toolkit/api-warehouse-connector/**"
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-infra-toolkit/api-warehouse-connector
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install -r requirements.txt ruff
+      - run: ruff check app.py
+      - run: python -c "from app import WarehouseConnector; wh = WarehouseConnector(); results = wh.sync_all(); assert all(r['status'] == 'ok' for r in results); wh.close(); print('All connectors synced OK')"
