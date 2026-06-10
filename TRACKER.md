@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 3 days
-**Total Completed:** 3 / 60
+**Current Streak:** 4 days
+**Total Completed:** 4 / 60
 
 ---
 
@@ -11,7 +11,7 @@
 - [x] Day 1 — csv-loader: CSV to PostgreSQL Loader (2026-06-07)
 - [x] Day 2 — schema-diff: Schema Diff Tool (2026-06-08)
 - [x] Day 3 — api-warehouse-connector: API to Warehouse Connector (2026-06-09)
-- [ ] Day 4 — data-freshness-monitor: Data Freshness Monitor
+- [x] Day 4 — data-freshness-monitor: Data Freshness Monitor (2026-06-10)
 - [ ] Day 5 — pii-detector: PII Detector and Masker
 - [ ] Day 6 — erd-generator: ERD Generator from SQL
 - [ ] Day 7 — dbt-model-generator: dbt Model Generator
