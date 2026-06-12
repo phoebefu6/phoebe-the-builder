@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 4 days
-**Total Completed:** 4 / 60
+**Current Streak:** 5 days
+**Total Completed:** 5 / 60
 
 ---
 
@@ -12,7 +12,7 @@
 - [x] Day 2 — schema-diff: Schema Diff Tool (2026-06-08)
 - [x] Day 3 — api-warehouse-connector: API to Warehouse Connector (2026-06-09)
 - [x] Day 4 — data-freshness-monitor: Data Freshness Monitor (2026-06-10)
-- [ ] Day 5 — pii-detector: PII Detector and Masker
+- [x] Day 5 — pii-detector: PII Detector and Masker (2026-06-11)
 - [ ] Day 6 — erd-generator: ERD Generator from SQL
 - [ ] Day 7 — dbt-model-generator: dbt Model Generator
 - [ ] Day 8 — data-lineage-viz: Data Lineage Visualizer
