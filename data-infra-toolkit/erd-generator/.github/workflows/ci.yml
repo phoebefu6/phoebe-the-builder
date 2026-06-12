@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'data-infra-toolkit/erd-generator/**'
+  pull_request:
+    paths:
+      - 'data-infra-toolkit/erd-generator/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r data-infra-toolkit/erd-generator/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check data-infra-toolkit/erd-generator/
+      - name: Syntax check
+        run: python -c "import py_compile; py_compile.compile('data-infra-toolkit/erd-generator/app.py', doraise=True)"
