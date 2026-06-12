@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "data-infra-toolkit/pii-detector/**"
+  pull_request:
+    paths:
+      - "data-infra-toolkit/pii-detector/**"
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-infra-toolkit/pii-detector
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt ruff
+      - run: ruff check app.py
+      - run: python -c "from app import scan_dataframe, get_sample_data; r = scan_dataframe(get_sample_data()); assert len(r.matches) > 0, 'Should detect PII'"
