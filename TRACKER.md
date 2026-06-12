@@ -13,7 +13,7 @@
 - [x] Day 3 — api-warehouse-connector: API to Warehouse Connector (2026-06-09)
 - [x] Day 4 — data-freshness-monitor: Data Freshness Monitor (2026-06-10)
 - [x] Day 5 — pii-detector: PII Detector and Masker (2026-06-11)
-- [ ] Day 6 — erd-generator: ERD Generator from SQL
+- [x] Day 6 — erd-generator: ERD Generator from SQL (2026-06-12)
 - [ ] Day 7 — dbt-model-generator: dbt Model Generator
 - [ ] Day 8 — data-lineage-viz: Data Lineage Visualizer
 - [ ] Day 9 — gx-config-generator: Great Expectations Config Generator
