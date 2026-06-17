@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 7 days
-**Total Completed:** 7 / 60
+**Current Streak:** 8 days
+**Total Completed:** 8 / 60
 
 ---
 
@@ -15,7 +15,7 @@
 - [x] Day 5 — pii-detector: PII Detector and Masker (2026-06-11)
 - [x] Day 6 — erd-generator: ERD Generator from SQL (2026-06-12)
 - [x] Day 7 — dbt-model-generator: dbt Model Generator (2026-06-14)
-- [ ] Day 8 — data-lineage-viz: Data Lineage Visualizer
+- [x] Day 8 — data-lineage-viz: Data Lineage Visualizer (2026-06-17)
 - [ ] Day 9 — gx-config-generator: Great Expectations Config Generator
 - [ ] Day 10 — db-health-dashboard: Database Health Dashboard
 
