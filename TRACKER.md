@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 8 days
-**Total Completed:** 8 / 60
+**Current Streak:** 9 days
+**Total Completed:** 9 / 60
 
 ---
 
@@ -16,7 +16,7 @@
 - [x] Day 6 — erd-generator: ERD Generator from SQL (2026-06-12)
 - [x] Day 7 — dbt-model-generator: dbt Model Generator (2026-06-14)
 - [x] Day 8 — data-lineage-viz: Data Lineage Visualizer (2026-06-17)
-- [ ] Day 9 — gx-config-generator: Great Expectations Config Generator
+- [x] Day 9 — gx-config-generator: Great Expectations Config Generator (2026-06-19)
 - [ ] Day 10 — db-health-dashboard: Database Health Dashboard
 
 ## Month 2: Business Automation Suite
