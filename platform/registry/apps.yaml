@@ -33,6 +33,13 @@ apps:
     category: Analytics
     description: Run governed SQL against connected sources (DuckDB/Trino).
 
+  - slug: sql-formatter
+    name: SQL Formatter & Linter
+    required_role: analyst
+    status: planned
+    category: Analytics
+    description: Format SQL to house style + lint for danger (DELETE without WHERE) and style.
+
   - slug: auto-eda
     name: Auto-EDA Dashboard
     required_role: analyst
