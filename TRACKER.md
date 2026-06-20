@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 13 days
-**Total Completed:** 13 / 60
+**Current Streak:** 14 days
+**Total Completed:** 14 / 60
 
 ---
 
@@ -24,7 +24,7 @@
 - [x] Day 11 — csv-cleaner: CSV Cleaner (2026-06-20)
 - [x] Day 12 — json-validator: JSON Schema Validator (2026-06-20)
 - [x] Day 13 — auto-readme: Auto-README Generator (2026-06-20)
-- [ ] Day 14 — cron-monitor: Cron Job Monitor
+- [x] Day 14 — cron-monitor: Cron Job Monitor (2026-06-20)
 - [ ] Day 15 — env-checker: Environment Variable Checker
 - [ ] Day 16 — log-parser: Log Parser and Alerter
 - [ ] Day 17 — sql-formatter: SQL Query Formatter

@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'automation-suite/cron-monitor/**'
+  pull_request:
+    paths:
+      - 'automation-suite/cron-monitor/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r automation-suite/cron-monitor/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I automation-suite/cron-monitor/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('automation-suite/cron-monitor/api.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('automation-suite/cron-monitor/monitor.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('automation-suite/cron-monitor/alerter.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd automation-suite/cron-monitor
+          python -c "
+          from monitor import Monitor
+          m=Monitor(); m.register('j',100,10); m.ping('j',now=1000)
+          assert m.jobs['j'].state(1060)=='healthy'
+          assert m.jobs['j'].state(1200)=='overdue'
+          assert [x.name for x in m.alerts_to_fire(1200)]==['j']
+          assert m.alerts_to_fire(1200)==[]
+          print('ok')"
