@@ -6,6 +6,39 @@
 
 ---
 
+## 2026-06-20 - Step 1: Gateway + login (authentication)
+
+**What we did:** Built the front door. Three files in `gateway/`: `auth.py`
+(hand-written password hashing + signed tokens, stdlib only), `users.py` (JSON user
+store, seeds 4 demo accounts, stores hashes only), `app.py` (FastAPI: `/login`,
+`/me`, `/logout`, login + workspace pages). Tested end-to-end: wrong password → 401,
+good login → token cookie → `/me` knows who you are, logout → 401. Live uvicorn boot
+confirmed.
+
+**What Phoebe was learning:** authentication vs authorization; password *hashing*
+(hash + salt + why); *tokens/JWT* as signed, readable, expiring wristbands; HttpOnly
+cookies; not leaking which credential was wrong. Explainer: `10-gateway-login.md`.
+
+**Key decisions logged:**
+- Hand-write the security primitives first (Karpathy principle) rather than import
+  bcrypt/PyJWT - swap to those later once understood.
+- User store is a JSON file behind `authenticate()` so we can swap to SQLite/Postgres
+  later without touching the gateway.
+- `users.json` is gitignored (self-seeds; never commit hashes). `PLATFORM_SECRET`
+  comes from env; app warns loudly on the dev default.
+
+**Mentor input:** Karpathy (smallest readable version), Sigal (don't leak which
+credential was wrong; warn on default secret).
+
+**Open questions to revisit:**
+- Move from JSON user store to SQLite - when? (After Step 5, when we mount a real app.)
+- Real token library (PyJWT) swap - after the concept is solid.
+
+**Next step:** Step 2 - **RBAC + app registry** (`apps.yaml`): the gateway shows you
+only the apps your role can open. Explainer `11-rbac-registry.md`.
+
+---
+
 ## 2026-06-20 - Foundation: the wiki itself
 
 **What we did:** Set up `platform/` and the docs/wiki. Wrote the glossary, the "why"

@@ -1,0 +1,11 @@
+# Generated demo user store (self-seeds on run; never commit credentials/hashes)
+gateway/users.json
+
+# Never commit the signing secret
+.env
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/

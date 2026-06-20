@@ -34,7 +34,7 @@ background assumed.
 
 | Step | Component | Status |
 |------|-----------|--------|
-| 1 | Gateway + login (authentication) | ⬜ next |
+| 1 | Gateway + login (authentication) | ✅ done |
 | 2 | RBAC + app registry | ⬜ |
 | 3 | Audit log | ⬜ |
 | 4 | Connector layer | ⬜ |
