@@ -21,6 +21,8 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 
 from auth import create_token, secret_is_default, verify_token
+from rbac import can_access
+from registry import get_app, visible_apps
 from users import authenticate, seed_if_empty
 
 COOKIE = "platform_token"
@@ -89,6 +91,47 @@ def me(user: Optional[Dict[str, object]] = Depends(current_user)) -> JSONRespons
     return JSONResponse({"authenticated": True, "email": user["email"], "role": user["role"]})
 
 
+@app.get("/apps")
+def list_apps(user: Optional[Dict[str, object]] = Depends(current_user)) -> JSONResponse:
+    """JSON list of apps this user's role can open (each tagged allowed/locked)."""
+    if user is None:
+        return JSONResponse({"authenticated": False}, status_code=401)
+    return JSONResponse({"role": user["role"], "apps": visible_apps(str(user["role"]))})
+
+
+@app.get("/open/{slug}", response_class=HTMLResponse)
+def open_app(slug: str, user: Optional[Dict[str, object]] = Depends(current_user)):
+    """Open an app - the governance gate. Checks login, existence, and role."""
+    if user is None:
+        return HTMLResponse("Please log in first.", status_code=401)
+
+    app_entry = get_app(slug)
+    if app_entry is None:
+        return HTMLResponse(f"No app named '{slug}'.", status_code=404)
+
+    # THE governance check: does this role meet the app's required role?
+    if not can_access(str(user["role"]), str(app_entry.get("required_role", "admin"))):
+        return HTMLResponse(
+            f"<h1>🚫 403 - Access denied</h1><p>'{app_entry['name']}' requires role "
+            f"<b>{app_entry['required_role']}</b>. You are <b>{user['role']}</b>.</p>"
+            f"<p><a href='/'>← back to workspace</a></p>",
+            status_code=403,
+        )
+
+    # Allowed. (In Step 3 we'll write this access to the audit log; in Step 5 we'll
+    # proxy to the real running app. For now, a stub that proves the gate works.)
+    if app_entry.get("status") != "live":
+        body = f"<p>✅ You're allowed in, but <b>{app_entry['name']}</b> is still on the roadmap (planned).</p>"
+    else:
+        body = (f"<p>✅ Access granted to <b>{app_entry['name']}</b>.</p>"
+                f"<p><i>{app_entry['description']}</i></p>"
+                f"<p>(Step 5 will mount the real app here.)</p>")
+    return HTMLResponse(
+        f"<!doctype html><html><body style='font-family:system-ui;max-width:640px;margin:3rem auto'>"
+        f"<h1>{app_entry['name']}</h1>{body}<p><a href='/'>← back to workspace</a></p></body></html>"
+    )
+
+
 @app.get("/", response_class=HTMLResponse)
 def home(user: Optional[Dict[str, object]] = Depends(current_user)) -> str:
     """Show the workspace if logged in, otherwise the login page."""
@@ -122,13 +165,49 @@ async function login(){
 
 
 def _workspace_html(email: str, role: str) -> str:
+    apps = visible_apps(role)
+
+    # Group by category, preserving first-seen order.
+    categories: Dict[str, list] = {}
+    for a in apps:
+        categories.setdefault(str(a.get("category", "Other")), []).append(a)
+
+    sections = []
+    for cat, items in categories.items():
+        cards = []
+        for a in items:
+            allowed = a.get("allowed")
+            live = a.get("status") == "live"
+            if allowed and live:
+                card = (f"<a class='card open' href='/open/{a['slug']}'>"
+                        f"<b>{a['name']}</b><span>{a['description']}</span>"
+                        f"<em>open →</em></a>")
+            elif allowed and not live:
+                card = (f"<div class='card planned'><b>{a['name']}</b>"
+                        f"<span>{a['description']}</span><em>planned</em></div>")
+            else:  # locked - role too low
+                card = (f"<div class='card locked'><b>🔒 {a['name']}</b>"
+                        f"<span>needs role: {a['required_role']}</span></div>")
+            cards.append(card)
+        sections.append(f"<h2>{cat}</h2><div class='grid'>{''.join(cards)}</div>")
+
+    open_count = sum(1 for a in apps if a.get("allowed") and a.get("status") == "live")
     return f"""<!doctype html><html><head><title>Platform - Workspace</title>
-<style>body{{font-family:system-ui;max-width:640px;margin:4rem auto;padding:0 1rem}}
+<style>body{{font-family:system-ui;max-width:880px;margin:2.5rem auto;padding:0 1rem;color:#1a1a2e}}
 .badge{{display:inline-block;background:#eef;border-radius:6px;padding:.2rem .6rem;font-size:.9rem}}
-button{{padding:.5rem 1rem;cursor:pointer}}</style></head><body>
+h2{{margin-top:1.6rem;font-size:1.05rem;color:#555;border-bottom:1px solid #eee;padding-bottom:.3rem}}
+.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.8rem;margin-top:.6rem}}
+.card{{display:flex;flex-direction:column;gap:.3rem;padding:.9rem;border-radius:10px;border:1px solid #e6e6ef;
+  text-decoration:none;color:inherit}}
+.card span{{font-size:.82rem;color:#666}}.card em{{font-size:.8rem;font-style:normal;margin-top:.2rem}}
+.card.open{{background:#f5f8ff;border-color:#cdd9ff}}.card.open em{{color:#2952cc;font-weight:600}}
+.card.planned{{background:#fafafa;opacity:.8}}.card.planned em{{color:#999}}
+.card.locked{{background:#fbf6f6;border-color:#f0dede}}.card.locked span{{color:#b07}}
+button{{padding:.5rem 1rem;cursor:pointer;margin-top:1.5rem}}</style></head><body>
 <h1>🏠 Your Workspace</h1>
-<p>Signed in as <b>{email}</b> · role <span class="badge">{role}</span></p>
-<p>This is the shell. In Step 2 it will list only the apps your role can open.</p>
+<p>Signed in as <b>{email}</b> · role <span class="badge">{role}</span> ·
+{open_count} app(s) you can open</p>
+{''.join(sections)}
 <button onclick="logout()">Log out</button>
 <script>async function logout(){{await fetch('/logout',{{method:'POST'}});location.reload();}}</script>
 </body></html>"""

@@ -6,6 +6,42 @@
 
 ---
 
+## 2026-06-20 - Step 2: RBAC + app registry (authorization)
+
+**What we did:** Added the "what can you open?" layer. `registry/apps.yaml` (directory
+board: 8 apps, each with a required_role + status), `gateway/rbac.py` (role ladder
+analyst<data_scientist<ai_engineer<admin + one `can_access()`), `gateway/registry.py`
+(loads YAML, `visible_apps(role)`). Gateway gained `/apps` and `/open/{slug}` with a
+3-check governance gate (logged in? exists? role allowed?). Workspace now renders a
+role-filtered app grid: openable / planned / 🔒 locked. Tested all 4 roles - analyst
+4/8, DS 6/8, ai_eng 7/8, admin 8/8; analyst→LLM = 403, admin→LLM = 200. Live boot
+confirmed the grid + locked cards.
+
+**What Phoebe was learning:** authorization vs authentication; RBAC as role levels;
+why the access check must live at the *route* (`/open/...` returns 403 even if typed
+directly), not just hidden buttons; a registry as single source of truth for apps.
+Explainer: `11-rbac-registry.md`.
+
+**Key decisions logged:**
+- Roles as a linear ladder (simplification) behind one `can_access()` - can graduate
+  to explicit permission sets later without touching the gateway.
+- App registry is YAML so mounting a new daily build = a few lines, no code change.
+- Enforce at the gate, not the menu (URL-level 403).
+
+**Mentor input:** Zhamak (registry as source of truth, domain apps declare their own
+required role), Sigal (governance enforced at the gate, provable "analyst cannot open
+the LLM tool").
+
+**Open questions to revisit:**
+- Linear roles vs permission sets - revisit when a real app needs a permission that
+  doesn't fit the ladder.
+- Per-app data-source scoping (which datasets, not just which app) - later.
+
+**Next step:** Step 3 - **Audit log**: every login and every `/open` writes an
+append-only "who did what, when" record. Explainer `12-audit-log.md`.
+
+---
+
 ## 2026-06-20 - Step 1: Gateway + login (authentication)
 
 **What we did:** Built the front door. Three files in `gateway/`: `auth.py`

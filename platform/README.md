@@ -35,7 +35,7 @@ background assumed.
 | Step | Component | Status |
 |------|-----------|--------|
 | 1 | Gateway + login (authentication) | ✅ done |
-| 2 | RBAC + app registry | ⬜ |
+| 2 | RBAC + app registry | ✅ done |
 | 3 | Audit log | ⬜ |
 | 4 | Connector layer | ⬜ |
 | 5 | Mount a real app (log-parser / db-health) | ⬜ |

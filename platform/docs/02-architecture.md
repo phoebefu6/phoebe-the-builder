@@ -81,7 +81,7 @@ Every box in that flow is a glossary term you now know. That's the whole system.
 | Step | Component | What you'll learn | Status |
 |------|-----------|-------------------|--------|
 | 1 | **Gateway + login (authn)** | sessions, tokens, password checks | ✅ done - see [10-gateway-login](10-gateway-login.md) |
-| 2 | **RBAC + app registry** | roles, permissions, `apps.yaml` | ⬜ |
+| 2 | **RBAC + app registry** | roles, permissions, `apps.yaml` | ✅ done - see [11-rbac-registry](11-rbac-registry.md) |
 | 3 | **Audit log** | append-only records, why immutability matters | ⬜ |
 | 4 | **Connector layer** | secrets, one source of credentials | ⬜ |
 | 5 | **Mount a real app** | wrap `log-parser` / `db-health` behind the shell | ⬜ |

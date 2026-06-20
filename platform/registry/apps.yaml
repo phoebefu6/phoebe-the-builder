@@ -1,0 +1,69 @@
+# ── The App Registry ──────────────────────────────────────────────────────────
+# This is the "directory board in the lobby." Every tool mounted in the platform
+# is listed here with the ROLE it requires. The gateway reads this file to decide
+# what each user can see and open. Adding a new daily build = adding a few lines.
+#
+# Fields:
+#   slug          short id, used in the URL (/open/<slug>)
+#   name          human label shown in the workspace
+#   required_role minimum role needed (analyst < data_scientist < ai_engineer < admin)
+#   status        live (mounted & clickable) | planned (on the roadmap, greyed out)
+#   category      grouping for the workspace
+#   description   one line of what it does
+
+apps:
+  - slug: log-parser
+    name: Log Parser & Alerter
+    required_role: analyst
+    status: live
+    category: Observability
+    description: Parse mixed-format logs, score severity, fire alerts on spikes.
+
+  - slug: db-health
+    name: Database Health Dashboard
+    required_role: analyst
+    status: live
+    category: Observability
+    description: RAG-scored database health on one screen.
+
+  - slug: sql-runner
+    name: SQL Runner
+    required_role: analyst
+    status: planned
+    category: Analytics
+    description: Run governed SQL against connected sources (DuckDB/Trino).
+
+  - slug: auto-eda
+    name: Auto-EDA Dashboard
+    required_role: analyst
+    status: planned
+    category: Analytics
+    description: One-click profiling of any new dataset.
+
+  - slug: model-trainer
+    name: Model Trainer
+    required_role: data_scientist
+    status: planned
+    category: Machine Learning
+    description: Build, train, and register ML models.
+
+  - slug: model-registry
+    name: Model Registry
+    required_role: data_scientist
+    status: planned
+    category: Machine Learning
+    description: Versioned models with access control and lineage.
+
+  - slug: llm-playground
+    name: LLM Playground
+    required_role: ai_engineer
+    status: planned
+    category: AI Products
+    description: Build and share governed LLM apps.
+
+  - slug: user-admin
+    name: User & Access Admin
+    required_role: admin
+    status: planned
+    category: Governance
+    description: Manage users, roles, and audit trails.

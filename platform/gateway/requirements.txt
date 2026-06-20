@@ -1,5 +1,6 @@
 fastapi==0.138.0
 uvicorn[standard]==0.34.0
 pydantic==2.13.4
+pyyaml==6.0.1
 # auth.py and users.py use only the Python standard library on purpose -
 # hashing and tokens are hand-written so the concepts are visible.
