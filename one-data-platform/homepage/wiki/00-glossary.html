@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>00 - Glossary (plain language, for a data person) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav active" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="00-glossary-plain-language-for-a-data-person">00 - Glossary (plain language, for a data person)</h1>
+<blockquote>
+<p>Every scary platform word, explained with a data analogy you already know.
+If a term isn't here when we use it, that's a bug - tell Claude to add it.</p>
+</blockquote>
+<hr />
+<h3 id="platform-the-shell">Platform / "the shell"</h3>
+<p>The one application that holds all our tools. Think of it like <strong>a single Power BI
+workspace</strong> that, instead of just dashboards, can hold dashboards <em>and</em> notebooks
+<em>and</em> models <em>and</em> AI apps - all behind one login. The 60 mini-tools become "apps"
+that live inside this shell.</p>
+<h3 id="control-plane">Control plane</h3>
+<p>The "front desk + security + directory" of the building. It does <strong>not</strong> do the
+data work itself - it decides <em>who gets in</em>, <em>what they're allowed to touch</em>, and
+<em>keeps a record</em>. The actual tools (the SQL runner, the dashboard) are the
+"offices" behind the front desk. We build the front desk; we rent the offices
+(open-source tools).</p>
+<blockquote>
+<p>Why we care: the front desk is the part that's hard to copy and worth selling.
+Anyone can run a SQL engine; not everyone can govern who runs it.</p>
+</blockquote>
+<h3 id="gateway">Gateway</h3>
+<p>The single front door. Every request from a user goes <em>through</em> the gateway first.
+It checks your badge before passing you to the tool you asked for. In our build,
+the gateway is one small web service (FastAPI). Like the <strong>one turnstile</strong> everyone
+must tap into - no sneaking in a side window.</p>
+<h3 id="authentication-authn-who-are-you">Authentication ("authn") = <em>who are you?</em></h3>
+<p>Proving identity. Logging in with email + password is authentication. Same idea as
+signing into your data warehouse. Answers: <strong>"Are you really Phoebe?"</strong></p>
+<h3 id="authorization-authz-what-are-you-allowed-to-do">Authorization ("authz") = <em>what are you allowed to do?</em></h3>
+<p>After we know who you are, what can you touch? You're Phoebe (authenticated), but
+are you allowed to <em>delete</em> the production dataset? Answers: <strong>"Phoebe is allowed
+to view dashboards but not edit the model registry."</strong></p>
+<blockquote>
+<p>authn = identity. authz = permission. Two different checks, in that order.</p>
+</blockquote>
+<h3 id="rbac-role-based-access-control">RBAC (Role-Based Access Control)</h3>
+<p>A tidy way to do authorization. Instead of setting permissions per person (chaos at
+scale), you give people <strong>roles</strong>, and roles carry permissions. Exactly like
+<strong>database roles / groups</strong> you already know:
+- <code>analyst</code> → can run SQL, view dashboards
+- <code>data_scientist</code> → all of analyst + train/register models
+- <code>ai_engineer</code> → all of that + deploy LLM apps
+- <code>admin</code> (you) → everything + manage users</p>
+<p>Add a new hire? Give them a role, done. This is how we "govern access to
+dashboards, data, models, LLMs" - each app declares which role it needs.</p>
+<h3 id="session-token-jwt">Session / Token (JWT)</h3>
+<p>After you log in, the gateway hands you a <strong>temporary wristband</strong> so you don't
+re-enter your password on every click. A <strong>JWT</strong> (JSON Web Token) is that wristband:
+a small signed string your browser sends back with each request. Signed = we can
+tell if someone forged it. It expires, like a day-pass. Same role as a warehouse
+session, just for the web.</p>
+<h3 id="connector-connection-layer">Connector / Connection layer</h3>
+<p>One shared place that knows <em>how to reach</em> each data source (Postgres, S3, BigQuery,
+Snowflake) - the host, and the secret password/key. Instead of every tool having its
+own copy of credentials scattered in 60 <code>.env</code> files, tools ask the connector layer
+"give me the orders database" and it hands back a ready connection. Like a <strong>single
+shared connections.json</strong> for the whole company, but safe.</p>
+<h3 id="secret-secrets-management">Secret / Secrets management</h3>
+<p>A "secret" = any password, API key, or token. <strong>Secrets management</strong> = keeping them
+out of code and in one guarded place (env vars, a vault). Rule we never break:
+<strong>secrets never get written into a file we commit to git.</strong></p>
+<h3 id="audit-log">Audit log</h3>
+<p>A permanent, append-only diary: <em>who did what, when</em>. "Phoebe viewed the revenue
+dashboard at 10:04." "Sam ran a query against <code>customers</code> at 10:06." You can't edit
+it, only add to it. This is the single most valuable thing to an enterprise buyer in
+a regulated industry - it's how they prove governance to auditors. Like an
+<strong>immutable query-history table</strong> for the whole platform.</p>
+<h3 id="app-registry">App registry</h3>
+<p>A simple list (a <code>apps.yaml</code> file) of every tool mounted in the shell: its name, its
+web address inside the platform, and <strong>which role it requires</strong>. Adding a new daily
+build = adding a few lines here. The gateway reads this list to know what exists and
+who's allowed in. Like a <strong>directory board in the lobby</strong> ("Floor 3: Churn Model -
+Data Scientists only").</p>
+<h3 id="orchestration">Orchestration</h3>
+<p>Coordinating multi-step work so steps run in the right order, on schedule, and retry
+on failure. "Pull data → clean it → train model → publish dashboard," every night at
+2am. We will <strong>not</strong> build this ourselves - we'll plug in <strong>Apache Airflow</strong> (mature
+open source). Our platform <em>governs and surfaces</em> Airflow; it doesn't replace it.</p>
+<h3 id="apache-airflow">Apache Airflow</h3>
+<p>The most popular open-source <strong>orchestration</strong> tool. It runs scheduled data
+pipelines (called DAGs). We leverage it instead of reinventing ETL scheduling. You
+already think in pipelines - Airflow is the engine that runs them on a clock.</p>
+<h3 id="dag-directed-acyclic-graph">DAG (Directed Acyclic Graph)</h3>
+<p>Airflow's word for "a pipeline." Just a set of steps with arrows showing order, where
+arrows never loop back (acyclic = no cycles). "Extract → Transform → Load" is a
+3-step DAG. Don't overthink the name - it means <strong>"a pipeline drawn as boxes and
+arrows."</strong></p>
+<h3 id="open-source-oss">Open source / OSS</h3>
+<p>Free, public, community-maintained software we're allowed to use and build on
+(Airflow, DuckDB, Trino). Our strategy: <strong>mount OSS for the commodity work, build
+only the governance shell ourselves.</strong> Don't rebuild what thousands of engineers
+already perfected.</p>
+<h3 id="duckdb-trino">DuckDB / Trino</h3>
+<p>Open-source <strong>SQL engines</strong> - they run SQL queries over data. DuckDB = lightweight,
+runs in-process (great for one analyst on a file). Trino = distributed (great for
+querying huge data across sources). These are "offices we rent" - the SQL-running
+capability we don't build ourselves.</p>
+<h3 id="fastapi-streamlit">FastAPI / Streamlit</h3>
+<p>Two Python tools we already use. <strong>FastAPI</strong> = build web services/APIs (our gateway).
+<strong>Streamlit</strong> = build data apps/dashboards fast (many of our 60 apps). You've seen
+both in the portfolio already.</p>
+<h3 id="reverse-proxy">Reverse proxy</h3>
+<p>A doorman that takes your request and quietly forwards it to the right office behind
+the scenes, so you only ever talk to the front door. Our gateway acts as a light
+reverse proxy: you hit the platform, it routes you to the correct app after checking
+your role. (We'll build the simplest possible version.)</p>
+<h3 id="mvp-minimum-viable-product">MVP (Minimum Viable Product)</h3>
+<p>The smallest version that actually works end-to-end and proves the idea. Our spine
+MVP = "log in → see only the apps your role allows → click one → it checks your role
+→ every action is logged." Tiny, but real. We grow from there.</p>
+<hr />
+<p><em>Add terms as we meet them. A glossary is never finished - it's a living map of what
+we've learned.</em></p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/00-glossary.md</code></footer>
+</div></body></html>

@@ -11,15 +11,19 @@ build shipped so far).
 ## 🏠 Open the homepage
 
 Open [`homepage/index.html`](homepage/index.html) in any browser - it lists all
-completed builds as cards (with links to code + notebook) plus the roadmap. It is
-**auto-generated from `../TRACKER.md`**, so it's always current: every day a build is
-finished, re-running the generator adds exactly one card.
+completed builds as cards (with links to code + notebook) plus the roadmap, and the top
+bar links to the **fully rendered HTML wiki** (no more raw markdown). It is
+**auto-generated from `../TRACKER.md`** + the `docs/` markdown, so it's always current:
+every day a build is finished, re-running the generator adds exactly one card.
 
 ```bash
-# regenerate the homepage (run after each daily build)
-python homepage/build_catalog.py
+# regenerate the whole site - homepage + wiki HTML (run after each daily build)
+python homepage/build_site.py
 # then open homepage/index.html
 ```
+
+The wiki markdown in `docs/` stays the editable source; `build_site.py` renders it to
+styled pages under `homepage/wiki/`.
 
 ## 📚 The wiki (read in order)
 

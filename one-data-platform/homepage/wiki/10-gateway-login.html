@@ -1,0 +1,130 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>10 - Step 1: The Gateway + Login (authentication) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav active" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="10-step-1-the-gateway-login-authentication">10 - Step 1: The Gateway + Login (authentication)</h1>
+<blockquote>
+<p>What we built, why each piece exists, and how to run it yourself.
+Prereqs: skim <a href="00-glossary.html">00-glossary</a> and <a href="02-architecture.html">02-architecture</a>.</p>
+</blockquote>
+<hr />
+<h2 id="what-this-step-does-and-doesnt">What this step does (and doesn't)</h2>
+<p><strong>Does:</strong> lets a user log in with email + password, hands them a tamper-proof token,
+and can tell who they are on every later request.</p>
+<p><strong>Doesn't yet:</strong> decide what they're <em>allowed</em> to do (that's RBAC, Step 2) or route
+them to apps (Step 2). We're only answering <strong>"who are you?"</strong> - authentication.</p>
+<blockquote>
+<p>One step, one concept. We resist doing more.</p>
+</blockquote>
+<h2 id="the-three-files-read-in-this-order">The three files (read in this order)</h2>
+<h3 id="1-gatewayauthpy-the-security-primitives">1. <code>gateway/auth.py</code> - the security primitives</h3>
+<p>Hand-written so nothing is a black box. Two halves:</p>
+<p><strong>Passwords.</strong> We never store your real password. We store a <em>hash</em> - run the password
+through a one-way "meat grinder" (<code>pbkdf2</code>, 100,000 rounds) mixed with a random <em>salt</em>.
+- <em>Why a hash?</em> If the file leaks, attackers still don't have passwords.
+- <em>Why a salt?</em> So two people with the same password get different hashes, and
+  attackers can't use precomputed tables.
+- To check a login we grind the typed password the same way and compare. We compare
+  with <code>hmac.compare_digest</code> so the <em>timing</em> of the comparison can't leak hints.</p>
+<p><strong>Tokens (the wristband).</strong> After login we issue <code>payload.signature</code>:
+- <code>payload</code> = readable JSON <code>{"email","role","exp"}</code> (base64).
+- <code>signature</code> = HMAC of the payload using a secret <code>PLATFORM_SECRET</code>.
+- Anyone can <em>read</em> the payload, but <strong>can't change it</strong> without the secret - the
+  signature wouldn't match. Change one character and <code>verify_token</code> returns <code>None</code>.
+- <code>exp</code> is an expiry timestamp - the wristband dies after 8 hours.</p>
+<blockquote>
+<p>This IS what a real JWT does. We built the 30-line version so the magic is gone.</p>
+</blockquote>
+<h3 id="2-gatewayuserspy-the-user-store">2. <code>gateway/users.py</code> - the user store</h3>
+<p>A JSON file (<code>users.json</code>) mapping email → <code>{password_hash, role}</code>. Seeds four demo
+accounts on first run (admin / analyst / data_scientist / ai_engineer). It stores
+<strong>only hashes</strong>, never plain passwords. Later we swap the JSON for SQLite/Postgres
+without touching the gateway - that's why it hides behind <code>authenticate()</code>.</p>
+<h3 id="3-gatewayapppy-the-gateway-front-door">3. <code>gateway/app.py</code> - the gateway (front door)</h3>
+<p>A small FastAPI service:
+- <code>GET /</code> - workspace if logged in, else the login page.
+- <code>POST /login</code> - check credentials → put a signed token in an <strong>HttpOnly cookie</strong>.
+- <code>GET /me</code> - "who am I?" (401 if not logged in). Proves the token round-trip.
+- <code>POST /logout</code> - clears the cookie.</p>
+<p>Two security choices worth noticing:
+- <strong>Same error for bad email and bad password</strong> ("invalid email or password") - never
+  tell an attacker which half was right.
+- <strong>HttpOnly cookie</strong> - JavaScript can't read the token, blocking a common theft trick.</p>
+<h2 id="how-a-login-flows-tie-it-to-the-architecture-doc">How a login flows (tie it to the architecture doc)</h2>
+<pre><code>browser ──login(email,pw)──▶ /login ──authenticate()──▶ users.json
+                                  │  (password verified)
+                                  ▼
+                          create_token(email,role)
+                                  │
+   browser ◀── Set-Cookie: platform_token=&lt;payload.signature&gt; ──┘
+
+later:
+browser ──(cookie)──▶ /me ──verify_token()──▶ {email, role}   ✅ who you are
+</code></pre>
+<h2 id="run-it-yourself">Run it yourself</h2>
+<pre><code class="language-bash">cd one-data-platform/gateway
+pip install -r requirements.txt
+uvicorn app:app --reload
+# open http://localhost:8000
+</code></pre>
+<p>Log in with <code>phoebe@team.io</code> / <code>admin123</code> (or any demo account on the login page).
+Try a wrong password. Open <code>/me</code> in another tab. Log out and watch <code>/me</code> go 401.</p>
+<blockquote>
+<p>Heads-up: it prints <code>[WARN] PLATFORM_SECRET is the dev default</code>. That's intentional -
+before any real use, set a real secret: <code>export PLATFORM_SECRET="something-long-random"</code>.</p>
+</blockquote>
+<h2 id="what-you-learned-this-step">What you learned this step</h2>
+<ul>
+<li><strong>authentication</strong> vs the permission check that comes next</li>
+<li><strong>password hashing</strong> (hash, salt, why)</li>
+<li><strong>tokens / JWT</strong> - signed, readable, expiring wristbands</li>
+<li><strong>HttpOnly cookies</strong> and not leaking which credential was wrong</li>
+</ul>
+<h2 id="whats-next-step-2-rbac-app-registry">What's next - Step 2: RBAC + app registry</h2>
+<p>Now that we know <em>who</em> you are, we decide <em>what you can open</em>. We'll add <code>apps.yaml</code>
+(the directory board) listing each app and the role it needs, and the gateway will
+show you only the apps your role allows. Explainer will be <code>11-rbac-registry.md</code>.</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/10-gateway-login.md</code></footer>
+</div></body></html>

@@ -1,0 +1,169 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>11 - Step 2: RBAC + App Registry (authorization) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav active" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="11-step-2-rbac-app-registry-authorization">11 - Step 2: RBAC + App Registry (authorization)</h1>
+<blockquote>
+<p>Now that the gateway knows <em>who</em> you are (Step 1), this step decides <em>what you can
+open</em>. This is the governance you're actually selling.</p>
+</blockquote>
+<hr />
+<h2 id="the-two-new-ideas">The two new ideas</h2>
+<h3 id="1-rbac-role-based-access-control">1. RBAC - Role-Based Access Control</h3>
+<p>"What are you allowed to do?" We answer it with <strong>roles as levels</strong>:</p>
+<pre><code>analyst (10)  &lt;  data_scientist (20)  &lt;  ai_engineer (30)  &lt;  admin (99)
+</code></pre>
+<p>Each higher role includes everything below it. So a data scientist can open analyst
+apps (a superset), and admin can open everything (admin governs all). An app declares
+the <strong>minimum</strong> role it needs; you pass if your level is at least that high.</p>
+<blockquote>
+<p>This is a teaching simplification. Real systems often use explicit permission <em>sets</em>
+("can_train_models", "can_deploy_llm") instead of one ladder. We can graduate to that
+later <strong>without changing the gateway</strong>, because every check goes through one function:
+<code>can_access(user_role, required_role)</code> in <code>gateway/rbac.py</code>.</p>
+</blockquote>
+<h3 id="2-the-app-registry">2. The App Registry</h3>
+<p>A single file, <code>registry/apps.yaml</code> - the "directory board in the lobby." Each app
+lists its <code>slug</code>, <code>name</code>, <code>required_role</code>, <code>status</code> (live/planned), and <code>category</code>.
+The gateway reads this to decide what each user sees. <strong>Mounting a new daily build =
+adding a few lines here.</strong> No gateway code changes.</p>
+<h2 id="the-files-read-in-order">The files (read in order)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>registry/apps.yaml</code></td>
+<td>The directory board - every app + the role it needs</td>
+</tr>
+<tr>
+<td><code>gateway/rbac.py</code></td>
+<td>The role ladder + the one <code>can_access()</code> check</td>
+</tr>
+<tr>
+<td><code>gateway/registry.py</code></td>
+<td>Loads <code>apps.yaml</code>; <code>visible_apps(role)</code> tags each app allowed/locked</td>
+</tr>
+<tr>
+<td><code>gateway/app.py</code></td>
+<td>New routes <code>/apps</code> and <code>/open/{slug}</code>; workspace now renders the grid</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-governance-gate-the-important-bit">The governance gate (the important bit)</h2>
+<p>When you click an app, <code>GET /open/{slug}</code> runs <strong>three checks</strong> before letting you in:</p>
+<ol>
+<li><strong>Logged in?</strong> No → 401.</li>
+<li><strong>Does the app exist?</strong> No → 404.</li>
+<li><strong>Does your role meet the app's <code>required_role</code>?</strong> No → <strong>403 Access denied.</strong></li>
+</ol>
+<p>Only if all three pass do you get in. That 403 <em>is</em> the product - it's how you prove to
+a client "an analyst physically cannot open the LLM tool or the model registry."</p>
+<h2 id="what-each-role-sees-tested">What each role sees (tested)</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Apps openable</th>
+<th>Example locked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>analyst</td>
+<td>4 / 8</td>
+<td>🔒 Model Trainer (needs data_scientist)</td>
+</tr>
+<tr>
+<td>data_scientist</td>
+<td>6 / 8</td>
+<td>🔒 LLM Playground (needs ai_engineer)</td>
+</tr>
+<tr>
+<td>ai_engineer</td>
+<td>7 / 8</td>
+<td>🔒 User &amp; Access Admin (needs admin)</td>
+</tr>
+<tr>
+<td>admin (you)</td>
+<td>8 / 8</td>
+<td>- governs everything</td>
+</tr>
+</tbody>
+</table>
+<p>In the workspace, openable apps are blue cards; planned ones are greyed; apps your role
+can't reach show as 🔒 locked with the role they'd need.</p>
+<h2 id="run-it-yourself">Run it yourself</h2>
+<pre><code class="language-bash">cd one-data-platform/gateway
+pip install -r requirements.txt
+uvicorn app:app --reload
+</code></pre>
+<ul>
+<li>Log in as <code>ana@team.io</code> / <code>analyst123</code> → you see Observability + Analytics apps;
+  ML and AI apps are locked.</li>
+<li>Visit <code>/open/llm-playground</code> directly → <strong>403</strong> (you can't sneak past the menu).</li>
+<li>Log in as <code>phoebe@team.io</code> / <code>admin123</code> → everything is open.</li>
+</ul>
+<blockquote>
+<p>Note: the URL-level check matters. Even if a sneaky user <em>types</em> <code>/open/llm-playground</code>
+instead of clicking, the gate still says 403. Governance lives at the gate, not the menu.</p>
+</blockquote>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li><strong>authorization</strong> (vs authentication from Step 1)</li>
+<li><strong>RBAC</strong> as role levels, behind one <code>can_access()</code> function</li>
+<li>a <strong>registry</strong> as the single source of truth for "what apps exist + who may open them"</li>
+<li>enforcing access at the <strong>route</strong>, not just hiding buttons in the UI</li>
+</ul>
+<h2 id="whats-next-step-3-audit-log">What's next - Step 3: Audit log</h2>
+<p>Right now access checks happen but vanish. Step 3 adds the <strong>audit log</strong>: every login
+and every <code>/open</code> writes an append-only record - "who did what, when." That permanent
+trail is the #1 thing a regulated enterprise buyer asks for. Explainer: <code>12-audit-log.md</code>.</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/11-rbac-registry.md</code></footer>
+</div></body></html>

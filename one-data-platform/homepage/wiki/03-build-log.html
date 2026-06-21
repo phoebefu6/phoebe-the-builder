@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>03 - Build Log (design-thinking journal) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav active" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="03-build-log-design-thinking-journal">03 - Build Log (design-thinking journal)</h1>
+<blockquote>
+<p>A running diary of what we built, what we learned, and what's next. Newest entry
+at the top. This is where Phoebe's questions and the "aha" moments get captured -
+not just the answers.</p>
+</blockquote>
+<hr />
+<h2 id="2026-06-20-step-2-rbac-app-registry-authorization">2026-06-20 - Step 2: RBAC + app registry (authorization)</h2>
+<p><strong>What we did:</strong> Added the "what can you open?" layer. <code>registry/apps.yaml</code> (directory
+board: 8 apps, each with a required_role + status), <code>gateway/rbac.py</code> (role ladder
+analyst&lt;data_scientist&lt;ai_engineer&lt;admin + one <code>can_access()</code>), <code>gateway/registry.py</code>
+(loads YAML, <code>visible_apps(role)</code>). Gateway gained <code>/apps</code> and <code>/open/{slug}</code> with a
+3-check governance gate (logged in? exists? role allowed?). Workspace now renders a
+role-filtered app grid: openable / planned / 🔒 locked. Tested all 4 roles - analyst
+4/8, DS 6/8, ai_eng 7/8, admin 8/8; analyst→LLM = 403, admin→LLM = 200. Live boot
+confirmed the grid + locked cards.</p>
+<p><strong>What Phoebe was learning:</strong> authorization vs authentication; RBAC as role levels;
+why the access check must live at the <em>route</em> (<code>/open/...</code> returns 403 even if typed
+directly), not just hidden buttons; a registry as single source of truth for apps.
+Explainer: <code>11-rbac-registry.md</code>.</p>
+<p><strong>Key decisions logged:</strong>
+- Roles as a linear ladder (simplification) behind one <code>can_access()</code> - can graduate
+  to explicit permission sets later without touching the gateway.
+- App registry is YAML so mounting a new daily build = a few lines, no code change.
+- Enforce at the gate, not the menu (URL-level 403).</p>
+<p><strong>Mentor input:</strong> Zhamak (registry as source of truth, domain apps declare their own
+required role), Sigal (governance enforced at the gate, provable "analyst cannot open
+the LLM tool").</p>
+<p><strong>Open questions to revisit:</strong>
+- Linear roles vs permission sets - revisit when a real app needs a permission that
+  doesn't fit the ladder.
+- Per-app data-source scoping (which datasets, not just which app) - later.</p>
+<p><strong>Next step:</strong> Step 3 - <strong>Audit log</strong>: every login and every <code>/open</code> writes an
+append-only "who did what, when" record. Explainer <code>12-audit-log.md</code>.</p>
+<hr />
+<h2 id="2026-06-20-step-1-gateway-login-authentication">2026-06-20 - Step 1: Gateway + login (authentication)</h2>
+<p><strong>What we did:</strong> Built the front door. Three files in <code>gateway/</code>: <code>auth.py</code>
+(hand-written password hashing + signed tokens, stdlib only), <code>users.py</code> (JSON user
+store, seeds 4 demo accounts, stores hashes only), <code>app.py</code> (FastAPI: <code>/login</code>,
+<code>/me</code>, <code>/logout</code>, login + workspace pages). Tested end-to-end: wrong password → 401,
+good login → token cookie → <code>/me</code> knows who you are, logout → 401. Live uvicorn boot
+confirmed.</p>
+<p><strong>What Phoebe was learning:</strong> authentication vs authorization; password <em>hashing</em>
+(hash + salt + why); <em>tokens/JWT</em> as signed, readable, expiring wristbands; HttpOnly
+cookies; not leaking which credential was wrong. Explainer: <code>10-gateway-login.md</code>.</p>
+<p><strong>Key decisions logged:</strong>
+- Hand-write the security primitives first (Karpathy principle) rather than import
+  bcrypt/PyJWT - swap to those later once understood.
+- User store is a JSON file behind <code>authenticate()</code> so we can swap to SQLite/Postgres
+  later without touching the gateway.
+- <code>users.json</code> is gitignored (self-seeds; never commit hashes). <code>PLATFORM_SECRET</code>
+  comes from env; app warns loudly on the dev default.</p>
+<p><strong>Mentor input:</strong> Karpathy (smallest readable version), Sigal (don't leak which
+credential was wrong; warn on default secret).</p>
+<p><strong>Open questions to revisit:</strong>
+- Move from JSON user store to SQLite - when? (After Step 5, when we mount a real app.)
+- Real token library (PyJWT) swap - after the concept is solid.</p>
+<p><strong>Next step:</strong> Step 2 - <strong>RBAC + app registry</strong> (<code>apps.yaml</code>): the gateway shows you
+only the apps your role can open. Explainer <code>11-rbac-registry.md</code>.</p>
+<hr />
+<h2 id="2026-06-20-foundation-the-wiki-itself">2026-06-20 - Foundation: the wiki itself</h2>
+<p><strong>What we did:</strong> Set up <code>one-data-platform/</code> and the docs/wiki. Wrote the glossary, the "why"
+doc, the architecture picture, and ADR-0001 (governed shell, not Databricks clone).
+No platform code yet - on purpose. We're laying the map before driving.</p>
+<p><strong>What Phoebe was learning:</strong> the vocabulary. Coming from a data background, terms
+like <em>control plane</em>, <em>gateway</em>, <em>RBAC</em>, <em>audit log</em>, <em>connector layer</em> were
+unfamiliar. The glossary translates each into a data analogy (RBAC = database roles,
+token = warehouse session, audit log = immutable query history).</p>
+<p><strong>Key decisions logged:</strong>
+- <a href="decisions/adr-0001-governed-shell-not-databricks.html">ADR-0001</a> - build the thin
+  governance shell, mount open source for compute.</p>
+<p><strong>Mentor input:</strong> Cassie (log every decision as an ADR), Karpathy (write the smallest
+readable version ourselves before importing frameworks), Ng (learn in sequence, check
+understanding at each step), Brené ("I'm a data expert learning platform engineering"
+is a strength).</p>
+<p><strong>Open questions to revisit:</strong>
+- Which client / wedge problem do we target first? (Leaning: governed analytics for
+  the analyst persona - to be decided.)
+- Local file-based store for the MVP, or a real database from the start? (Leaning:
+  start file-based / SQLite so it's readable, swap later.)</p>
+<p><strong>Next step:</strong> Step 1 - the <strong>gateway with login</strong> (authentication). We'll write the
+smallest real login Phoebe can read top to bottom, with a companion explainer doc
+<code>10-gateway-login.md</code>.</p>
+<hr />
+<h2 id="template-for-future-entries">Template for future entries</h2>
+<pre><code>## YYYY-MM-DD - &lt;component / step&gt;
+
+**What we did:**
+**What Phoebe was learning:**
+**Key decisions logged:** (link ADRs)
+**Mentor input:**
+**Open questions to revisit:**
+**Next step:**
+</code></pre></article>
+<footer>One Data Platform wiki · rendered from <code>docs/03-build-log.md</code></footer>
+</div></body></html>

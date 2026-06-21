@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>ADR-0001: Build a governed shell, not a Databricks clone - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../../index.html">One Data Platform</a><a class="nav" href="../../index.html">Home</a><a class="nav" href="../../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../../wiki/02-architecture.html">Architecture</a><a class="nav" href="../../wiki/00-glossary.html">Glossary</a><a class="nav" href="../../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../../index.html">← Home</a></div>
+<article class="doc"><h1 id="adr-0001-build-a-governed-shell-not-a-databricks-clone">ADR-0001: Build a governed shell, not a Databricks clone</h1>
+<ul>
+<li><strong>Status:</strong> Accepted</li>
+<li><strong>Date:</strong> 2026-06-20</li>
+<li><strong>Deciders:</strong> Phoebe (+ Claude, + 12-mentor roundtable)</li>
+</ul>
+<h2 id="context">Context</h2>
+<p>Phoebe has 16 of 60 daily data/AI mini-tools built. She wants them to converge into
+ONE enterprise product she can sell to a client - a unified place where her team
+(data analysts, data engineers, data scientists, AI engineers) can connect to data,
+process it, do EDA, and build &amp; share dashboards, models, and AI products, with
+governed access. The instinct was "combine all 60 into one Databricks-style platform."
+We needed to decide what to actually build before writing code.</p>
+<h2 id="options-we-considered">Options we considered</h2>
+<ol>
+<li><strong>Clone Databricks/Snowflake</strong> - build our own unified compute + storage + ML
+   platform from scratch. Pro: grand vision. Con: thousands of engineer-years; the
+   core is a commodity open source already solved; we'd never win on those axes.</li>
+<li><strong>Leave 60 tools separate</strong> - just polish each standalone. Pro: simple. Con: 60
+   logins, no governance, not a product, not sellable as "a platform."</li>
+<li><strong>Build a thin governed shell + mount OSS</strong> - write only the missing governance
+   layer (login, roles, connectors, audit, app registry); plug in open source
+   (Airflow, DuckDB, Trino) for the heavy compute; mount the 60 tools as governed
+   apps. Pro: small, defensible, sellable, leverages existing work. Con: requires
+   discipline to not over-build.</li>
+</ol>
+<h2 id="decision">Decision</h2>
+<p><strong>Option 3.</strong> Build a thin <strong>governance shell (control plane)</strong> ourselves and
+<strong>leverage open source</strong> for all heavy compute and orchestration. The 60 tools become
+the shell's app catalog.</p>
+<h2 id="why-the-reasoning">Why (the reasoning)</h2>
+<ul>
+<li>The distributed-compute core is a <strong>commodity</strong> - rebuilding it is wasted effort
+  with no payoff (LeCun, Jensen).</li>
+<li>The part enterprises actually pay for and that's hard to copy is <strong>governance</strong>:
+  one login, role-based access, and an audit trail over data/dashboards/models/LLMs
+  (Sigal, Zhamak).</li>
+<li>Building only the thin layer is <strong>achievable by one person + Claude</strong>, and turns
+  every existing and future daily build into a platform feature (Ng, Karpathy).</li>
+<li>It supports a <strong>land-and-expand</strong> sale: solve one client's one problem on the shell,
+  then grow (Kai-Fu Lee, Satya, Chrissie).</li>
+</ul>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li><strong>Good:</strong> small surface area to build; leverages 16 tools already done; sellable
+  governance story; each new daily build plugs in for ~20 min.</li>
+<li><strong>Cost / risk:</strong> we depend on open-source tools (Airflow etc.) - we must learn to
+  govern and integrate them, not control them. We must resist scope creep into
+  rebuilding compute.</li>
+<li><strong>Revisit when:</strong> a client's needs genuinely can't be met by mounting OSS, or the
+  shell itself needs to become a distributed system (a good problem to have).</li>
+</ul>
+<h2 id="glossary-terms-introduced">Glossary terms introduced</h2>
+<p>control plane, governance shell, RBAC, audit log, app registry, orchestration,
+open source (OSS), Airflow, DuckDB, Trino - all defined in <code>00-glossary.md</code>.</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/adr-0001-governed-shell-not-databricks.md</code></footer>
+</div></body></html>

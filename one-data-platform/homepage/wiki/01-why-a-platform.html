@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>01 - Why a platform at all? - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav active" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="01-why-a-platform-at-all">01 - Why a platform at all?</h1>
+<blockquote>
+<p>The vision in plain words, and the reasoning behind every big choice.
+Read this when you forget <em>why</em> we're doing this.</p>
+</blockquote>
+<hr />
+<h2 id="the-one-sentence-vision">The one-sentence vision</h2>
+<p><strong>A single, governed workspace where my whole team - data analysts, data engineers,
+data scientists, and AI engineers - can connect to any data source, process it,
+explore it, and build &amp; share dashboards, models, and AI products, with me
+controlling who can access what.</strong></p>
+<h2 id="the-problem-were-actually-solving">The problem we're actually solving</h2>
+<p>Today the team's work is scattered:
+- The analyst has SQL in one tool, dashboards in another.
+- The engineer's pipelines run who-knows-where.
+- The data scientist trains models on their laptop; nobody else can find them.
+- The AI engineer's LLM app has API keys pasted in a notebook.
+- <strong>Nobody can answer "who has access to the customer data?" with confidence.</strong></p>
+<p>Each of our 60 mini-tools solves a <em>slice</em> of this. But 60 separate tools with 60
+separate logins is not a solution - it's 60 new problems. The platform's job is to
+make them <strong>one coherent, governed place.</strong></p>
+<h2 id="what-we-are-not-building-and-why">What we are NOT building (and why)</h2>
+<p>We are <strong>not</strong> building Databricks or Snowflake. Here's the honest reasoning:</p>
+<ul>
+<li>Those took <strong>thousands of engineers and 5-10 years.</strong> We are one person plus Claude.</li>
+<li>Their core (a distributed compute engine) is a commodity now - <strong>open source already
+  does it</strong> (Airflow, DuckDB, Trino, Spark). Rebuilding it would be wasted effort with
+  no payoff.</li>
+<li>Competing on "we have a SQL engine too" is a losing game we'd never win.</li>
+</ul>
+<blockquote>
+<p><strong>Decision:</strong> leverage open source for the heavy lifting; build only the thin layer
+that's missing. See <a href="decisions/adr-0001-governed-shell-not-databricks.html">ADR-0001</a>.</p>
+</blockquote>
+<h2 id="what-we-are-building-the-missing-thin-layer">What we ARE building (the missing thin layer)</h2>
+<p>The piece that <em>isn't</em> solved by open source, and that every enterprise actually pays
+for: <strong>the governance shell</strong> (a.k.a. the control plane). It provides:</p>
+<ol>
+<li><strong>One front door</strong> - a single login for the whole team (the <em>gateway</em>).</li>
+<li><strong>Role-based access</strong> - the analyst sees analyst things; only you see admin things
+   (<em>RBAC</em>).</li>
+<li><strong>One connector layer</strong> - data-source credentials live in one guarded place, not
+   pasted across 60 notebooks.</li>
+<li><strong>An audit log</strong> - a permanent record of who accessed which dashboard, dataset,
+   model, or LLM.</li>
+<li><strong>An app registry</strong> - a simple list that mounts each of our 60 tools as a governed
+   "app."</li>
+</ol>
+<p>That's it. Five things. Everything else, we plug in.</p>
+<h2 id="why-this-is-sellable-not-just-a-portfolio">Why this is sellable (not just a portfolio)</h2>
+<p>A buyer doesn't pay for "another SQL tool." They pay for <strong>"my team's data work, in one
+place, and I can prove to auditors exactly who touched what."</strong> The governance shell IS
+that. The 60 tools are the proof it works and the roadmap of what's possible.</p>
+<p>Go-to-market plan (from the mentor roundtable):
+- Pick <strong>one</strong> real client problem (likely "governed analytics" for the analyst persona).
+- Deliver it on the shell, with a one-page ROI case ("saves your team N hours/week,
+  here's the audit trail").
+- <strong>Land, then expand</strong> into ML and AI apps as the client is ready.</p>
+<h2 id="how-the-60-builds-fit">How the 60 builds fit</h2>
+<p>Each daily build stops being a standalone toy and becomes a <strong>registered app</strong> on the
+shell. Going forward we write each tool's core logic UI-free and reusable, so mounting
+it later is a 20-minute job, not a rewrite. (We already did this with <code>log-parser</code> -
+its <code>parser.py</code> is pure logic, ready to become an "Observability" app.)</p>
+<h2 id="our-build-principles">Our build principles</h2>
+<ol>
+<li><strong>Understand before we use.</strong> Every concept gets a glossary entry and an explainer
+   before it appears in code.</li>
+<li><strong>Smallest real version first.</strong> We hand-write a 40-line version we can see inside,
+   then swap in the industrial OSS version once we get it.</li>
+<li><strong>Log every decision.</strong> Each meaningful choice becomes an ADR in <code>decisions/</code>.</li>
+<li><strong>Never commit secrets.</strong> Credentials live in env/vault, never in git.</li>
+<li><strong>Slow is smooth.</strong> One component at a time, checked for understanding, then next.</li>
+</ol>
+<hr />
+<p><em>Next: <a href="02-architecture.html">02 - Architecture</a> - the picture of how the pieces fit.</em></p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/01-why-a-platform.md</code></footer>
+</div></body></html>

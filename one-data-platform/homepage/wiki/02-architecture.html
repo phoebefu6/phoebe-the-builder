@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>02 - Architecture (the picture) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav active" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="02-architecture-the-picture">02 - Architecture (the picture)</h1>
+<blockquote>
+<p>How the pieces fit, drawn for a data person. No prior platform knowledge needed.</p>
+</blockquote>
+<hr />
+<h2 id="the-building-analogy">The building analogy</h2>
+<p>Picture an <strong>office building</strong> for your data team:</p>
+<pre><code>                          ┌─────────────────────────────────────────┐
+   You / your team  ───▶  │            THE GATEWAY (front door)       │
+   (browser)              │   1. Who are you?      (authentication)   │
+                          │   2. What's your role? (authorization)    │
+                          │   3. Write it down.    (audit log)        │
+                          └───────────────┬───────────────────────────┘
+                                          │  (only after the badge check)
+                  ┌───────────────────────┼───────────────────────────┐
+                  ▼                        ▼                           ▼
+          ┌───────────────┐       ┌───────────────┐          ┌────────────────┐
+          │   APP: SQL    │       │ APP: Dashboard│   ...    │  APP: LLM tool │
+          │  (analyst+)   │       │  (analyst+)   │          │ (ai_engineer+) │
+          └───────┬───────┘       └───────┬───────┘          └────────┬───────┘
+                  │                        │                          │
+                  └────────────┬───────────┴──────────────┬──────────┘
+                               ▼                           ▼
+                   ┌───────────────────────┐   ┌───────────────────────┐
+                   │  CONNECTOR LAYER      │   │  ORCHESTRATION (OSS)  │
+                   │  (one safe place for  │   │   Apache Airflow       │
+                   │   data-source creds)  │   │   runs the pipelines   │
+                   └───────────┬───────────┘   └───────────────────────┘
+                               ▼
+            Postgres · S3 · BigQuery · Snowflake · files · APIs
+</code></pre>
+<ul>
+<li><strong>The gateway</strong> is the front desk. Everyone enters here. It does the badge check
+  (authn), the permission check (authz), and writes the visit into the diary (audit).</li>
+<li><strong>The apps</strong> are the offices - our 60 tools. Each office has a sign saying which
+  role may enter ("Data Scientists only").</li>
+<li><strong>The connector layer</strong> is the locked key cabinet - the one place that holds the
+  keys to each data source, so no office keeps its own copy.</li>
+<li><strong>Orchestration (Airflow)</strong> is the building's automated night crew - it runs the
+  scheduled pipelines. We don't build it; we plug it in and govern it.</li>
+</ul>
+<h2 id="the-three-layers-this-is-the-whole-platform">The three layers (this is the whole platform)</h2>
+<h3 id="layer-1-the-shell-we-build-this">Layer 1 - The Shell (we build this)</h3>
+<p>The gateway + login + RBAC + audit log + app registry. This is the <strong>only</strong> part
+that's genuinely ours and hard to copy. Small on purpose: a few hundred lines.</p>
+<h3 id="layer-2-the-connector-layer-we-build-a-thin-version">Layer 2 - The Connector Layer (we build a thin version)</h3>
+<p>One module that, given a name like <code>"orders_db"</code>, returns a ready-to-use connection,
+reading the secret from a guarded place (env var / vault). Tools never hold their own
+credentials. We'll start with a tiny hand-written version, then can grow it.</p>
+<h3 id="layer-3-the-apps-engines-we-mount-mostly">Layer 3 - The Apps + Engines (we mount, mostly)</h3>
+<p>Our 60 tools register as apps. The heavy compute engines (SQL via DuckDB/Trino,
+orchestration via Airflow, model serving) are <strong>open source we plug in</strong>, not code we
+write.</p>
+<blockquote>
+<p>Memory hook: <strong>Shell = ours. Connectors = thin &amp; ours. Apps/engines = mostly rented.</strong></p>
+</blockquote>
+<h2 id="what-a-single-request-looks-like-step-by-step">What a single request looks like (step by step)</h2>
+<ol>
+<li>You open the platform in your browser and <strong>log in</strong> → gateway checks email +
+   password (<strong>authentication</strong>).</li>
+<li>Gateway gives your browser a <strong>token</strong> (the wristband) so you stay logged in.</li>
+<li>You click <strong>"Churn Model"</strong> → browser sends the request + token to the gateway.</li>
+<li>Gateway reads the token (you're Phoebe), checks the <strong>app registry</strong> (Churn Model
+   needs <code>data_scientist</code>), checks your <strong>role</strong> (you're <code>admin</code>, which includes it) →
+   <strong>allowed</strong> (<strong>authorization</strong>).</li>
+<li>Gateway writes <strong>"Phoebe opened Churn Model at 10:04"</strong> to the <strong>audit log</strong>.</li>
+<li>Gateway forwards you to the app. If the app needs the orders database, it asks the
+   <strong>connector layer</strong>, which hands back a connection using a secret you never see.</li>
+</ol>
+<p>Every box in that flow is a glossary term you now know. That's the whole system.</p>
+<h2 id="build-order-so-we-never-bite-off-too-much">Build order (so we never bite off too much)</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Component</th>
+<th>What you'll learn</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Gateway + login (authn)</strong></td>
+<td>sessions, tokens, password checks</td>
+<td>✅ done - see <a href="10-gateway-login.html">10-gateway-login</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>RBAC + app registry</strong></td>
+<td>roles, permissions, <code>apps.yaml</code></td>
+<td>✅ done - see <a href="11-rbac-registry.html">11-rbac-registry</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Audit log</strong></td>
+<td>append-only records, why immutability matters</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Connector layer</strong></td>
+<td>secrets, one source of credentials</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Mount a real app</strong></td>
+<td>wrap <code>log-parser</code> / <code>db-health</code> behind the shell</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Plug in Airflow</strong></td>
+<td>orchestration, DAGs, governing OSS</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p>We do them <strong>in order</strong>, one at a time, each with its own explainer doc and a check
+that you understand it before moving on.</p>
+<hr />
+<p><em>Next up: Step 1 - the gateway. We'll write the smallest real login you can read
+top-to-bottom. See the <a href="03-build-log.html">build log</a> for the running journal.</em></p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/02-architecture.md</code></footer>
+</div></body></html>

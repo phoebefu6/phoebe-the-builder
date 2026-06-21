@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>ADR-NNNN: <short title of the decision> - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../../index.html">One Data Platform</a><a class="nav" href="../../index.html">Home</a><a class="nav" href="../../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../../wiki/02-architecture.html">Architecture</a><a class="nav" href="../../wiki/00-glossary.html">Glossary</a><a class="nav" href="../../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../../index.html">← Home</a></div>
+<article class="doc"><h1 id="adr-nnnn">ADR-NNNN: <short title of the decision></h1>
+<ul>
+<li><strong>Status:</strong> Proposed | Accepted | Superseded by ADR-XXXX</li>
+<li><strong>Date:</strong> YYYY-MM-DD</li>
+<li><strong>Deciders:</strong> Phoebe (+ Claude, + mentor input)</li>
+</ul>
+<h2 id="context">Context</h2>
+<p><em>What's the situation? What problem or question forced a decision? Written so a
+data person with no platform background can follow it.</em></p>
+<h2 id="options-we-considered">Options we considered</h2>
+<ol>
+<li><strong>Option A</strong> - what it is, pros, cons.</li>
+<li><strong>Option B</strong> - what it is, pros, cons.</li>
+<li><strong>Option C</strong> - ...</li>
+</ol>
+<h2 id="decision">Decision</h2>
+<p><em>What we chose, in one or two sentences.</em></p>
+<h2 id="why-the-reasoning">Why (the reasoning)</h2>
+<p><em>The honest reasoning. What made the winner win and the others lose.</em></p>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li><strong>Good:</strong> what this buys us.</li>
+<li><strong>Cost / risk:</strong> what we give up or take on.</li>
+<li><strong>Revisit when:</strong> the condition under which we'd reopen this decision.</li>
+</ul>
+<h2 id="glossary-terms-introduced">Glossary terms introduced</h2>
+<p><em>Any new term this ADR uses - cross-check it exists in <code>00-glossary.md</code>.</em></p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/adr-template.md</code></footer>
+</div></body></html>
