@@ -8,6 +8,12 @@ This is the umbrella project: the **shell** (governed gateway), the **wiki** (al
 thinking), the **registry** (app catalog), and the **homepage** (a live index of every
 build shipped so far).
 
+## 🌐 Live site
+
+**[Open the live platform →](https://phoebefu6.github.io/phoebe-the-builder/)**
+(`phoebefu6.github.io/phoebe-the-builder` - hosted on GitHub Pages: the homepage + full
+wiki, shareable with anyone).
+
 ## 🏠 Open the homepage
 
 Open [`homepage/index.html`](homepage/index.html) in any browser - it lists all
