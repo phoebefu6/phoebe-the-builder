@@ -2,6 +2,12 @@
 
 I see problems as opportunities. I build solutions to solve them. I ship products.
 
+### 🌐 [Live: One Data Platform →](https://phoebefu6.github.io/phoebe-the-builder/)
+
+A new mini AI product every day, converging into **One Data Platform** - one governed home
+for the whole data team. The live homepage lists every build and links to its code + notebook;
+the wiki walks through the design thinking.
+
 ---
 
 ## Data Infrastructure
