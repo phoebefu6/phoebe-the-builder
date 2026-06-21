@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'automation-suite/md-to-pdf/**'
+  pull_request:
+    paths:
+      - 'automation-suite/md-to-pdf/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install WeasyPrint system deps
+        run: sudo apt-get update && sudo apt-get install -y libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0
+      - name: Install dependencies
+        run: |
+          pip install -r automation-suite/md-to-pdf/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I automation-suite/md-to-pdf/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('automation-suite/md-to-pdf/main.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('automation-suite/md-to-pdf/report.py', doraise=True)"
+      - name: Smoke test (real PDF on Linux with libs installed)
+        run: |
+          cd automation-suite/md-to-pdf
+          printf '# Title\n\nHello **world**.\n' > t.md
+          python main.py t.md -o t.pdf
+          test -f t.pdf && echo "PDF created"

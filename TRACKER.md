@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 17 days
-**Total Completed:** 17 / 60
+**Current Streak:** 18 days
+**Total Completed:** 18 / 60
 
 ---
 
@@ -28,7 +28,7 @@
 - [x] Day 15 — env-checker: Environment Variable Checker (2026-06-20)
 - [x] Day 16 — log-parser: Log Parser and Alerter (2026-06-20)
 - [x] Day 17 — sql-formatter: SQL Query Formatter (2026-06-20)
-- [ ] Day 18 — md-to-pdf: Markdown to PDF Report
+- [x] Day 18 — md-to-pdf: Markdown to PDF Report (2026-06-21)
 - [ ] Day 19 — duplicate-finder: Duplicate File Finder
 - [ ] Day 20 — standup-bot: Daily Standup Bot
 

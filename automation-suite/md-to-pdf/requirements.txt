@@ -1,0 +1,6 @@
+markdown==3.4.1
+weasyprint==69.0
+matplotlib==3.10.3
+# Note: WeasyPrint needs system libs (pango, cairo). On Debian/Ubuntu:
+#   apt-get install -y libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0
+# Without them the tool falls back to styled HTML output.
