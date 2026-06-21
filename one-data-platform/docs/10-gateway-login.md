@@ -72,7 +72,7 @@ browser ──(cookie)──▶ /me ──verify_token()──▶ {email, role} 
 ## Run it yourself
 
 ```bash
-cd platform/gateway
+cd one-data-platform/gateway
 pip install -r requirements.txt
 uvicorn app:app --reload
 # open http://localhost:8000

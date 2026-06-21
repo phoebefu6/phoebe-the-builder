@@ -77,7 +77,7 @@ only the apps your role can open. Explainer `11-rbac-registry.md`.
 
 ## 2026-06-20 - Foundation: the wiki itself
 
-**What we did:** Set up `platform/` and the docs/wiki. Wrote the glossary, the "why"
+**What we did:** Set up `one-data-platform/` and the docs/wiki. Wrote the glossary, the "why"
 doc, the architecture picture, and ADR-0001 (governed shell, not Databricks clone).
 No platform code yet - on purpose. We're laying the map before driving.
 

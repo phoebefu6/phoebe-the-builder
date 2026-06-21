@@ -64,7 +64,7 @@ can't reach show as 🔒 locked with the role they'd need.
 ## Run it yourself
 
 ```bash
-cd platform/gateway
+cd one-data-platform/gateway
 pip install -r requirements.txt
 uvicorn app:app --reload
 ```
