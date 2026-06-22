@@ -1,0 +1,2 @@
+# Core tool (finder.py + main.py) is stdlib-only. matplotlib is only for the demo notebook.
+matplotlib==3.10.3
