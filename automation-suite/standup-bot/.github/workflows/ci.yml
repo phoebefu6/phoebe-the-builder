@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'automation-suite/standup-bot/**'
+  pull_request:
+    paths:
+      - 'automation-suite/standup-bot/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r automation-suite/standup-bot/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I automation-suite/standup-bot/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('automation-suite/standup-bot/api.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('automation-suite/standup-bot/standup.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd automation-suite/standup-bot
+          python -c "
+          from standup import StandupStore, Update, build_digest
+          s = StandupStore()
+          s.submit(Update('Ana', today='x', blockers='none'), '2026-06-21')
+          s.submit(Update('Sam', today='y', blockers='waiting on data'), '2026-06-21')
+          d = build_digest(s.get('2026-06-21'), '2026-06-21')
+          assert '1 blocker' in d and 'Sam' in d, d
+          print('ok')"

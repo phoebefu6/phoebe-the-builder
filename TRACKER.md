@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 19 days
-**Total Completed:** 19 / 60
+**Current Streak:** 20 days
+**Total Completed:** 20 / 60
 
 ---
 
@@ -30,7 +30,7 @@
 - [x] Day 17 — sql-formatter: SQL Query Formatter (2026-06-20)
 - [x] Day 18 — md-to-pdf: Markdown to PDF Report (2026-06-21)
 - [x] Day 19 — duplicate-finder: Duplicate File Finder (2026-06-21)
-- [ ] Day 20 — standup-bot: Daily Standup Bot
+- [x] Day 20 — standup-bot: Daily Standup Bot (2026-06-21)
 
 ## Month 3: Analytics Accelerator
 
