@@ -42,7 +42,7 @@ border-radius:0 8px 8px 0;color:#34324f}
 .crumbs a{color:var(--accent);text-decoration:none}
 footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
 </style></head><body>
-<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav active" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/12-audit-log.html">Audit</a><a class="nav" href="../wiki/13-connector-layer.html">Connectors</a><a class="nav active" href="../wiki/03-build-log.html">Build log</a></div></div>
 <div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
 <article class="doc"><h1 id="03-build-log-design-thinking-journal">03 - Build Log (design-thinking journal)</h1>
 <blockquote>
@@ -50,6 +50,56 @@ footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid v
 at the top. This is where Phoebe's questions and the "aha" moments get captured -
 not just the answers.</p>
 </blockquote>
+<hr />
+<h2 id="2026-06-21-step-4-connector-layer-one-safe-home-for-credentials">2026-06-21 - Step 4: Connector layer (one safe home for credentials)</h2>
+<p><strong>What we did:</strong> Built <code>connectors/connections.yaml</code> (the registry - wiring only, never
+secrets) and <code>connectors/connections.py</code>. Apps ask <code>get_connection(name)</code>: sqlite returns a
+real live connection (demo, no secret); remote types resolve the secret from env and return a
+driver-ready config, raising fast if a required secret is missing. <code>secret_status</code> /
+<code>redact</code> / <code>list_status</code> show status (n/a / configured / missing) without ever revealing a
+value. Added gateway <code>GET /connections</code> (admin-only, audited) + a "🔌 Data connections" link in
+the admin workspace. Tested: real SQLite query works (3 rows, sum 118.75), missing secret
+fails loudly, redaction never leaks the password, analyst → 403.</p>
+<p><strong>What Phoebe was learning:</strong> the wiring-vs-secrets split (hostnames are commit-safe, passwords
+live in env vars); ask-by-name so apps never hold credentials; redaction (show status, never
+values); fail-fast when a secret is missing. Explainer: <code>13-connector-layer.md</code>.</p>
+<p><strong>Key decisions logged:</strong>
+- Wiring in YAML (committed), secrets in env vars (the YAML only names the env var).
+- One front door <code>get_connection(name)</code> - storage/driver can change underneath later.
+- Connection status is admin-only and audited; secret values never appear in output or logs.</p>
+<p><strong>Mentor input:</strong> Sigal (credentials in one guarded place, never scattered; show status not
+values), Jensen (one connector layer to all clouds is the moat, not 60 copies of a key).</p>
+<p><strong>Open questions to revisit:</strong>
+- Swap env vars for a real secrets manager (Vault / AWS Secrets Manager) before production.
+- Real drivers (psycopg, boto3) wired in at Step 5 when we mount an app that needs live data.</p>
+<p><strong>Next step:</strong> Step 5 - <strong>Mount a real app</strong>: wire an existing build (db-health / log-parser)
+in behind the shell as a governed app. Explainer <code>14-mount-app.md</code>.</p>
+<hr />
+<h2 id="2026-06-21-step-3-audit-log-provable-governance">2026-06-21 - Step 3: Audit log (provable governance)</h2>
+<p><strong>What we did:</strong> Added <code>gateway/audit.py</code> - an append-only JSONL log (<code>log_event</code> /
+<code>read_events</code> / <code>summary</code>). Wired it into the gateway: every login (success + failed),
+every <code>/open</code> (granted + denied), logout, and audit-view attempt is recorded. Added
+<code>GET /audit</code> (admin-only; non-admin attempts are themselves logged as <code>view_audit/denied</code>)
+and a "🛡️ View audit log" link in the admin workspace. Tested: 7 events captured across a
+full session, newest-first, summary correct (3 denied, 2 actors). Log file is gitignored.
+Also surfaced the shell's 6 modules on the <strong>homepage</strong> ("Platform shell 3/6 built") via a
+new <code>shell.yaml</code> read by <code>build_site.py</code>.</p>
+<p><strong>What Phoebe was learning:</strong> append-only / immutability and why it equals trust; JSONL as a
+portable log format; logging <em>failed</em> actions (failed logins, denied opens) not just
+successes; treating "who can read the audit log" as itself a governed, audited action.
+Explainer: <code>12-audit-log.md</code>.</p>
+<p><strong>Key decisions logged:</strong>
+- Audit log is append-only JSONL behind <code>log_event</code>/<code>read_events</code>, so storage can later move
+  to S3/Datadog/SIEM without touching callers.
+- Reading the audit log is admin-only and audited.
+- The platform's own modules now appear on the homepage (shell.yaml).</p>
+<p><strong>Mentor input:</strong> Sigal (the audit trail is the enterprise-trust differentiator; log failures;
+build it right after access control), Zhamak (keep storage swappable behind a thin interface).</p>
+<p><strong>Open questions to revisit:</strong>
+- Ship the audit log to durable storage before production (local file now).
+- Tamper-evidence (hash chaining) - later, for a regulated buyer.</p>
+<p><strong>Next step:</strong> Step 4 - <strong>Connector layer</strong>: one safe place for data-source credentials.
+Explainer <code>13-connector-layer.md</code>.</p>
 <hr />
 <h2 id="2026-06-20-step-2-rbac-app-registry-authorization">2026-06-20 - Step 2: RBAC + app registry (authorization)</h2>
 <p><strong>What we did:</strong> Added the "what can you open?" layer. <code>registry/apps.yaml</code> (directory

@@ -6,6 +6,38 @@
 
 ---
 
+## 2026-06-21 - Step 4: Connector layer (one safe home for credentials)
+
+**What we did:** Built `connectors/connections.yaml` (the registry - wiring only, never
+secrets) and `connectors/connections.py`. Apps ask `get_connection(name)`: sqlite returns a
+real live connection (demo, no secret); remote types resolve the secret from env and return a
+driver-ready config, raising fast if a required secret is missing. `secret_status` /
+`redact` / `list_status` show status (n/a / configured / missing) without ever revealing a
+value. Added gateway `GET /connections` (admin-only, audited) + a "🔌 Data connections" link in
+the admin workspace. Tested: real SQLite query works (3 rows, sum 118.75), missing secret
+fails loudly, redaction never leaks the password, analyst → 403.
+
+**What Phoebe was learning:** the wiring-vs-secrets split (hostnames are commit-safe, passwords
+live in env vars); ask-by-name so apps never hold credentials; redaction (show status, never
+values); fail-fast when a secret is missing. Explainer: `13-connector-layer.md`.
+
+**Key decisions logged:**
+- Wiring in YAML (committed), secrets in env vars (the YAML only names the env var).
+- One front door `get_connection(name)` - storage/driver can change underneath later.
+- Connection status is admin-only and audited; secret values never appear in output or logs.
+
+**Mentor input:** Sigal (credentials in one guarded place, never scattered; show status not
+values), Jensen (one connector layer to all clouds is the moat, not 60 copies of a key).
+
+**Open questions to revisit:**
+- Swap env vars for a real secrets manager (Vault / AWS Secrets Manager) before production.
+- Real drivers (psycopg, boto3) wired in at Step 5 when we mount an app that needs live data.
+
+**Next step:** Step 5 - **Mount a real app**: wire an existing build (db-health / log-parser)
+in behind the shell as a governed app. Explainer `14-mount-app.md`.
+
+---
+
 ## 2026-06-21 - Step 3: Audit log (provable governance)
 
 **What we did:** Added `gateway/audit.py` - an append-only JSONL log (`log_event` /

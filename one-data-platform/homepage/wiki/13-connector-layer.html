@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>13 - Step 4: The Connector Layer - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/12-audit-log.html">Audit</a><a class="nav active" href="../wiki/13-connector-layer.html">Connectors</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="13-step-4-the-connector-layer">13 - Step 4: The Connector Layer</h1>
+<blockquote>
+<p>Apps need data. This step builds the one safe place that holds <em>how to reach</em>
+each source - so no app ever keeps its own copy of a password.</p>
+</blockquote>
+<hr />
+<h2 id="the-problem-in-one-picture">The problem in one picture</h2>
+<p>Without a connector layer:</p>
+<pre><code>app A  ──has its own copy of──▶  ORDERS_DB_PASSWORD
+app B  ──has its own copy of──▶  ORDERS_DB_PASSWORD   (in a .env)
+app C  ──has its own copy of──▶  ORDERS_DB_PASSWORD   (hardcoded, oops)
+</code></pre>
+<p>60 apps, 60 scattered copies of every credential. Rotate a password and you chase
+it through every repo. One leak and it's everywhere.</p>
+<p>With a connector layer:</p>
+<pre><code>app A ─┐
+app B ─┼─ ask &quot;orders_db&quot; ─▶  CONNECTOR LAYER ─▶  reads secret from env ─▶ connection
+app C ─┘                       (one registry)
+</code></pre>
+<p>One place knows the wiring. Secrets live in environment variables. Apps ask by
+<strong>name</strong> and get a ready connection - they never see or store the credential.</p>
+<h2 id="the-two-part-split-the-key-idea">The two-part split (the key idea)</h2>
+<ul>
+<li><strong>Wiring</strong> (host, port, database, bucket, region) lives in <code>connections.yaml</code>.
+  Safe to commit - there's nothing secret about a hostname.</li>
+<li><strong>Secrets</strong> (passwords, keys) live in <strong>environment variables</strong>. The YAML only
+  names <em>which env var</em> holds each secret (<code>password_env: ORDERS_DB_PASSWORD</code>).
+  The secret value is never in the file, the code, or any log.</li>
+</ul>
+<blockquote>
+<p>Rule we never break: a credential never appears in source, in YAML, or in output.</p>
+</blockquote>
+<h2 id="the-files">The files</h2>
+<ul>
+<li><code>connectors/connections.yaml</code> - the registry: each source's type + wiring +
+  the <em>names</em> of the env vars that hold its secrets.</li>
+<li><code>connectors/connections.py</code>:</li>
+<li><code>load_connections()</code> - parse the registry.</li>
+<li><code>get_connection(name)</code> - the front door. For <code>sqlite</code> it returns a <strong>real, live
+    connection</strong> (the demo path, no secret). For remote types it resolves the secret
+    from env and returns a ready config for the driver. <strong>Missing a required secret?
+    It raises immediately</strong> - fail fast and loud, never connect half-configured.</li>
+<li><code>secret_status(spec)</code> - <code>n/a</code> / <code>configured</code> / <code>missing</code>, without revealing values.</li>
+<li><code>redact(spec)</code> / <code>list_status()</code> - safe-to-show status (wiring + secret <em>status</em>,
+    never secret <em>values</em>).</li>
+</ul>
+<h2 id="three-secrets-it-protects-in-the-demo-registry">Three secrets it protects (in the demo registry)</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Type</th>
+<th>Secret comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>demo_warehouse</code></td>
+<td>sqlite (in-memory)</td>
+<td>none - runs anywhere</td>
+</tr>
+<tr>
+<td><code>orders_db</code></td>
+<td>postgres</td>
+<td><code>$ORDERS_DB_PASSWORD</code></td>
+</tr>
+<tr>
+<td><code>data_lake</code></td>
+<td>s3</td>
+<td><code>$AWS_ACCESS_KEY_ID</code>, <code>$AWS_SECRET_ACCESS_KEY</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-the-gateway">In the gateway</h2>
+<p><code>GET /connections</code> (admin-only, and audited) shows each source's status:</p>
+<pre><code class="language-json">{&quot;name&quot;:&quot;orders_db&quot;,&quot;type&quot;:&quot;postgres&quot;,&quot;secret&quot;:&quot;missing&quot;,&quot;needs_env&quot;:[&quot;ORDERS_DB_PASSWORD&quot;]}
+</code></pre>
+<p>Notice: it tells you the secret is <em>missing</em> and <em>which env var</em> to set - but never
+prints a value. An analyst hitting this endpoint gets a 403 (and it's logged).</p>
+<h2 id="see-it-yourself">See it yourself</h2>
+<pre><code class="language-bash">cd one-data-platform/connectors
+python -c &quot;
+from connections import get_connection
+c = get_connection('demo_warehouse')        # real sqlite, no secret
+c.execute('create table t(x int)'); c.execute('insert into t values (42)')
+print(c.execute('select * from t').fetchone())
+&quot;
+</code></pre>
+<p>Then try a source that needs a secret you haven't set - it fails fast with the exact
+env var to set, instead of silently connecting wrong.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li>separating <strong>wiring</strong> (commit-safe) from <strong>secrets</strong> (env-only)</li>
+<li><strong>ask-by-name</strong> access so apps never hold credentials</li>
+<li><strong>redaction</strong> - status is shown, values never are</li>
+<li><strong>fail fast</strong> when a required secret is missing</li>
+</ul>
+<h2 id="whats-next-step-5-mount-a-real-app">What's next - Step 5: Mount a real app</h2>
+<p>We've got identity, access, audit, and now data wiring. Step 5 wires an existing
+build (like <code>db-health</code> or <code>log-parser</code>) in behind the shell as a real governed app.
+Explainer: <code>14-mount-app.md</code>.</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/13-connector-layer.md</code></footer>
+</div></body></html>

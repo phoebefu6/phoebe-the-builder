@@ -20,12 +20,19 @@ from fastapi import Depends, FastAPI, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 
+import sys
+from pathlib import Path as _Path
+
 from audit import log_event, read_events
 from audit import summary as audit_summary
 from auth import create_token, secret_is_default, verify_token
 from rbac import can_access
 from registry import get_app, visible_apps
 from users import authenticate, seed_if_empty
+
+# The connector layer lives in ../connectors; make it importable.
+sys.path.insert(0, str(_Path(__file__).resolve().parent.parent / "connectors"))
+from connections import list_status as connection_status  # noqa: E402
 
 COOKIE = "platform_token"
 
@@ -101,6 +108,19 @@ def audit(limit: int = 50, user: Optional[Dict[str, object]] = Depends(current_u
         log_event(str(user["email"]), "view_audit", status="denied", role=str(user["role"]))
         return JSONResponse({"error": "audit log is admin-only"}, status_code=403)
     return JSONResponse({"summary": audit_summary(), "events": read_events(limit=limit)})
+
+
+@app.get("/connections")
+def connections(user: Optional[Dict[str, object]] = Depends(current_user)) -> JSONResponse:
+    """Admin-only: data-source connection status. Shows wiring + secret status,
+    NEVER secret values (the connector layer redacts them)."""
+    if user is None:
+        return JSONResponse({"error": "not authenticated"}, status_code=401)
+    if user["role"] != "admin":
+        log_event(str(user["email"]), "view_connections", status="denied", role=str(user["role"]))
+        return JSONResponse({"error": "connections are admin-only"}, status_code=403)
+    log_event(str(user["email"]), "view_connections", status="ok", role="admin")
+    return JSONResponse({"connections": connection_status()})
 
 
 @app.get("/me")
@@ -213,8 +233,10 @@ def _workspace_html(email: str, role: str) -> str:
         sections.append(f"<h2>{cat}</h2><div class='grid'>{''.join(cards)}</div>")
 
     open_count = sum(1 for a in apps if a.get("allowed") and a.get("status") == "live")
-    admin_panel = ('<p style="margin-top:1.2rem"><a href="/audit">🛡️ View audit log</a> '
-                   '<span style="color:#888;font-size:.85rem">(admin only - who did what, when)</span></p>'
+    admin_panel = ('<p style="margin-top:1.2rem">'
+                   '<a href="/audit">🛡️ Audit log</a> &nbsp;·&nbsp; '
+                   '<a href="/connections">🔌 Data connections</a> '
+                   '<span style="color:#888;font-size:.85rem">(admin only)</span></p>'
                    if role == "admin" else "")
     return f"""<!doctype html><html><head><title>Platform - Workspace</title>
 <style>body{{font-family:system-ui;max-width:880px;margin:2.5rem auto;padding:0 1rem;color:#1a1a2e}}

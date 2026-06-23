@@ -1,0 +1,31 @@
+# The connection registry - ONE place that knows how to reach each data source.
+# CRITICAL: this file holds *wiring*, never *secrets*. Passwords/keys come from
+# environment variables (the `*_env` fields name which env var holds the secret).
+# An app asks the connector layer for "orders_db" and gets a ready connection -
+# it never sees or stores the credential itself.
+
+connections:
+  # A real, secret-less source so the demo runs anywhere.
+  - name: demo_warehouse
+    type: sqlite
+    database: ":memory:"
+    description: In-memory SQLite for demos and tests (no secret needed).
+
+  # A typical remote database - the password lives in $ORDERS_DB_PASSWORD.
+  - name: orders_db
+    type: postgres
+    host: db.internal
+    port: 5432
+    database: orders
+    user: app
+    password_env: ORDERS_DB_PASSWORD
+    description: Primary orders database.
+
+  # Object storage - keys live in the standard AWS env vars.
+  - name: data_lake
+    type: s3
+    bucket: company-data-lake
+    region: us-east-1
+    access_key_env: AWS_ACCESS_KEY_ID
+    secret_key_env: AWS_SECRET_ACCESS_KEY
+    description: Raw data lake bucket.
