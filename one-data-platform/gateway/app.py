@@ -20,6 +20,8 @@ from fastapi import Depends, FastAPI, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 
+from audit import log_event, read_events
+from audit import summary as audit_summary
 from auth import create_token, secret_is_default, verify_token
 from rbac import can_access
 from registry import get_app, visible_apps
@@ -62,14 +64,18 @@ def health() -> Dict[str, str]:
 @app.post("/login")
 def login(req: LoginRequest, response: Response) -> JSONResponse:
     """Check credentials. On success, put a signed token in an HttpOnly cookie."""
+    email = req.email.strip().lower()
     role = authenticate(req.email, req.password)
     if role is None:
+        # Record the failed attempt - failed logins are exactly what auditors want.
+        log_event(email, "login", status="denied")
         # Same message for "no such user" and "wrong password" - never tell an
         # attacker which half they got right.
         return JSONResponse({"ok": False, "error": "invalid email or password"}, status_code=401)
 
-    token = create_token(email=req.email.strip().lower(), role=role)
-    resp = JSONResponse({"ok": True, "email": req.email.strip().lower(), "role": role})
+    log_event(email, "login", status="success", role=role)
+    token = create_token(email=email, role=role)
+    resp = JSONResponse({"ok": True, "email": email, "role": role})
     # HttpOnly = JavaScript can't read the cookie, which blocks a whole class of
     # token-theft attacks. SameSite=Lax limits cross-site sending.
     resp.set_cookie(COOKIE, token, httponly=True, samesite="lax", max_age=8 * 3600)
@@ -77,10 +83,24 @@ def login(req: LoginRequest, response: Response) -> JSONResponse:
 
 
 @app.post("/logout")
-def logout() -> JSONResponse:
+def logout(user: Optional[Dict[str, object]] = Depends(current_user)) -> JSONResponse:
+    if user is not None:
+        log_event(str(user["email"]), "logout", role=str(user["role"]))
     resp = JSONResponse({"ok": True})
     resp.delete_cookie(COOKIE)
     return resp
+
+
+@app.get("/audit")
+def audit(limit: int = 50, user: Optional[Dict[str, object]] = Depends(current_user)) -> JSONResponse:
+    """Admin-only: the audit trail. Who did what, when. Append-only, read here."""
+    if user is None:
+        return JSONResponse({"error": "not authenticated"}, status_code=401)
+    if user["role"] != "admin":
+        # Reading the audit log is itself a governed action.
+        log_event(str(user["email"]), "view_audit", status="denied", role=str(user["role"]))
+        return JSONResponse({"error": "audit log is admin-only"}, status_code=403)
+    return JSONResponse({"summary": audit_summary(), "events": read_events(limit=limit)})
 
 
 @app.get("/me")
@@ -111,6 +131,7 @@ def open_app(slug: str, user: Optional[Dict[str, object]] = Depends(current_user
 
     # THE governance check: does this role meet the app's required role?
     if not can_access(str(user["role"]), str(app_entry.get("required_role", "admin"))):
+        log_event(str(user["email"]), "open_app", target=slug, status="denied", role=str(user["role"]))
         return HTMLResponse(
             f"<h1>🚫 403 - Access denied</h1><p>'{app_entry['name']}' requires role "
             f"<b>{app_entry['required_role']}</b>. You are <b>{user['role']}</b>.</p>"
@@ -118,8 +139,8 @@ def open_app(slug: str, user: Optional[Dict[str, object]] = Depends(current_user
             status_code=403,
         )
 
-    # Allowed. (In Step 3 we'll write this access to the audit log; in Step 5 we'll
-    # proxy to the real running app. For now, a stub that proves the gate works.)
+    # Allowed - record the access, then (Step 5) proxy to the real app. For now, a stub.
+    log_event(str(user["email"]), "open_app", target=slug, status="granted", role=str(user["role"]))
     if app_entry.get("status") != "live":
         body = f"<p>✅ You're allowed in, but <b>{app_entry['name']}</b> is still on the roadmap (planned).</p>"
     else:
@@ -192,6 +213,9 @@ def _workspace_html(email: str, role: str) -> str:
         sections.append(f"<h2>{cat}</h2><div class='grid'>{''.join(cards)}</div>")
 
     open_count = sum(1 for a in apps if a.get("allowed") and a.get("status") == "live")
+    admin_panel = ('<p style="margin-top:1.2rem"><a href="/audit">🛡️ View audit log</a> '
+                   '<span style="color:#888;font-size:.85rem">(admin only - who did what, when)</span></p>'
+                   if role == "admin" else "")
     return f"""<!doctype html><html><head><title>Platform - Workspace</title>
 <style>body{{font-family:system-ui;max-width:880px;margin:2.5rem auto;padding:0 1rem;color:#1a1a2e}}
 .badge{{display:inline-block;background:#eef;border-radius:6px;padding:.2rem .6rem;font-size:.9rem}}
@@ -207,6 +231,7 @@ button{{padding:.5rem 1rem;cursor:pointer;margin-top:1.5rem}}</style></head><bod
 <h1>🏠 Your Workspace</h1>
 <p>Signed in as <b>{email}</b> · role <span class="badge">{role}</span> ·
 {open_count} app(s) you can open</p>
+{admin_panel}
 {''.join(sections)}
 <button onclick="logout()">Log out</button>
 <script>async function logout(){{await fetch('/logout',{{method:'POST'}});location.reload();}}</script>

@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>12 - Step 3: The Audit Log - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="12-step-3-the-audit-log">12 - Step 3: The Audit Log</h1>
+<blockquote>
+<p>Steps 1-2 decide <em>who</em> you are and <em>what</em> you can open. This step makes it
+<strong>provable</strong> - every login and every access is recorded, permanently.</p>
+</blockquote>
+<hr />
+<h2 id="why-this-is-the-most-valuable-piece-for-a-buyer">Why this is the most valuable piece for a buyer</h2>
+<p>A regulated enterprise doesn't ask "can you do access control?" They ask <strong>"can you
+prove who accessed the customer data last Tuesday?"</strong> The audit log is that proof. It's
+often the single feature that gets a platform approved or rejected. We build it third,
+right after access control, on purpose.</p>
+<h2 id="the-one-idea-append-only">The one idea: append-only</h2>
+<p>The audit log is <strong>append-only</strong> (a.k.a. immutable): we only ever <em>add</em> lines, never
+edit or delete them. That's what makes it trustworthy - if entries could be changed,
+they'd be worthless as evidence. Think of it like an <strong>immutable query-history table</strong>:
+write-once, read-many.</p>
+<p>We store one JSON object per line (JSONL) in <code>gateway/audit_log.jsonl</code>:</p>
+<pre><code class="language-json">{&quot;ts&quot;:&quot;2026-06-21T02:55:47+00:00&quot;,&quot;actor&quot;:&quot;ana@team.io&quot;,&quot;role&quot;:&quot;analyst&quot;,&quot;action&quot;:&quot;open_app&quot;,&quot;target&quot;:&quot;llm-playground&quot;,&quot;status&quot;:&quot;denied&quot;}
+</code></pre>
+<p>Simple, greppable, and easy to ship to a real log store (S3, Datadog, a SIEM) later -
+the callers only use <code>log_event</code> and <code>read_events</code>, so the storage can change underneath.</p>
+<h2 id="what-gets-recorded">What gets recorded</h2>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>action</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login succeeds</td>
+<td><code>login</code></td>
+<td><code>success</code></td>
+</tr>
+<tr>
+<td>Login fails</td>
+<td><code>login</code></td>
+<td><code>denied</code> ← failed logins matter most to auditors</td>
+</tr>
+<tr>
+<td>App opened (allowed)</td>
+<td><code>open_app</code></td>
+<td><code>granted</code></td>
+</tr>
+<tr>
+<td>App blocked by role</td>
+<td><code>open_app</code></td>
+<td><code>denied</code></td>
+</tr>
+<tr>
+<td>Someone views the audit log</td>
+<td><code>view_audit</code></td>
+<td><code>denied</code> if not admin</td>
+</tr>
+<tr>
+<td>Logout</td>
+<td><code>logout</code></td>
+<td><code>ok</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every record has <strong>who</strong> (actor + role), <strong>what</strong> (action), <strong>on what</strong> (target app),
+<strong>when</strong> (UTC timestamp), and the <strong>outcome</strong> (status).</p>
+<h2 id="the-files">The files</h2>
+<ul>
+<li><code>gateway/audit.py</code> - <code>log_event(...)</code> appends one record; <code>read_events(...)</code> reads them
+  back (newest first, optional filters); <code>summary()</code> gives quick counts.</li>
+<li><code>gateway/app.py</code> - calls <code>log_event</code> on login, open, logout; adds <code>GET /audit</code>
+  (<strong>admin-only</strong> - reading the trail is itself a governed, logged action).</li>
+</ul>
+<h2 id="see-it-yourself">See it yourself</h2>
+<pre><code class="language-bash">cd one-data-platform/gateway
+uvicorn app:app --reload
+</code></pre>
+<ol>
+<li>Log in as <code>ana@team.io</code> / <code>analyst123</code> (analyst).</li>
+<li>Open Log Parser (allowed), then try <code>/open/llm-playground</code> (denied → 403).</li>
+<li>Log out. Log back in as <code>phoebe@team.io</code> / <code>admin123</code> (admin).</li>
+<li>Click <strong>🛡️ View audit log</strong> in the workspace, or hit <code>GET /audit</code>.</li>
+</ol>
+<p>You'll see every step you just took - including the denied attempts.</p>
+<h2 id="security-choices-worth-noticing">Security choices worth noticing</h2>
+<ul>
+<li><strong>Failed logins are logged</strong>, not just successes - that's how you spot brute-force.</li>
+<li><strong>Reading the audit log is admin-only and itself audited</strong> - a non-admin's attempt to
+  peek is recorded as <code>view_audit / denied</code>.</li>
+<li>The log file is <strong>gitignored</strong> - it's runtime evidence, never committed.</li>
+</ul>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li><strong>append-only / immutability</strong> and why it equals trust</li>
+<li><strong>JSONL</strong> as a simple, portable log format</li>
+<li>recording <strong>failed</strong> actions, not just successful ones</li>
+<li>treating "who can read the log" as a governed action too</li>
+</ul>
+<h2 id="whats-next-step-4-connector-layer">What's next - Step 4: Connector layer</h2>
+<p>Apps will need data. Step 4 builds the one safe place that holds data-source credentials,
+so no app keeps its own copy of a password. Explainer: <code>13-connector-layer.md</code>.</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/12-audit-log.md</code></footer>
+</div></body></html>

@@ -6,6 +6,40 @@
 
 ---
 
+## 2026-06-21 - Step 3: Audit log (provable governance)
+
+**What we did:** Added `gateway/audit.py` - an append-only JSONL log (`log_event` /
+`read_events` / `summary`). Wired it into the gateway: every login (success + failed),
+every `/open` (granted + denied), logout, and audit-view attempt is recorded. Added
+`GET /audit` (admin-only; non-admin attempts are themselves logged as `view_audit/denied`)
+and a "🛡️ View audit log" link in the admin workspace. Tested: 7 events captured across a
+full session, newest-first, summary correct (3 denied, 2 actors). Log file is gitignored.
+Also surfaced the shell's 6 modules on the **homepage** ("Platform shell 3/6 built") via a
+new `shell.yaml` read by `build_site.py`.
+
+**What Phoebe was learning:** append-only / immutability and why it equals trust; JSONL as a
+portable log format; logging *failed* actions (failed logins, denied opens) not just
+successes; treating "who can read the audit log" as itself a governed, audited action.
+Explainer: `12-audit-log.md`.
+
+**Key decisions logged:**
+- Audit log is append-only JSONL behind `log_event`/`read_events`, so storage can later move
+  to S3/Datadog/SIEM without touching callers.
+- Reading the audit log is admin-only and audited.
+- The platform's own modules now appear on the homepage (shell.yaml).
+
+**Mentor input:** Sigal (the audit trail is the enterprise-trust differentiator; log failures;
+build it right after access control), Zhamak (keep storage swappable behind a thin interface).
+
+**Open questions to revisit:**
+- Ship the audit log to durable storage before production (local file now).
+- Tamper-evidence (hash chaining) - later, for a regulated buyer.
+
+**Next step:** Step 4 - **Connector layer**: one safe place for data-source credentials.
+Explainer `13-connector-layer.md`.
+
+---
+
 ## 2026-06-20 - Step 2: RBAC + app registry (authorization)
 
 **What we did:** Added the "what can you open?" layer. `registry/apps.yaml` (directory

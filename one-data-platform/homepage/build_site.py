@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Dict, List
 
 import markdown
+import yaml
 
 REPO = "phoebefu6/phoebe-the-builder"
 HERE = Path(__file__).resolve().parent
@@ -28,6 +29,7 @@ ROOT = HERE.parent                      # one-data-platform/
 TRACKER = ROOT.parent / "TRACKER.md"
 DOCS = ROOT / "docs"
 WIKI_OUT = HERE / "wiki"
+SHELL_FILE = ROOT / "shell.yaml"
 
 PRODUCT_LINES = [
     (1, 10, "data-infra-toolkit", "Data Infrastructure Toolkit"),
@@ -45,6 +47,7 @@ WIKI_NAV = [
     ("00-glossary.md", "Glossary"),
     ("10-gateway-login.md", "Gateway"),
     ("11-rbac-registry.md", "RBAC"),
+    ("12-audit-log.md", "Audit"),
     ("03-build-log.md", "Build log"),
 ]
 
@@ -128,6 +131,19 @@ h2 .count{font-size:.8rem;background:#eeedfb;color:var(--accent);border-radius:9
 .roadmap li{padding:.4rem 0;border-bottom:1px solid #f2f2f8;font-size:.92rem;color:var(--muted)}
 .roadmap .day{color:var(--accent);font-weight:700;margin-right:.4rem}
 .roadmap code{font-size:.76rem;color:var(--accent)}
+.shell-tag{color:var(--muted);font-size:.92rem;margin:.2rem 0 1rem}
+.modgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem}
+.mod{border-radius:12px;padding:.9rem 1rem;border:1px solid var(--line)}
+.mod .mtop{display:flex;justify-content:space-between;align-items:center}
+.mod .step{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.mod .mtag{font-size:.72rem;font-weight:700;border-radius:999px;padding:.1rem .55rem}
+.mod h3{margin:.45rem 0 .25rem;font-size:1rem}
+.mod h3 a{color:inherit;text-decoration:none;border-bottom:1px solid #cdd9ff}
+.mod .concept{font-size:.82rem;color:#555}
+.mod.done{background:#eef6f0;border-color:#cbe8d6}
+.mod.done .mtag{background:#d6f0df;color:#1c7a44}
+.mod.planned{background:#fafafa;opacity:.85}
+.mod.planned .mtag{background:#ececec;color:#888}
 footer{color:var(--muted);font-size:.82rem;padding:2.4rem 0;border-top:1px solid var(--line);margin-top:2rem}
 """
 
@@ -181,11 +197,38 @@ def _card(b: Dict[str, object]) -> str:
             f"<span class='dot'></span></div><h3>{b['name']}</h3><code>{b['slug']}</code>{links}</div>")
 
 
+def render_shell_section() -> str:
+    """The platform's own modules (the governance spine) from shell.yaml."""
+    if not SHELL_FILE.exists():
+        return ""
+    data = yaml.safe_load(SHELL_FILE.read_text()) or {}
+    modules = data.get("modules", [])
+    if not modules:
+        return ""
+    n_done = sum(1 for m in modules if m.get("status") == "done")
+    cards = []
+    for m in modules:
+        live = m.get("status") == "done"
+        cls = "mod done" if live else "mod planned"
+        tag = "✅ built" if live else "planned"
+        doc = m.get("doc") or ""
+        name = (f"<a href='{doc}'>{m['name']}</a>" if (live and doc) else m["name"])
+        cards.append(
+            f"<div class='{cls}'><div class='mtop'><span class='step'>Step {m['step']}</span>"
+            f"<span class='mtag'>{tag}</span></div>"
+            f"<h3>{name}</h3><span class='concept'>{m['concept']}</span></div>"
+        )
+    return (f"<section><h2>Platform shell <span class='count'>{n_done}/{len(modules)} built</span></h2>"
+            f"<p class='shell-tag'>The governance spine we build ourselves - the control plane every "
+            f"app plugs into.</p><div class='modgrid'>{''.join(cards)}</div></section>")
+
+
 def render_home(builds: List[Dict[str, object]]) -> str:
     done = [b for b in builds if b["status"] == "done"]
     planned = [b for b in builds if b["status"] == "planned"]
     total, n_done = len(builds), len(done)
     pct = round(100 * n_done / total) if total else 0
+    shell_section = render_shell_section()
     sections = []
     for _, _, pl_slug, pl_name in PRODUCT_LINES:
         items = sorted([b for b in done if b["product_slug"] == pl_slug], key=lambda x: x["day"])
@@ -210,7 +253,8 @@ models, and AI products - with access control over all of it. Built one day at a
 <div class="stat"><b>{total}</b><span>planned total</span></div>
 <div class="stat"><b>{pct}%</b><span>complete</span></div></div>
 <div class="bar"><i style="width:{pct}%"></i></div></header>
-<main>{''.join(sections)}
+<main>{shell_section}
+{''.join(sections)}
 <section><h2>Roadmap <span class="count">next</span></h2><div class="roadmap"><ul>{roadmap}</ul></div></section>
 </main>
 <footer>One Data Platform - the governed shell + app catalog. Homepage auto-generated

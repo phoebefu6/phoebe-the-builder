@@ -1,0 +1,41 @@
+# The platform shell's own modules (the governance spine).
+# Rendered on the homepage as "Platform shell" so visitors see the control plane,
+# not just the app catalog. Update status as each step ships; the homepage and
+# README both read this.
+
+modules:
+  - step: 1
+    name: Gateway + login
+    concept: Authentication - who are you?
+    status: done
+    doc: wiki/10-gateway-login.html
+
+  - step: 2
+    name: RBAC + app registry
+    concept: Authorization - what can you open?
+    status: done
+    doc: wiki/11-rbac-registry.html
+
+  - step: 3
+    name: Audit log
+    concept: Provable who-did-what-when, append-only
+    status: done
+    doc: wiki/12-audit-log.html
+
+  - step: 4
+    name: Connector layer
+    concept: One safe place for data-source credentials
+    status: planned
+    doc: ""
+
+  - step: 5
+    name: Mount a real app
+    concept: Wrap an existing build behind the shell
+    status: planned
+    doc: ""
+
+  - step: 6
+    name: Orchestration (Airflow)
+    concept: Govern scheduled pipelines (OSS)
+    status: planned
+    doc: ""
