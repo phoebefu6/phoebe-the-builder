@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 20 days
-**Total Completed:** 20 / 60
+**Current Streak:** 21 days
+**Total Completed:** 21 / 60
 
 ---
 
@@ -34,7 +34,7 @@
 
 ## Month 3: Analytics Accelerator
 
-- [ ] Day 21 — auto-eda: Auto-EDA Dashboard
+- [x] Day 21 — auto-eda: Auto-EDA Dashboard (2026-06-21)
 - [ ] Day 22 — kpi-tracker: KPI Tracker
 - [ ] Day 23 — ab-test-calc: A/B Test Calculator
 - [ ] Day 24 — survey-analyzer: Survey Results Analyzer

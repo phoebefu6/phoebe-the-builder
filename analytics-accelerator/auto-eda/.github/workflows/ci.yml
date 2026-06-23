@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'analytics-accelerator/auto-eda/**'
+  pull_request:
+    paths:
+      - 'analytics-accelerator/auto-eda/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r analytics-accelerator/auto-eda/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I analytics-accelerator/auto-eda/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/auto-eda/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/auto-eda/profiler.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd analytics-accelerator/auto-eda
+          python -c "
+          import pandas as pd
+          from profiler import profile_dataframe
+          df = pd.DataFrame({'a':[1,2,2,None],'b':['x','x','x','x'],'c':[None,None,None,None]})
+          p = profile_dataframe(df)
+          cols = {f['column'] for f in p['flags']}
+          assert 'c' in cols and 'b' in cols, p['flags']
+          print('ok')"
