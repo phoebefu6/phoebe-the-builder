@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>15 - Step 6: Orchestration (Airflow) - One Data Platform</title><style>
+:root{--ink:#13131f;--muted:#6b6b80;--accent:#3d34d6;--accent2:#6c63ff;--line:#e7e7f0;
+--bg:#fbfbfe;--surface:#fff;--code-bg:#f3f2fc;--done:#2e9e5b;}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;color:var(--ink);
+background:var(--bg);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+.topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
+border-radius:7px}
+.topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
+.topbar a.nav.active{background:#eeedfb;color:var(--accent)}
+
+.doc{padding:2.4rem 0 3rem;max-width:780px}
+.doc h1{font-size:2.1rem;letter-spacing:-.02em;margin:.2rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}
+.doc h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.doc h3{font-size:1.1rem;margin:1.5rem 0 .5rem}
+.doc p,.doc li{font-size:1rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.doc a:hover{border-color:var(--accent)}
+.doc code{background:var(--code-bg);color:var(--accent);padding:.12rem .4rem;border-radius:5px;
+font-size:.86em;font-family:'SF Mono',Menlo,Consolas,monospace}
+.doc pre{background:#1a1830;color:#e8e6ff;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.84rem;
+line-height:1.5}
+.doc pre code{background:none;color:inherit;padding:0}
+.doc table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.doc th,.doc td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left;vertical-align:top}
+.doc th{background:#f3f2fc;color:var(--accent);font-weight:700}
+.doc tr:nth-child(even) td{background:#fafaff}
+.doc blockquote{margin:1.2rem 0;padding:.6rem 1.1rem;background:#f5f5ff;border-left:4px solid var(--accent2);
+border-radius:0 8px 8px 0;color:#34324f}
+.doc blockquote p{margin:.3rem 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.doc ul,.doc ol{padding-left:1.3rem}
+.doc li{margin:.3rem 0}
+.crumbs{font-size:.82rem;color:var(--muted);padding-top:1.4rem}
+.crumbs a{color:var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
+</style></head><body>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/12-audit-log.html">Audit</a><a class="nav" href="../wiki/13-connector-layer.html">Connectors</a><a class="nav" href="../wiki/14-mount-app.html">Mount app</a><a class="nav active" href="../wiki/15-orchestration.html">Orchestration</a><a class="nav" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
+<article class="doc"><h1 id="15-step-6-orchestration-airflow">15 - Step 6: Orchestration (Airflow)</h1>
+<blockquote>
+<p>The last spine piece. Govern <em>scheduled</em> work - pipelines that run on a clock -
+under the same roof, without rebuilding a scheduler.</p>
+</blockquote>
+<hr />
+<h2 id="the-decision-that-shapes-this-step">The decision that shapes this step</h2>
+<p>ADR-0001 said: <strong>leverage open source, don't rebuild commodities.</strong> Orchestration is
+the textbook case. Writing your own reliable cron/DAG engine (retries, backfills,
+dependencies, schedules) is years of work that <strong>Apache Airflow</strong> already does, for free,
+battle-tested at huge scale. So we do <strong>not</strong> build a scheduler. We plug Airflow in and
+make the platform <strong>govern and surface</strong> it.</p>
+<h2 id="the-same-pattern-youve-seen-twice-now">The same pattern you've seen twice now</h2>
+<p>Just like the connector layer (real DB if configured, else sqlite) and mounting
+(real app behind the shell), orchestration has two backends behind one interface:</p>
+<pre><code>get_orchestrator()
+   ├─ AIRFLOW_URL set?  ──▶  AirflowOrchestrator  (talks to Airflow's REST API)
+   └─ otherwise         ──▶  LocalOrchestrator    (simulation from pipelines.yaml)
+</code></pre>
+<p>Apps and the gateway only call the interface - <code>list_dags()</code>, <code>get_dag()</code>, <code>trigger()</code> -
+so the platform runs anywhere today and points at a real Airflow the moment one exists.</p>
+<h2 id="the-files">The files</h2>
+<ul>
+<li><code>orchestration/pipelines.yaml</code> - the pipeline catalog (DAG id, cron schedule, owner,
+  tasks). In production these <em>are</em> Airflow DAGs.</li>
+<li><code>orchestration/orchestrator.py</code> - the abstraction + both backends.</li>
+<li><code>apps/pipelines.py</code> - a <strong>mounted app</strong> (Step 5 contract) that surfaces the DAGs inside
+  the shell: schedule, owner, last-run status.</li>
+</ul>
+<h2 id="governed-like-everything-else">Governed, like everything else</h2>
+<p>The Pipelines app is registered with <code>required_role: data_scientist</code>. So:
+- a <strong>data scientist / ai engineer / admin</strong> can open it,
+- an <strong>analyst</strong> gets a <strong>403</strong> (and it's audited).</p>
+<p>Triggering a run goes through the orchestrator interface as a governed, auditable action -
+the platform decides <em>who</em> may run <em>what</em>, Airflow does the running.</p>
+<h2 id="see-it-yourself">See it yourself</h2>
+<pre><code class="language-bash">cd one-data-platform/gateway
+uvicorn app:app --reload
+</code></pre>
+<ol>
+<li>Log in as <code>sam@team.io</code> / <code>scientist123</code> (data scientist).</li>
+<li>Open <strong>Pipelines (Orchestration)</strong> - you'll see the DAGs, their cron schedules,
+   owners, and last-run status, with the backend shown as <code>local-sim</code>.</li>
+<li>Log in as <code>ana@team.io</code> / <code>analyst123</code> and try the same - <strong>403</strong>.</li>
+<li>To wire a real Airflow later: set <code>AIRFLOW_URL</code> (+ <code>AIRFLOW_USER</code>/<code>AIRFLOW_PASSWORD</code>)
+   and the exact same app talks to it via the REST API.</li>
+</ol>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li><strong>don't rebuild commodities</strong> - govern Airflow, don't reimplement it</li>
+<li>the <strong>configured-or-fallback</strong> pattern, applied a third time (connectors, mounting, now orchestration)</li>
+<li>scheduled work is governed by the <em>same</em> identity/RBAC/audit spine as interactive apps</li>
+</ul>
+<h2 id="the-spine-is-complete-66">🎉 The spine is complete (6/6)</h2>
+<p>You now have the whole governance shell:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Module</th>
+<th>Gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Gateway + login</td>
+<td>who you are (authentication)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RBAC + registry</td>
+<td>what you can open (authorization)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Audit log</td>
+<td>provable who-did-what-when</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Connector layer</td>
+<td>one safe home for credentials</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Mounted apps</td>
+<td>real builds running behind the shell</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Orchestration</td>
+<td>governed scheduled pipelines (Airflow)</td>
+</tr>
+</tbody>
+</table>
+<p>That's the sellable product from ADR-0001: a thin governed control plane that hosts the
+app catalog. From here it's <strong>breadth</strong> (mount more of the 60 builds - one line each) and
+<strong>hardening</strong> (real DB for users, a secrets manager, deploy the shell to Render).</p></article>
+<footer>One Data Platform wiki · rendered from <code>docs/15-orchestration.md</code></footer>
+</div></body></html>

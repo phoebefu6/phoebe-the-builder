@@ -37,11 +37,12 @@ from connections import list_status as connection_status  # noqa: E402
 
 # Mounted apps live in ../apps. Each exposes render(ctx) -> HTML fragment.
 sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
-from apps import db_health  # noqa: E402
+from apps import db_health, pipelines  # noqa: E402
 
 # Map registry slug -> the app's render function. To mount a new build, add a line.
 MOUNTED_APPS = {
     "db-health": db_health.render,
+    "pipelines": pipelines.render,
 }
 
 COOKIE = "platform_token"

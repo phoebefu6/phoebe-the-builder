@@ -37,5 +37,5 @@ modules:
   - step: 6
     name: Orchestration (Airflow)
     concept: Govern scheduled pipelines (OSS)
-    status: planned
-    doc: ""
+    status: done
+    doc: wiki/15-orchestration.html

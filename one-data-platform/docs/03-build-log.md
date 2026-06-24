@@ -6,6 +6,40 @@
 
 ---
 
+## 2026-06-24 - Step 6: Orchestration (Airflow) - spine complete 🎉
+
+**What we did:** Added the orchestration layer - and deliberately did NOT build a
+scheduler. `orchestration/pipelines.yaml` (DAG catalog) + `orchestration/orchestrator.py`
+with two backends behind one interface: `AirflowOrchestrator` (real Airflow REST API when
+`AIRFLOW_URL` is set, lazy httpx) and `LocalOrchestrator` (deterministic simulation so it
+runs anywhere). `get_orchestrator()` picks the real one if configured, else the sim -
+same configured-or-fallback pattern as connectors and mounting. Mounted a **Pipelines**
+app (`apps/pipelines.py`, render(ctx) contract) showing DAGs + schedule + owner + last-run
+status; registered `required_role: data_scientist`. Tested: orchestrator lists 3 DAGs +
+trigger works; data scientist opens the app (200), analyst → 403 (audited).
+
+**What Phoebe was learning:** "don't rebuild commodities - govern the OSS" made concrete;
+the configured-or-fallback pattern a third time; scheduled work governed by the same
+identity/RBAC/audit spine as interactive apps. Explainer: `15-orchestration.md`.
+
+**Key decisions logged:**
+- Plug in Apache Airflow; the platform surfaces + governs it, never reimplements scheduling.
+- One orchestrator interface (`list_dags`/`get_dag`/`trigger`) so the backend can swap.
+- Pipelines app gated to data_scientist+; triggering is a governed, auditable action.
+
+**Mentor input:** Jensen/LeCun (rent the commodity engine, build the moat), Lisa Su
+(disciplined scope - interface + two backends, ship it), Zhamak (govern domains' pipelines
+without owning the scheduler).
+
+**🎉 Spine complete (6/6):** gateway · RBAC + registry · audit · connectors · mounted apps ·
+orchestration. The sellable control plane from ADR-0001 exists. From here: **breadth**
+(mount more of the 60 builds, one line each) and **hardening** (real user DB, secrets
+manager, deploy the shell to Render).
+
+**Next step:** harden + deploy the shell (Render), and mount more builds as they ship.
+
+---
+
 ## 2026-06-21 - Step 5: Mount a real app (the payoff)
 
 **What we did:** Defined the **mount contract** - an app is a module exposing

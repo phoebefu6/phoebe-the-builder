@@ -42,7 +42,7 @@ border-radius:0 8px 8px 0;color:#34324f}
 .crumbs a{color:var(--accent);text-decoration:none}
 footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid var(--line)}
 </style></head><body>
-<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/12-audit-log.html">Audit</a><a class="nav" href="../wiki/13-connector-layer.html">Connectors</a><a class="nav" href="../wiki/14-mount-app.html">Mount app</a><a class="nav active" href="../wiki/03-build-log.html">Build log</a></div></div>
+<div class="topbar"><div class="wrap"><a class="brand" href="../index.html">One Data Platform</a><a class="nav" href="../index.html">Home</a><a class="nav" href="../wiki/01-why-a-platform.html">Why</a><a class="nav" href="../wiki/02-architecture.html">Architecture</a><a class="nav" href="../wiki/00-glossary.html">Glossary</a><a class="nav" href="../wiki/10-gateway-login.html">Gateway</a><a class="nav" href="../wiki/11-rbac-registry.html">RBAC</a><a class="nav" href="../wiki/12-audit-log.html">Audit</a><a class="nav" href="../wiki/13-connector-layer.html">Connectors</a><a class="nav" href="../wiki/14-mount-app.html">Mount app</a><a class="nav" href="../wiki/15-orchestration.html">Orchestration</a><a class="nav active" href="../wiki/03-build-log.html">Build log</a></div></div>
 <div class="wrap"><div class="crumbs"><a href="../index.html">← Home</a></div>
 <article class="doc"><h1 id="03-build-log-design-thinking-journal">03 - Build Log (design-thinking journal)</h1>
 <blockquote>
@@ -50,6 +50,32 @@ footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid v
 at the top. This is where Phoebe's questions and the "aha" moments get captured -
 not just the answers.</p>
 </blockquote>
+<hr />
+<h2 id="2026-06-24-step-6-orchestration-airflow-spine-complete">2026-06-24 - Step 6: Orchestration (Airflow) - spine complete 🎉</h2>
+<p><strong>What we did:</strong> Added the orchestration layer - and deliberately did NOT build a
+scheduler. <code>orchestration/pipelines.yaml</code> (DAG catalog) + <code>orchestration/orchestrator.py</code>
+with two backends behind one interface: <code>AirflowOrchestrator</code> (real Airflow REST API when
+<code>AIRFLOW_URL</code> is set, lazy httpx) and <code>LocalOrchestrator</code> (deterministic simulation so it
+runs anywhere). <code>get_orchestrator()</code> picks the real one if configured, else the sim -
+same configured-or-fallback pattern as connectors and mounting. Mounted a <strong>Pipelines</strong>
+app (<code>apps/pipelines.py</code>, render(ctx) contract) showing DAGs + schedule + owner + last-run
+status; registered <code>required_role: data_scientist</code>. Tested: orchestrator lists 3 DAGs +
+trigger works; data scientist opens the app (200), analyst → 403 (audited).</p>
+<p><strong>What Phoebe was learning:</strong> "don't rebuild commodities - govern the OSS" made concrete;
+the configured-or-fallback pattern a third time; scheduled work governed by the same
+identity/RBAC/audit spine as interactive apps. Explainer: <code>15-orchestration.md</code>.</p>
+<p><strong>Key decisions logged:</strong>
+- Plug in Apache Airflow; the platform surfaces + governs it, never reimplements scheduling.
+- One orchestrator interface (<code>list_dags</code>/<code>get_dag</code>/<code>trigger</code>) so the backend can swap.
+- Pipelines app gated to data_scientist+; triggering is a governed, auditable action.</p>
+<p><strong>Mentor input:</strong> Jensen/LeCun (rent the commodity engine, build the moat), Lisa Su
+(disciplined scope - interface + two backends, ship it), Zhamak (govern domains' pipelines
+without owning the scheduler).</p>
+<p><strong>🎉 Spine complete (6/6):</strong> gateway · RBAC + registry · audit · connectors · mounted apps ·
+orchestration. The sellable control plane from ADR-0001 exists. From here: <strong>breadth</strong>
+(mount more of the 60 builds, one line each) and <strong>hardening</strong> (real user DB, secrets
+manager, deploy the shell to Render).</p>
+<p><strong>Next step:</strong> harden + deploy the shell (Render), and mount more builds as they ship.</p>
 <hr />
 <h2 id="2026-06-21-step-5-mount-a-real-app-the-payoff">2026-06-21 - Step 5: Mount a real app (the payoff)</h2>
 <p><strong>What we did:</strong> Defined the <strong>mount contract</strong> - an app is a module exposing

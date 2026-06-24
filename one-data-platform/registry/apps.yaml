@@ -47,6 +47,20 @@ apps:
     category: Analytics
     description: One-click profiling of any new dataset.
 
+  - slug: kpi-tracker
+    name: KPI Tracker
+    required_role: analyst
+    status: planned
+    category: Analytics
+    description: Self-serve Monday scorecard - latest value, WoW/MoM, trend, RAG vs target.
+
+  - slug: pipelines
+    name: Pipelines (Orchestration)
+    required_role: data_scientist
+    status: live
+    category: Data Engineering
+    description: Govern scheduled pipelines (Airflow DAGs) - schedule, owner, last run.
+
   - slug: model-trainer
     name: Model Trainer
     required_role: data_scientist

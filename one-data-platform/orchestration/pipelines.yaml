@@ -1,0 +1,23 @@
+# Pipeline catalog - the scheduled work the platform governs.
+# These describe DAGs (pipelines). We do NOT run the scheduler ourselves - in
+# production these map to Apache Airflow DAGs (open source). The platform's job is
+# to surface and govern them, not to reimplement orchestration.
+
+pipelines:
+  - id: daily_sales_etl
+    schedule: "0 2 * * *"          # 02:00 daily
+    owner: data-eng
+    description: Extract sales from source DB, transform, load to the warehouse.
+    tasks: [extract, transform, load]
+
+  - id: churn_features
+    schedule: "0 4 * * *"          # 04:00 daily
+    owner: data-science
+    description: Build the nightly churn feature table for model training.
+    tasks: [pull_events, featurize, write_features]
+
+  - id: kpi_refresh
+    schedule: "*/30 * * * *"       # every 30 min
+    owner: analytics
+    description: Refresh the executive KPI dashboard tables.
+    tasks: [query, aggregate, publish]

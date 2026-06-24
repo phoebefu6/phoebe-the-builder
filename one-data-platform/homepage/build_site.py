@@ -50,6 +50,7 @@ WIKI_NAV = [
     ("12-audit-log.md", "Audit"),
     ("13-connector-layer.md", "Connectors"),
     ("14-mount-app.md", "Mount app"),
+    ("15-orchestration.md", "Orchestration"),
     ("03-build-log.md", "Build log"),
 ]
 

@@ -52,7 +52,7 @@ styled pages under `homepage/wiki/`.
 | 3 | Audit log | ✅ done |
 | 4 | Connector layer | ✅ done |
 | 5 | Mount a real app | ✅ done |
-| 6 | Plug in Airflow (orchestration) | ⬜ |
+| 6 | Plug in Airflow (orchestration) | ✅ done |
 
 Run the shell:
 ```bash
