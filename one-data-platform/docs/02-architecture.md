@@ -84,7 +84,7 @@ Every box in that flow is a glossary term you now know. That's the whole system.
 | 2 | **RBAC + app registry** | roles, permissions, `apps.yaml` | ✅ done - see [11-rbac-registry](11-rbac-registry.md) |
 | 3 | **Audit log** | append-only records, why immutability matters | ✅ done - see [12-audit-log](12-audit-log.md) |
 | 4 | **Connector layer** | secrets, one source of credentials | ✅ done - see [13-connector-layer](13-connector-layer.md) |
-| 5 | **Mount a real app** | wrap `log-parser` / `db-health` behind the shell | ⬜ |
+| 5 | **Mount a real app** | wrap `db-health` behind the shell | ✅ done - see [14-mount-app](14-mount-app.md) |
 | 6 | **Plug in Airflow** | orchestration, DAGs, governing OSS | ⬜ |
 
 We do them **in order**, one at a time, each with its own explainer doc and a check

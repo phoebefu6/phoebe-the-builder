@@ -49,6 +49,7 @@ WIKI_NAV = [
     ("11-rbac-registry.md", "RBAC"),
     ("12-audit-log.md", "Audit"),
     ("13-connector-layer.md", "Connectors"),
+    ("14-mount-app.md", "Mount app"),
     ("03-build-log.md", "Build log"),
 ]
 

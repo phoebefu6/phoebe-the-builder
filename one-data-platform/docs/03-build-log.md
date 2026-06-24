@@ -6,6 +6,40 @@
 
 ---
 
+## 2026-06-21 - Step 5: Mount a real app (the payoff)
+
+**What we did:** Defined the **mount contract** - an app is a module exposing
+`render(ctx) -> html`; the shell handles login/RBAC/audit/chrome around it. Wired the
+Day-10 `db-health` build in as `apps/db_health.py` (core logic vendored, UI-free) and
+registered it in the gateway's `MOUNTED_APPS` (one line). `/open/db-health` now renders
+the real RAG dashboard inside the shell, and the app pulls a governed connection via
+`ctx["get_connection"]("demo_warehouse")` - proving an app gets data without holding a
+credential. Tested live: admin opens it → health score + RAG table + "🔌 Connected to
+demo_warehouse" note; analyst (allowed role) → 200; access audited.
+
+**What Phoebe was learning:** how a thin shell + a one-function contract lets any build
+plug in; how authn + authz + audit + connectors compose into a single governed request;
+why this validates ADR-0001 (host apps, don't rebuild a monolith). Explainer: `14-mount-app.md`.
+
+**Key decisions logged:**
+- Mount contract = `render(ctx)`; `ctx` carries the user + the connector getter.
+- Mounting a build = one line in `MOUNTED_APPS`; the 59 remaining builds become catalog
+  entries, not rewrites.
+- Mounted-app core logic is vendored into `apps/` (self-contained platform).
+
+**Mentor input:** Patrick (a clean contract is the product - mounting should feel
+inevitable), Karpathy (smallest real version: render() returning HTML, no heavy proxy).
+
+**Open questions to revisit:**
+- Streamlit-style apps need a real reverse proxy / iframe later; the render(ctx) contract
+  covers HTML apps now.
+- Per-app data-source scoping (which connections an app may use) - a future governance knob.
+
+**Next step:** Step 6 - **Orchestration (Airflow)**: govern scheduled pipelines under the
+same roof. Explainer `15-orchestration.md`.
+
+---
+
 ## 2026-06-21 - Step 4: Connector layer (one safe home for credentials)
 
 **What we did:** Built `connectors/connections.yaml` (the registry - wiring only, never

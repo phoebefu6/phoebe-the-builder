@@ -31,8 +31,8 @@ modules:
   - step: 5
     name: Mount a real app
     concept: Wrap an existing build behind the shell
-    status: planned
-    doc: ""
+    status: done
+    doc: wiki/14-mount-app.html
 
   - step: 6
     name: Orchestration (Airflow)

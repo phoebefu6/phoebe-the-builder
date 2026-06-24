@@ -32,7 +32,17 @@ from users import authenticate, seed_if_empty
 
 # The connector layer lives in ../connectors; make it importable.
 sys.path.insert(0, str(_Path(__file__).resolve().parent.parent / "connectors"))
+from connections import get_connection as _get_connection  # noqa: E402
 from connections import list_status as connection_status  # noqa: E402
+
+# Mounted apps live in ../apps. Each exposes render(ctx) -> HTML fragment.
+sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
+from apps import db_health  # noqa: E402
+
+# Map registry slug -> the app's render function. To mount a new build, add a line.
+MOUNTED_APPS = {
+    "db-health": db_health.render,
+}
 
 COOKIE = "platform_token"
 
@@ -159,17 +169,25 @@ def open_app(slug: str, user: Optional[Dict[str, object]] = Depends(current_user
             status_code=403,
         )
 
-    # Allowed - record the access, then (Step 5) proxy to the real app. For now, a stub.
+    # Allowed - record the access.
     log_event(str(user["email"]), "open_app", target=slug, status="granted", role=str(user["role"]))
-    if app_entry.get("status") != "live":
+
+    # A real mounted app? Call its render(ctx) and serve it inside the shell chrome.
+    if slug in MOUNTED_APPS:
+        ctx = {"user": user, "get_connection": _get_connection}
+        fragment = MOUNTED_APPS[slug](ctx)
+        body = fragment
+    elif app_entry.get("status") != "live":
         body = f"<p>✅ You're allowed in, but <b>{app_entry['name']}</b> is still on the roadmap (planned).</p>"
     else:
         body = (f"<p>✅ Access granted to <b>{app_entry['name']}</b>.</p>"
-                f"<p><i>{app_entry['description']}</i></p>"
-                f"<p>(Step 5 will mount the real app here.)</p>")
+                f"<p><i>{app_entry['description']}</i></p>")
+
     return HTMLResponse(
-        f"<!doctype html><html><body style='font-family:system-ui;max-width:640px;margin:3rem auto'>"
-        f"<h1>{app_entry['name']}</h1>{body}<p><a href='/'>← back to workspace</a></p></body></html>"
+        f"<!doctype html><html><head><meta charset='utf-8'>"
+        f"<style>body{{font-family:system-ui;max-width:760px;margin:2.5rem auto;padding:0 1rem;color:#13131f}}"
+        f"a{{color:#3d34d6}}h1{{letter-spacing:-.01em}}</style></head><body>"
+        f"<p><a href='/'>← workspace</a></p><h1>{app_entry['name']}</h1>{body}</body></html>"
     )
 
 

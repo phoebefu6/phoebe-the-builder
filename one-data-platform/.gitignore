@@ -10,3 +10,4 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 gateway/audit_log.jsonl
+apps/__pycache__/

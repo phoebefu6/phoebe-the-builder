@@ -51,7 +51,7 @@ styled pages under `homepage/wiki/`.
 | 2 | RBAC + app registry | ✅ done |
 | 3 | Audit log | ✅ done |
 | 4 | Connector layer | ✅ done |
-| 5 | Mount a real app | ⬜ |
+| 5 | Mount a real app | ✅ done |
 | 6 | Plug in Airflow (orchestration) | ⬜ |
 
 Run the shell:
