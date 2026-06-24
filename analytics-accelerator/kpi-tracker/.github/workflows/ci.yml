@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'analytics-accelerator/kpi-tracker/**'
+  pull_request:
+    paths:
+      - 'analytics-accelerator/kpi-tracker/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r analytics-accelerator/kpi-tracker/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I analytics-accelerator/kpi-tracker/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/kpi-tracker/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/kpi-tracker/kpi.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd analytics-accelerator/kpi-tracker
+          python -c "
+          import pandas as pd
+          from kpi import build_scorecard, scorecard_summary
+          dates = pd.date_range('2026-01-06', periods=6, freq='W-MON')
+          df = pd.DataFrame([{'date': d, 'metric': 'Revenue', 'value': 100+i*10} for i,d in enumerate(dates)])
+          rows = build_scorecard(df, {'Revenue': {'target': 140, 'direction': 'up'}})
+          assert rows[0]['latest'] == 150 and rows[0]['rag'] == 'green', rows
+          assert scorecard_summary(rows)['green'] == 1
+          print('ok')"

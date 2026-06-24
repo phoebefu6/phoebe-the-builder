@@ -1,0 +1,8 @@
+# Scoped lint config. Line length relaxed to 100. `from __future__ import
+# annotations` must be the file's first statement (skill rule + Python syntax),
+# which pushes imports below the module docstring and trips E402 - silenced with
+# per-import `# noqa: E402` for that structural reason.
+[tool.ruff]
+line-length = 100
+# Notebooks are demo artifacts (condensed core logic, inline viz) - lint the app, not them.
+extend-exclude = ["*.ipynb"]
