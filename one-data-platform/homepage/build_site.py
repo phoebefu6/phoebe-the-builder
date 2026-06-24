@@ -268,6 +268,9 @@ from TRACKER.md. Last updated {updated}. A new build is added every day.</footer
 # ── Markdown -> styled HTML ────────────────────────────────────────────────────
 def render_doc(md_path: Path, prefix: str) -> str:
     raw = md_path.read_text()
+    # Strip the file-order prefix ("00 - ", "10 - ", etc.) from the H1 title so the
+    # displayed page heading reads cleanly. Source files keep their numbers (ordering).
+    raw = re.sub(r"^(#\s+)\d+\s*[-–]\s*", r"\1", raw, count=1, flags=re.MULTILINE)
     # First H1 becomes the page title.
     title_m = re.search(r"^#\s+(.+)$", raw, re.MULTILINE)
     title = title_m.group(1).strip() if title_m else md_path.stem
