@@ -245,12 +245,12 @@
     "day": 23,
     "slug": "ab-test-calc",
     "name": "A/B Test Calculator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-24",
     "product_line": "Analytics Accelerator",
     "product_slug": "analytics-accelerator",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-accelerator/ab-test-calc",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-accelerator/ab-test-calc/demo.ipynb"
   },
   {
     "day": 24,

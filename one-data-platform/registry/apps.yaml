@@ -47,6 +47,13 @@ apps:
     category: Analytics
     description: One-click profiling of any new dataset.
 
+  - slug: ab-test-calc
+    name: A/B Test Calculator
+    required_role: analyst
+    status: planned
+    category: Analytics
+    description: Two-proportion z-test - p-value, CI, verdict + sample-size planner.
+
   - slug: kpi-tracker
     name: KPI Tracker
     required_role: analyst

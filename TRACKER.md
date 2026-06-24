@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 22 days
-**Total Completed:** 22 / 60
+**Current Streak:** 23 days
+**Total Completed:** 23 / 60
 
 ---
 
@@ -36,7 +36,7 @@
 
 - [x] Day 21 — auto-eda: Auto-EDA Dashboard (2026-06-21)
 - [x] Day 22 — kpi-tracker: KPI Tracker (2026-06-24)
-- [ ] Day 23 — ab-test-calc: A/B Test Calculator
+- [x] Day 23 — ab-test-calc: A/B Test Calculator (2026-06-24)
 - [ ] Day 24 — survey-analyzer: Survey Results Analyzer
 - [ ] Day 25 — customer-segments: Customer Segmentation Tool
 - [ ] Day 26 — churn-predictor: Churn Predictor
