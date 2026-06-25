@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'analytics-accelerator/churn-predictor/**'
+  pull_request:
+    paths:
+      - 'analytics-accelerator/churn-predictor/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r analytics-accelerator/churn-predictor/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I analytics-accelerator/churn-predictor/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/churn-predictor/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/churn-predictor/churn.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd analytics-accelerator/churn-predictor
+          python -c "
+          from churn import sample_customers, train_churn_model, score_customers, select_features
+          df = sample_customers()
+          assert len(df) == 800
+          feats = select_features(df, 'churned')
+          assert 'customer_id' not in feats
+          cm = train_churn_model(df)
+          assert cm.metrics['auc'] > 0.6
+          assert len(cm.importances) == len(feats)
+          scored = score_customers(cm, df)
+          assert 'churn_risk' in scored.columns
+          assert scored['churn_risk'].between(0, 1).all()
+          print('ok')"
