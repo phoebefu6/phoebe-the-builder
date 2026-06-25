@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'analytics-accelerator/customer-segments/**'
+  pull_request:
+    paths:
+      - 'analytics-accelerator/customer-segments/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r analytics-accelerator/customer-segments/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I analytics-accelerator/customer-segments/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/customer-segments/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('analytics-accelerator/customer-segments/segments.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd analytics-accelerator/customer-segments
+          python -c "
+          from segments import sample_customers, segment_customers, select_numeric_features
+          df = sample_customers()
+          assert len(df) == 300
+          feats = select_numeric_features(df)
+          assert 'customer_id' not in feats
+          res = segment_customers(df)
+          assert res.k >= 2
+          assert res.silhouette > 0.3
+          assert sum(p.size for p in res.profiles) == 300
+          print('ok')"
