@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 26 days
-**Total Completed:** 26 / 60
+**Current Streak:** 27 days
+**Total Completed:** 27 / 60
 
 ---
 
@@ -40,7 +40,7 @@
 - [x] Day 24 — survey-analyzer: Survey Results Analyzer (2026-06-25)
 - [x] Day 25 — customer-segments: Customer Segmentation Tool (2026-06-25)
 - [x] Day 26 — churn-predictor: Churn Predictor (2026-06-25)
-- [ ] Day 27 — sales-forecast: Sales Forecast Dashboard
+- [x] Day 27 — sales-forecast: Sales Forecast Dashboard (2026-06-26)
 - [ ] Day 28 — data-quality-scorecard: Data Quality Scorecard
 - [ ] Day 29 — funnel-analyzer: Funnel Analyzer
 - [ ] Day 30 — cohort-analysis: Cohort Analysis Tool
