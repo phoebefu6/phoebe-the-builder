@@ -311,12 +311,12 @@
     "day": 29,
     "slug": "funnel-analyzer",
     "name": "Funnel Analyzer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-26",
     "product_line": "Analytics Accelerator",
     "product_slug": "analytics-accelerator",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-accelerator/funnel-analyzer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-accelerator/funnel-analyzer/demo.ipynb"
   },
   {
     "day": 30,
