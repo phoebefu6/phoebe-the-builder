@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'document-intelligence/pdf-qa-bot/**'
+  pull_request:
+    paths:
+      - 'document-intelligence/pdf-qa-bot/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r document-intelligence/pdf-qa-bot/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I document-intelligence/pdf-qa-bot/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('document-intelligence/pdf-qa-bot/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('document-intelligence/pdf-qa-bot/qa.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd document-intelligence/pdf-qa-bot
+          python -c "
+          from qa import chunk_text, retrieve, answer_question
+          pages = ['The vacation policy allows 20 days of paid leave per year. Employees must request leave two weeks in advance.', 'The expense policy requires receipts for purchases over \$25. Reimbursement happens within 5 business days.']
+          chunks = chunk_text(pages)
+          assert len(chunks) >= 2
+          top = retrieve(chunks, 'How many vacation days do employees get?')
+          assert top and 'vacation' in top[0].text.lower()
+          ans = answer_question(chunks, 'How many vacation days do employees get?', api_key=None)
+          assert 'vacation' in ans.lower() or 'extractive' in ans.lower()
+          print('ok')"
