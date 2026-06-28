@@ -333,12 +333,12 @@
     "day": 31,
     "slug": "pdf-qa-bot",
     "name": "PDF Q&A Bot",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-28",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/pdf-qa-bot",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/pdf-qa-bot/demo.ipynb"
   },
   {
     "day": 32,
