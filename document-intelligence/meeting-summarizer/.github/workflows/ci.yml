@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'document-intelligence/meeting-summarizer/**'
+  pull_request:
+    paths:
+      - 'document-intelligence/meeting-summarizer/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r document-intelligence/meeting-summarizer/requirements.txt
+          pip install ruff
+      - name: Lint
+        run: ruff check --select E,F,I document-intelligence/meeting-summarizer/
+      - name: Syntax check
+        run: |
+          python -c "import py_compile; py_compile.compile('document-intelligence/meeting-summarizer/app.py', doraise=True)"
+          python -c "import py_compile; py_compile.compile('document-intelligence/meeting-summarizer/summarizer.py', doraise=True)"
+      - name: Smoke test
+        run: |
+          cd document-intelligence/meeting-summarizer
+          python -c "
+          from summarizer import summarize, SAMPLE_TRANSCRIPT
+          result = summarize(SAMPLE_TRANSCRIPT, api_key=None)
+          assert result.tldr
+          assert len(result.decisions) > 0
+          assert len(result.action_items) > 0
+          assert len(result.open_questions) > 0
+          print('ok')"
