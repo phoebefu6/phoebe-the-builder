@@ -344,12 +344,12 @@
     "day": 32,
     "slug": "meeting-summarizer",
     "name": "Meeting Notes Summarizer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-28",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/meeting-summarizer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/meeting-summarizer/demo.ipynb"
   },
   {
     "day": 33,
