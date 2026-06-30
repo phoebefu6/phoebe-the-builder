@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "document-intelligence/semantic-search/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: document-intelligence/semantic-search
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install tooling
+        run: pip install ruff
+      - name: Lint
+        run: ruff check .
+      - name: Smoke test semantic index
+        run: |
+          python -c "from searcher import SemanticIndex, SAMPLE_DOCS; idx = SemanticIndex().build(SAMPLE_DOCS); hits = idx.search('get my money back', 1); assert hits and hits[0].score > 0, 'no hit'; print('OK top:', hits[0].text[:40])"
