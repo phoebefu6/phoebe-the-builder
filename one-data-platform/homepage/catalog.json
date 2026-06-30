@@ -377,23 +377,23 @@
     "day": 35,
     "slug": "semantic-search",
     "name": "Semantic Search Engine",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-30",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/semantic-search",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/semantic-search/demo.ipynb"
   },
   {
     "day": 36,
     "slug": "resume-screener",
     "name": "Resume Screener",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-30",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/resume-screener",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/resume-screener/demo.ipynb"
   },
   {
     "day": 37,
