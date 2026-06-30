@@ -366,12 +366,12 @@
     "day": 34,
     "slug": "faq-generator",
     "name": "FAQ Generator from Docs",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-30",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/faq-generator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/faq-generator/demo.ipynb"
   },
   {
     "day": 35,
