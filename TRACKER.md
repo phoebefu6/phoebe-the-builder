@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 32 days
-**Total Completed:** 32 / 60
+**Current Streak:** 33 days
+**Total Completed:** 33 / 60
 
 ---
 
@@ -49,7 +49,7 @@
 
 - [x] Day 31 — pdf-qa-bot: PDF Q&A Bot (2026-06-28)
 - [x] Day 32 — meeting-summarizer: Meeting Notes Summarizer (2026-06-28)
-- [ ] Day 33 — contract-extractor: Contract Clause Extractor
+- [x] Day 33 — contract-extractor: Contract Clause Extractor (2026-06-30)
 - [ ] Day 34 — faq-generator: FAQ Generator from Docs
 - [ ] Day 35 — semantic-search: Semantic Search Engine
 - [ ] Day 36 — resume-screener: Resume Screener
