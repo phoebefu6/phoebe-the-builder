@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "document-intelligence/faq-generator/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: document-intelligence/faq-generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install tooling
+        run: pip install ruff
+      - name: Lint
+        run: ruff check .
+      - name: Smoke test heuristic FAQ
+        run: |
+          pip install -r requirements.txt
+          python -c "from faqgen import generate_faq, SAMPLE_DOC; f = generate_faq(SAMPLE_DOC); assert len(f.items) >= 3, 'too few items'; print('OK', len(f.items), 'FAQ items')"
