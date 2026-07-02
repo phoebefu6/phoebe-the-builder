@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "document-intelligence/compliance-checker/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: document-intelligence/compliance-checker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install tooling
+        run: pip install ruff
+      - name: Lint
+        run: ruff check .
+      - name: Smoke test rules engine
+        run: |
+          python -c "from checker import run_compliance_check, SAMPLE_POLICY_GOOD, SAMPLE_POLICY_BAD; g = run_compliance_check(SAMPLE_POLICY_GOOD); b = run_compliance_check(SAMPLE_POLICY_BAD); assert g.score() == 100, g.score(); assert b.score() < 50, b.score(); print('OK good', g.score(), 'bad', b.score())"
