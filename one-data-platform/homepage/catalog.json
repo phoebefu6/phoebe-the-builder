@@ -432,12 +432,12 @@
     "day": 40,
     "slug": "knowledge-base",
     "name": "Knowledge Base Builder",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-06-30",
     "product_line": "Document Intelligence",
     "product_slug": "document-intelligence",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/document-intelligence/knowledge-base",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/document-intelligence/knowledge-base/demo.ipynb"
   },
   {
     "day": 41,

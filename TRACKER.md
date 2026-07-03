@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 39 days
-**Total Completed:** 39 / 60
+**Current Streak:** 40 days
+**Total Completed:** 40 / 60
 
 ---
 
@@ -56,7 +56,7 @@
 - [x] Day 37 — competitive-intel: Competitive Intel Summarizer (2026-06-30)
 - [x] Day 38 — data-dict-gen: Data Dictionary Generator (2026-06-30)
 - [x] Day 39 — compliance-checker: Compliance Checker (2026-06-30)
-- [ ] Day 40 — knowledge-base: Knowledge Base Builder
+- [x] Day 40 — knowledge-base: Knowledge Base Builder (2026-06-30)
 
 ## Month 5: AI Agent Workshop
 
