@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 40 days
-**Total Completed:** 40 / 60
+**Current Streak:** 41 days
+**Total Completed:** 41 / 60
 
 ---
 
@@ -60,7 +60,7 @@
 
 ## Month 5: AI Agent Workshop
 
-- [ ] Day 41 — email-agent: Email Draft Agent
+- [x] Day 41 — email-agent: Email Draft Agent (2026-07-04)
 - [ ] Day 42 — code-review-agent: Code Review Agent
 - [ ] Day 43 — pipeline-monitor-agent: Data Pipeline Monitor Agent
 - [ ] Day 44 — ticket-router: Customer Ticket Router
