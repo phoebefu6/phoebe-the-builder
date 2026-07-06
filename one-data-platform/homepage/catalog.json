@@ -487,12 +487,12 @@
     "day": 45,
     "slug": "onboarding-agent",
     "name": "Onboarding Checklist Agent",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-06",
     "product_line": "AI Agent Workshop",
     "product_slug": "ai-agent-workshop",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ai-agent-workshop/onboarding-agent",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ai-agent-workshop/onboarding-agent/demo.ipynb"
   },
   {
     "day": 46,
