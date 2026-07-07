@@ -531,12 +531,12 @@
     "day": 49,
     "slug": "model-drift-detector",
     "name": "Model Drift Detector",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-07",
     "product_line": "AI Agent Workshop",
     "product_slug": "ai-agent-workshop",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ai-agent-workshop/model-drift-detector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ai-agent-workshop/model-drift-detector/demo.ipynb"
   },
   {
     "day": 50,
