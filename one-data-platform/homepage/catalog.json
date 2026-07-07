@@ -509,12 +509,12 @@
     "day": 47,
     "slug": "report-agent",
     "name": "Report Generation Agent",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-07",
     "product_line": "AI Agent Workshop",
     "product_slug": "ai-agent-workshop",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ai-agent-workshop/report-agent",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ai-agent-workshop/report-agent/demo.ipynb"
   },
   {
     "day": 48,
