@@ -586,34 +586,34 @@
     "day": 54,
     "slug": "retro-generator",
     "name": "Sprint Retrospective Generator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-07",
     "product_line": "Mini SaaS Products",
     "product_slug": "mini-saas-products",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/retro-generator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/retro-generator/demo.ipynb"
   },
   {
     "day": 55,
     "slug": "okr-tracker",
     "name": "OKR Tracker and Advisor",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-07",
     "product_line": "Mini SaaS Products",
     "product_slug": "mini-saas-products",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/okr-tracker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/okr-tracker/demo.ipynb"
   },
   {
     "day": 56,
     "slug": "roadmap-viz",
     "name": "Product Roadmap Visualizer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-07",
     "product_line": "Mini SaaS Products",
     "product_slug": "mini-saas-products",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/roadmap-viz",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/roadmap-viz/demo.ipynb"
   },
   {
     "day": 57,
