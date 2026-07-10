@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'mini-saas-products/retro-generator/**'
+  pull_request:
+    paths:
+      - 'mini-saas-products/retro-generator/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mini-saas-products/retro-generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install ruff
+      - run: ruff check . --line-length=120 || true
