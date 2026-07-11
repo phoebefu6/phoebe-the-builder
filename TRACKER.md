@@ -80,7 +80,7 @@
 - [x] Day 54 — retro-generator: Sprint Retrospective Generator (2026-07-07)
 - [x] Day 55 — okr-tracker: OKR Tracker and Advisor (2026-07-07)
 - [x] Day 56 — roadmap-viz: Product Roadmap Visualizer (2026-07-07)
-- [ ] Day 57 — user-story-gen: User Story Generator
+- [x] Day 57 — user-story-gen: User Story Generator (2026-07-11)
 - [ ] Day 58 — accessibility-checker: Accessibility Checker
 - [ ] Day 59 — privacy-policy-gen: Privacy Policy Generator
 - [ ] Day 60 — portfolio-dashboard: Full Portfolio Dashboard
