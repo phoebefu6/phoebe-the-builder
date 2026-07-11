@@ -674,12 +674,12 @@
     "day": 62,
     "slug": "airflow-dag-gen",
     "name": "Airflow DAG Generator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-11",
     "product_line": "Data Engineering Pro",
     "product_slug": "data-engineering-pro",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/airflow-dag-gen",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/airflow-dag-gen/demo.ipynb"
   },
   {
     "day": 63,
