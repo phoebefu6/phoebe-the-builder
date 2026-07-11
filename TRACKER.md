@@ -95,7 +95,7 @@
 - [x] Day 62 — airflow-dag-gen: Airflow DAG Generator (2026-07-11)
 - [x] Day 63 — parquet-partitioner: CSV/JSON to Parquet Partitioner (2026-07-11)
 - [x] Day 64 — data-contract-validator: Data Contract Validator (2026-07-11)
-- [ ] Day 65 — backfill-planner: Backfill Planner
+- [x] Day 65 — backfill-planner: Backfill Planner (2026-07-11)
 - [ ] Day 66 — streaming-aggregator: Streaming Window Aggregator
 - [ ] Day 67 — dedup-pipeline: Dedup & Survivorship Pipeline
 - [ ] Day 68 — api-paginator: API Pagination Extractor
