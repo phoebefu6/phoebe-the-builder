@@ -38,6 +38,12 @@ PRODUCT_LINES = [
     (31, 40, "document-intelligence", "Document Intelligence"),
     (41, 50, "ai-agent-workshop", "AI Agent Workshop"),
     (51, 60, "mini-saas-products", "Mini SaaS Products"),
+    (61, 70, "data-engineering-pro", "Data Engineering Pro"),
+    (71, 80, "ml-engineering-toolkit", "ML Engineering Toolkit"),
+    (81, 90, "llmops-genai-platform", "LLMOps & GenAI Platform"),
+    (91, 100, "data-quality-governance", "Data Quality & Governance Suite"),
+    (101, 110, "analytics-engineering-bi", "Analytics Engineering & BI"),
+    (111, 120, "data-science-cookbook", "Data Science Cookbook"),
 ]
 
 # Wiki nav order: (source filename, short nav label)
