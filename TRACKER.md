@@ -82,7 +82,7 @@
 - [x] Day 56 — roadmap-viz: Product Roadmap Visualizer (2026-07-07)
 - [x] Day 57 — user-story-gen: User Story Generator (2026-07-11)
 - [x] Day 58 — accessibility-checker: Accessibility Checker (2026-07-11)
-- [ ] Day 59 — privacy-policy-gen: Privacy Policy Generator
+- [x] Day 59 — privacy-policy-gen: Privacy Policy Generator (2026-07-11)
 - [ ] Day 60 — portfolio-dashboard: Full Portfolio Dashboard
 
 ---
