@@ -92,7 +92,7 @@
 ## Month 7: Data Engineering Pro (data-engineering-pro/)
 
 - [x] Day 61 — incremental-loader: Incremental / CDC Loader (2026-07-11)
-- [ ] Day 62 — airflow-dag-gen: Airflow DAG Generator
+- [x] Day 62 — airflow-dag-gen: Airflow DAG Generator (2026-07-11)
 - [ ] Day 63 — parquet-partitioner: CSV/JSON to Parquet Partitioner
 - [ ] Day 64 — data-contract-validator: Data Contract Validator
 - [ ] Day 65 — backfill-planner: Backfill Planner
