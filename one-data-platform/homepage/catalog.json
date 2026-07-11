@@ -696,12 +696,12 @@
     "day": 64,
     "slug": "data-contract-validator",
     "name": "Data Contract Validator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-11",
     "product_line": "Data Engineering Pro",
     "product_slug": "data-engineering-pro",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/data-contract-validator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/data-contract-validator/demo.ipynb"
   },
   {
     "day": 65,
