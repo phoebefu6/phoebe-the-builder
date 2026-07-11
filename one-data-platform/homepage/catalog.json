@@ -630,12 +630,12 @@
     "day": 58,
     "slug": "accessibility-checker",
     "name": "Accessibility Checker",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-11",
     "product_line": "Mini SaaS Products",
     "product_slug": "mini-saas-products",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/accessibility-checker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/accessibility-checker/demo.ipynb"
   },
   {
     "day": 59,
