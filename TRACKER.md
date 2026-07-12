@@ -97,7 +97,7 @@
 - [x] Day 64 — data-contract-validator: Data Contract Validator (2026-07-11)
 - [x] Day 65 — backfill-planner: Backfill Planner (2026-07-11)
 - [x] Day 66 — streaming-aggregator: Streaming Window Aggregator (2026-07-12)
-- [ ] Day 67 — dedup-pipeline: Dedup & Survivorship Pipeline
+- [x] Day 67 — dedup-pipeline: Dedup & Survivorship Pipeline (2026-07-12)
 - [ ] Day 68 — api-paginator: API Pagination Extractor
 - [ ] Day 69 — column-lineage: Column-Level Lineage Parser
 - [ ] Day 70 — pipeline-sla-monitor: Pipeline SLA Monitor
