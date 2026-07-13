@@ -99,7 +99,7 @@
 - [x] Day 66 — streaming-aggregator: Streaming Window Aggregator (2026-07-12)
 - [x] Day 67 — dedup-pipeline: Dedup & Survivorship Pipeline (2026-07-12)
 - [x] Day 68 — api-paginator: API Pagination Extractor (2026-07-12)
-- [ ] Day 69 — column-lineage: Column-Level Lineage Parser
+- [x] Day 69 — column-lineage: Column-Level Lineage Parser (2026-07-13)
 - [ ] Day 70 — pipeline-sla-monitor: Pipeline SLA Monitor
 
 ## Month 8: ML Engineering Toolkit (ml-engineering-toolkit/)
