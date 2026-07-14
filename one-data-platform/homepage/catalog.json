@@ -773,12 +773,12 @@
     "day": 71,
     "slug": "feature-factory",
     "name": "Feature Engineering Pipeline",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-14",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/feature-factory",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/feature-factory/demo.ipynb"
   },
   {
     "day": 72,

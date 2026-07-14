@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 68 days
-**Total Completed:** 68 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 8/60)
+**Current Streak:** 69 days
+**Total Completed:** 69 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 9/60)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -104,7 +104,7 @@
 
 ## Month 8: ML Engineering Toolkit (ml-engineering-toolkit/)
 
-- [ ] Day 71 — feature-factory: Feature Engineering Pipeline
+- [x] Day 71 — feature-factory: Feature Engineering Pipeline (2026-07-14)
 - [ ] Day 72 — train-eval-harness: Train/Eval Leaderboard
 - [ ] Day 73 — hyperparam-tuner: Hyperparameter Tuner
 - [ ] Day 74 — imbalance-toolkit: Class Imbalance Toolkit
