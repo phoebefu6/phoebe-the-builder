@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "ml-engineering-toolkit/train-eval-harness/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml-engineering-toolkit/train-eval-harness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff scikit-learn pandas numpy
+      - run: ruff check . || true
+      - run: python -c "from harness import make_sample_data, run_leaderboard; df=make_sample_data(); b,f=run_leaderboard(df, target='churned', n_splits=3); assert b.shape[0]==5 and b.iloc[0]['ROC AUC mean'] > 0.55 and (b['model']=='Baseline (majority)').any(); print('smoke ok', b.iloc[0]['model'])"
