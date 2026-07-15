@@ -784,12 +784,12 @@
     "day": 72,
     "slug": "train-eval-harness",
     "name": "Train/Eval Leaderboard",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-15",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/train-eval-harness",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/train-eval-harness/demo.ipynb"
   },
   {
     "day": 73,
