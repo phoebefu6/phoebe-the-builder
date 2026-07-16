@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 73 days
-**Total Completed:** 73 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 13/60)
+**Current Streak:** 75 days
+**Total Completed:** 75 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 15/60)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
