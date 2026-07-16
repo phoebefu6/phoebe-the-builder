@@ -817,12 +817,12 @@
     "day": 75,
     "slug": "model-card-gen",
     "name": "Model Card Generator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-16",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/model-card-gen",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/model-card-gen/demo.ipynb"
   },
   {
     "day": 76,
