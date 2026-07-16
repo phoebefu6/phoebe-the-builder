@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 71 days
-**Total Completed:** 71 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 11/60)
+**Current Streak:** 72 days
+**Total Completed:** 72 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 12/60)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -107,7 +107,7 @@
 - [x] Day 71 — feature-factory: Feature Engineering Pipeline (2026-07-14)
 - [x] Day 72 — train-eval-harness: Train/Eval Leaderboard (2026-07-15)
 - [x] Day 73 — hyperparam-tuner: Hyperparameter Tuner (2026-07-15)
-- [ ] Day 74 — imbalance-toolkit: Class Imbalance Toolkit
+- [x] Day 74 — imbalance-toolkit: Class Imbalance Toolkit (2026-07-16)
 - [ ] Day 75 — model-card-gen: Model Card Generator
 - [ ] Day 76 — feature-importance: Feature Importance Explainer
 - [ ] Day 77 — batch-scorer: Batch Scoring Service
