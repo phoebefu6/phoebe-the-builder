@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "ml-engineering-toolkit/leakage-detector/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml-engineering-toolkit/leakage-detector
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff scikit-learn pandas numpy
+      - run: ruff check . || true
+      - run: python -c "from leakage import demo_leaky_data, demo_clean_data, run_all; tr,te,t=demo_leaky_data(); r=run_all(tr,te,t); assert r['verdict']=='leaky' and r['summary']['n_high']>=1; ctr,cte,ct=demo_clean_data(); rc=run_all(ctr,cte,ct); print('smoke ok')"
