@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 75 days
-**Total Completed:** 75 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 15/60)
+**Current Streak:** 76 days
+**Total Completed:** 76 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 16/60)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -109,7 +109,7 @@
 - [x] Day 73 — hyperparam-tuner: Hyperparameter Tuner (2026-07-15)
 - [x] Day 74 — imbalance-toolkit: Class Imbalance Toolkit (2026-07-16)
 - [x] Day 75 — model-card-gen: Model Card Generator (2026-07-16)
-- [ ] Day 76 — feature-importance: Feature Importance Explainer
+- [x] Day 76 — feature-importance: Feature Importance Explainer (2026-07-17)
 - [ ] Day 77 — batch-scorer: Batch Scoring Service
 - [ ] Day 78 — calibration-checker: Probability Calibration Checker
 - [ ] Day 79 — leakage-detector: Data Leakage Detector
