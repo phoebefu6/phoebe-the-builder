@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "ml-engineering-toolkit/batch-scorer/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml-engineering-toolkit/batch-scorer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff scikit-learn pandas numpy joblib
+      - run: ruff check . || true
+      - run: python -c "from scorer import demo_train, load_bundle, sample_new_data, score_frame; p=demo_train(); b=load_bundle(p); d=score_frame(b, sample_new_data()); assert 'score' in d and 'prediction' in d and len(d)==200; print('smoke ok')"
