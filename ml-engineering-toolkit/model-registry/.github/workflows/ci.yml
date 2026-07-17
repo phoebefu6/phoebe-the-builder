@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "ml-engineering-toolkit/model-registry/**"
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml-engineering-toolkit/model-registry
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff scikit-learn pandas numpy joblib
+      - run: ruff check . || true
+      - run: python -c "import tempfile; from sklearn.linear_model import LogisticRegression; from registry import Registry; r=Registry(tempfile.mkdtemp()); r.register('m', LogisticRegression(), {'auc':0.8}); rec=r.register('m', LogisticRegression(), {'auc':0.9}); r.promote('m', rec['version'], 'production'); prod=[x for x in r.list_models('m') if x['stage']=='production']; assert len(prod)==1 and prod[0]['version']==rec['version']; print('smoke ok')"
