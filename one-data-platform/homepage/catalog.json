@@ -839,45 +839,45 @@
     "day": 77,
     "slug": "batch-scorer",
     "name": "Batch Scoring Service",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-17",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/batch-scorer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/batch-scorer/demo.ipynb"
   },
   {
     "day": 78,
     "slug": "calibration-checker",
     "name": "Probability Calibration Checker",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-17",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/calibration-checker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/calibration-checker/demo.ipynb"
   },
   {
     "day": 79,
     "slug": "leakage-detector",
     "name": "Data Leakage Detector",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-17",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/leakage-detector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/leakage-detector/demo.ipynb"
   },
   {
     "day": 80,
     "slug": "model-registry",
     "name": "Mini Model Registry",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-17",
     "product_line": "ML Engineering Toolkit",
     "product_slug": "ml-engineering-toolkit",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/model-registry",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/model-registry/demo.ipynb"
   },
   {
     "day": 81,
