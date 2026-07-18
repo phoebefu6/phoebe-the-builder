@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 80 days
-**Total Completed:** 80 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 20/60 — Month 8 ML Engineering Toolkit ✅ COMPLETE)
+**Current Streak:** 81 days
+**Total Completed:** 81 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 21/60 — Month 9 LLMOps & GenAI Platform started)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -117,7 +117,7 @@
 
 ## Month 9: LLMOps & GenAI Platform (llmops-genai-platform/)
 
-- [ ] Day 81 — prompt-registry: Prompt Registry & Versioning
+- [x] Day 81 — prompt-registry: Prompt Registry & Versioning (2026-07-18)
 - [ ] Day 82 — rag-eval: RAG Evaluation Harness
 - [ ] Day 83 — chunk-optimizer: Chunking Strategy Tester
 - [ ] Day 84 — llm-guardrails: LLM Guardrail Filter
