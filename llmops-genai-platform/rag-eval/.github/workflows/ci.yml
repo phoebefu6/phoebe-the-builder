@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "llmops-genai-platform/rag-eval/**"
+  pull_request:
+    paths:
+      - "llmops-genai-platform/rag-eval/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: llmops-genai-platform/rag-eval
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install lint tooling
+        run: pip install ruff
+      - name: Lint
+        run: ruff check harness.py app.py
+      - name: Smoke test harness
+        run: python harness.py
