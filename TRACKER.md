@@ -2,7 +2,7 @@
 
 **Started:** 2026-06-07
 **Current Streak:** 81 days
-**Total Completed:** 81 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 21/60 — Month 9 LLMOps & GenAI Platform started)
+**Total Completed:** 82 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 22/60 — Month 9 LLMOps & GenAI Platform in progress)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -118,7 +118,7 @@
 ## Month 9: LLMOps & GenAI Platform (llmops-genai-platform/)
 
 - [x] Day 81 — prompt-registry: Prompt Registry & Versioning (2026-07-18)
-- [ ] Day 82 — rag-eval: RAG Evaluation Harness
+- [x] Day 82 — rag-eval: RAG Evaluation Harness (2026-07-19)
 - [ ] Day 83 — chunk-optimizer: Chunking Strategy Tester
 - [ ] Day 84 — llm-guardrails: LLM Guardrail Filter
 - [ ] Day 85 — llm-cost-tracker: LLM Cost & Token Tracker

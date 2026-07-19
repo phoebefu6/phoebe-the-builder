@@ -894,12 +894,12 @@
     "day": 82,
     "slug": "rag-eval",
     "name": "RAG Evaluation Harness",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-19",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/rag-eval",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/rag-eval/demo.ipynb"
   },
   {
     "day": 83,
