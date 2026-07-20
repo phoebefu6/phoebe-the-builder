@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "llmops-genai-platform/llm-guardrails/**"
+  pull_request:
+    paths:
+      - "llmops-genai-platform/llm-guardrails/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: llmops-genai-platform/llm-guardrails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install lint tooling
+        run: pip install ruff
+      - name: Lint
+        run: ruff check guardrails.py app.py
+      - name: Smoke test core logic
+        run: python guardrails.py
