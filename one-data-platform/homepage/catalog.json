@@ -916,34 +916,34 @@
     "day": 84,
     "slug": "llm-guardrails",
     "name": "LLM Guardrail Filter",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/llm-guardrails",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/llm-guardrails/demo.ipynb"
   },
   {
     "day": 85,
     "slug": "llm-cost-tracker",
     "name": "LLM Cost & Token Tracker",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/llm-cost-tracker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/llm-cost-tracker/demo.ipynb"
   },
   {
     "day": 86,
     "slug": "semantic-cache",
     "name": "Semantic Response Cache",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/semantic-cache",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/semantic-cache/demo.ipynb"
   },
   {
     "day": 87,

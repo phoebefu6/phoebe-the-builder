@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 82 days
-**Total Completed:** 83 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 23/60 — Month 9 LLMOps & GenAI Platform in progress)
+**Current Streak:** 85 days
+**Total Completed:** 86 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 26/60 — Month 9 LLMOps & GenAI Platform in progress)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -120,9 +120,9 @@
 - [x] Day 81 — prompt-registry: Prompt Registry & Versioning (2026-07-18)
 - [x] Day 82 — rag-eval: RAG Evaluation Harness (2026-07-19)
 - [x] Day 83 — chunk-optimizer: Chunking Strategy Tester (2026-07-20)
-- [ ] Day 84 — llm-guardrails: LLM Guardrail Filter
-- [ ] Day 85 — llm-cost-tracker: LLM Cost & Token Tracker
-- [ ] Day 86 — semantic-cache: Semantic Response Cache
+- [x] Day 84 — llm-guardrails: LLM Guardrail Filter (2026-07-21)
+- [x] Day 85 — llm-cost-tracker: LLM Cost & Token Tracker (2026-07-21)
+- [x] Day 86 — semantic-cache: Semantic Response Cache (2026-07-21)
 - [ ] Day 87 — structured-extractor: Structured Output Enforcer
 - [ ] Day 88 — hallucination-checker: Hallucination Detector
 - [ ] Day 89 — fewshot-selector: Few-Shot Example Selector
