@@ -905,12 +905,12 @@
     "day": 83,
     "slug": "chunk-optimizer",
     "name": "Chunking Strategy Tester",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-20",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/chunk-optimizer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/chunk-optimizer/demo.ipynb"
   },
   {
     "day": 84,
