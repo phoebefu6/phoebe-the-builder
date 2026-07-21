@@ -949,12 +949,12 @@
     "day": 87,
     "slug": "structured-extractor",
     "name": "Structured Output Enforcer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/structured-extractor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/structured-extractor/demo.ipynb"
   },
   {
     "day": 88,
