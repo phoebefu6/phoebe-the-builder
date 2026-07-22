@@ -960,34 +960,34 @@
     "day": 88,
     "slug": "hallucination-checker",
     "name": "Hallucination Detector",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/hallucination-checker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/hallucination-checker/demo.ipynb"
   },
   {
     "day": 89,
     "slug": "fewshot-selector",
     "name": "Few-Shot Example Selector",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/fewshot-selector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/fewshot-selector/demo.ipynb"
   },
   {
     "day": 90,
     "slug": "llm-router",
     "name": "LLM Model Router",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-21",
     "product_line": "LLMOps & GenAI Platform",
     "product_slug": "llmops-genai-platform",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/llm-router",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/llm-router/demo.ipynb"
   },
   {
     "day": 91,
