@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 85 days
-**Total Completed:** 86 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 26/60 — Month 9 LLMOps & GenAI Platform in progress)
+**Current Streak:** 86 days
+**Total Completed:** 87 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 27/60 — Month 10 Data Quality & Governance in progress)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -130,7 +130,7 @@
 
 ## Month 10: Data Quality & Governance Suite (data-quality-governance/)
 
-- [ ] Day 91 — anomaly-detector: Column Anomaly Detector
+- [x] Day 91 — anomaly-detector: Column Anomaly Detector (2026-07-23)
 - [ ] Day 92 — dq-rules-engine: DQ Rules Engine
 - [ ] Day 93 — data-catalog: Lightweight Data Catalog
 - [ ] Day 94 — business-glossary: Business Glossary Manager

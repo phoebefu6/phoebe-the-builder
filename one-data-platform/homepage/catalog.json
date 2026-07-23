@@ -993,12 +993,12 @@
     "day": 91,
     "slug": "anomaly-detector",
     "name": "Column Anomaly Detector",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/anomaly-detector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/anomaly-detector/demo.ipynb"
   },
   {
     "day": 92,
