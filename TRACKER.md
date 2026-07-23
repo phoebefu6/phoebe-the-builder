@@ -2,7 +2,7 @@
 
 **Started:** 2026-06-07
 **Current Streak:** 86 days
-**Total Completed:** 91 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 31/60 — Month 10 Data Quality & Governance in progress)
+**Total Completed:** 100 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 40/60 — Month 10 Data Quality & Governance ✅ COMPLETE, Month 11 next)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -135,11 +135,11 @@
 - [x] Day 93 — data-catalog: Lightweight Data Catalog (2026-07-23)
 - [x] Day 94 — business-glossary: Business Glossary Manager (2026-07-23)
 - [x] Day 95 — access-auditor: Data Access Auditor (2026-07-23)
-- [ ] Day 96 — retention-enforcer: Data Retention Enforcer
-- [ ] Day 97 — consent-tracker: Consent & Purpose Tracker
-- [ ] Day 98 — schema-registry: Schema Registry
-- [ ] Day 99 — reconciliation-checker: Source-to-Target Reconciliation
-- [ ] Day 100 — data-diff: Dataset Snapshot Diff
+- [x] Day 96 — retention-enforcer: Data Retention Enforcer (2026-07-23)
+- [x] Day 97 — consent-tracker: Consent & Purpose Tracker (2026-07-23)
+- [x] Day 98 — schema-registry: Schema Registry (2026-07-23)
+- [x] Day 99 — reconciliation-checker: Source-to-Target Reconciliation (2026-07-23)
+- [x] Day 100 — data-diff: Dataset Snapshot Diff (2026-07-23)
 
 ## Month 11: Analytics Engineering & BI (analytics-engineering-bi/)
 

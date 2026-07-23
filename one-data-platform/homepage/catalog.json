@@ -1048,56 +1048,56 @@
     "day": 96,
     "slug": "retention-enforcer",
     "name": "Data Retention Enforcer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/retention-enforcer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/retention-enforcer/demo.ipynb"
   },
   {
     "day": 97,
     "slug": "consent-tracker",
     "name": "Consent & Purpose Tracker",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/consent-tracker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/consent-tracker/demo.ipynb"
   },
   {
     "day": 98,
     "slug": "schema-registry",
     "name": "Schema Registry",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/schema-registry",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/schema-registry/demo.ipynb"
   },
   {
     "day": 99,
     "slug": "reconciliation-checker",
     "name": "Source-to-Target Reconciliation",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/reconciliation-checker",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/reconciliation-checker/demo.ipynb"
   },
   {
     "day": 100,
     "slug": "data-diff",
     "name": "Dataset Snapshot Diff",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/data-diff",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/data-diff/demo.ipynb"
   },
   {
     "day": 101,
