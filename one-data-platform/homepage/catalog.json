@@ -1004,45 +1004,45 @@
     "day": 92,
     "slug": "dq-rules-engine",
     "name": "DQ Rules Engine",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/dq-rules-engine",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/dq-rules-engine/demo.ipynb"
   },
   {
     "day": 93,
     "slug": "data-catalog",
     "name": "Lightweight Data Catalog",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/data-catalog",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/data-catalog/demo.ipynb"
   },
   {
     "day": 94,
     "slug": "business-glossary",
     "name": "Business Glossary Manager",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/business-glossary",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/business-glossary/demo.ipynb"
   },
   {
     "day": 95,
     "slug": "access-auditor",
     "name": "Data Access Auditor",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-23",
     "product_line": "Data Quality & Governance Suite",
     "product_slug": "data-quality-governance",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/access-auditor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/access-auditor/demo.ipynb"
   },
   {
     "day": 96,
