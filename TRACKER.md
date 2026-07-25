@@ -1,8 +1,8 @@
 # FDE Portfolio Tracker
 
 **Started:** 2026-06-07
-**Current Streak:** 86 days
-**Total Completed:** 100 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 40/60 — Month 10 Data Quality & Governance ✅ COMPLETE, Month 11 next)
+**Current Streak:** 91 days
+**Total Completed:** 105 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 45/60 — Month 11 Analytics Engineering & BI in progress, Days 101-105 done)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -143,11 +143,11 @@
 
 ## Month 11: Analytics Engineering & BI (analytics-engineering-bi/)
 
-- [ ] Day 101 — metrics-layer: Metrics Layer / Semantic Definitions
-- [ ] Day 102 — nl-to-sql: Natural Language to SQL
-- [ ] Day 103 — dbt-test-gen: dbt Test Generator
-- [ ] Day 104 — metric-alerting: Metric Anomaly Alerter
-- [ ] Day 105 — self-serve-explorer: Self-Serve Data Explorer
+- [x] Day 101 — metrics-layer: Metrics Layer / Semantic Definitions (2026-07-25)
+- [x] Day 102 — nl-to-sql: Natural Language to SQL (2026-07-25)
+- [x] Day 103 — dbt-test-gen: dbt Test Generator (2026-07-25)
+- [x] Day 104 — metric-alerting: Metric Anomaly Alerter (2026-07-25)
+- [x] Day 105 — self-serve-explorer: Self-Serve Data Explorer (2026-07-25)
 - [ ] Day 106 — report-scheduler: Scheduled Report Sender
 - [ ] Day 107 — kpi-tree: KPI Tree / Driver Decomposition
 - [ ] Day 108 — query-optimizer: SQL Optimizer Advisor

@@ -1103,56 +1103,56 @@
     "day": 101,
     "slug": "metrics-layer",
     "name": "Metrics Layer / Semantic Definitions",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/metrics-layer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/metrics-layer/demo.ipynb"
   },
   {
     "day": 102,
     "slug": "nl-to-sql",
     "name": "Natural Language to SQL",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/nl-to-sql",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/nl-to-sql/demo.ipynb"
   },
   {
     "day": 103,
     "slug": "dbt-test-gen",
     "name": "dbt Test Generator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/dbt-test-gen",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/dbt-test-gen/demo.ipynb"
   },
   {
     "day": 104,
     "slug": "metric-alerting",
     "name": "Metric Anomaly Alerter",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/metric-alerting",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/metric-alerting/demo.ipynb"
   },
   {
     "day": 105,
     "slug": "self-serve-explorer",
     "name": "Self-Serve Data Explorer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/self-serve-explorer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/self-serve-explorer/demo.ipynb"
   },
   {
     "day": 106,
