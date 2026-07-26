@@ -2,7 +2,7 @@
 
 **Started:** 2026-06-07
 **Current Streak:** 91 days
-**Total Completed:** 105 / 120 (Portfolio 1: 60/60 ✅ COMPLETE · Portfolio 2: 45/60 — Month 11 Analytics Engineering & BI in progress, Days 101-105 done)
+**Total Completed:** 110 / 120 (Portfolio 1: 60/60 ✅ · Portfolio 2: 50/60 — Month 11 Analytics Engineering & BI ✅ COMPLETE, Month 12 next)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -148,11 +148,11 @@
 - [x] Day 103 — dbt-test-gen: dbt Test Generator (2026-07-25)
 - [x] Day 104 — metric-alerting: Metric Anomaly Alerter (2026-07-25)
 - [x] Day 105 — self-serve-explorer: Self-Serve Data Explorer (2026-07-25)
-- [ ] Day 106 — report-scheduler: Scheduled Report Sender
-- [ ] Day 107 — kpi-tree: KPI Tree / Driver Decomposition
-- [ ] Day 108 — query-optimizer: SQL Optimizer Advisor
-- [ ] Day 109 — dashboard-spec: Dashboard Spec Generator
-- [ ] Day 110 — metric-catalog: Metric Catalog & Ownership
+- [x] Day 106 — report-scheduler: Scheduled Report Sender (2026-07-25)
+- [x] Day 107 — kpi-tree: KPI Tree / Driver Decomposition (2026-07-25)
+- [x] Day 108 — query-optimizer: SQL Optimizer Advisor (2026-07-25)
+- [x] Day 109 — dashboard-spec: Dashboard Spec Generator (2026-07-25)
+- [x] Day 110 — metric-catalog: Metric Catalog & Ownership (2026-07-25)
 
 ## Month 12: Data Science Cookbook (data-science-cookbook/)
 

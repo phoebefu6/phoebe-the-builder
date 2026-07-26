@@ -1158,56 +1158,56 @@
     "day": 106,
     "slug": "report-scheduler",
     "name": "Scheduled Report Sender",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/report-scheduler",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/report-scheduler/demo.ipynb"
   },
   {
     "day": 107,
     "slug": "kpi-tree",
     "name": "KPI Tree / Driver Decomposition",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/kpi-tree",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/kpi-tree/demo.ipynb"
   },
   {
     "day": 108,
     "slug": "query-optimizer",
     "name": "SQL Optimizer Advisor",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/query-optimizer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/query-optimizer/demo.ipynb"
   },
   {
     "day": 109,
     "slug": "dashboard-spec",
     "name": "Dashboard Spec Generator",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/dashboard-spec",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/dashboard-spec/demo.ipynb"
   },
   {
     "day": 110,
     "slug": "metric-catalog",
     "name": "Metric Catalog & Ownership",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Analytics Engineering & BI",
     "product_slug": "analytics-engineering-bi",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/metric-catalog",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/metric-catalog/demo.ipynb"
   },
   {
     "day": 111,
