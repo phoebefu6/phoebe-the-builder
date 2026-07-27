@@ -166,3 +166,7 @@
 - [x] Day 118 — ts-forecaster: General Time Series Forecaster (2026-07-25)
 - [x] Day 119 — outlier-explainer: Outlier Explainer (2026-07-25)
 - [x] Day 120 — crosstab-chi2: Crosstab & Chi-Square Tool (2026-07-25)
+
+## Backlog Builds — Day 121+ (open-ended catalog)
+
+- [x] Day 121 — metric-diff: Period-over-Period Metric Diff (analytics-engineering-bi/) (2026-07-27)
