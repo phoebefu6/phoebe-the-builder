@@ -359,10 +359,11 @@ def render_home(builds: List[Dict[str, object]]) -> str:
 {topnav("home", "")}
 <div class="wrap"><header class="hero">
 <div class="kicker">One Data Platform</div>
-<h1>An open catalog of {len(done)} data &amp; AI tools for data teams.</h1>
+<h1>An open, growing catalog of data &amp; AI tools for data teams.</h1>
 <p class="tag">Small, focused, runnable tools across the data lifecycle — each with source code and a
-one-click notebook. Search it, or browse by capability.</p>
-<div class="meta"><b>{len(done)}</b> tools · <b>{n_domains}</b> capability domains · open source</div>
+one-click notebook. Search it, or browse by capability. New tools added whenever there's an
+opportunity.</p>
+<div class="meta"><b>{len(done)}</b> tools and counting · <b>{n_domains}</b> capability domains · open source</div>
 </header></div>
 <div class="controls"><div class="wrap">
 <div class="search">
