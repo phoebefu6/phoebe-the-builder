@@ -2,7 +2,7 @@
 
 **Started:** 2026-06-07
 **Current Streak:** 91 days
-**Total Completed:** 110 / 120 (Portfolio 1: 60/60 ✅ · Portfolio 2: 50/60 — Month 11 Analytics Engineering & BI ✅ COMPLETE, Month 12 next)
+**Total Completed:** 120 / 120 ✅ COMPLETE (Portfolio 1: 60/60 ✅ · Portfolio 2: 60/60 ✅ — all 12 months done)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -156,13 +156,13 @@
 
 ## Month 12: Data Science Cookbook (data-science-cookbook/)
 
-- [ ] Day 111 — stat-test-advisor: Statistical Test Advisor
-- [ ] Day 112 — correlation-explorer: Correlation & Multicollinearity Explorer
-- [ ] Day 113 — dim-reducer: PCA/UMAP Explorer
-- [ ] Day 114 — topic-modeler: Topic Modeling Tool
-- [ ] Day 115 — ner-extractor: Named Entity Extractor
-- [ ] Day 116 — text-classifier: Text Classification Trainer
-- [ ] Day 117 — recommender: Recommendation Engine
-- [ ] Day 118 — ts-forecaster: General Time Series Forecaster
-- [ ] Day 119 — outlier-explainer: Outlier Explainer
-- [ ] Day 120 — crosstab-chi2: Crosstab & Chi-Square Tool
+- [x] Day 111 — stat-test-advisor: Statistical Test Advisor (2026-07-25)
+- [x] Day 112 — correlation-explorer: Correlation & Multicollinearity Explorer (2026-07-25)
+- [x] Day 113 — dim-reducer: PCA/UMAP Explorer (2026-07-25)
+- [x] Day 114 — topic-modeler: Topic Modeling Tool (2026-07-25)
+- [x] Day 115 — ner-extractor: Named Entity Extractor (2026-07-25)
+- [x] Day 116 — text-classifier: Text Classification Trainer (2026-07-25)
+- [x] Day 117 — recommender: Recommendation Engine (2026-07-25)
+- [x] Day 118 — ts-forecaster: General Time Series Forecaster (2026-07-25)
+- [x] Day 119 — outlier-explainer: Outlier Explainer (2026-07-25)
+- [x] Day 120 — crosstab-chi2: Crosstab & Chi-Square Tool (2026-07-25)

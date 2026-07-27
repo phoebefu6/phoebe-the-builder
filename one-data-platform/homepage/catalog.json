@@ -1213,110 +1213,110 @@
     "day": 111,
     "slug": "stat-test-advisor",
     "name": "Statistical Test Advisor",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/stat-test-advisor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/stat-test-advisor/demo.ipynb"
   },
   {
     "day": 112,
     "slug": "correlation-explorer",
     "name": "Correlation & Multicollinearity Explorer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/correlation-explorer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/correlation-explorer/demo.ipynb"
   },
   {
     "day": 113,
     "slug": "dim-reducer",
     "name": "PCA/UMAP Explorer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/dim-reducer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/dim-reducer/demo.ipynb"
   },
   {
     "day": 114,
     "slug": "topic-modeler",
     "name": "Topic Modeling Tool",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/topic-modeler",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/topic-modeler/demo.ipynb"
   },
   {
     "day": 115,
     "slug": "ner-extractor",
     "name": "Named Entity Extractor",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/ner-extractor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/ner-extractor/demo.ipynb"
   },
   {
     "day": 116,
     "slug": "text-classifier",
     "name": "Text Classification Trainer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/text-classifier",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/text-classifier/demo.ipynb"
   },
   {
     "day": 117,
     "slug": "recommender",
     "name": "Recommendation Engine",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/recommender",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/recommender/demo.ipynb"
   },
   {
     "day": 118,
     "slug": "ts-forecaster",
     "name": "General Time Series Forecaster",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/ts-forecaster",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/ts-forecaster/demo.ipynb"
   },
   {
     "day": 119,
     "slug": "outlier-explainer",
     "name": "Outlier Explainer",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/outlier-explainer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/outlier-explainer/demo.ipynb"
   },
   {
     "day": 120,
     "slug": "crosstab-chi2",
     "name": "Crosstab & Chi-Square Tool",
-    "status": "planned",
-    "date": null,
+    "status": "done",
+    "date": "2026-07-25",
     "product_line": "Data Science Cookbook",
     "product_slug": "data-science-cookbook",
-    "repo_url": null,
-    "colab_url": null
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/crosstab-chi2",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/crosstab-chi2/demo.ipynb"
   }
 ]
