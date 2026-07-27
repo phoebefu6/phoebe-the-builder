@@ -1318,5 +1318,16 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/crosstab-chi2",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/crosstab-chi2/demo.ipynb"
+  },
+  {
+    "day": 121,
+    "slug": "metric-diff",
+    "name": "Period-over-Period Metric Diff (analytics-engineering-bi/)",
+    "status": "done",
+    "date": "2026-07-27",
+    "product_line": "Other",
+    "product_slug": "misc",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/misc/metric-diff",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/misc/metric-diff/demo.ipynb"
   }
 ]
