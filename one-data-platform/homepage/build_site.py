@@ -217,6 +217,24 @@ def product_line(day: int):
     return "misc", "Other"
 
 
+# Backlog builds (Day 121+) sit outside the month ranges, so their tracker line
+# names the folder instead: "slug: Name (ml-engineering-toolkit/)".
+FOLDER_RE = re.compile(r"\s*\((?P<folder>[\w-]+)/\)\s*$")
+
+
+def split_folder(name: str, day: int):
+    """Return (clean_name, slug, line_name), honouring an explicit folder tag."""
+    m = FOLDER_RE.search(name)
+    if not m:
+        return name, *product_line(day)
+    folder = m.group("folder")
+    clean = FOLDER_RE.sub("", name).strip()
+    for _lo, _hi, slug, line_name in PRODUCT_LINES:
+        if slug == folder:
+            return clean, slug, line_name
+    return clean, folder, folder.replace("-", " ").title()
+
+
 def parse_tracker() -> List[Dict[str, object]]:
     builds: List[Dict[str, object]] = []
     for line in TRACKER.read_text().splitlines():
@@ -224,11 +242,11 @@ def parse_tracker() -> List[Dict[str, object]]:
         if not m:
             continue
         day = int(m.group("day"))
-        pl_slug, pl_name = product_line(day)
+        name, pl_slug, pl_name = split_folder(m.group("name").strip(), day)
         done = m.group("done") == "x"
         slug = m.group("slug")
         builds.append({
-            "day": day, "slug": slug, "name": m.group("name").strip(),
+            "day": day, "slug": slug, "name": name,
             "status": "done" if done else "planned", "date": m.group("date"),
             "product_line": pl_name, "product_slug": pl_slug,
             "repo_url": f"https://github.com/{REPO}/tree/main/{pl_slug}/{slug}" if done else None,
