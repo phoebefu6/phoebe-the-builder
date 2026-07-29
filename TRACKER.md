@@ -2,7 +2,7 @@
 
 **Started:** 2026-06-07
 **Current Streak:** 91 days
-**Total Completed:** 120 / 120 ✅ COMPLETE (Portfolio 1: 60/60 ✅ · Portfolio 2: 60/60 ✅ — all 12 months done)
+**Total Completed:** 124 (Portfolio 1: 60/60 ✅ · Portfolio 2: 60/60 ✅ — all 12 months done · Backlog catalog: Day 121+, open-ended)
 **Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
 
 ---
@@ -172,3 +172,4 @@
 - [x] Day 121 — metric-diff: Period-over-Period Metric Diff (analytics-engineering-bi/) (2026-07-27)
 - [x] Day 122 — threshold-explorer: Classification Threshold Explorer (ml-engineering-toolkit/) (2026-07-28)
 - [x] Day 123 — sample-size-calc: Sample Size & Power Calculator (data-science-cookbook/) (2026-07-29)
+- [x] Day 124 — pii-redactor: Policy-Driven PII Redactor (data-quality-governance/) (2026-07-29)
