@@ -1340,5 +1340,16 @@
     "product_slug": "ml-engineering-toolkit",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/threshold-explorer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/threshold-explorer/demo.ipynb"
+  },
+  {
+    "day": 123,
+    "slug": "sample-size-calc",
+    "name": "Sample Size & Power Calculator",
+    "status": "done",
+    "date": "2026-07-29",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/sample-size-calc",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/sample-size-calc/demo.ipynb"
   }
 ]
