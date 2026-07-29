@@ -171,3 +171,4 @@
 
 - [x] Day 121 — metric-diff: Period-over-Period Metric Diff (analytics-engineering-bi/) (2026-07-27)
 - [x] Day 122 — threshold-explorer: Classification Threshold Explorer (ml-engineering-toolkit/) (2026-07-28)
+- [x] Day 123 — sample-size-calc: Sample Size & Power Calculator (data-science-cookbook/) (2026-07-29)
