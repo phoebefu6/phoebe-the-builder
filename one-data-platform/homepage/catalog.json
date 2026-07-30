@@ -1373,5 +1373,60 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/token-cost-estimator",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/token-cost-estimator/demo.ipynb"
+  },
+  {
+    "day": 126,
+    "slug": "prompt-linter",
+    "name": "Prompt Linter",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/prompt-linter",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/prompt-linter/demo.ipynb"
+  },
+  {
+    "day": 127,
+    "slug": "baseline-model",
+    "name": "Baseline Model Ladder",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "ML Engineering Toolkit",
+    "product_slug": "ml-engineering-toolkit",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/baseline-model",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/baseline-model/demo.ipynb"
+  },
+  {
+    "day": 128,
+    "slug": "json-flattener",
+    "name": "JSON Flattener",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/json-flattener",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/json-flattener/demo.ipynb"
+  },
+  {
+    "day": 129,
+    "slug": "null-heatmap",
+    "name": "Null Heatmap & Missingness Report",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/null-heatmap",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/null-heatmap/demo.ipynb"
+  },
+  {
+    "day": 130,
+    "slug": "pivot-narrator",
+    "name": "Pivot Narrator",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/pivot-narrator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/pivot-narrator/demo.ipynb"
   }
 ]
