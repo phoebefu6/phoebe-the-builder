@@ -1362,5 +1362,16 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/pii-redactor",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/pii-redactor/demo.ipynb"
+  },
+  {
+    "day": 125,
+    "slug": "token-cost-estimator",
+    "name": "Token & Cost Estimator",
+    "status": "done",
+    "date": "2026-07-30",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/token-cost-estimator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/token-cost-estimator/demo.ipynb"
   }
 ]

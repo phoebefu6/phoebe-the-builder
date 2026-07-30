@@ -173,3 +173,4 @@
 - [x] Day 122 — threshold-explorer: Classification Threshold Explorer (ml-engineering-toolkit/) (2026-07-28)
 - [x] Day 123 — sample-size-calc: Sample Size & Power Calculator (data-science-cookbook/) (2026-07-29)
 - [x] Day 124 — pii-redactor: Policy-Driven PII Redactor (data-quality-governance/) (2026-07-29)
+- [x] Day 125 — token-cost-estimator: Token & Cost Estimator (llmops-genai-platform/) (2026-07-30)
