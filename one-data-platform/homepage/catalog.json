@@ -1428,5 +1428,16 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/pivot-narrator",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/pivot-narrator/demo.ipynb"
+  },
+  {
+    "day": 131,
+    "slug": "embedding-dedup",
+    "name": "Near-Duplicate Finder for a RAG Corpus",
+    "status": "done",
+    "date": "2026-07-31",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/embedding-dedup",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/embedding-dedup/demo.ipynb"
   }
 ]

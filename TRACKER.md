@@ -179,3 +179,4 @@
 - [x] Day 128 — json-flattener: JSON Flattener (data-engineering-pro/) (2026-07-30)
 - [x] Day 129 — null-heatmap: Null Heatmap & Missingness Report (data-quality-governance/) (2026-07-30)
 - [x] Day 130 — pivot-narrator: Pivot Narrator (analytics-engineering-bi/) (2026-07-30)
+- [x] Day 131 — embedding-dedup: Near-Duplicate Finder for a RAG Corpus (llmops-genai-platform/) (2026-07-31)
