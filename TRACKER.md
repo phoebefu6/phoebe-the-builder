@@ -181,3 +181,4 @@
 - [x] Day 130 — pivot-narrator: Pivot Narrator (analytics-engineering-bi/) (2026-07-30)
 - [x] Day 131 — embedding-dedup: Near-Duplicate Finder for a RAG Corpus (llmops-genai-platform/) (2026-07-31)
 - [x] Day 132 — schema-from-samples: JSON Schema Inference from LLM Outputs (llmops-genai-platform/) (2026-08-02)
+- [x] Day 133 — type-inferencer: Lossless SQL Type Inference from Raw Text (data-engineering-pro/) (2026-08-02)

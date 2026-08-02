@@ -1450,5 +1450,16 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/schema-from-samples",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/schema-from-samples/demo.ipynb"
+  },
+  {
+    "day": 133,
+    "slug": "type-inferencer",
+    "name": "Lossless SQL Type Inference from Raw Text",
+    "status": "done",
+    "date": "2026-08-02",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/type-inferencer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/type-inferencer/demo.ipynb"
   }
 ]
