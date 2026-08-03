@@ -1461,5 +1461,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/type-inferencer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/type-inferencer/demo.ipynb"
+  },
+  {
+    "day": 134,
+    "slug": "dsar-extractor",
+    "name": "Subject Access Request Extractor",
+    "status": "done",
+    "date": "2026-08-03",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/dsar-extractor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/dsar-extractor/demo.ipynb"
   }
 ]
