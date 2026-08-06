@@ -184,3 +184,4 @@
 - [x] Day 133 — type-inferencer: Lossless SQL Type Inference from Raw Text (data-engineering-pro/) (2026-08-02)
 - [x] Day 134 — dsar-extractor: Subject Access Request Extractor (data-quality-governance/) (2026-08-03)
 - [x] Day 135 — feature-binner: Monotone WOE Binning with a Defensible IV (ml-engineering-toolkit/) (2026-08-04)
+- [x] Day 136 — distribution-fitter: AIC Ranking Plus an Absolute Goodness-of-Fit Test (data-science-cookbook/) (2026-08-06)
