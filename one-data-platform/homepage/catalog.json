@@ -1483,5 +1483,16 @@
     "product_slug": "ml-engineering-toolkit",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/ml-engineering-toolkit/feature-binner",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/ml-engineering-toolkit/feature-binner/demo.ipynb"
+  },
+  {
+    "day": 136,
+    "slug": "distribution-fitter",
+    "name": "AIC Ranking Plus an Absolute Goodness-of-Fit Test",
+    "status": "done",
+    "date": "2026-08-06",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/distribution-fitter",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/distribution-fitter/demo.ipynb"
   }
 ]
