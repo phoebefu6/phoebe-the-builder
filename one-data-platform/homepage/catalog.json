@@ -1494,5 +1494,16 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/distribution-fitter",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/distribution-fitter/demo.ipynb"
+  },
+  {
+    "day": 137,
+    "slug": "sparkline-gen",
+    "name": "Inline SVG Trend Marks That Report Their Own Scale",
+    "status": "done",
+    "date": "2026-08-07",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/sparkline-gen",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/sparkline-gen/demo.ipynb"
   }
 ]
