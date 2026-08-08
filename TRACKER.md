@@ -186,3 +186,4 @@
 - [x] Day 135 — feature-binner: Monotone WOE Binning with a Defensible IV (ml-engineering-toolkit/) (2026-08-04)
 - [x] Day 136 — distribution-fitter: AIC Ranking Plus an Absolute Goodness-of-Fit Test (data-science-cookbook/) (2026-08-06)
 - [x] Day 137 — sparkline-gen: Inline SVG Trend Marks That Report Their Own Scale (analytics-engineering-bi/) (2026-08-07)
+- [x] Day 138 — fixed-width-parser: Byte-Accurate Fixed-Width Parsing with a Pre-Flight Audit (data-engineering-pro/) (2026-08-08)

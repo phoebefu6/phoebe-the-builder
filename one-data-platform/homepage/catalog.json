@@ -1505,5 +1505,16 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/sparkline-gen",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/sparkline-gen/demo.ipynb"
+  },
+  {
+    "day": 138,
+    "slug": "fixed-width-parser",
+    "name": "Byte-Accurate Fixed-Width Parsing with a Pre-Flight Audit",
+    "status": "done",
+    "date": "2026-08-08",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/fixed-width-parser",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/fixed-width-parser/demo.ipynb"
   }
 ]
