@@ -1527,5 +1527,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/timezone-normalizer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/timezone-normalizer/demo.ipynb"
+  },
+  {
+    "day": 140,
+    "slug": "markdown-tabler",
+    "name": "Render a GFM Table and Report What It Cannot Carry",
+    "status": "done",
+    "date": "2026-08-09",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/markdown-tabler",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/markdown-tabler/demo.ipynb"
   }
 ]
