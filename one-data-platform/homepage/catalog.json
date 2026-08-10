@@ -1538,5 +1538,16 @@
     "product_slug": "automation-suite",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/markdown-tabler",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/markdown-tabler/demo.ipynb"
+  },
+  {
+    "day": 141,
+    "slug": "cron-explainer",
+    "name": "Read a Cron Line the Way Cron Reads It",
+    "status": "done",
+    "date": "2026-08-10",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/cron-explainer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/cron-explainer/demo.ipynb"
   }
 ]

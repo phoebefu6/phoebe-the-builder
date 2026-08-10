@@ -189,3 +189,4 @@
 - [x] Day 138 — fixed-width-parser: Byte-Accurate Fixed-Width Parsing with a Pre-Flight Audit (data-engineering-pro/) (2026-08-08)
 - [x] Day 139 — timezone-normalizer: Local-to-UTC Resolution with the Undecidable Cases Named (data-engineering-pro/) (2026-08-09)
 - [x] Day 140 — markdown-tabler: Render a GFM Table and Report What It Cannot Carry (automation-suite/) (2026-08-09)
+- [x] Day 141 — cron-explainer: Read a Cron Line the Way Cron Reads It (automation-suite/) (2026-08-10)
