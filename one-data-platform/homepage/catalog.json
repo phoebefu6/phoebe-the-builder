@@ -1549,5 +1549,16 @@
     "product_slug": "automation-suite",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/cron-explainer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/cron-explainer/demo.ipynb"
+  },
+  {
+    "day": 142,
+    "slug": "csv-dialect-sniffer",
+    "name": "Enumerate Every Viable Dialect Instead of Returning One",
+    "status": "done",
+    "date": "2026-08-11",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/csv-dialect-sniffer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/csv-dialect-sniffer/demo.ipynb"
   }
 ]
