@@ -1,3 +1,13 @@
+<!-- phoebe header -->
+
+[![Open the live site](https://img.shields.io/badge/%E2%96%B6%20open%20the%20live%20site-1f6feb?style=for-the-badge)](https://phoebefu6.github.io/phoebe-the-builder/)
+[![Star this repo](https://img.shields.io/github/stars/phoebefu6/phoebe-the-builder?style=for-the-badge&label=star%20this%20repo&color=444444)](https://github.com/phoebefu6/phoebe-the-builder/stargazers)
+
+### ▶︎ [Open the live site →](https://phoebefu6.github.io/phoebe-the-builder/)
+
+Free and open. Every build links to its source.
+
+<!-- /phoebe header -->
 <div align="center">
 
 # 🛠️ phoebe-the-builder
