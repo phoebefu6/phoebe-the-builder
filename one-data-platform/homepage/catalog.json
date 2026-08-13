@@ -1560,5 +1560,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/csv-dialect-sniffer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/csv-dialect-sniffer/demo.ipynb"
+  },
+  {
+    "day": 143,
+    "slug": "currency-rounder",
+    "name": "Allocate a Total Instead of Rounding Its Rows",
+    "status": "done",
+    "date": "2026-08-13",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/currency-rounder",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/currency-rounder/demo.ipynb"
   }
 ]
