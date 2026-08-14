@@ -192,3 +192,4 @@
 - [x] Day 141 — cron-explainer: Read a Cron Line the Way Cron Reads It (automation-suite/) (2026-08-10)
 - [x] Day 142 — csv-dialect-sniffer: Enumerate Every Viable Dialect Instead of Returning One (data-engineering-pro/) (2026-08-11)
 - [x] Day 143 — currency-rounder: Allocate a Total Instead of Rounding Its Rows (data-engineering-pro/) (2026-08-13)
+- [x] Day 144 — slug-collider: Report the Collisions a Slugifier Creates (automation-suite/) (2026-08-14)

@@ -1571,5 +1571,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/currency-rounder",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/currency-rounder/demo.ipynb"
+  },
+  {
+    "day": 144,
+    "slug": "slug-collider",
+    "name": "Report the Collisions a Slugifier Creates",
+    "status": "done",
+    "date": "2026-08-14",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/slug-collider",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/slug-collider/demo.ipynb"
   }
 ]
