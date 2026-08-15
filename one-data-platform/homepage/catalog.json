@@ -1582,5 +1582,16 @@
     "product_slug": "automation-suite",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/slug-collider",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/slug-collider/demo.ipynb"
+  },
+  {
+    "day": 145,
+    "slug": "retry-schedule",
+    "name": "Report the Arrival Process a Backoff Creates",
+    "status": "done",
+    "date": "2026-08-15",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/retry-schedule",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/retry-schedule/demo.ipynb"
   }
 ]
