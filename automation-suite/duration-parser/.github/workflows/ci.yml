@@ -1,0 +1,21 @@
+name: duration-parser CI
+on:
+  push:
+    paths: ["automation-suite/duration-parser/**"]
+  pull_request:
+    paths: ["automation-suite/duration-parser/**"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: automation-suite/duration-parser
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest matplotlib numpy pandas ruff
+      - run: ruff check durations.py evidence.py make_chart.py app.py
+      - run: python -m pytest test_durations.py -q
+      - run: python evidence.py
