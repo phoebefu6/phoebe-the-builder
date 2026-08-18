@@ -1615,5 +1615,16 @@
     "product_slug": "automation-suite",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/duration-parser",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/duration-parser/demo.ipynb"
+  },
+  {
+    "day": 148,
+    "slug": "percent-recomputer",
+    "name": "A Percentage Column Is an Apportionment",
+    "status": "done",
+    "date": "2026-08-18",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/percent-recomputer",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/percent-recomputer/demo.ipynb"
   }
 ]
