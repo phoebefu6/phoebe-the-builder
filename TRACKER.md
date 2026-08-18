@@ -195,3 +195,4 @@
 - [x] Day 144 — slug-collider: Report the Collisions a Slugifier Creates (automation-suite/) (2026-08-14)
 - [x] Day 145 — retry-schedule: Report the Arrival Process a Backoff Creates (automation-suite/) (2026-08-15)
 - [x] Day 146 — filename-sanitiser: Report the Collisions a Sanitiser Creates (automation-suite/) (2026-08-17)
+- [x] Day 147 — duration-parser: Report Every Reading a Conforming Parser Could Return (automation-suite/) (2026-08-18)

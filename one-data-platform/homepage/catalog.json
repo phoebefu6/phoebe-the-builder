@@ -1604,5 +1604,16 @@
     "product_slug": "automation-suite",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/filename-sanitiser",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/filename-sanitiser/demo.ipynb"
+  },
+  {
+    "day": 147,
+    "slug": "duration-parser",
+    "name": "Report Every Reading a Conforming Parser Could Return",
+    "status": "done",
+    "date": "2026-08-18",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/duration-parser",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/duration-parser/demo.ipynb"
   }
 ]
