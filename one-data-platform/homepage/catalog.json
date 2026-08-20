@@ -1626,5 +1626,16 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/percent-recomputer",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/percent-recomputer/demo.ipynb"
+  },
+  {
+    "day": 149,
+    "slug": "header-casing",
+    "name": "A Field Name Is an Identity, Not a String",
+    "status": "done",
+    "date": "2026-08-20",
+    "product_line": "Business Automation Suite",
+    "product_slug": "automation-suite",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/automation-suite/header-casing",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/automation-suite/header-casing/demo.ipynb"
   }
 ]

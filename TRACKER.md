@@ -197,3 +197,4 @@
 - [x] Day 146 — filename-sanitiser: Report the Collisions a Sanitiser Creates (automation-suite/) (2026-08-17)
 - [x] Day 147 — duration-parser: Report Every Reading a Conforming Parser Could Return (automation-suite/) (2026-08-18)
 - [x] Day 148 — percent-recomputer: A Percentage Column Is an Apportionment (analytics-engineering-bi/) (2026-08-18)
+- [x] Day 149 — header-casing: A Field Name Is an Identity, Not a String (automation-suite/) (2026-08-20)
