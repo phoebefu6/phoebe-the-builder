@@ -1659,5 +1659,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/line-ending-detector",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/line-ending-detector/demo.ipynb"
+  },
+  {
+    "day": 152,
+    "slug": "number-parser-locale",
+    "name": "A Numeric String Does Not Contain a Number, a Reader Assigns One",
+    "status": "done",
+    "date": "2026-08-21",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/number-parser-locale",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/number-parser-locale/demo.ipynb"
   }
 ]
