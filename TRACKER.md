@@ -199,3 +199,4 @@
 - [x] Day 148 — percent-recomputer: A Percentage Column Is an Apportionment (analytics-engineering-bi/) (2026-08-18)
 - [x] Day 149 — header-casing: A Field Name Is an Identity, Not a String (automation-suite/) (2026-08-20)
 - [x] Day 150 — sort-order-drift: ORDER BY Name Is a Collation, Not an Order (data-engineering-pro/) (2026-08-20)
+- [x] Day 151 — line-ending-detector: A File Has No Lines In It, a Splitter Makes Them (data-engineering-pro/) (2026-08-20)
