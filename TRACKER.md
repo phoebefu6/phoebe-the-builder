@@ -201,3 +201,4 @@
 - [x] Day 150 — sort-order-drift: ORDER BY Name Is a Collation, Not an Order (data-engineering-pro/) (2026-08-20)
 - [x] Day 151 — line-ending-detector: A File Has No Lines In It, a Splitter Makes Them (data-engineering-pro/) (2026-08-20)
 - [x] Day 152 — number-parser-locale: A Numeric String Does Not Contain a Number, a Reader Assigns One (data-engineering-pro/) (2026-08-21)
+- [x] Day 153 — unicode-width-truncator: Truncate to N Does Not Name an Operation (data-engineering-pro/) (2026-08-24)

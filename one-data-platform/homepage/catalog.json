@@ -1670,5 +1670,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/number-parser-locale",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/number-parser-locale/demo.ipynb"
+  },
+  {
+    "day": 153,
+    "slug": "unicode-width-truncator",
+    "name": "Truncate to N Does Not Name an Operation",
+    "status": "done",
+    "date": "2026-08-24",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/unicode-width-truncator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/unicode-width-truncator/demo.ipynb"
   }
 ]
