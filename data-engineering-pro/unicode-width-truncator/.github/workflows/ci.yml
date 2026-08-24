@@ -1,0 +1,29 @@
+name: unicode-width-truncator CI
+
+on:
+  push:
+    paths:
+      - 'data-engineering-pro/unicode-width-truncator/**'
+  pull_request:
+    paths:
+      - 'data-engineering-pro/unicode-width-truncator/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-engineering-pro/unicode-width-truncator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # The UTF-16 / Intl.Segmenter truncators are real JavaScript.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install -r requirements.txt ruff
+      - run: ruff check .
+      - run: python -m pytest -q
+      - run: python evidence.py > /dev/null
