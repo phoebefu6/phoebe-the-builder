@@ -184,7 +184,8 @@ TASK_OF = {
     "cron-explainer": "automate", "retry-schedule": "automate",
     "accessibility-checker": "automate",
     # Choose, and be able to defend it
-    "decision-log": "decide", "feature-prioritizer": "decide", "idea-validator": "decide",
+    "decision-log": "decide", "pre-mortem": "decide",
+    "feature-prioritizer": "decide", "idea-validator": "decide",
     "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",
     "user-story-gen": "decide",
 }
