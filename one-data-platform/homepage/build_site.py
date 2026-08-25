@@ -435,9 +435,13 @@ def problem_line(product_slug: str, slug: str, limit: int = 190) -> str:
         if out and len(out) + 1 + len(part) > limit:
             break
         out = f"{out} {part}".strip()
-    if out:
+    # A single sentence can still overrun the budget; cap it so one long
+    # opener cannot blow out a card or a table row.
+    hard = int(limit * 1.3)
+    if out and len(out) <= hard:
         return out
-    return text[:limit].rsplit(" ", 1)[0].rstrip(" -,;:") + "\u2026"
+    source = out or text
+    return source[:hard].rsplit(" ", 1)[0].rstrip(" -,;:") + "\u2026"
 
 
 def _esc(s: str) -> str:
@@ -587,6 +591,70 @@ autocomplete="off"></div>
 </div>{script}</body></html>"""
 
 
+# ── Repo README ───────────────────────────────────────────────────────────────
+# Generated from the same catalog as the homepage. It used to be maintained by
+# hand, which is why it sat frozen at 75 builds while the repo passed 150 - a
+# second source of truth always loses to the one that is generated.
+
+README_PATH = ROOT.parent / "README.md"
+HEADER_OPEN, HEADER_CLOSE = "<!-- phoebe header -->", "<!-- /phoebe header -->"
+
+
+def _existing_managed_header() -> str:
+    """Preserve the header block another tool owns, verbatim."""
+    if not README_PATH.exists():
+        return ""
+    text = README_PATH.read_text(encoding="utf-8")
+    if HEADER_OPEN in text and HEADER_CLOSE in text:
+        start = text.index(HEADER_OPEN)
+        end = text.index(HEADER_CLOSE) + len(HEADER_CLOSE)
+        return text[start:end] + "\n"
+    return ""
+
+
+def render_readme(builds: List[Dict[str, object]]) -> str:
+    done = [b for b in builds if b["status"] == "done"]
+    by_task: Dict[str, List[Dict[str, object]]] = {}
+    for b in done:
+        by_task.setdefault(str(b["task"]), []).append(b)
+
+    out = [_existing_managed_header()]
+    out.append("# phoebe-the-builder\n")
+    out.append(
+        "Small, exact tools for the parts of data work that quietly go wrong.\n\n"
+        "Each one started with something breaking in a real pipeline: a metric that disagreed "
+        "with itself, a parser that read the same bytes two ways, a model that looked fine "
+        "until it shipped. Every tool ships with source, a runnable Colab/Binder notebook, "
+        "a working app, a Dockerfile and CI.\n\n"
+        "**[Browse them by what you are trying to do →]"
+        "(https://phoebefu6.github.io/phoebe-the-builder/)**\n"
+    )
+
+    for tid, title, question in TASKS:
+        items = sorted(by_task.get(tid, []), key=lambda x: str(x["name"]).lower())
+        if not items:
+            continue
+        out.append(f"\n---\n\n## {title}\n\n*{question}*\n")
+        out.append("| Tool | The problem it was built for |")
+        out.append("|------|------------------------------|")
+        for b in items:
+            problem = problem_line(str(b["product_slug"]), str(b["slug"]), limit=118)
+            problem = problem.replace("|", "\\|")
+            out.append(f"| [{b['name']}]({b['product_slug']}/{b['slug']}/) | {problem} |")
+        out.append("")
+
+    out.append(
+        "\n---\n\n"
+        "### The spine underneath\n\n"
+        "The tools plug into a control plane built alongside them: identity, permissions, "
+        "an audit log, a connector layer and orchestration. The "
+        "[architecture notes](https://phoebefu6.github.io/phoebe-the-builder/wiki/02-architecture.html) "
+        "walk the design decisions.\n\n"
+        "*Built in public by Phoebe Fu.*\n"
+    )
+    return "\n".join(out)
+
+
 # ── Markdown -> styled HTML ────────────────────────────────────────────────────
 def render_doc(md_path: Path, prefix: str) -> str:
     raw = md_path.read_text()
@@ -649,9 +717,11 @@ def main() -> None:
 
     (HERE / "catalog.json").write_text(json.dumps(builds, indent=2))
     (HERE / "index.html").write_text(render_home(builds))
+    README_PATH.write_text(render_readme(builds))
     n_docs = render_wiki()
     filled = sum(1 for tid, _t, _q in TASKS if any(b["task"] == tid for b in done))
-    print(f"Site built: {filled} task sections + {n_docs} wiki pages -> homepage/")
+    print(f"Site built: {filled} task sections + {n_docs} wiki pages -> homepage/, "
+          f"README.md regenerated")
 
 
 if __name__ == "__main__":
