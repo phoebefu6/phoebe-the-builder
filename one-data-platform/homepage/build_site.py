@@ -69,6 +69,129 @@ DOMAINS = [
      ["automation-suite", "mini-saas-products"]),
 ]
 
+# ── Task taxonomy ─────────────────────────────────────────────────────────────
+# The catalog is organised by the JOB somebody is trying to do, not by when a
+# tool happened to get built. Build order is an accident of the calendar; the
+# task is what a person arrives with.
+#
+# (id, verb-led title, the question the practitioner actually asks)
+TASKS = [
+    ("ingest", "Move data in",
+     "It lives somewhere else and it has to land here, on a schedule, without losing rows."),
+    ("shape", "Make raw values usable",
+     "The bytes arrived. What they MEAN is a decision, and every layer decides differently."),
+    ("trust", "Prove it is right",
+     "Something changed upstream. Find out before a dashboard does."),
+    ("govern", "Control who sees what",
+     "Who owns this column, who may read it, and can you show an auditor?"),
+    ("observe", "Know when it breaks",
+     "The pipeline fails at 3am. The question is whether anyone finds out before the meeting."),
+    ("explore", "Find out what is in it",
+     "A new dataset landed. Two hours of profiling before you can say anything about it."),
+    ("measure", "Turn it into a number people act on",
+     "One metric, three dashboards, three answers. Define it once and serve it."),
+    ("infer", "Decide what is actually true",
+     "The line went up. Whether that means anything is a separate question."),
+    ("predict", "Learn from it",
+     "Fit something, then find out honestly whether it is better than doing nothing."),
+    ("understand", "Get answers out of documents",
+     "The answer is in a 200-page PDF nobody will read."),
+    ("evaluate", "Check the AI is any good",
+     "It sounds right. Sounding right is not a measurement."),
+    ("automate", "Make it run itself",
+     "The task is small, correct, and done by hand every single week."),
+    ("decide", "Choose, and be able to defend it",
+     "The number is on the screen. Someone still has to decide, and later justify it."),
+]
+
+# Every built tool is assigned exactly one task. `main()` fails loudly on an
+# unmapped slug rather than silently dropping it from the catalog.
+TASK_OF = {
+    # Move data in
+    "csv-loader": "ingest", "api-warehouse-connector": "ingest", "api-paginator": "ingest",
+    "incremental-loader": "ingest", "streaming-aggregator": "ingest",
+    "parquet-partitioner": "ingest", "backfill-planner": "ingest",
+    # Make raw values usable
+    "boolean-parser": "shape", "number-parser-locale": "shape",
+    "line-ending-detector": "shape", "sort-order-drift": "shape",
+    "unicode-width-truncator": "shape", "duration-parser": "shape",
+    "header-casing": "shape", "csv-dialect-sniffer": "shape",
+    "fixed-width-parser": "shape", "timezone-normalizer": "shape",
+    "type-inferencer": "shape", "json-flattener": "shape", "currency-rounder": "shape",
+    "percent-recomputer": "shape", "slug-collider": "shape", "filename-sanitiser": "shape",
+    "csv-cleaner": "shape", "markdown-tabler": "shape", "dedup-pipeline": "shape",
+    "duplicate-finder": "shape",
+    # Prove it is right
+    "data-contract-validator": "trust", "dq-rules-engine": "trust",
+    "gx-config-generator": "trust", "data-quality-scorecard": "trust",
+    "reconciliation-checker": "trust", "data-diff": "trust", "schema-diff": "trust",
+    "schema-registry": "trust", "dbt-test-gen": "trust", "json-validator": "trust",
+    "null-heatmap": "trust", "anomaly-detector": "trust",
+    # Control who sees what
+    "pii-detector": "govern", "pii-redactor": "govern", "dsar-extractor": "govern",
+    "consent-tracker": "govern", "retention-enforcer": "govern", "access-auditor": "govern",
+    "compliance-checker": "govern", "data-catalog": "govern", "business-glossary": "govern",
+    "data-dict-gen": "govern", "column-lineage": "govern", "data-lineage-viz": "govern",
+    "erd-generator": "govern", "privacy-policy-gen": "govern", "model-card-gen": "govern",
+    # Know when it breaks
+    "data-freshness-monitor": "observe", "pipeline-sla-monitor": "observe",
+    "cron-monitor": "observe", "db-health-dashboard": "observe", "log-parser": "observe",
+    "metric-alerting": "observe", "model-drift-detector": "observe",
+    "pipeline-monitor-agent": "observe", "incident-agent": "observe", "env-checker": "observe",
+    # Find out what is in it
+    "auto-eda": "explore", "correlation-explorer": "explore", "outlier-explainer": "explore",
+    "dim-reducer": "explore", "customer-segments": "explore", "survey-analyzer": "explore",
+    "feedback-analyzer": "explore", "topic-modeler": "explore",
+    # Turn it into a number people act on
+    "kpi-tracker": "measure", "kpi-tree": "measure", "metric-catalog": "measure",
+    "metrics-layer": "measure", "metric-diff": "measure", "dashboard-spec": "measure",
+    "self-serve-explorer": "measure", "funnel-analyzer": "measure",
+    "cohort-analysis": "measure", "sparkline-gen": "measure", "pivot-narrator": "measure",
+    "report-scheduler": "measure", "nl-to-sql": "measure", "query-optimizer": "measure",
+    "portfolio-dashboard": "measure", "sales-forecast": "measure",
+    # Decide what is actually true
+    "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
+    "crosstab-chi2": "infer", "distribution-fitter": "infer",
+    # Learn from it
+    "baseline-model": "predict", "feature-factory": "predict",
+    "feature-importance": "predict", "feature-binner": "predict",
+    "hyperparam-tuner": "predict", "train-eval-harness": "predict",
+    "model-registry": "predict", "batch-scorer": "predict", "leakage-detector": "predict",
+    "imbalance-toolkit": "predict", "calibration-checker": "predict",
+    "threshold-explorer": "predict", "churn-predictor": "predict", "recommender": "predict",
+    "ts-forecaster": "predict", "text-classifier": "predict",
+    # Get answers out of documents
+    "pdf-qa-bot": "understand", "semantic-search": "understand",
+    "knowledge-base": "understand", "faq-generator": "understand",
+    "contract-extractor": "understand", "meeting-summarizer": "understand",
+    "competitive-intel": "understand", "resume-screener": "understand",
+    "ner-extractor": "understand", "structured-extractor": "understand",
+    "schema-from-samples": "understand", "embedding-dedup": "understand",
+    "chunk-optimizer": "understand",
+    # Check the AI is any good
+    "rag-eval": "evaluate", "agent-eval-dashboard": "evaluate",
+    "hallucination-checker": "evaluate", "llm-guardrails": "evaluate",
+    "prompt-linter": "evaluate", "prompt-registry": "evaluate",
+    "fewshot-selector": "evaluate", "llm-router": "evaluate",
+    "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
+    "semantic-cache": "evaluate",
+    # Make it run itself
+    "email-agent": "automate", "code-review-agent": "automate",
+    "onboarding-agent": "automate", "report-agent": "automate",
+    "slack-qa-agent": "automate", "ticket-router": "automate", "standup-bot": "automate",
+    "auto-readme": "automate", "dbt-model-generator": "automate",
+    "airflow-dag-gen": "automate", "md-to-pdf": "automate", "sql-formatter": "automate",
+    "cron-explainer": "automate", "retry-schedule": "automate",
+    "accessibility-checker": "automate",
+    # Choose, and be able to defend it
+    "decision-log": "decide", "feature-prioritizer": "decide", "idea-validator": "decide",
+    "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",
+    "user-story-gen": "decide",
+}
+
+TASK_TITLE = {t[0]: t[1] for t in TASKS}
+
+
 # Short pill labels per product line (the sub-category shown on each card).
 LINE_LABEL = {
     "data-infra-toolkit": "Infra Toolkit",
@@ -114,10 +237,16 @@ background:var(--bg);line-height:1.6}
 .wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
 .topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
 border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
-.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+/* One row at every width. A wrapping topbar changes its own height, which
+   breaks the sticky offset of anything docked beneath it. */
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:nowrap;overflow-x:auto;
+scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-top:.7rem;padding-bottom:.7rem}
+.topbar .wrap::-webkit-scrollbar{display:none}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em;
+flex:0 0 auto;white-space:nowrap}
 .topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
-border-radius:7px}
+border-radius:7px;flex:0 0 auto;white-space:nowrap}
+.topbar a.nav:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
 .topbar a.nav.active{background:#eeedfb;color:var(--accent)}
 """
@@ -151,50 +280,64 @@ footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid v
 """
 
 HOME_CSS = THEME + """
-header.hero{padding:2.6rem 0 1.6rem}
-.kicker{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
-h1{font-size:2.4rem;margin:.4rem 0 .6rem;letter-spacing:-.02em;max-width:760px}
-.tag{color:var(--muted);font-size:1.05rem;max-width:680px}
-.meta{margin-top:1rem;color:var(--muted);font-size:.86rem;font-weight:600}
-.meta b{color:var(--ink)}
-/* controls: search + domain filters (sticky under topbar) */
-.controls{position:sticky;top:52px;z-index:9;background:rgba(251,251,254,.94);backdrop-filter:blur(8px);
-border-bottom:1px solid var(--line);padding:.8rem 0}
+header.hero{padding:3.4rem 0 2rem;max-width:780px}
+.kicker{color:var(--accent);font-weight:700;letter-spacing:.09em;text-transform:uppercase;font-size:.74rem}
+h1{font-size:2.55rem;margin:.55rem 0 .75rem;letter-spacing:-.028em;line-height:1.12}
+.tag{color:var(--muted);font-size:1.04rem;line-height:1.6;margin:0}
+/* controls: search + task filters (sticky under topbar) */
+.controls{position:sticky;top:var(--topbar-h,52px);z-index:9;background:rgba(251,251,254,.94);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:.8rem 0}
 .controls .wrap{display:flex;flex-direction:column;gap:.7rem}
-.search{position:relative;max-width:100%}
-.search input{width:100%;padding:.7rem .9rem .7rem 2.3rem;border:1px solid var(--line);border-radius:10px;
+.search{position:relative}
+.search input{width:100%;padding:.72rem .9rem .72rem 2.3rem;border:1px solid var(--line);border-radius:10px;
 font-size:.95rem;background:#fff;color:var(--ink)}
 .search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(61,52,214,.1)}
 .search svg{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);opacity:.45}
-.chips{display:flex;gap:.5rem;flex-wrap:wrap}
-.chip{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:.82rem;font-weight:600;
-padding:.4rem .8rem;border-radius:999px;cursor:pointer;transition:.12s;display:inline-flex;align-items:center;gap:.4rem}
+/* One scrollable row: 14 filters must not wrap into a wall of sticky chrome. */
+.chips{display:flex;gap:.42rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+-webkit-overflow-scrolling:touch;padding-bottom:2px;
+-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);
+mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:.8rem;font-weight:600;
+padding:.36rem .74rem;border-radius:999px;cursor:pointer;transition:.12s;white-space:nowrap;flex:0 0 auto}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .chip:hover{border-color:var(--accent);color:var(--accent)}
 .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.chip .c{font-size:.72rem;opacity:.7}
-.chip.active .c{opacity:.85}
-.chip .swatch{width:9px;height:9px;border-radius:50%}
 main{padding-bottom:1rem}
-.domain{padding:2rem 0 .5rem}
-.domain-head{display:flex;align-items:baseline;gap:.7rem;margin:0 0 .2rem;border-left:4px solid var(--dc);
-padding-left:.7rem}
-.domain-head h2{font-size:1.35rem;margin:0}
-.domain-head .count{font-size:.78rem;color:var(--muted);font-weight:600}
-.domain-sub{color:var(--muted);font-size:.9rem;margin:.1rem 0 1rem .95rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1rem}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.05rem 1.1rem;transition:.15s;
-display:flex;flex-direction:column}
+.task{padding:2.9rem 0 .3rem;border-top:1px solid var(--line)}
+.task:first-of-type{border-top:0;padding-top:2rem}
+.task h2{font-size:1.55rem;margin:0;letter-spacing:-.022em}
+.task-q{color:var(--muted);font-size:.95rem;margin:.4rem 0 1.35rem;max-width:640px;line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:.95rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.05rem 1.1rem;
+display:flex;flex-direction:column;gap:.45rem;transition:.15s}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(60,52,214,.09);border-color:#d6d2f5}
-.pill{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;
-padding:.18rem .5rem;border-radius:6px;color:#fff;background:var(--dc)}
-.card h3{margin:.6rem 0 .35rem;font-size:1.05rem;line-height:1.35}
-.card code{font-size:.74rem;color:var(--muted);font-family:'SF Mono',Menlo,Consolas,monospace}
-.card .links{margin-top:auto;padding-top:.85rem;display:flex;gap:.9rem}
-.card .links a{font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:600}
-.card .links a:hover{text-decoration:underline}
-.noresults{display:none;text-align:center;color:var(--muted);padding:3rem 0;font-size:1rem}
-footer{color:var(--muted);font-size:.82rem;padding:2.4rem 0;border-top:1px solid var(--line);margin-top:2rem}
-@media(max-width:560px){h1{font-size:1.9rem}.controls{top:96px}}
+.card h3{margin:0;font-size:1rem;line-height:1.3;letter-spacing:-.012em}
+.problem{margin:0;color:#4c4c63;font-size:.875rem;line-height:1.58}
+.foot{margin-top:auto;padding-top:.8rem;display:flex;align-items:center;justify-content:space-between;
+gap:.6rem;border-top:1px solid #f1f0f9}
+.foot code{font-size:.72rem;color:var(--muted);font-family:'SF Mono',Menlo,Consolas,monospace;
+overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.links{display:flex;gap:.75rem;flex-shrink:0}
+.links a{font-size:.79rem;color:var(--accent);text-decoration:none;font-weight:600}
+.links a:hover{text-decoration:underline}
+/* platform spine */
+.spine{padding:2.9rem 0 .3rem;border-top:1px solid var(--line)}
+.spine h2{font-size:1.55rem;margin:0;letter-spacing:-.022em}
+.spine .task-q{margin-bottom:1.35rem}
+.modgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.95rem}
+.mod{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem}
+.mod h3{margin:0 0 .3rem;font-size:.98rem;letter-spacing:-.012em}
+.mod h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid #d7d4f7}
+.mod h3 a:hover{color:var(--accent)}
+.mod .concept{color:var(--muted);font-size:.83rem;line-height:1.5;display:block}
+.noresults{display:none;text-align:center;color:var(--muted);padding:3.5rem 0;font-size:1rem}
+footer{color:var(--muted);font-size:.82rem;padding:2.4rem 0;border-top:1px solid var(--line);margin-top:2.6rem}
+@media(max-width:620px){h1{font-size:2rem}header.hero{padding:2.4rem 0 1.4rem}
+.grid,.modgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}
+.card:hover{transform:none}}
 """
 
 
@@ -247,6 +390,8 @@ def parse_tracker() -> List[Dict[str, object]]:
         slug = m.group("slug")
         builds.append({
             "day": day, "slug": slug, "name": name,
+            "task": TASK_OF.get(slug), "task_title": TASK_TITLE.get(TASK_OF.get(slug, ""), ""),
+            "problem": problem_line(pl_slug, slug) if done else "",
             "status": "done" if done else "planned", "date": m.group("date"),
             "product_line": pl_name, "product_slug": pl_slug,
             "repo_url": f"https://github.com/{REPO}/tree/main/{pl_slug}/{slug}" if done else None,
@@ -256,104 +401,141 @@ def parse_tracker() -> List[Dict[str, object]]:
     return builds
 
 
+BLOCKQUOTE_RE = re.compile(r"^>\s*(.+?)\s*$", re.M)
+_MD_STRIP = re.compile(r"\*\*|__|\*|`|\[([^\]]+)\]\([^)]*\)")
+
+
+def problem_line(product_slug: str, slug: str, limit: int = 190) -> str:
+    """The tool's own one-line statement of the problem, from its README.
+
+    Every README opens with a blockquote naming the thing that was actually
+    going wrong. That sentence is the most honest description of the tool
+    there is - far better than any label a taxonomy could hang on it - so
+    the card leads with it rather than with a category.
+    """
+    readme = ROOT.parent / product_slug / slug / "README.md"
+    if not readme.exists():
+        return ""
+    m = BLOCKQUOTE_RE.search(readme.read_text(encoding="utf-8", errors="replace"))
+    if not m:
+        return ""
+    text = _MD_STRIP.sub(lambda x: x.group(1) or "", m.group(1)).strip()
+    text = re.sub(r"\s+", " ", text)
+    # House typography: spaced hyphen, not an em or en dash. Purely a
+    # rendering normalisation - the README keeps whatever it was written with.
+    text = re.sub(r"\s*[\u2014\u2013]\s*", " - ", text)
+    if len(text) <= limit:
+        return text
+    # Take whole sentences while they fit, so the card never ends mid-clause.
+    # These openings are written punchline-first, so the first sentence alone
+    # is usually the sharpest thing on the card.
+    parts = re.split(r"(?<=[.!?])\s+", text)
+    out = ""
+    for part in parts:
+        if out and len(out) + 1 + len(part) > limit:
+            break
+        out = f"{out} {part}".strip()
+    if out:
+        return out
+    return text[:limit].rsplit(" ", 1)[0].rstrip(" -,;:") + "\u2026"
+
+
 def _esc(s: str) -> str:
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;"))
 
 
-def _card(b: Dict[str, object], domain_id: str) -> str:
-    cat = LINE_LABEL.get(b["product_slug"], b["product_line"])
-    search = _esc(f"{b['name']} {b['slug']} {cat} {b['product_line']}".lower())
-    links = (f"<div class='links'><a href='{b['repo_url']}' target='_blank' rel='noopener'>Code</a>"
-             f"<a href='{b['colab_url']}' target='_blank' rel='noopener'>Notebook</a></div>")
-    return (f"<article class='card' data-domain='{domain_id}' data-search='{search}'>"
-            f"<span class='pill'>{_esc(cat)}</span>"
-            f"<h3>{_esc(b['name'])}</h3><code>{_esc(b['slug'])}</code>{links}</article>")
+def _card(b: Dict[str, object]) -> str:
+    problem = str(b.get("problem") or "")
+    search = _esc(f"{b['name']} {b['slug']} {b.get('task_title', '')} {problem}".lower())
+    links = (f"<a href='{b['repo_url']}' target='_blank' rel='noopener'>Code</a>"
+             f"<a href='{b['colab_url']}' target='_blank' rel='noopener'>Notebook</a>")
+    body = f"<p class='problem'>{_esc(problem)}</p>" if problem else ""
+    return (f"<article class='card' data-task='{b['task']}' data-search='{search}'>"
+            f"<h3>{_esc(b['name'])}</h3>{body}"
+            f"<div class='foot'><code>{_esc(b['slug'])}</code>"
+            f"<div class='links'>{links}</div></div></article>")
 
 
 def render_shell_section() -> str:
-    """The platform's own modules (the governance spine) from shell.yaml."""
+    """The platform's own modules - the control plane every tool plugs into.
+
+    Only modules that exist are rendered. A roadmap of unbuilt steps belongs
+    in the build log, not on a page whose job is to show what runs.
+    """
     if not SHELL_FILE.exists():
         return ""
     data = yaml.safe_load(SHELL_FILE.read_text()) or {}
-    modules = data.get("modules", [])
+    modules = [m for m in (data.get("modules") or []) if m.get("status") == "done"]
     if not modules:
         return ""
-    n_done = sum(1 for m in modules if m.get("status") == "done")
     cards = []
     for m in modules:
-        live = m.get("status") == "done"
-        cls = "mod done" if live else "mod planned"
-        tag = "✅ built" if live else "planned"
         doc = m.get("doc") or ""
-        name = (f"<a href='{doc}'>{m['name']}</a>" if (live and doc) else m["name"])
-        cards.append(
-            f"<div class='{cls}'><div class='mtop'><span class='step'>Step {m['step']}</span>"
-            f"<span class='mtag'>{tag}</span></div>"
-            f"<h3>{name}</h3><span class='concept'>{m['concept']}</span></div>"
-        )
-    return (f"<section><h2>Platform shell <span class='count'>{n_done}/{len(modules)} built</span></h2>"
-            f"<p class='shell-tag'>The governance spine we build ourselves - the control plane every "
-            f"app plugs into.</p><div class='modgrid'>{''.join(cards)}</div></section>")
+        name = f"<a href='{doc}'>{_esc(m['name'])}</a>" if doc else _esc(m["name"])
+        cards.append(f"<div class='mod'><h3>{name}</h3>"
+                     f"<span class='concept'>{_esc(m['concept'])}</span></div>")
+    return ("<section class='spine'><h2>The spine underneath</h2>"
+            "<p class='task-q'>The control plane the tools plug into: identity, permissions, "
+            "audit, connectors, orchestration.</p>"
+            f"<div class='modgrid'>{''.join(cards)}</div></section>")
 
 
 def render_home(builds: List[Dict[str, object]]) -> str:
     done = [b for b in builds if b["status"] == "done"]
-    by_slug: Dict[str, List[Dict[str, object]]] = {}
+    by_task: Dict[str, List[Dict[str, object]]] = {}
     for b in done:
-        by_slug.setdefault(b["product_slug"], []).append(b)
+        by_task.setdefault(str(b["task"]), []).append(b)
 
-    # domain filter chips
-    chips = ['<button class="chip active" data-domain="all">All <span class="c">'
-             f'{len(done)}</span></button>']
-    for did, title, _sub, color, slugs in DOMAINS:
-        n = sum(len(by_slug.get(s, [])) for s in slugs)
-        if not n:
-            continue
-        chips.append(f'<button class="chip" data-domain="{did}" style="--sw:{color}">'
-                     f'<span class="swatch" style="background:{color}"></span>{_esc(title)} '
-                     f'<span class="c">{n}</span></button>')
+    chips = ['<button class="chip active" data-task="all">Everything</button>']
+    for tid, title, _q in TASKS:
+        if by_task.get(tid):
+            chips.append(f'<button class="chip" data-task="{tid}">{_esc(title)}</button>')
 
-    # domain sections
     sections = []
-    for did, title, sub, color, slugs in DOMAINS:
-        items: List[Dict[str, object]] = []
-        for s in slugs:
-            items += sorted(by_slug.get(s, []), key=lambda x: x["day"])
+    for tid, title, question in TASKS:
+        items = sorted(by_task.get(tid, []), key=lambda x: str(x["name"]).lower())
         if not items:
             continue
-        cards = "".join(_card(b, did) for b in items)
+        cards = "".join(_card(b) for b in items)
         sections.append(
-            f'<section class="domain" data-domain="{did}" style="--dc:{color}">'
-            f'<div class="domain-head"><h2>{_esc(title)}</h2>'
-            f'<span class="count">{len(items)} tools</span></div>'
-            f'<p class="domain-sub">{_esc(sub)}</p>'
+            f'<section class="task" data-task="{tid}">'
+            f'<h2>{_esc(title)}</h2><p class="task-q">{_esc(question)}</p>'
             f'<div class="grid">{cards}</div></section>'
         )
 
-    n_domains = sum(1 for _d, _t, _s, _c, sl in DOMAINS if any(by_slug.get(x) for x in sl))
-    updated = datetime.now().strftime("%Y-%m-%d")
+    updated = datetime.now().strftime("%B %Y")
     script = """
 <script>
 (function(){
+  var bar=document.querySelector('.topbar');
+  var ctl=document.querySelector('.controls');
+  function chrome(){
+    // The topbar wraps to two rows at some widths, so the sticky offset and the
+    // scroll target have to be measured rather than assumed.
+    document.documentElement.style.setProperty('--topbar-h', bar.offsetHeight+'px');
+    return bar.offsetHeight + ctl.offsetHeight + 12;
+  }
+  chrome();
+  window.addEventListener('resize', chrome);
   var q=document.getElementById('q');
-  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
-  var cards=Array.prototype.slice.call(document.querySelectorAll('.card'));
-  var secs=Array.prototype.slice.call(document.querySelectorAll('.domain'));
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var secs=[].slice.call(document.querySelectorAll('.task'));
+  var spine=document.querySelector('.spine');
   var none=document.getElementById('none');
-  var dom='all';
+  var task='all';
   function apply(){
     var t=q.value.trim().toLowerCase(), shown=0;
     cards.forEach(function(c){
-      var okD=(dom==='all'||c.dataset.domain===dom);
-      var okT=(!t||c.dataset.search.indexOf(t)!==-1);
-      var v=okD&&okT;
+      var v=(task==='all'||c.dataset.task===task)&&(!t||c.dataset.search.indexOf(t)!==-1);
       c.style.display=v?'':'none';
       if(v)shown++;
     });
     secs.forEach(function(s){
-      var any=Array.prototype.slice.call(s.querySelectorAll('.card')).some(function(c){return c.style.display!=='none';});
+      var any=[].slice.call(s.querySelectorAll('.card')).some(function(c){return c.style.display!=='none';});
       s.style.display=any?'':'none';
     });
+    if(spine)spine.style.display=(task==='all'&&!t)?'':'none';
     none.style.display=shown?'none':'block';
   }
   q.addEventListener('input',apply);
@@ -361,43 +543,47 @@ def render_home(builds: List[Dict[str, object]]) -> str:
     ch.addEventListener('click',function(){
       chips.forEach(function(x){x.classList.remove('active');});
       ch.classList.add('active');
-      dom=ch.dataset.domain;
+      task=ch.dataset.task;
       apply();
-      if(dom!=='all'){
-        var s=document.querySelector('.domain[data-domain="'+dom+'"]');
-        if(s)window.scrollTo({top:s.offsetTop-150,behavior:'smooth'});
-      }
+      if(task!=='all'){
+        var s=document.querySelector('.task[data-task="'+task+'"]');
+        if(s)window.scrollTo({top:s.getBoundingClientRect().top+window.pageYOffset-chrome(),behavior:'smooth'});
+      }else{window.scrollTo({top:0,behavior:'smooth'});}
     });
   });
 })();
 </script>"""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
-<title>Data &amp; AI Toolkit — One Data Platform</title><style>{HOME_CSS}</style></head><body>
+<title>One Data Platform · tools for data work</title>
+<meta name="description" content="Small, exact tools for the parts of data work that quietly go wrong.">
+<style>{HOME_CSS}</style></head><body>
 {topnav("home", "")}
 <div class="wrap"><header class="hero">
 <div class="kicker">One Data Platform</div>
-<h1>An open, growing catalog of data &amp; AI tools for data teams.</h1>
-<p class="tag">Small, focused, runnable tools across the data lifecycle — each with source code and a
-one-click notebook. Search it, or browse by capability. New tools added whenever there's an
-opportunity.</p>
-<div class="meta"><b>{len(done)}</b> tools and counting · <b>{n_domains}</b> capability domains · open source</div>
+<h1>Small, exact tools for the parts of data work that quietly go wrong.</h1>
+<p class="tag">Each one started with something breaking in a real pipeline: a metric that
+disagreed with itself, a parser that read the same bytes two ways, a model that looked fine
+until it shipped. Source code and a runnable notebook on every one. Browse by what you are
+trying to do.</p>
 </header></div>
 <div class="controls"><div class="wrap">
 <div class="search">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-<input id="q" type="search" placeholder="Search tools — e.g. forecast, dbt, RAG, chi-square, lineage…"
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+<input id="q" type="search" aria-label="Search the tools" placeholder="Search a symptom, a format, a technique: stale, CRLF, RAG, chi-square, lineage…"
 autocomplete="off"></div>
 <div class="chips">{''.join(chips)}</div>
 </div></div>
 <div class="wrap"><main>
 {''.join(sections)}
-<div class="noresults" id="none">No tools match your search. Try another term or clear the filter.</div>
+{render_shell_section()}
+<div class="noresults" id="none">Nothing matches that. Try a symptom rather than a tool name, or clear the filter.</div>
 </main>
-<footer>One Data Platform · catalog auto-generated from the build log · updated {updated}.
-Browse the <a href="wiki/02-architecture.html" style="color:var(--accent)">architecture</a> and
-<a href="wiki/01-why-a-platform.html" style="color:var(--accent)">platform notes</a> in the wiki.</footer>
+<footer>One Data Platform · updated {updated} ·
+<a href="wiki/02-architecture.html" style="color:var(--accent)">architecture</a> ·
+<a href="wiki/01-why-a-platform.html" style="color:var(--accent)">platform notes</a> ·
+<a href="wiki/03-build-log.html" style="color:var(--accent)">build log</a></footer>
 </div>{script}</body></html>"""
 
 
@@ -450,11 +636,22 @@ def render_wiki() -> int:
 
 def main() -> None:
     builds = parse_tracker()
+    done = [b for b in builds if b["status"] == "done"]
+
+    # A tool with no task has no home on the page and would vanish silently.
+    # Fail here instead: the daily build must classify what it ships.
+    orphans = sorted(str(b["slug"]) for b in done if not b.get("task"))
+    if orphans:
+        raise SystemExit(
+            "Unclassified tools - add each to TASK_OF in build_site.py:\n  "
+            + "\n  ".join(orphans)
+        )
+
     (HERE / "catalog.json").write_text(json.dumps(builds, indent=2))
     (HERE / "index.html").write_text(render_home(builds))
     n_docs = render_wiki()
-    n_done = sum(1 for b in builds if b["status"] == "done")
-    print(f"Site built: homepage ({n_done}/{len(builds)} builds) + {n_docs} wiki pages -> homepage/")
+    filled = sum(1 for tid, _t, _q in TASKS if any(b["task"] == tid for b in done))
+    print(f"Site built: {filled} task sections + {n_docs} wiki pages -> homepage/")
 
 
 if __name__ == "__main__":

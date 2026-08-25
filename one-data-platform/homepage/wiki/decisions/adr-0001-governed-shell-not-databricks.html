@@ -9,10 +9,16 @@ background:var(--bg);line-height:1.6}
 .wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem}
 .topbar{position:sticky;top:0;z-index:10;background:rgba(251,251,254,.92);backdrop-filter:blur(8px);
 border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
-.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em}
+/* One row at every width. A wrapping topbar changes its own height, which
+   breaks the sticky offset of anything docked beneath it. */
+.topbar .wrap{display:flex;align-items:center;gap:.4rem;flex-wrap:nowrap;overflow-x:auto;
+scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-top:.7rem;padding-bottom:.7rem}
+.topbar .wrap::-webkit-scrollbar{display:none}
+.brand{font-weight:800;color:var(--accent);margin-right:.6rem;text-decoration:none;letter-spacing:-.01em;
+flex:0 0 auto;white-space:nowrap}
 .topbar a.nav{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;padding:.35rem .7rem;
-border-radius:7px}
+border-radius:7px;flex:0 0 auto;white-space:nowrap}
+.topbar a.nav:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .topbar a.nav:hover{background:#eeedfb;color:var(--accent)}
 .topbar a.nav.active{background:#eeedfb;color:var(--accent)}
 
