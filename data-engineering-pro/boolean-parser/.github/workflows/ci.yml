@@ -1,0 +1,30 @@
+name: boolean-parser CI
+
+on:
+  push:
+    paths:
+      - 'data-engineering-pro/boolean-parser/**'
+  pull_request:
+    paths:
+      - 'data-engineering-pro/boolean-parser/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-engineering-pro/boolean-parser
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # Fourteen of the sixteen readers are real interpreters, not models.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y jq ruby
+      - run: pip install -r requirements.txt ruff
+      - run: ruff check .
+      - run: python -m pytest -q
+      - run: python evidence.py > /dev/null
