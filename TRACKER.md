@@ -3,7 +3,7 @@
 **Started:** 2026-06-07
 **Current Streak:** 91 days
 **Total Completed:** 124 (Portfolio 1: 60/60 ✅ · Portfolio 2: 60/60 ✅ — all 12 months done · Backlog catalog: Day 121+, open-ended)
-**Portfolio 2 plan:** see [PORTFOLIO-2-PLAN.md](PORTFOLIO-2-PLAN.md) for build details (Days 61-120)
+**Portfolio 2 plan:** moved 2026-08-25 to [_build-log/PORTFOLIO-2-PLAN.md](_build-log/PORTFOLIO-2-PLAN.md) - a plan document was the second file a visitor met on the repo landing page. Fully built; kept for provenance.
 
 ---
 

@@ -47,7 +47,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [A File Has No Lines In It, a Splitter Makes Them](data-engineering-pro/line-ending-detector/) | A file has no lines in it. It has bytes. Lines are produced by a splitter, and every runtime ships a different one. |
 | [A Numeric String Does Not Contain a Number, a Reader Assigns One](data-engineering-pro/number-parser-locale/) | A numeric string does not contain a number. It contains characters. |
 | [A Percentage Column Is an Apportionment](analytics-engineering-bi/percent-recomputer/) | Round three equal rows to one decimal place and the column reads 99.9%. Every row is correct. |
-| [A String Does Not Contain a Boolean, a Reader Assigns One](data-engineering-pro/boolean-parser/) | A string does not contain a boolean. |
+| [A String Does Not Contain a Boolean, a Reader Assigns One](data-engineering-pro/boolean-parser/) | A string does not contain a boolean. A reader assigns one - and a reader is three separate decisions: an accept table… |
 | [Allocate a Total Instead of Rounding Its Rows](data-engineering-pro/currency-rounder/) | A rounding function returns a number. It cannot return the fact that the rows no longer add up. |
 | [Byte-Accurate Fixed-Width Parsing with a Pre-Flight Audit](data-engineering-pro/fixed-width-parser/) | Reading a fixed-width file is one line: pd.read_fwf(path, colspecs=...). |
 | [CSV Cleaner](automation-suite/csv-cleaner/) | Turn a messy CSV export into a tidy, analysis-ready file - with an auditable report of every change. |
@@ -56,13 +56,13 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Enumerate Every Viable Dialect Instead of Returning One](data-engineering-pro/csv-dialect-sniffer/) | csv.Sniffer().sniff() returns a Dialect or raises csv.Error. It has no third answer. |
 | [JSON Flattener](data-engineering-pro/json-flattener/) | Every API response is nested. Every warehouse table is flat. |
 | [Local-to-UTC Resolution with the Undecidable Cases Named](data-engineering-pro/timezone-normalizer/) | Normalising a local timestamp to UTC is one line: ts.replace(tzinfo=ZoneInfo(zone)).astimezone(utc). |
-| [Lossless SQL Type Inference from Raw Text](data-engineering-pro/type-inferencer/) | Everything imported as string. |
+| [Lossless SQL Type Inference from Raw Text](data-engineering-pro/type-inferencer/) | Everything imported as string. Typing the columns is easy - typing them without silently corrupting data is the… |
 | [ORDER BY Name Is a Collation, Not an Order](data-engineering-pro/sort-order-drift/) | ORDER BY name reads like a total order on a column. It is not. |
 | [Render a GFM Table and Report What It Cannot Carry](automation-suite/markdown-tabler/) | Turning a DataFrame into a markdown table is one line. |
 | [Report Every Reading a Conforming Parser Could Return](automation-suite/duration-parser/) | parse(text) -> timedelta cannot answer the question people actually have about a duration string, which is not "how long is this" but "does the parser… |
 | [Report the Collisions a Sanitiser Creates](automation-suite/filename-sanitiser/) | sanitise(name) -> str is the wrong shape, and not because of which characters are on the deny-list. |
 | [Report the Collisions a Slugifier Creates](automation-suite/slug-collider/) | slugify("Node.js at scale") and slugify("NodeJS at scale") both return nodejs-at-scale. Neither call is wrong. |
-| [Truncate to N Does Not Name an Operation](data-engineering-pro/unicode-width-truncator/) | "Truncate to 20" does not name an operation. |
+| [Truncate to N Does Not Name an Operation](data-engineering-pro/unicode-width-truncator/) | "Truncate to 20" does not name an operation. A truncator is three decisions - a unit of length, a boundary rule, and… |
 
 
 ---
@@ -126,7 +126,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Database Health Dashboard](data-infra-toolkit/db-health-dashboard/) | One screen of database visibility - cache hits, latency, locks, replication lag - scored red/amber/green so problems surface before users notice. |
 | [Environment Variable Checker](automation-suite/env-checker/) | A pre-flight check for environment variables - declare what your app needs, validate it before you ship, and fail the deploy if anything's missing or… |
 | [Incident Response Agent](ai-agent-workshop/incident-agent/) | Incident playbooks exist but nobody follows them - this agent executes the runbook step-by-step and escalates when a remediation step fails. |
-| [Log Parser and Alerter](automation-suite/log-parser/) | Stop grepping logs by hand. |
+| [Log Parser and Alerter](automation-suite/log-parser/) | Stop grepping logs by hand. Parse mixed-format logs into structured records, see the severity breakdown and top… |
 | [Metric Anomaly Alerter](analytics-engineering-bi/metric-alerting/) | We notice metric drops late - this watches a metric and fires the day it moves, with three independent detectors. |
 | [Model Drift Detector](ai-agent-workshop/model-drift-detector/) | Models degrade silently in production - this watches a live window against the training reference via PSI and alerts before accuracy quietly rots. |
 | [Pipeline SLA Monitor](data-engineering-pro/pipeline-sla-monitor/) | A pipeline that lands late, runs slow, goes stale, or arrives thin usually breaks a consumer before anyone on the data team notices. |
@@ -165,7 +165,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Inline SVG Trend Marks That Report Their Own Scale](analytics-engineering-bi/sparkline-gen/) | Adding a sparkline column to a table is one line of pandas. |
 | [KPI Tracker](analytics-accelerator/kpi-tracker/) | Execs ask for the same metrics every Monday - this turns a metric time series into the answer automatically. |
 | [KPI Tree / Driver Decomposition](analytics-engineering-bi/kpi-tree/) | "Why did revenue move?" - this splits a KPI's change across its drivers exactly, with no residual. |
-| [Metric Catalog & Ownership](analytics-engineering-bi/metric-catalog/) | Which metrics exist, and who owns them? |
+| [Metric Catalog & Ownership](analytics-engineering-bi/metric-catalog/) | Which metrics exist, and who owns them? A registry with tiers, dependencies, and automated governance that flags the… |
 | [Metrics Layer / Semantic Definitions](analytics-engineering-bi/metrics-layer/) | Every dashboard computes revenue differently - a metrics layer makes one governed definition the single source of truth. |
 | [Natural Language to SQL](analytics-engineering-bi/nl-to-sql/) | Non-analysts can't query the warehouse - NL→SQL lets them ask in English, behind guardrails that keep it read-only and in-schema. |
 | [Period-over-Period Metric Diff](analytics-engineering-bi/metric-diff/) | "Conversion is up 5% this week!" - but is it a real shift or just noise? |
@@ -184,7 +184,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 
 | Tool | The problem it was built for |
 |------|------------------------------|
-| [A/B Test Calculator](analytics-accelerator/ab-test-calc/) | Stop eyeballing significance. |
+| [A/B Test Calculator](analytics-accelerator/ab-test-calc/) | Stop eyeballing significance. Enter your A/B numbers, get a proper two-proportion z-test - p-value, confidence… |
 | [AIC Ranking Plus an Absolute Goodness-of-Fit Test](data-science-cookbook/distribution-fitter/) | Fitting ten distributions and ranking them by AIC is four lines of scipy. |
 | [Crosstab & Chi-Square Tool](data-science-cookbook/crosstab-chi2/) | "Compare groups in survey data" - contingency table, chi-square test, effect size, and the exact cells driving the difference. |
 | [Sample Size & Power Calculator](data-science-cookbook/sample-size-calc/) | "How many users do we need?" gets asked at the start of every experiment and answered by vibes. |
@@ -274,7 +274,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Auto-README Generator](automation-suite/auto-readme/) | Scan any repo into a structured profile and generate a README - by template offline, or with Claude for richer prose. |
 | [Code Review Agent](ai-agent-workshop/code-review-agent/) | "PRs sit unreviewed for days" - an agent that gives every PR an instant first pass so reviewers focus on logic, not nitpicks. |
 | [Customer Ticket Router](ai-agent-workshop/ticket-router/) | "Tickets go to the wrong team 40% of the time" - an agent that routes tickets by weighted keyword signal, and escalates to human triage instead of… |
-| [Daily Standup Bot](automation-suite/standup-bot/) | One place for the team's standup. |
+| [Daily Standup Bot](automation-suite/standup-bot/) | One place for the team's standup. Everyone submits yesterday / today / blockers; the bot rolls it into a single… |
 | [dbt Model Generator](data-infra-toolkit/dbt-model-generator/) | Writing dbt staging models from scratch is repetitive boilerplate - paste your SQL DDL and get production-ready dbt artifacts instantly. |
 | [Email Draft Agent](ai-agent-workshop/email-agent/) | "I spend 2 hours daily on email" - an agent that drafts replies, checks its own work against the original ask, and revises before handing it back. |
 | [Markdown to PDF Report](automation-suite/md-to-pdf/) | Write the weekly report in Markdown, get a branded, print-ready PDF - cover header, styled tables, page numbers. |

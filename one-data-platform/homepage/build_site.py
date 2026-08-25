@@ -431,11 +431,22 @@ def problem_line(product_slug: str, slug: str, limit: int = 190) -> str:
     # These openings are written punchline-first, so the first sentence alone
     # is usually the sharpest thing on the card.
     parts = re.split(r"(?<=[.!?])\s+", text)
-    out = ""
+    out, taken = "", 0
     for part in parts:
         if out and len(out) + 1 + len(part) > limit:
             break
         out = f"{out} {part}".strip()
+        taken += 1
+    # A punchline-first opener can leave a one-line card sitting next to
+    # five-line neighbours. If the whole-sentence rule kept very little, pull
+    # in the next sentence and cut it on a word instead.
+    floor = int(limit * 0.42)
+    if out and len(out) < floor and taken < len(parts):
+        extra = parts[taken]
+        room = limit - len(out) - 1
+        if room > 24:
+            clipped = extra[:room].rsplit(" ", 1)[0].rstrip(" -,;:")
+            out = f"{out} {clipped}\u2026"
     # A single sentence can still overrun the budget; cap it so one long
     # opener cannot blow out a card or a table row.
     hard = int(limit * 1.3)
