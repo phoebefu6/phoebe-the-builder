@@ -1692,5 +1692,16 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/boolean-parser",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/boolean-parser/demo.ipynb"
+  },
+  {
+    "day": 155,
+    "slug": "decision-log",
+    "name": "A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule",
+    "status": "done",
+    "date": "2026-08-25",
+    "product_line": "Mini SaaS Products",
+    "product_slug": "mini-saas-products",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/decision-log",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/decision-log/demo.ipynb"
   }
 ]
