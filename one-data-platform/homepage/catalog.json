@@ -2168,5 +2168,19 @@
     "product_slug": "mini-saas-products",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/decision-log",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/decision-log/demo.ipynb"
+  },
+  {
+    "day": 156,
+    "slug": "pre-mortem",
+    "name": "The Exercise Works, the Matrix That Scores It Cannot Rank",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "A pre-mortem is cheap and it works: assume the project already failed, then write down why. What happens next is the problem.",
+    "status": "done",
+    "date": "2026-08-25",
+    "product_line": "Mini SaaS Products",
+    "product_slug": "mini-saas-products",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/pre-mortem",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/pre-mortem/demo.ipynb"
   }
 ]

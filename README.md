@@ -300,6 +300,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Product Roadmap Visualizer](mini-saas-products/roadmap-viz/) | Roadmaps are PowerPoints that go stale - generate the roadmap from data instead: a Gantt-style timeline, grouped by lane, colored by status, with a… |
 | [Sprint Retrospective Generator](mini-saas-products/retro-generator/) | Retros are unstructured and repetitive - feed in the sprint numbers and get grounded observations and concrete action items in your team's format. |
 | [Startup Idea Validator](mini-saas-products/idea-validator/) | We build before we validate - this scores an idea across five dimensions, builds a Lean Canvas, and hands you the cheapest experiment to test your… |
+| [The Exercise Works, the Matrix That Scores It Cannot Rank](mini-saas-products/pre-mortem/) | A pre-mortem is cheap and it works: assume the project already failed, then write down why. |
 | [User Story Generator](mini-saas-products/user-story-gen/) | Writing good user stories takes practice - paste raw feature ideas and get INVEST-scored stories with Given/When/Then acceptance criteria. |
 
 

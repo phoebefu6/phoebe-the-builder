@@ -204,3 +204,4 @@
 - [x] Day 153 — unicode-width-truncator: Truncate to N Does Not Name an Operation (data-engineering-pro/) (2026-08-24)
 - [x] Day 154 — boolean-parser: A String Does Not Contain a Boolean, a Reader Assigns One (data-engineering-pro/) (2026-08-25)
 - [x] Day 155 — decision-log: A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule (mini-saas-products/) (2026-08-25)
+- [x] Day 156 — pre-mortem: The Exercise Works, the Matrix That Scores It Cannot Rank (mini-saas-products/) (2026-08-25)
