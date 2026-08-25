@@ -160,7 +160,6 @@ Each one started with something breaking in a real pipeline: a metric that disag
 |------|------------------------------|
 | [Cohort Analysis Tool](analytics-accelerator/cohort-analysis/) | "Retention analysis takes our analyst 2 days" - turn a raw event log into a cohort retention heatmap in seconds. |
 | [Dashboard Spec Generator](analytics-engineering-bi/dashboard-spec/) | Dashboards built from vague asks - this reads the data's shape and recommends the right charts, with the reasoning. |
-| [Full Portfolio Dashboard](mini-saas-products/portfolio-dashboard/) | Showcase all 60 projects in one view - the portfolio's final build is the view of the portfolio itself. |
 | [Funnel Analyzer](analytics-accelerator/funnel-analyzer/) | See exactly where users drop off - biggest leak called out, step-by-step conversion, and a segment comparison. |
 | [Inline SVG Trend Marks That Report Their Own Scale](analytics-engineering-bi/sparkline-gen/) | Adding a sparkline column to a table is one line of pandas. |
 | [KPI Tracker](analytics-accelerator/kpi-tracker/) | Execs ask for the same metrics every Monday - this turns a metric time series into the answer automatically. |
@@ -295,6 +294,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | Tool | The problem it was built for |
 |------|------------------------------|
 | [A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule](mini-saas-products/decision-log/) | A decision log without a prediction attached is a diary: it records what was chosen and can never say whether choosing it was any good. |
+| [Capability Map - What This Covers for a Team](mini-saas-products/portfolio-dashboard/) | A catalog is only useful if somebody arriving with a problem can find the thing that solves it. |
 | [Feature Prioritization Tool](mini-saas-products/feature-prioritizer/) | We argue about priorities without data - RICE turns "I feel strongly about X" into a rankable, defensible number. |
 | [OKR Tracker and Advisor](mini-saas-products/okr-tracker/) | OKRs get set and forgotten - this tracks progress against pace and flags which key results are behind while there's still time to act. |
 | [Product Roadmap Visualizer](mini-saas-products/roadmap-viz/) | Roadmaps are PowerPoints that go stale - generate the roadmap from data instead: a Gantt-style timeline, grouped by lane, colored by status, with a… |

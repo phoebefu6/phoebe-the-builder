@@ -83,7 +83,7 @@
 - [x] Day 57 — user-story-gen: User Story Generator (2026-07-11)
 - [x] Day 58 — accessibility-checker: Accessibility Checker (2026-07-11)
 - [x] Day 59 — privacy-policy-gen: Privacy Policy Generator (2026-07-11)
-- [x] Day 60 — portfolio-dashboard: Full Portfolio Dashboard (2026-07-11)
+- [x] Day 60 — portfolio-dashboard: Capability Map - What This Covers for a Team (2026-07-11)
 
 ---
 

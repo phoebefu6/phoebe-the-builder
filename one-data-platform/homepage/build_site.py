@@ -148,7 +148,7 @@ TASK_OF = {
     "self-serve-explorer": "measure", "funnel-analyzer": "measure",
     "cohort-analysis": "measure", "sparkline-gen": "measure", "pivot-narrator": "measure",
     "report-scheduler": "measure", "nl-to-sql": "measure", "query-optimizer": "measure",
-    "portfolio-dashboard": "measure", "sales-forecast": "measure",
+    "sales-forecast": "measure",
     # Decide what is actually true
     "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
@@ -185,6 +185,7 @@ TASK_OF = {
     "accessibility-checker": "automate",
     # Choose, and be able to defend it
     "decision-log": "decide", "pre-mortem": "decide",
+    "portfolio-dashboard": "decide",
     "feature-prioritizer": "decide", "idea-validator": "decide",
     "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",
     "user-story-gen": "decide",
