@@ -50,7 +50,7 @@ for: **the governance shell** (a.k.a. the control plane). It provides:
    pasted across 60 notebooks.
 4. **An audit log** - a permanent record of who accessed which dashboard, dataset,
    model, or LLM.
-5. **An app registry** - a simple list that mounts each of our 60 tools as a governed
+5. **An app registry** - a simple list that mounts every tool in the catalog as a governed
    "app."
 
 That's it. Five things. Everything else, we plug in.
@@ -59,7 +59,7 @@ That's it. Five things. Everything else, we plug in.
 
 A buyer doesn't pay for "another SQL tool." They pay for **"my team's data work, in one
 place, and I can prove to auditors exactly who touched what."** The governance shell IS
-that. The 60 tools are the proof it works and the roadmap of what's possible.
+that. The catalog is the proof it works and the range of what's possible.
 
 Go-to-market plan (from the mentor roundtable):
 - Pick **one** real client problem (likely "governed analytics" for the analyst persona).
@@ -67,7 +67,7 @@ Go-to-market plan (from the mentor roundtable):
   here's the audit trail").
 - **Land, then expand** into ML and AI apps as the client is ready.
 
-## How the 60 builds fit
+## How the tools fit
 
 Each daily build stops being a standalone toy and becomes a **registered app** on the
 shell. Going forward we write each tool's core logic UI-free and reusable, so mounting

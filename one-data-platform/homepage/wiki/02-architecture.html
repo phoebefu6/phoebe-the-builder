@@ -84,7 +84,7 @@ footer{color:var(--muted);font-size:.82rem;padding:2rem 0;border-top:1px solid v
 <ul>
 <li><strong>The gateway</strong> is the front desk. Everyone enters here. It does the badge check
   (authn), the permission check (authz), and writes the visit into the diary (audit).</li>
-<li><strong>The apps</strong> are the offices - our 60 tools. Each office has a sign saying which
+<li><strong>The apps</strong> are the offices - the tools in the catalog. Each has a sign saying which
   role may enter ("Data Scientists only").</li>
 <li><strong>The connector layer</strong> is the locked key cabinet - the one place that holds the
   keys to each data source, so no office keeps its own copy.</li>
@@ -100,7 +100,7 @@ that's genuinely ours and hard to copy. Small on purpose: a few hundred lines.</
 reading the secret from a guarded place (env var / vault). Tools never hold their own
 credentials. We'll start with a tiny hand-written version, then can grow it.</p>
 <h3 id="layer-3-the-apps-engines-we-mount-mostly">Layer 3 - The Apps + Engines (we mount, mostly)</h3>
-<p>Our 60 tools register as apps. The heavy compute engines (SQL via DuckDB/Trino,
+<p>The tools register as apps. The heavy compute engines (SQL via DuckDB/Trino,
 orchestration via Airflow, model serving) are <strong>open source we plug in</strong>, not code we
 write.</p>
 <blockquote>

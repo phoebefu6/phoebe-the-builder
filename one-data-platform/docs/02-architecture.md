@@ -36,7 +36,7 @@ Picture an **office building** for your data team:
 
 - **The gateway** is the front desk. Everyone enters here. It does the badge check
   (authn), the permission check (authz), and writes the visit into the diary (audit).
-- **The apps** are the offices - our 60 tools. Each office has a sign saying which
+- **The apps** are the offices - the tools in the catalog. Each has a sign saying which
   role may enter ("Data Scientists only").
 - **The connector layer** is the locked key cabinet - the one place that holds the
   keys to each data source, so no office keeps its own copy.
@@ -55,7 +55,7 @@ reading the secret from a guarded place (env var / vault). Tools never hold thei
 credentials. We'll start with a tiny hand-written version, then can grow it.
 
 ### Layer 3 - The Apps + Engines (we mount, mostly)
-Our 60 tools register as apps. The heavy compute engines (SQL via DuckDB/Trino,
+The tools register as apps. The heavy compute engines (SQL via DuckDB/Trino,
 orchestration via Airflow, model serving) are **open source we plug in**, not code we
 write.
 

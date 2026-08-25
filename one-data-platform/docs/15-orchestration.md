@@ -72,5 +72,5 @@ You now have the whole governance shell:
 | 6 | Orchestration | governed scheduled pipelines (Airflow) |
 
 That's the sellable product from ADR-0001: a thin governed control plane that hosts the
-app catalog. From here it's **breadth** (mount more of the 60 builds - one line each) and
+app catalog. From here it's **breadth** (mount more of the catalog - one line each) and
 **hardening** (real DB for users, a secrets manager, deploy the shell to Render).
