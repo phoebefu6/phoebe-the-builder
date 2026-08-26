@@ -1,0 +1,8 @@
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.7
+streamlit>=1.28
+pytest>=7.4
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.25
