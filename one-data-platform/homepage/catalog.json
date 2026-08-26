@@ -2182,5 +2182,19 @@
     "product_slug": "mini-saas-products",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/pre-mortem",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/pre-mortem/demo.ipynb"
+  },
+  {
+    "day": 157,
+    "slug": "expected-value-calc",
+    "name": "Expected Value Is a Number, Not a Decision",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Somebody asks which option to take, so you build the spreadsheet: probability times payoff, one row per option, pick the biggest.",
+    "status": "done",
+    "date": "2026-08-26",
+    "product_line": "Mini SaaS Products",
+    "product_slug": "mini-saas-products",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/expected-value-calc",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/expected-value-calc/demo.ipynb"
   }
 ]

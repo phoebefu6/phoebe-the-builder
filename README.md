@@ -295,6 +295,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 |------|------------------------------|
 | [A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule](mini-saas-products/decision-log/) | A decision log without a prediction attached is a diary: it records what was chosen and can never say whether choosing it was any good. |
 | [Capability Map - What This Covers for a Team](mini-saas-products/portfolio-dashboard/) | A catalog is only useful if somebody arriving with a problem can find the thing that solves it. |
+| [Expected Value Is a Number, Not a Decision](mini-saas-products/expected-value-calc/) | Somebody asks which option to take, so you build the spreadsheet: probability times payoff, one row per option, pick the biggest. |
 | [Feature Prioritization Tool](mini-saas-products/feature-prioritizer/) | We argue about priorities without data - RICE turns "I feel strongly about X" into a rankable, defensible number. |
 | [OKR Tracker and Advisor](mini-saas-products/okr-tracker/) | OKRs get set and forgotten - this tracks progress against pace and flags which key results are behind while there's still time to act. |
 | [Product Roadmap Visualizer](mini-saas-products/roadmap-viz/) | Roadmaps are PowerPoints that go stale - generate the roadmap from data instead: a Gantt-style timeline, grouped by lane, colored by status, with a… |
