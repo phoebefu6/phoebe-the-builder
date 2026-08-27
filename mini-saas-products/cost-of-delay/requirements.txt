@@ -1,0 +1,8 @@
+# Pure-python core: codelay.py, evidence.py and the tests need nothing but the
+# standard library. These are for the Streamlit app, the chart and the notebook.
+streamlit>=1.50,<2
+matplotlib>=3.8,<4
+numpy>=1.26,<3
+pandas>=2.1,<3
+pytest>=7.4,<9
+nbformat>=5.9,<6
