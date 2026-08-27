@@ -206,3 +206,4 @@
 - [x] Day 155 — decision-log: A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule (mini-saas-products/) (2026-08-25)
 - [x] Day 156 — pre-mortem: The Exercise Works, the Matrix That Scores It Cannot Rank (mini-saas-products/) (2026-08-25)
 - [x] Day 157 — expected-value-calc: Expected Value Is a Number, Not a Decision (mini-saas-products/) (2026-08-26)
+- [x] Day 158 — cost-of-delay: An Ordering Is Not a Schedule (mini-saas-products/) (2026-08-27)

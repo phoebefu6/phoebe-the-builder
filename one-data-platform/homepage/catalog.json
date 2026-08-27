@@ -2196,5 +2196,19 @@
     "product_slug": "mini-saas-products",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/expected-value-calc",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/expected-value-calc/demo.ipynb"
+  },
+  {
+    "day": 158,
+    "slug": "cost-of-delay",
+    "name": "An Ordering Is Not a Schedule",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Somebody asks what to do first, so you score the backlog - RICE, or WSJF, or cost-of-delay-over-duration - and the meeting ends with a ranked list. But a list is not what you pay.",
+    "status": "done",
+    "date": "2026-08-27",
+    "product_line": "Mini SaaS Products",
+    "product_slug": "mini-saas-products",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/cost-of-delay",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/cost-of-delay/demo.ipynb"
   }
 ]
