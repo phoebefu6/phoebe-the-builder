@@ -2224,5 +2224,19 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/target-setter",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/target-setter/demo.ipynb"
+  },
+  {
+    "day": 160,
+    "slug": "guardrail-metric",
+    "name": "A Guardrail Is a Constraint, and a Constraint Has a Power",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Every experiment review has a checklist of counter-metrics. Somebody confirms none of them moved, and the change ships.",
+    "status": "done",
+    "date": "2026-08-29",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/guardrail-metric",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/guardrail-metric/demo.ipynb"
   }
 ]

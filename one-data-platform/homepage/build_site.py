@@ -186,7 +186,7 @@ TASK_OF = {
     # Choose, and be able to defend it
     "decision-log": "decide", "pre-mortem": "decide",
     "expected-value-calc": "decide", "cost-of-delay": "decide",
-    "target-setter": "decide",
+    "target-setter": "decide", "guardrail-metric": "decide",
     "portfolio-dashboard": "decide",
     "feature-prioritizer": "decide", "idea-validator": "decide",
     "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",

@@ -208,3 +208,4 @@
 - [x] Day 157 — expected-value-calc: Expected Value Is a Number, Not a Decision (mini-saas-products/) (2026-08-26)
 - [x] Day 158 — cost-of-delay: An Ordering Is Not a Schedule (mini-saas-products/) (2026-08-27)
 - [x] Day 159 — target-setter: A Target Is a Method Plus a Claim About the Future (analytics-engineering-bi/) (2026-08-29)
+- [x] Day 160 — guardrail-metric: A Guardrail Is a Constraint, and a Constraint Has a Power (analytics-engineering-bi/) (2026-08-29)
