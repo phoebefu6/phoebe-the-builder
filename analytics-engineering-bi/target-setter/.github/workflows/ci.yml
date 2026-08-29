@@ -1,0 +1,21 @@
+name: target-setter CI
+on:
+  push:
+    paths: ["analytics-engineering-bi/target-setter/**"]
+  pull_request:
+    paths: ["analytics-engineering-bi/target-setter/**"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: analytics-engineering-bi/target-setter
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest matplotlib numpy pandas scipy ruff
+      - run: ruff check targets.py evidence.py make_chart.py app.py build_notebook.py
+      - run: python -m pytest test_targets.py -q
+      - run: python evidence.py
