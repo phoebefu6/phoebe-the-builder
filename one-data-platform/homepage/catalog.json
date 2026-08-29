@@ -2210,5 +2210,19 @@
     "product_slug": "mini-saas-products",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/mini-saas-products/cost-of-delay",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/mini-saas-products/cost-of-delay/demo.ipynb"
+  },
+  {
+    "day": 159,
+    "slug": "target-setter",
+    "name": "A Target Is a Method Plus a Claim About the Future",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Somebody asks what next quarter's number should be, and six people in the room have six defensible answers.",
+    "status": "done",
+    "date": "2026-08-29",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/target-setter",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/target-setter/demo.ipynb"
   }
 ]
