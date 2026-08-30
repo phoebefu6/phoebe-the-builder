@@ -2238,5 +2238,19 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/guardrail-metric",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/guardrail-metric/demo.ipynb"
+  },
+  {
+    "day": 161,
+    "slug": "warehouse-cost-attribution",
+    "name": "An Invoice Is a Joint Cost, and a Joint Cost Has No Unique Owner",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Finance forwards the warehouse bill and asks which team spent it. The question sounds like accounting and it is not.",
+    "status": "done",
+    "date": "2026-08-30",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/warehouse-cost-attribution",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/warehouse-cost-attribution/demo.ipynb"
   }
 ]
