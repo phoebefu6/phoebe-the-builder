@@ -1,0 +1,4 @@
+# Notebook cells are written compactly on purpose (plotting boilerplate reads
+# better on one line). Everything else is held to the default rules.
+[lint.per-file-ignores]
+"demo.ipynb" = ["E702"]
