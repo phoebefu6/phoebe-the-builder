@@ -187,7 +187,7 @@ TASK_OF = {
     "decision-log": "decide", "pre-mortem": "decide",
     "expected-value-calc": "decide", "cost-of-delay": "decide",
     "target-setter": "decide", "guardrail-metric": "decide",
-    "warehouse-cost-attribution": "decide",
+    "warehouse-cost-attribution": "decide", "goodhart-detector": "decide",
     "portfolio-dashboard": "decide",
     "feature-prioritizer": "decide", "idea-validator": "decide",
     "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",

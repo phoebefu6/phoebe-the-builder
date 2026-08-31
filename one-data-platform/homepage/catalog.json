@@ -2252,5 +2252,19 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/warehouse-cost-attribution",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/warehouse-cost-attribution/demo.ipynb"
+  },
+  {
+    "day": 162,
+    "slug": "goodhart-detector",
+    "name": "A Proxy Metric Is a Bet That a Correlation Survives Being Optimised",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "A proxy metric gets picked because it correlates with the outcome somebody cares about. It becomes a target. It goes up.",
+    "status": "done",
+    "date": "2026-08-31",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/goodhart-detector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/goodhart-detector/demo.ipynb"
   }
 ]

@@ -295,6 +295,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 |------|------------------------------|
 | [A Decision Log Is an Instrument, and an Instrument Has a Scoring Rule](mini-saas-products/decision-log/) | A decision log without a prediction attached is a diary: it records what was chosen and can never say whether choosing it was any good. |
 | [A Guardrail Is a Constraint, and a Constraint Has a Power](analytics-engineering-bi/guardrail-metric/) | Every experiment review has a checklist of counter-metrics. |
+| [A Proxy Metric Is a Bet That a Correlation Survives Being Optimised](analytics-engineering-bi/goodhart-detector/) | A proxy metric gets picked because it correlates with the outcome somebody cares about. It becomes a target. |
 | [A Target Is a Method Plus a Claim About the Future](analytics-engineering-bi/target-setter/) | Somebody asks what next quarter's number should be, and six people in the room have six defensible answers. |
 | [An Invoice Is a Joint Cost, and a Joint Cost Has No Unique Owner](data-engineering-pro/warehouse-cost-attribution/) | Finance forwards the warehouse bill and asks which team spent it. The question sounds like accounting and it is not. |
 | [An Ordering Is Not a Schedule](mini-saas-products/cost-of-delay/) | Somebody asks what to do first, so you score the backlog - RICE, or WSJF, or cost-of-delay-over-duration - and the meeting ends with a ranked list. |

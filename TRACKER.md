@@ -210,3 +210,4 @@
 - [x] Day 159 — target-setter: A Target Is a Method Plus a Claim About the Future (analytics-engineering-bi/) (2026-08-29)
 - [x] Day 160 — guardrail-metric: A Guardrail Is a Constraint, and a Constraint Has a Power (analytics-engineering-bi/) (2026-08-29)
 - [x] Day 161 — warehouse-cost-attribution: An Invoice Is a Joint Cost, and a Joint Cost Has No Unique Owner (data-engineering-pro/) (2026-08-30)
+- [x] Day 162 — goodhart-detector: A Proxy Metric Is a Bet That a Correlation Survives Being Optimised (analytics-engineering-bi/) (2026-08-31)
