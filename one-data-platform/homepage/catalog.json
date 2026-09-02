@@ -2266,5 +2266,19 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/goodhart-detector",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/goodhart-detector/demo.ipynb"
+  },
+  {
+    "day": 163,
+    "slug": "leading-indicator-finder",
+    "name": "A Lead Is a Claim About a Lag, and a Lag Has to Be Estimated",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Revenue lands a month after anyone could have done something about it, so somebody builds a table of candidate upstream metrics, correlates each against revenue at a few lags, sorts by the biggest number and puts the top three on a dashboard.",
+    "status": "done",
+    "date": "2026-09-02",
+    "product_line": "Analytics Engineering & BI",
+    "product_slug": "analytics-engineering-bi",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/leading-indicator-finder",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/leading-indicator-finder/demo.ipynb"
   }
 ]

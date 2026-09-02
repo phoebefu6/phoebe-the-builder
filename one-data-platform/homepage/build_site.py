@@ -188,6 +188,7 @@ TASK_OF = {
     "expected-value-calc": "decide", "cost-of-delay": "decide",
     "target-setter": "decide", "guardrail-metric": "decide",
     "warehouse-cost-attribution": "decide", "goodhart-detector": "decide",
+    "leading-indicator-finder": "decide",
     "portfolio-dashboard": "decide",
     "feature-prioritizer": "decide", "idea-validator": "decide",
     "okr-tracker": "decide", "roadmap-viz": "decide", "retro-generator": "decide",
