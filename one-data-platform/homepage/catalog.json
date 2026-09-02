@@ -2280,5 +2280,19 @@
     "product_slug": "analytics-engineering-bi",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/analytics-engineering-bi/leading-indicator-finder",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/analytics-engineering-bi/leading-indicator-finder/demo.ipynb"
+  },
+  {
+    "day": 164,
+    "slug": "peeking-cost",
+    "name": "A Stopping Rule Is Part of the Test",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "Somebody opens the experiment dashboard every morning and ships the variant the day it goes green.",
+    "status": "done",
+    "date": "2026-09-02",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/peeking-cost",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/peeking-cost/demo.ipynb"
   }
 ]
