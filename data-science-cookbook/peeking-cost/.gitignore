@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+# Written by the notebook when it runs; the notebook itself embeds the images.
+peek_fpr_and_boundaries.png
+peek_estimate_bias.png
