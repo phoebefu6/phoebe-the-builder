@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+# Written by the notebook when it runs; the notebook itself embeds the images.
+ccf_both_signs.png
+horizon_reversal.png
+null_false_positive.png
