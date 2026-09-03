@@ -2294,5 +2294,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/peeking-cost",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/peeking-cost/demo.ipynb"
+  },
+  {
+    "day": 165,
+    "slug": "srm-detector",
+    "name": "A Split Is a Hypothesis, and Passing Its Test Is Not Evidence",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "The experiment dashboard says the split came out 49.3 / 50.7. Somebody decides that is close enough to even and reads the result.",
+    "status": "done",
+    "date": "2026-09-03",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/srm-detector",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/srm-detector/demo.ipynb"
   }
 ]

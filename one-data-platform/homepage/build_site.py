@@ -151,7 +151,7 @@ TASK_OF = {
     "sales-forecast": "measure",
     # Decide what is actually true
     "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
-    "peeking-cost": "infer",
+    "peeking-cost": "infer", "srm-detector": "infer",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
     # Learn from it
     "baseline-model": "predict", "feature-factory": "predict",
