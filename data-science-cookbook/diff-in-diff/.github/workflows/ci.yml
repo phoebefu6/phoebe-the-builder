@@ -1,0 +1,23 @@
+name: diff-in-diff CI
+
+on:
+  push:
+    paths: ["data-science-cookbook/diff-in-diff/**"]
+  pull_request:
+    paths: ["data-science-cookbook/diff-in-diff/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-science-cookbook/diff-in-diff
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt ruff
+      - run: ruff check .
+      - run: python -m pytest -q test_did.py
+      - run: python evidence.py
