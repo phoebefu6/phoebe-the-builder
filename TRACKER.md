@@ -214,3 +214,4 @@
 - [x] Day 163 — leading-indicator-finder: A Lead Is a Claim About a Lag, and a Lag Has to Be Estimated (analytics-engineering-bi/) (2026-09-02)
 - [x] Day 164 — peeking-cost: A Stopping Rule Is Part of the Test (data-science-cookbook/) (2026-09-02)
 - [x] Day 165 — srm-detector: A Split Is a Hypothesis, and Passing Its Test Is Not Evidence (data-science-cookbook/) (2026-09-03)
+- [x] Day 166 — cuped-variance: Variance Reduction Is a Bet on a Correlation You Already Collected (data-science-cookbook/) (2026-09-04)
