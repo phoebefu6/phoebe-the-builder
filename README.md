@@ -188,6 +188,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [A/B Test Calculator](analytics-accelerator/ab-test-calc/) | Stop eyeballing significance. Enter your A/B numbers, get a proper two-proportion z-test - p-value, confidence… |
 | [AIC Ranking Plus an Absolute Goodness-of-Fit Test](data-science-cookbook/distribution-fitter/) | Fitting ten distributions and ranking them by AIC is four lines of scipy. |
 | [Crosstab & Chi-Square Tool](data-science-cookbook/crosstab-chi2/) | "Compare groups in survey data" - contingency table, chi-square test, effect size, and the exact cells driving the difference. |
+| [Parallel Trends Is an Assumption, and the Test for It Has a Power](data-science-cookbook/diff-in-diff/) | We could not randomise this one, so we compared the change in the group that got the policy against the change in the group that did not, and checked… |
 | [Sample Size & Power Calculator](data-science-cookbook/sample-size-calc/) | "How many users do we need?" gets asked at the start of every experiment and answered by vibes. |
 | [Statistical Test Advisor](data-science-cookbook/stat-test-advisor/) | "Which statistical test do I use?" - describe the data, get the right test (parametric or not), and run it. |
 | [Variance Reduction Is a Bet on a Correlation You Already Collected](data-science-cookbook/cuped-variance/) | The test needs six weeks, and somebody says CUPED will halve it. The first claim is arithmetic. |

@@ -215,3 +215,4 @@
 - [x] Day 164 — peeking-cost: A Stopping Rule Is Part of the Test (data-science-cookbook/) (2026-09-02)
 - [x] Day 165 — srm-detector: A Split Is a Hypothesis, and Passing Its Test Is Not Evidence (data-science-cookbook/) (2026-09-03)
 - [x] Day 166 — cuped-variance: Variance Reduction Is a Bet on a Correlation You Already Collected (data-science-cookbook/) (2026-09-04)
+- [x] Day 167 — diff-in-diff: Parallel Trends Is an Assumption, and the Test for It Has a Power (data-science-cookbook/) (2026-09-04)
