@@ -190,6 +190,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Crosstab & Chi-Square Tool](data-science-cookbook/crosstab-chi2/) | "Compare groups in survey data" - contingency table, chi-square test, effect size, and the exact cells driving the difference. |
 | [Sample Size & Power Calculator](data-science-cookbook/sample-size-calc/) | "How many users do we need?" gets asked at the start of every experiment and answered by vibes. |
 | [Statistical Test Advisor](data-science-cookbook/stat-test-advisor/) | "Which statistical test do I use?" - describe the data, get the right test (parametric or not), and run it. |
+| [Variance Reduction Is a Bet on a Correlation You Already Collected](data-science-cookbook/cuped-variance/) | The test needs six weeks, and somebody says CUPED will halve it. The first claim is arithmetic. |
 
 
 ---

@@ -2308,5 +2308,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/srm-detector",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/srm-detector/demo.ipynb"
+  },
+  {
+    "day": 166,
+    "slug": "cuped-variance",
+    "name": "Variance Reduction Is a Bet on a Correlation You Already Collected",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "The test needs six weeks, and somebody says CUPED will halve it. The first claim is arithmetic.",
+    "status": "done",
+    "date": "2026-09-04",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/cuped-variance",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/cuped-variance/demo.ipynb"
   }
 ]
