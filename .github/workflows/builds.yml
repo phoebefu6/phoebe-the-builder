@@ -47,14 +47,31 @@ jobs:
           echo "candidate directories:"; echo "$dirs"
 
       - name: Test them
+        env:
+          # A normal daily push touches one build.  A repo-wide sweep (a lint pass,
+          # a template change) touches all 168, and installing 168 requirements.txt
+          # in one job is not a useful signal - it is an hour of pip.  Cap it, and
+          # SAY what was skipped rather than reporting green on a partial run.
+          MAX_BUILDS: "12"
         run: |
           set -uo pipefail
           ran=0
           failed=0
+          skipped=0
+          total=$(echo "${{ steps.scope.outputs.dirs }}" | grep -c . || true)
+          if [ "$total" -gt "$MAX_BUILDS" ]; then
+            echo "::warning::this push touches $total build directories; testing the first $MAX_BUILDS only."
+            echo "::warning::the remaining $((total - MAX_BUILDS)) were NOT tested by this run."
+          fi
           while IFS= read -r d; do
             [ -n "$d" ] || continue
             [ -d "$d" ] || continue
             ls "$d"/test_*.py >/dev/null 2>&1 || continue
+            if [ "$ran" -ge "$MAX_BUILDS" ]; then
+              echo "SKIPPED BY CAP, NOT TESTED: $d"
+              skipped=$((skipped + 1))
+              continue
+            fi
             echo "::group::$d"
             ran=$((ran + 1))
             if [ -f "$d/requirements.txt" ]; then
@@ -75,5 +92,8 @@ jobs:
             done
             echo "::endgroup::"
           done <<< "${{ steps.scope.outputs.dirs }}"
-          echo "ran $ran build suite(s), $failed failed"
+          echo "ran $ran build suite(s), $failed failed, $skipped skipped by the cap"
+          if [ "$skipped" -gt 0 ]; then
+            echo "::warning::$skipped build suite(s) were skipped by MAX_BUILDS and are NOT covered by this green tick."
+          fi
           [ "$failed" -eq 0 ]
