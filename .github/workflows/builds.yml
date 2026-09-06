@@ -18,7 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          # 0 = full history, so a multi-commit push can be diffed against its
+          # true base.  Depth 2 only ever showed the last commit.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -32,7 +34,19 @@ jobs:
             git fetch --no-tags --depth=50 origin "${{ github.base_ref }}"
             base="origin/${{ github.base_ref }}"
           else
-            base="$(git rev-parse HEAD^ 2>/dev/null || echo '')"
+            # github.event.before is the tip BEFORE this push, so a push of several
+            # commits is diffed as a whole.  HEAD^ was wrong here and silently
+            # covered only the last commit - the first two runs of this workflow
+            # tested nothing and went green.  All-zeros means a new branch.
+            before="${{ github.event.before }}"
+            case "$before" in
+              ""|0000000000000000000000000000000000000000) before="" ;;
+            esac
+            if [ -n "$before" ]; then
+              git fetch --no-tags --depth=50 origin "$before" 2>/dev/null || git fetch --no-tags --unshallow 2>/dev/null || true
+              git cat-file -e "$before^{commit}" 2>/dev/null || before=""
+            fi
+            base="${before:-$(git rev-parse HEAD^ 2>/dev/null || echo '')}"
           fi
           if [ -z "$base" ]; then
             changed="$(git ls-files)"
