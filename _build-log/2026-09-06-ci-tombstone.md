@@ -40,6 +40,15 @@ lint configurations and now there is one.
 - The seven per-build `ruff.toml` files deleted (they said the same thing the
   root now says, and the root CI's `--select E,F,I` command-line flag had been
   contradicting all of them at ruff's default 88 columns).
+- An **eighth** config found afterwards: `analytics-accelerator/kpi-tracker/pyproject.toml`.
+  The first sweep searched for files named `ruff.toml` and missed it, and it was
+  only caught because the pushed CI disagreed with a clean local run (24 UP006
+  findings a local `ruff check` could not see). Deleted, and `ci.yml` now fails
+  loudly if any `pyproject.toml` / `ruff.toml` / `.ruff.toml` reappears outside
+  the root.
+- Ruff is now **pinned** in CI (`ruff==0.15.18`). An unpinned install gave CI a
+  different rule set from the local one - the same class of local-vs-CI
+  disagreement the `--select` flag used to cause.
 - The root `CI` workflow stopped passing `--select` on the command line, so a
   local `ruff check` and CI can no longer disagree.
 - 9,232 lint findings resolved to zero: ~8,500 by fixing the configuration to

@@ -14,8 +14,26 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install ruff
+      # PINNED on purpose.  An unpinned `pip install ruff` gave CI a different
+      # rule set from the local one on 2026-09-06: it flagged 24 UP006 findings
+      # that a local run could not see, which is the same class of local-vs-CI
+      # disagreement the --select flag used to cause.  Bump this deliberately.
+      - run: pip install ruff==0.15.18
       # No --select here on purpose.  The rule set, the line length and the
       # exclusions all live in ./ruff.toml so that a local `ruff check` and CI
       # cannot disagree - which is exactly how this job stayed red for months.
       - run: ruff check .
+
+      # ./ruff.toml is the only lint config in this repository.  A pyproject.toml
+      # or ruff.toml in a build directory OVERRIDES it silently for that subtree -
+      # eight of them existed before 2026-09-06 and one (kpi-tracker) was found
+      # only because CI disagreed with a local run.  Fail loudly if one comes back.
+      - name: No second lint config
+        run: |
+          stray=$(find . -path ./.git -prune -o \( -name pyproject.toml -o -name ruff.toml -o -name .ruff.toml \) -print | grep -v '^\./ruff.toml$' || true)
+          if [ -n "$stray" ]; then
+            echo "::error::a second ruff config would silently override ./ruff.toml:"
+            echo "$stray"
+            exit 1
+          fi
+          echo "./ruff.toml is the only lint config."

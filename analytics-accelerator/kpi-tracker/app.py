@@ -10,7 +10,6 @@ without rebuilding the pull by hand.
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
-
 from kpi import build_scorecard, scorecard_summary  # noqa: E402
 
 st.set_page_config(page_title="KPI Tracker", page_icon="📊", layout="wide")
