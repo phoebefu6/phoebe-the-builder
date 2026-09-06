@@ -152,7 +152,7 @@ TASK_OF = {
     # Decide what is actually true
     "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
     "peeking-cost": "infer", "srm-detector": "infer", "cuped-variance": "infer",
-    "diff-in-diff": "infer",
+    "diff-in-diff": "infer", "interference-check": "infer",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
     # Learn from it
     "baseline-model": "predict", "feature-factory": "predict",

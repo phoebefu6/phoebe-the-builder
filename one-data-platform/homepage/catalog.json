@@ -2336,5 +2336,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/diff-in-diff",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/diff-in-diff/demo.ipynb"
+  },
+  {
+    "day": 168,
+    "slug": "interference-check",
+    "name": "A Split Test Measures a Transfer Between the Arms",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "The A/B test said +26%. It shipped to everybody and nothing moved. Nobody made a mistake: a split test measures the difference between the arms, and the decision needed the total.",
+    "status": "done",
+    "date": "2026-09-06",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/interference-check",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/interference-check/demo.ipynb"
   }
 ]

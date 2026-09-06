@@ -184,6 +184,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | Tool | The problem it was built for |
 |------|------------------------------|
 | [A Split Is a Hypothesis, and Passing Its Test Is Not Evidence](data-science-cookbook/srm-detector/) | The experiment dashboard says the split came out 49.3 / 50.7. |
+| [A Split Test Measures a Transfer Between the Arms](data-science-cookbook/interference-check/) | The A/B test said +26%. It shipped to everybody and nothing moved. |
 | [A Stopping Rule Is Part of the Test](data-science-cookbook/peeking-cost/) | Somebody opens the experiment dashboard every morning and ships the variant the day it goes green. |
 | [A/B Test Calculator](analytics-accelerator/ab-test-calc/) | Stop eyeballing significance. Enter your A/B numbers, get a proper two-proportion z-test - p-value, confidence… |
 | [AIC Ranking Plus an Absolute Goodness-of-Fit Test](data-science-cookbook/distribution-fitter/) | Fitting ten distributions and ranking them by AIC is four lines of scipy. |
