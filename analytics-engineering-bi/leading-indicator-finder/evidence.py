@@ -8,10 +8,9 @@ from __future__ import annotations
 
 from typing import Dict, List
 
+import leadlag as L
 import numpy as np
 from scipy import stats
-
-import leadlag as L
 
 W = L.World()
 HORIZON_NEEDED = 3      # the warning somebody actually asked for

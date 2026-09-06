@@ -10,8 +10,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import Patch
-
 from evidence import (
     _magnitude_only,
     _raw_column,
@@ -29,6 +27,7 @@ from fwf import (
     parse,
     parse_naive,
 )
+from matplotlib.patches import Patch
 
 INK = "#1c1c1c"
 MUTED = "#8a8a8a"

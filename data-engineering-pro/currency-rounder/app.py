@@ -10,10 +10,9 @@ from __future__ import annotations
 from decimal import Decimal as D
 from decimal import InvalidOperation
 
+import money as m
 import pandas as pd
 import streamlit as st
-
-import money as m
 
 st.set_page_config(page_title="currency-rounder", page_icon="¢", layout="wide")
 

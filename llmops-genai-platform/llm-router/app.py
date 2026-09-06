@@ -3,10 +3,8 @@ from __future__ import annotations
 # Streamlit UI for the LLM Model Router. Route a mixed traffic stream to the
 # cheapest capable tier, see the cost saved vs always-large, and test any
 # single request to see which tier it lands on and why. Fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from router import SAMPLE_TRAFFIC, TIERS, route, run_traffic
 
 st.set_page_config(page_title="LLM Model Router", page_icon="🚦", layout="wide")

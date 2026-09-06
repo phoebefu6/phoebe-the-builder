@@ -3,11 +3,10 @@ from __future__ import annotations
 """Streamlit UI for the Mini Model Registry."""
 
 import os
-from typing import Optional, List, Dict
+from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from registry import Registry
 
 REGISTRY_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_registry")

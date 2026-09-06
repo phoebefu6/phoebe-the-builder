@@ -14,7 +14,6 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 import yaml
-
 from rbac import can_access
 
 REGISTRY_FILE = Path(__file__).resolve().parent.parent / "registry" / "apps.yaml"

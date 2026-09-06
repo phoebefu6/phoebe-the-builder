@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from outliers import detect_outliers, explain_text, sample_dataframe, summary
 
 st.set_page_config(page_title="Outlier Explainer", layout="wide")

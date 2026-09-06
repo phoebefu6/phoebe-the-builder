@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from feature_prioritizer import IMPACT_SCALE, Feature, prioritize, to_frame
 
 st.set_page_config(page_title="Feature Prioritization Tool", page_icon="📊", layout="wide")

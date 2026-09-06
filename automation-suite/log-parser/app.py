@@ -6,7 +6,6 @@ breakdown, top errors, and a live alert-rule panel.
 
 import pandas as pd
 import streamlit as st
-
 from parser import AlertRule, evaluate_rules, parse_lines, summarize
 
 st.set_page_config(page_title="Log Parser & Alerter", page_icon="📜", layout="wide")

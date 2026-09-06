@@ -4,10 +4,8 @@ from __future__ import annotations
 # LLM answer; the app scores groundedness per claim and flags sentences the
 # context does not support. Fully offline lexical support signal - swap in an
 # NLI model or LLM judge for production.
-
 import pandas as pd
 import streamlit as st
-
 from detector import SAMPLES, check_answer, run_samples
 
 st.set_page_config(page_title="Hallucination Detector", page_icon="🔎",

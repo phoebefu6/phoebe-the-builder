@@ -5,9 +5,8 @@ Run it:  python evidence.py
 
 from __future__ import annotations
 
-import numpy as np
-
 import declog as D
+import numpy as np
 
 
 def rule(title: str) -> None:

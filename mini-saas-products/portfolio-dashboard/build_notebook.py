@@ -12,9 +12,8 @@ from __future__ import annotations
 
 import json
 
-import nbformat as nbf
-
 import capability as C
+import nbformat as nbf
 
 REPO = "phoebefu6/phoebe-the-builder"
 PATH = "mini-saas-products/portfolio-dashboard"

@@ -9,11 +9,17 @@ false-positive rate rather than hiding inside the theory.
 from __future__ import annotations
 
 import numpy as np
-
 from sequential import (
+    ALPHA,
+    K_DAILY,
+    LIFT_REL,
+    N_MAX,
+    P0,
+    P1,
     Trial,
     bonferroni_bounds,
     crossing_probability,
+    equal_looks,
     first_crossing,
     msprt_crossing,
     naive_bounds,
@@ -24,8 +30,6 @@ from sequential import (
     simulate,
     with_futility,
 )
-
-from sequential import ALPHA, K_DAILY, LIFT_REL, N_MAX, P0, P1, equal_looks
 
 M = 100_000  # simulations for the main tables
 SEED = 20260902

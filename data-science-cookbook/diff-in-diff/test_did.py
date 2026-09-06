@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-
 from did import (
     aggregate_att,
     ar1_errors,
@@ -27,7 +26,6 @@ from did import (
     twfe_cell_weights,
     two_way_demean,
 )
-
 
 # ---------------------------------------------------------------- primitives
 

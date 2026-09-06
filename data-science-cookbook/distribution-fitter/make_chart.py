@@ -17,7 +17,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-
 from evidence import ks_calibration, mixture_sample, rounding_vs_n
 from fitting import (
     bootstrap_ks,
@@ -207,10 +206,6 @@ def build(output: str = "fit_audit.png") -> str:
     seeds = (29, 131, 233, 337, 439)
     rounded = _mean_rounding_curve(sizes, 1, 150, seeds)
     raw = _mean_rounding_curve(sizes, None, 150, seeds)
-    print("  fitting the mixture ...")
-    rep_mix = fit_distributions(
-        mixture, n_boot=100, stability_reps=80, seed=17, probe_location=False
-    )
     print("  fitting a small gamma sample for the stability panel ...")
     # n=150 gamma: close enough to lognormal that the AIC weight is confident and the
     # bootstrap is not. That gap is the panel.

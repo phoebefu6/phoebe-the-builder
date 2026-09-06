@@ -3,10 +3,8 @@ from __future__ import annotations
 # Streamlit UI for the LLM Cost & Token Tracker. See spend by model, tag, and
 # day; check the monthly budget; and estimate the cost of a single call before
 # you make it. Fully offline - rates are an editable table.
-
 import pandas as pd
 import streamlit as st
-
 from tracker import PRICING, call_cost, estimate_tokens, sample_tracker
 
 st.set_page_config(page_title="LLM Cost & Token Tracker", page_icon="💸", layout="wide")

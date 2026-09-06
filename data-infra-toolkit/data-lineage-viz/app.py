@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import re
-import streamlit as st
-import matplotlib.pyplot as plt
-import networkx as nx
 from typing import Dict, List, Set, Tuple
 
+import matplotlib.pyplot as plt
+import networkx as nx
+import streamlit as st
 
 # ---------------------------------------------------------------------------
 # Core logic: parse SQL into table-to-table lineage edges

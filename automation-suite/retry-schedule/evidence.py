@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import random
 import statistics
-from typing import List
 
 import retry as R
 

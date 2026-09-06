@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from importance import demo_data, explain, train_model
 
 st.set_page_config(page_title="Feature Importance Explainer", page_icon="🔍", layout="wide")

@@ -5,11 +5,10 @@
 
 from __future__ import annotations
 
+import evcalc as E
 import numpy as np
 import pandas as pd
 import streamlit as st
-
-import evcalc as E
 
 st.set_page_config(page_title="Expected Value", layout="wide")
 

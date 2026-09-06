@@ -1,0 +1,79 @@
+# Runs the test suite of every build directory a push actually touched.
+#
+# Until 2026-09-06 each build shipped its own .github/workflows/ci.yml inside its
+# own folder.  GitHub only reads workflows from the repository root, so all 108 of
+# them had never run - not once, across 168 builds.  They looked like CI and were
+# decorative.  This file replaces them.  See _build-log/2026-09-06-ci-tombstone.md.
+name: Build tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  changed-builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Work out which build directories changed
+        id: scope
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch --no-tags --depth=50 origin "${{ github.base_ref }}"
+            base="origin/${{ github.base_ref }}"
+          else
+            base="$(git rev-parse HEAD^ 2>/dev/null || echo '')"
+          fi
+          if [ -z "$base" ]; then
+            changed="$(git ls-files)"
+          else
+            changed="$(git diff --name-only "$base" HEAD)"
+          fi
+          # A build lives at <product-line>/<slug>/, so take the first two segments.
+          dirs="$(echo "$changed" | awk -F/ 'NF>=3 {print $1"/"$2}' | sort -u)"
+          echo "dirs<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$dirs" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "candidate directories:"; echo "$dirs"
+
+      - name: Test them
+        run: |
+          set -uo pipefail
+          ran=0
+          failed=0
+          while IFS= read -r d; do
+            [ -n "$d" ] || continue
+            [ -d "$d" ] || continue
+            ls "$d"/test_*.py >/dev/null 2>&1 || continue
+            echo "::group::$d"
+            ran=$((ran + 1))
+            if [ -f "$d/requirements.txt" ]; then
+              pip install -q -r "$d/requirements.txt" || { echo "::error::$d deps failed"; failed=$((failed + 1)); echo "::endgroup::"; continue; }
+            fi
+            # Two harness styles live in this repo and both are legitimate.  A file
+            # that defines `def test_...` is a pytest suite; one that does not is a
+            # self-running script with its own runner and a non-zero exit on failure
+            # (9 of 40 are, and pytest MIS-reports those - it collects a decorator
+            # named `test` and errors at setup).  Decide statically, per file.
+            for f in "$d"/test_*.py; do
+              b="$(basename "$f")"
+              if grep -qE '^[[:space:]]*def test_' "$f"; then
+                ( cd "$d" && python -m pytest -q "$b" ) || { echo "::error::$d/$b failed (pytest)"; failed=$((failed + 1)); }
+              else
+                ( cd "$d" && python "$b" ) || { echo "::error::$d/$b failed (self-running)"; failed=$((failed + 1)); }
+              fi
+            done
+            echo "::endgroup::"
+          done <<< "${{ steps.scope.outputs.dirs }}"
+          echo "ran $ran build suite(s), $failed failed"
+          [ "$failed" -eq 0 ]

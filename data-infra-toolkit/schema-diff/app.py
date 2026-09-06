@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import re
-from typing import Optional
-import streamlit as st
 from dataclasses import dataclass, field
+from typing import Optional
+
+import streamlit as st
 
 # ---------------------------------------------------------------------------
 # Schema parser

@@ -8,10 +8,9 @@ from __future__ import annotations
 import collections
 from typing import List
 
+import boolparse as B
 import pandas as pd
 import streamlit as st
-
-import boolparse as B
 
 st.set_page_config(page_title="Boolean Parser Audit", layout="wide")
 

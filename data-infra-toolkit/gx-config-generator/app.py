@@ -2,11 +2,9 @@ from __future__ import annotations
 
 """Streamlit UI: upload a CSV, auto-profile it, download a GX expectation suite."""
 
-import io
 
 import pandas as pd
 import streamlit as st
-
 from profiler import generate_suite, suite_to_json, summarize
 
 st.set_page_config(page_title="GX Config Generator", page_icon="✅", layout="wide")

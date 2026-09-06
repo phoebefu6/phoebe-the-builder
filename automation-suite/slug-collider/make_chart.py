@@ -7,15 +7,13 @@ from __future__ import annotations
 
 import sys
 import unicodedata
-from typing import List
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
-
 import slug as S
+from matplotlib.patches import Rectangle
 
 INK = "#1b1b1f"
 MUTED = "#8a8a94"
@@ -91,9 +89,9 @@ def panel_findings(ax) -> None:
     for kind, colour, label in kinds:
         vals = [len(S.audit(S.CORPUS, n).of_kind(kind)) for n in PROFILE_ORDER]
         ax.barh(y, vals, left=lefts, color=colour, height=0.62, label=label)
-        for i, (v, l) in enumerate(zip(vals, lefts)):
+        for i, (v, left_edge) in enumerate(zip(vals, lefts)):
             if v:
-                ax.text(l + v / 2, i, str(v), color="white", fontsize=7.5,
+                ax.text(left_edge + v / 2, i, str(v), color="white", fontsize=7.5,
                         fontweight="bold", ha="center", va="center")
         lefts = [a + b for a, b in zip(lefts, vals)]
     ax.set_yticks(y)

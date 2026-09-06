@@ -138,9 +138,9 @@ def main() -> None:
           f"{100 * C.percentile_of(costs, cm):.1f}th (mean rate).")
     r1, r2 = C.order_rice(items), C.order_rice_duration(items)
     v1, v2 = C.cost_of(r1, items), C.cost_of(r2, items)
-    print(f"\nThe popular critique of RICE is its denominator: effort is in "
-          f"person-months\nand delay is paid in calendar weeks. Swapping the "
-          f"denominator for duration moves")
+    print("\nThe popular critique of RICE is its denominator: effort is in "
+          "person-months\nand delay is paid in calendar weeks. Swapping the "
+          "denominator for duration moves")
     print(f"{C.kendall_distance(r1, r2)} of {npairs} pairs and costs "
           f"{v2 - v1:+.1f} - it makes things very slightly worse.")
     print("RICE's problem is not its denominator. Reach x Impact x Confidence is a")
@@ -190,7 +190,7 @@ def main() -> None:
     print(f"  two teams, CD3 list-schedule {greedy:9.1f}")
     print(f"  list-scheduling gap          {greedy - o2['best']:9.1f}  "
           f"({100 * (greedy / o2['best'] - 1):.2f}%)")
-    print(f"\nA negative result worth having: on this backlog the parallel-capacity")
+    print("\nA negative result worth having: on this backlog the parallel-capacity")
     print(f"break costs {100 * (greedy / o2['best'] - 1):.2f}%. Walking the CD3 "
           f"order and handing each item to")
     print("whichever team is free is very nearly optimal, and simpler than the")

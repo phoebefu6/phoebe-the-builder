@@ -8,9 +8,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pyarrow.dataset as ds
 import streamlit as st
-
-from partitioner import (compare_compressions, convert_to_partitioned_parquet,
-                         infer_partition_cols, make_sample_events, timed_query)
+from partitioner import (
+    compare_compressions,
+    convert_to_partitioned_parquet,
+    infer_partition_cols,
+    make_sample_events,
+    timed_query,
+)
 
 st.set_page_config(page_title="Parquet Partitioner", page_icon="🗂️", layout="wide")
 st.title("🗂️ CSV/JSON → Partitioned Parquet")

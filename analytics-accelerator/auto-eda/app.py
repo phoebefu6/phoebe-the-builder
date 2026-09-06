@@ -7,7 +7,6 @@ profiles, distributions, correlations, and quality flags.
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from profiler import numeric_correlations, profile_dataframe
 
 st.set_page_config(page_title="Auto-EDA Dashboard", page_icon="🔎", layout="wide")

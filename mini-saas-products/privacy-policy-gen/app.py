@@ -3,7 +3,6 @@ from __future__ import annotations
 import datetime
 
 import streamlit as st
-
 from policy_gen import DATA_CATEGORIES, CompanyProfile, compliance_checklist, generate_policy
 
 st.set_page_config(page_title="Privacy Policy Generator", page_icon="🔒", layout="wide")

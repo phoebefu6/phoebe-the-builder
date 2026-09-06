@@ -258,8 +258,8 @@ def day_bucketing_moves_revenue_without_changing_the_total() -> None:
     rows = build_session_log()
     readings = normalize(rows, ambiguous="earlier", nonexistent="shift_forward")
     u = sum(row["amount"] for row, r in zip(rows, readings) if utc_day(r))
-    l = sum(row["amount"] for row, r in zip(rows, readings) if local_day(r))
-    assert u == l  # the control total always reconciles - that is why it survives
+    loc = sum(row["amount"] for row, r in zip(rows, readings) if local_day(r))
+    assert u == loc  # the control total always reconciles - that is why it survives
 
 
 # --------------------------------------------------------------------------

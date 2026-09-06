@@ -12,7 +12,6 @@ import io
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from harness import (
     DEFAULT_METRICS,
     format_leaderboard,

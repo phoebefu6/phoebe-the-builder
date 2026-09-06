@@ -6,7 +6,6 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
 from type_infer import run_benchmark
 
 BUCKETS = ["exact", "wide", "untyped", "unsafe", "lossy"]
@@ -31,11 +30,11 @@ def main(path: str = "type_benchmark.png") -> None:
     left = [0.0] * len(names)
     for b in BUCKETS:
         ax.barh(names, counts[b], left=left, color=COLORS[b], label=LABEL[b], height=0.55)
-        for i, (v, l) in enumerate(zip(counts[b], left)):
+        for i, (v, left_edge) in enumerate(zip(counts[b], left)):
             if v:
-                ax.text(l + v / 2, i, str(v), ha="center", va="center",
+                ax.text(left_edge + v / 2, i, str(v), ha="center", va="center",
                         color="white", fontsize=11, fontweight="bold")
-        left = [l + v for l, v in zip(left, counts[b])]
+        left = [left_edge + v for left_edge, v in zip(left, counts[b])]
 
     ax.set_xlim(0, total)
     ax.set_xlabel(f"columns (of {total})")

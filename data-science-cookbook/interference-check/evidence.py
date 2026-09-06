@@ -13,10 +13,9 @@ import json
 import time
 from typing import Any, Dict, List
 
+import interference as I
 import numpy as np
 from scipy import stats
-
-import interference as I
 
 RESULTS: Dict[str, Any] = {}
 PC, PT = 0.10, 0.13  # control / treated attempt rate

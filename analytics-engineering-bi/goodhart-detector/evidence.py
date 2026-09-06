@@ -9,10 +9,9 @@ import json
 from dataclasses import replace
 from typing import Dict, List
 
+import goodhart as G
 import numpy as np
 from scipy import stats
-
-import goodhart as G
 
 RESULTS: Dict[str, object] = {}
 W = G.World()

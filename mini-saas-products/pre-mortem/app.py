@@ -7,9 +7,8 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import streamlit as st
-
 import premortem as P
+import streamlit as st
 
 st.set_page_config(page_title="Pre-mortem", layout="wide")
 

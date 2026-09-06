@@ -24,8 +24,7 @@ import hashlib
 import json
 import os
 import re
-from typing import Optional, List, Dict
-
+from typing import Dict, List, Optional
 
 VALID_STAGES = ("draft", "staging", "production")
 _VAR_RE = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")

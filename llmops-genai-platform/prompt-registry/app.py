@@ -3,10 +3,9 @@ from __future__ import annotations
 """Streamlit UI for the Prompt Registry & Versioning tool."""
 
 import os
-from typing import Optional, List, Dict
+from typing import Dict
 
 import streamlit as st
-
 from registry import PromptRegistry, extract_variables
 
 REGISTRY_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_registry")

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from reviewer import fetch_pr_diff, review_diff
 
 st.set_page_config(page_title="Code Review Agent", page_icon="🔍")

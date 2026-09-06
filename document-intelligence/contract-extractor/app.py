@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from extractor import SAMPLE_CONTRACT, extract_text_from_pdf, review_contract
 
 RISK_COLOR = {"high": "🔴", "medium": "🟠", "low": "🟢"}

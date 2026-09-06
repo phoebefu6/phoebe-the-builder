@@ -5,7 +5,6 @@ import json
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from dashspec import classify_columns, recommend_dashboard, sample_dataframe, spec_to_dict
 
 st.set_page_config(page_title="Dashboard Spec Generator", layout="wide")

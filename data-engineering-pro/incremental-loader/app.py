@@ -6,7 +6,6 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from incremental import WatermarkStore, make_initial_source, run_incremental_load, simulate_source_day
 
 st.set_page_config(page_title="Incremental / CDC Loader", page_icon="⏩", layout="wide")

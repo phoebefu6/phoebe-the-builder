@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import re
 from collections import Counter
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
 _TOKEN_RE = re.compile(r"[a-z']+")

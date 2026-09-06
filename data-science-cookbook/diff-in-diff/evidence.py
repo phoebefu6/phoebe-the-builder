@@ -14,8 +14,6 @@ import time
 from typing import Dict, List, Tuple
 
 import numpy as np
-from scipy import stats
-
 from did import (
     aggregate_att,
     ar1_errors,
@@ -29,6 +27,7 @@ from did import (
     twfe,
     twfe_cell_weights,
 )
+from scipy import stats
 
 RESULTS: Dict[str, object] = {}
 

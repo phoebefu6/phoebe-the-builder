@@ -11,10 +11,9 @@ from typing import List
 
 import pandas as pd
 import streamlit as st
-
 from collate import (
-    CORPUS,
     COLLATIONS,
+    CORPUS,
     PAGE_SIZES,
     Row,
     Verdict,

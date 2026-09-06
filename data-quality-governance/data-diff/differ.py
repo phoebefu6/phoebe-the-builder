@@ -10,9 +10,8 @@ from __future__ import annotations
 # This is CHANGE-OVER-TIME within one system (temporal auditing / CDC-style),
 # NOT cross-system reconciliation. Every finding is explainable so a steward can
 # judge intent - a diff shows WHAT changed, never WHY. Offline, pandas/numpy only.
-
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd

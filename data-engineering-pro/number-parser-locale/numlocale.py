@@ -314,9 +314,13 @@ LOCALES: List[Tuple[str, str]] = [
 ]
 
 try:
-    from babel.numbers import (NumberFormatError, format_decimal,
-                               get_decimal_symbol, get_group_symbol,
-                               parse_decimal)
+    from babel.numbers import (
+        NumberFormatError,
+        format_decimal,
+        get_decimal_symbol,
+        get_group_symbol,
+        parse_decimal,
+    )
     _HAVE_BABEL = True
 except ImportError:  # pragma: no cover
     _HAVE_BABEL = False

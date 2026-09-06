@@ -6,11 +6,9 @@ from __future__ import annotations
 # so a data steward can trust the signal. This is a DEFENSIVE least-privilege
 # hygiene tool - it surfaces review candidates, it does not revoke anything.
 # Fully offline, standard pandas/numpy only - no API keys.
-
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-import numpy as np
 import pandas as pd
 
 # --- Tunable governance bar - edit for your own policy tolerance. ---
@@ -221,7 +219,6 @@ def make_sample_grants(seed: int = 42) -> pd.DataFrame:
       - orphaned: a contractor holding access to restricted data
       - sod: one user holds conflicting data_engineer + auditor roles
     """
-    rng = np.random.default_rng(seed)  # seeded, though rows below are explicit
     rows = [
         # user, role, dataset, sensitivity, permission, granted, last_used
         # --- exposure: 7 users all on the restricted customer_pii table ---

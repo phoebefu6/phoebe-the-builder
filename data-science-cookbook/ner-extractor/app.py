@@ -4,7 +4,6 @@ import html
 
 import pandas as pd
 import streamlit as st
-
 from ner import SAMPLE_TEXT, extract_entities, group_by_label
 
 COLOR = {

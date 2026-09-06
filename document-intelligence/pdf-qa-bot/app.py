@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from qa import answer_question, chunk_text, extract_pages
 
 st.set_page_config(page_title="PDF Q&A Bot", layout="wide")

@@ -13,7 +13,6 @@ from typing import List, Optional, Sequence
 
 import pandas as pd
 import streamlit as st
-
 import tabler as T
 
 try:

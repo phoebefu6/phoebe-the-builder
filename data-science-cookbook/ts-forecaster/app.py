@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from forecaster import backtest, holt_winters_add, sample_series
 
 st.set_page_config(page_title="Time Series Forecaster", layout="wide")

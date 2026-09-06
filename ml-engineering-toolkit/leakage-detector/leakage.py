@@ -13,7 +13,7 @@ Each check returns structured findings. `run_all` orchestrates them into a
 single verdict.
 """
 
-from typing import Optional, List, Dict
+from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd

@@ -4,15 +4,14 @@ from __future__ import annotations
 
 from typing import Dict
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import streamlit as st
-
 from calibration import (
     demo_data,
-    fit_models,
     evaluate,
+    fit_models,
     reliability_points,
 )
 

@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from classifier import predict, sample_data, top_features, train_classifier
 
 st.set_page_config(page_title="Text Classification Trainer", layout="wide")

@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from correxplore import correlation_matrix, high_correlations, sample_dataframe, suggest_drops, vif
 
 st.set_page_config(page_title="Correlation & Multicollinearity Explorer", layout="wide")

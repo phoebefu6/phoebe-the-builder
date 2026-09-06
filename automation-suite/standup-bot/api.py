@@ -18,7 +18,6 @@ from typing import Any, Dict, Optional
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 from pydantic import BaseModel
-
 from standup import StandupStore, Update, build_digest, summarize_with_claude
 
 app = FastAPI(title="Daily Standup Bot", version="1.0.0")

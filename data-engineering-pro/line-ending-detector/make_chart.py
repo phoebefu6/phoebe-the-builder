@@ -12,8 +12,6 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.colors import LinearSegmentedColormap
-
 from lineends import (
     CORPUS,
     SPLITTERS,
@@ -31,6 +29,7 @@ from lineends import (
     verdict,
     verdict_counts,
 )
+from matplotlib.colors import LinearSegmentedColormap
 
 INK = "#1d2733"
 MUTED = "#6b7885"

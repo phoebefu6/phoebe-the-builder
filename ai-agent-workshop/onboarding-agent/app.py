@@ -4,7 +4,6 @@ from datetime import date
 
 import pandas as pd
 import streamlit as st
-
 from onboarding import DEFAULT_CHECKLIST, NewHire, evaluate_onboarding, progress_summary
 
 st.set_page_config(page_title="Onboarding Checklist Agent", page_icon="🧭")

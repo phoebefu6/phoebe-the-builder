@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from faqgen import SAMPLE_DOC, chunk_document, generate_faq
 
 st.set_page_config(page_title="FAQ Generator from Docs", layout="wide")

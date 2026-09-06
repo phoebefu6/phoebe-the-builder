@@ -39,7 +39,6 @@ def _keyword_score(text: str, keywords: List[str]) -> List[str]:
 
 def _rule_based_route(subject: str, body: str) -> tuple[str, float, List[str]]:
     """Weight subject matches 2x body matches, since subject is a stronger signal."""
-    full_text = f"{subject} {body}"
     best_team = DEFAULT_TEAM
     best_score = 0.0
     best_matches: List[str] = []

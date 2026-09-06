@@ -9,13 +9,11 @@ from __future__ import annotations
 # This is a DEFENSIVE data-minimization tool. It PLANS actions for human review;
 # it NEVER auto-deletes or auto-anonymizes anything. Legal owns the policy.
 # Fully offline, standard pandas/numpy only - no API keys.
-
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-
 
 # Reproducibility: age is measured against a FIXED baseline, not the wall clock,
 # so the sample data and every rendered output stay stable across runs/machines.

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from drift_detector import (
     PSI_MODERATE,
     PSI_SIGNIFICANT,

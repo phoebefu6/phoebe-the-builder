@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from dimreduce import pca_project, sample_dataframe, scree, tsne_project
 
 st.set_page_config(page_title="PCA / t-SNE Explorer", layout="wide")

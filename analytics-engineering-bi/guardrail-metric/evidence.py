@@ -4,10 +4,9 @@ from __future__ import annotations
 
 from typing import Dict
 
+import guardrails as G
 import numpy as np
 from scipy import stats
-
-import guardrails as G
 
 N_PER_ARM = G.n_for_power(0.80, 1.0)   # the experiment is sized for the WIN
 DECISION_DAY = 14

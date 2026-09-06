@@ -15,7 +15,6 @@ from __future__ import annotations
 from fractions import Fraction
 
 import pytest
-
 from percentages import (
     CENSUS_AFTER,
     CENSUS_BEFORE,
@@ -27,8 +26,8 @@ from percentages import (
     NEWCOMER,
     NEWCOMER_EXTRA,
     NEWCOMER_ROW,
-    POWERS,
     PNL,
+    POWERS,
     QUARTERS,
     QUEUES,
     SHIFTS,

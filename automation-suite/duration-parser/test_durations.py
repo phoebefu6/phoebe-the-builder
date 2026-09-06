@@ -13,8 +13,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 import pytest
-
 from durations import (
+    _NY,
     DAY24,
     DEFAULT_ANCHORS,
     HOUR,
@@ -22,7 +22,6 @@ from durations import (
     PARSERS,
     REFERENCE_ANCHOR,
     Verdict,
-    _NY,
     add_nominal,
     audit,
     audit_corpus,

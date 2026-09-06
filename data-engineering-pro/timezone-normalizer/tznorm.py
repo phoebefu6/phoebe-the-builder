@@ -20,7 +20,8 @@ Standard library only - `zoneinfo`, no pytz, no pandas.
 from __future__ import annotations
 
 import datetime as dt
-from dataclasses import dataclass, field as _dcfield
+from dataclasses import dataclass
+from dataclasses import field as _dcfield
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 

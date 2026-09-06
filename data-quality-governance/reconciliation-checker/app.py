@@ -5,10 +5,8 @@ from __future__ import annotations
 # pick the key column, and get a pass/fail verdict with the missing / extra /
 # mismatch tables laid out for a steward to act on. Logic lives in
 # reconciler.py so the notebook, CLI, and app all agree on the same rules.
-
 import pandas as pd
 import streamlit as st
-
 from reconciler import (
     DEFAULT_TOLERANCE,
     make_sample_data,

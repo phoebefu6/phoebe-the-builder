@@ -15,7 +15,6 @@ from __future__ import annotations
 # downstream accuracy. Swap in real embeddings for production.
 #
 # Fully offline - no API keys.
-
 import math
 import re
 from collections import Counter

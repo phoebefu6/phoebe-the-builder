@@ -11,7 +11,6 @@ import io
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from churn import (
     find_label_column,
     sample_customers,

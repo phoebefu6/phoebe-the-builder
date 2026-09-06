@@ -12,8 +12,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-from scipy import stats
-
 from fitting import (
     DEFAULT_FAMILIES,
     _infer_decimals,
@@ -23,13 +21,13 @@ from fitting import (
     fit_distributions,
     fit_params,
     ks_statistic,
-    loglikelihood,
     probe_free_location,
     qq_points,
     sample_book,
     selection_stability,
     support_violation,
 )
+from scipy import stats
 
 
 def _run(name: str) -> None:

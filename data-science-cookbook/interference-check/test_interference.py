@@ -7,10 +7,9 @@ document rather than silently rewriting it.
 
 from __future__ import annotations
 
+import interference as I
 import numpy as np
 import pytest
-
-import interference as I
 
 PC, PT = 0.10, 0.13
 

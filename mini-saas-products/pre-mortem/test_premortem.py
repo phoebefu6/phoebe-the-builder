@@ -10,9 +10,8 @@ import itertools
 import math
 
 import numpy as np
-import pytest
-
 import premortem as P
+import pytest
 
 # --------------------------------------------------------------------------
 # The plan

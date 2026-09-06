@@ -4,10 +4,8 @@ from __future__ import annotations
 # your processing register (or use the built-in sample), and see - by severity - every
 # processing activity that can't point to a valid lawful basis, plus the headline
 # "% of processing with valid basis" metric. All logic lives in tracker.py.
-
 import pandas as pd
 import streamlit as st
-
 from tracker import (
     AS_OF,
     audit_consent,

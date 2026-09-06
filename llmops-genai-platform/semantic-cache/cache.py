@@ -9,7 +9,6 @@ from __future__ import annotations
 # when they are close enough. This module ships a dependency-free lexical
 # embedder (bag-of-words cosine with light normalization) so it runs fully
 # offline - swap in real embeddings for production.
-
 import math
 import re
 from dataclasses import dataclass

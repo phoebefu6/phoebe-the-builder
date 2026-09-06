@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import html
 import re
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import Dict, List, Tuple
 
 import tabler as T
 
@@ -100,7 +100,6 @@ def section_pipe() -> Dict[str, bool]:
     for label, wanted, with_escape, with_entity in cases:
         got_esc = parse_back("| c |\n| --- |\n| %s |" % with_escape)[1][0]
         got_ent = parse_back("| c |\n| --- |\n| %s |" % with_entity)[1][0]
-        ok_esc = got_esc == wanted.replace("`", "")
         ok_ent = got_ent == wanted.replace("`", "")
         results[label] = ok_ent
         print(

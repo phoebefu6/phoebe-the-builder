@@ -9,9 +9,8 @@ import secrets
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import streamlit as st
-
 import redact as R
+import streamlit as st
 
 st.set_page_config(page_title="PII Redactor", layout="wide")
 

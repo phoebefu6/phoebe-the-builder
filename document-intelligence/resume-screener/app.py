@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from screener import SAMPLE_JOB, SAMPLE_RESUMES, extract_required_skills, screen_resume
 
 BAND_ICON = {"advance": "🟢", "maybe": "🟠", "reject": "🔴"}

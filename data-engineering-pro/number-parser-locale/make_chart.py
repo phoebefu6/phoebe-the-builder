@@ -8,13 +8,13 @@ from __future__ import annotations
 from typing import Dict, List, Tuple
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+import numlocale as N
 import numpy as np
 from matplotlib.colors import ListedColormap
-
-import numlocale as N
 
 SEED = 20260821
 

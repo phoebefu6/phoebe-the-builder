@@ -12,7 +12,6 @@ from __future__ import annotations
 #
 # Fully offline - no API keys. The "model output" in the demo is a set of
 # realistically-messy strings; swap in your real Claude/LLM response text.
-
 import json
 import re
 from dataclasses import dataclass, field

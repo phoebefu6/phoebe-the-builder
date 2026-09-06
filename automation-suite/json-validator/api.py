@@ -15,7 +15,6 @@ from typing import Any, Dict
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
-
 from validator import infer_schema, validate_payload
 
 app = FastAPI(title="JSON Schema Validator", version="1.0.0")

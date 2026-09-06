@@ -9,7 +9,6 @@ from __future__ import annotations
 # over the chunks with a dependency-free lexical scorer, and scores each
 # strategy on a gold eval set - so you can pick a chunking config on evidence
 # instead of vibes. Fully offline: no API keys, no embeddings service.
-
 import math
 import re
 from dataclasses import dataclass, field

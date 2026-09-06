@@ -8,10 +8,9 @@ from __future__ import annotations
 from datetime import datetime
 from typing import List
 
+import cron as C
 import pandas as pd
 import streamlit as st
-
-import cron as C
 from evidence import SAMPLE
 
 ZONES = [

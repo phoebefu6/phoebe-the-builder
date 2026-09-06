@@ -8,10 +8,9 @@ from __future__ import annotations
 
 import math
 
+import evcalc as E
 import numpy as np
 import pytest
-
-import evcalc as E
 
 # --------------------------------------------------------------------------
 # Setup

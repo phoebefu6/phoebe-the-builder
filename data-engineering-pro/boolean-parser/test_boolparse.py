@@ -15,9 +15,8 @@ import collections
 import json
 import sqlite3
 
-import pytest
-
 import boolparse as B
+import pytest
 
 # --------------------------------------------------------------------------
 # Environment - the claims hold for these builds

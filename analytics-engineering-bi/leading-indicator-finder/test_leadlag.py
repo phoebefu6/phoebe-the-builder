@@ -7,11 +7,10 @@ that the reduction cannot flip them.
 
 from __future__ import annotations
 
+import leadlag as L
 import numpy as np
 import pytest
 from scipy import stats
-
-import leadlag as L
 
 W = L.World()
 

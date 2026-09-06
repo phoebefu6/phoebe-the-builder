@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from recommender import ItemItemCF, sample_interactions
 
 st.set_page_config(page_title="Recommendation Engine", layout="wide")

@@ -10,9 +10,8 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import streamlit as st
-
 import srm
+import streamlit as st
 
 st.set_page_config(page_title="SRM detector", page_icon="⚖️", layout="wide")
 

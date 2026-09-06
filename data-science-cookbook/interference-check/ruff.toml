@@ -1,8 +1,0 @@
-# evidence.py is mostly print() of interpolated results, so its SOURCE lines run
-# long where the OUTPUT lines do not.  110 is the width at which none of them
-# need splitting mid-f-string.
-line-length = 110
-
-[lint.per-file-ignores]
-"demo.ipynb" = ["E702", "E501"]
-"build_notebook.py" = ["E501"]

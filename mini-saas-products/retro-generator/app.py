@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from retro_generator import SprintData, generate_retro
 
 st.set_page_config(page_title="Sprint Retrospective Generator", page_icon="🔄")

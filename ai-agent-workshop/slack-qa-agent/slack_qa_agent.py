@@ -151,8 +151,8 @@ def post_to_slack(channel: str, text: str) -> Tuple[bool, str]:
     if not token:
         return (False, f"[dry-run] would post to {channel}: {text[:80]}...")
     try:
-        import urllib.request
         import json as _json
+        import urllib.request
 
         payload = _json.dumps({"channel": channel, "text": text}).encode()
         req = urllib.request.Request(

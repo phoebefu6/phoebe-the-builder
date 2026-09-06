@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 import streamlit as st
-
 from monitor import PipelineRun, monitor_runs
 
 st.set_page_config(page_title="Pipeline Monitor Agent", page_icon="📡")

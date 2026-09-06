@@ -8,7 +8,6 @@ works" would pass on `data.split(b"\\n")` and miss the entire point.
 from __future__ import annotations
 
 import pytest
-
 from lineends import (
     CORPUS,
     CR,

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 import uwidth as U
 
 st.set_page_config(page_title="Truncate to n", layout="wide")

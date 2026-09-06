@@ -5,10 +5,8 @@ from __future__ import annotations
 # access, stale grants, sensitive-data over-exposure, orphaned grants, and
 # segregation-of-duties conflicts - then triage findings by severity, each with
 # a plain-English reason. Defensive least-privilege hygiene, fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from auditor import (
     AS_OF,
     EXPOSURE_MAX_USERS,

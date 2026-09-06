@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from a11y_checker import check_html, grade, report_markdown, score
 
 st.set_page_config(page_title="Accessibility Checker", page_icon="♿", layout="wide")

@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
+import leadlag as L
 import pandas as pd
 import streamlit as st
-
-import leadlag as L
 
 st.set_page_config(page_title="Leading Indicator Finder", layout="wide")
 st.title("A lead is a claim about a lag")

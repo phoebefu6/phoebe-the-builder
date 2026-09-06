@@ -13,11 +13,10 @@ from dataclasses import replace
 import matplotlib
 
 matplotlib.use("Agg")
+import goodhart as G  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 from scipy import stats  # noqa: E402
-
-import goodhart as G  # noqa: E402
 
 INK = "#141414"
 MUTED = "#8a8a8a"

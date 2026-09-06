@@ -7,14 +7,14 @@
 from __future__ import annotations
 
 import sys
-from typing import Dict, List
+from typing import List
 
 import matplotlib
+
 if __name__ == "__main__":  # importing this from a notebook must not steal the backend
     matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-
 import sniff
 
 INK = "#1d2330"

@@ -15,7 +15,6 @@ from __future__ import annotations
 # are illustrative per-1M-token rates; edit TIERS for your providers.
 #
 # Fully offline - no API keys.
-
 import re
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
@@ -68,9 +67,11 @@ def complexity_score(text: str) -> Tuple[float, List[str]]:
 
     words = len(text.split())
     if words > 120:
-        score += 0.35; reasons.append(f"long input ({words} words)")
+        score += 0.35
+        reasons.append(f"long input ({words} words)")
     elif words > 40:
-        score += 0.18; reasons.append(f"medium input ({words} words)")
+        score += 0.18
+        reasons.append(f"medium input ({words} words)")
 
     n_reason = len(_REASON_CUES.findall(text))
     if n_reason:
@@ -78,18 +79,22 @@ def complexity_score(text: str) -> Tuple[float, List[str]]:
         reasons.append(f"reasoning cues x{n_reason}")
 
     if _CODE_CUES.search(text):
-        score += 0.30; reasons.append("code/technical content")
+        score += 0.30
+        reasons.append("code/technical content")
 
     if _STRUCT_CUES.search(text):
-        score += 0.10; reasons.append("structured output")
+        score += 0.10
+        reasons.append("structured output")
 
     # Multi-question / multi-step requests are harder.
     n_q = text.count("?")
     if n_q >= 2:
-        score += 0.12; reasons.append(f"multiple questions ({n_q})")
+        score += 0.12
+        reasons.append(f"multiple questions ({n_q})")
 
     if _SIMPLE_CUES.search(text) and words <= 40 and not _CODE_CUES.search(text):
-        score -= 0.20; reasons.append("simple task cue")
+        score -= 0.20
+        reasons.append("simple task cue")
 
     score = round(max(0.0, min(1.0, score)), 3)
     if not reasons:

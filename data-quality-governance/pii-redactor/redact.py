@@ -302,7 +302,7 @@ def generalization_ladder(
                 "singletons": score["singletons"],
                 "singleton_share": score["singleton_share"],
                 f"rows_suppressed_for_k{target_k}": suppressed,
-                f"suppression_share": suppressed / len(df) if len(df) else 0.0,
+                "suppression_share": suppressed / len(df) if len(df) else 0.0,
                 f"clears_k{target_k}": bool(
                     score["k"] is not None and score["k"] >= target_k
                 ),

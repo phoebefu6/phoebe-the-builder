@@ -4,10 +4,8 @@ from __future__ import annotations
 # selector pull the k nearest labeled examples from the pool - the ones you'd
 # actually put in the prompt - and see how dynamic selection beats a static /
 # random example block. Fully offline lexical embedder.
-
 import pandas as pd
 import streamlit as st
-
 from selector import POOL, TEST_QUERIES, evaluate, select
 
 st.set_page_config(page_title="Few-Shot Example Selector", page_icon="🎯",

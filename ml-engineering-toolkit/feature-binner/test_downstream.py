@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import numpy as np
-
 from binning import build_dataset, fit
 from downstream import (
     CONSTRAINED,

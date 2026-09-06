@@ -11,9 +11,8 @@ import itertools
 from typing import Dict, List, Tuple
 
 import numpy as np
-from scipy import stats
-
 import targets as T
+from scipy import stats
 
 ORIGIN_REF = 120  # a target set at the start of year eleven
 LINE = "=" * 78

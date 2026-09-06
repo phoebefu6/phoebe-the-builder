@@ -6,11 +6,10 @@ wide enough for Monte Carlo noise and narrow enough to fail if the mechanism cha
 
 from __future__ import annotations
 
+import guardrails as G
 import numpy as np
 import pytest
 from scipy import stats
-
-import guardrails as G
 
 N = 8135
 DAY = 14

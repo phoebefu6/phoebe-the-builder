@@ -6,7 +6,6 @@ import json
 
 import pandas as pd
 import streamlit as st
-
 from schema_infer import (
     Policy,
     drifted_corpus,

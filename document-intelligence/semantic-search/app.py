@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from searcher import (
     SAMPLE_DOCS,
     SemanticIndex,

@@ -10,7 +10,6 @@ from typing import Dict, List
 
 import pandas as pd
 import streamlit as st
-
 from percentages import (
     CORPUS,
     METHOD_KIND,

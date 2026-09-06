@@ -10,10 +10,7 @@ from typing import List
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.patheffects as pe
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
-
 import sanitise as S
 
 # A restrained palette: one hue per outcome, reused in every panel so the

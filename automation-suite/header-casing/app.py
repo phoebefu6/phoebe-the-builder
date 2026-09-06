@@ -11,7 +11,6 @@ from typing import List, Tuple
 
 import pandas as pd
 import streamlit as st
-
 from headers import (
     CORPUS,
     CORPUS_BY_NAME,

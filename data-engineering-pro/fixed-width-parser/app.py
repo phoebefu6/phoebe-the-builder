@@ -6,13 +6,10 @@ shows you the verdict has already made the decision for you.
 
 from __future__ import annotations
 
-import io
-from decimal import Decimal
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
 import streamlit as st
-
 from fwf import (
     BALANCE_SPEC,
     CUSTOMER_SPEC,

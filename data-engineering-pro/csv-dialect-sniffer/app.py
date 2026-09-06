@@ -10,9 +10,8 @@ from __future__ import annotations
 from typing import List, Optional
 
 import pandas as pd
-import streamlit as st
-
 import sniff
+import streamlit as st
 
 st.set_page_config(page_title="CSV Dialect Sniffer", layout="wide")
 

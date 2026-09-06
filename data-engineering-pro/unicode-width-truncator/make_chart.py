@@ -11,7 +11,6 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import numpy as np
-
 import uwidth as U
 
 INK = "#1d1a17"

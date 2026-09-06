@@ -8,14 +8,14 @@ from __future__ import annotations
 from itertools import combinations
 
 from collate import (
-    CORPUS,
-    PAGE_SIZES,
     COLLATION_BY_NAME,
     COLLATIONS,
+    CORPUS,
+    PAGE_SIZES,
     Verdict,
     bmp_flip,
-    distinct_count,
     dirty_offset_runs,
+    distinct_count,
     drift_matrix,
     finding_counts,
     findings,

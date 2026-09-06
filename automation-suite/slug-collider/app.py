@@ -5,12 +5,9 @@ Run: streamlit run app.py
 
 from __future__ import annotations
 
-import unicodedata
-
 import pandas as pd
-import streamlit as st
-
 import slug as S
+import streamlit as st
 
 st.set_page_config(page_title="Slug collider", layout="wide")
 

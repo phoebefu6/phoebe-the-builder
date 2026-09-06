@@ -11,7 +11,6 @@ import io
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-
 from funnel import (
     DEFAULT_STEPS,
     compute_funnel,

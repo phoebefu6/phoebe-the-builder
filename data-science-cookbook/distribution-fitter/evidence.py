@@ -11,29 +11,23 @@ the README can quote a bigger one, with the sizes stated next to the result.
 from __future__ import annotations
 
 import math
-import warnings
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
-from scipy import stats
-
 from fitting import (
-    DEFAULT_FAMILIES,
     Family,
     FitReport,
+    _information_criteria,
     bootstrap_ks,
     family,
     fit_distributions,
     fit_params,
-    ks_statistic,
     loglikelihood,
     probe_free_location,
     selection_stability,
     support_violation,
-    _information_criteria,
 )
-
 
 # --------------------------------------------------------------------------------------
 # E1 - the naive KS p-value has no power once you fit the parameters

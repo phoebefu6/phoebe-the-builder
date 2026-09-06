@@ -2,24 +2,14 @@
 
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 import streamlit as st
-
 from binning import (
-    MISSING,
-    NUMERIC,
-    SENTINEL_NO_BUREAU,
-    SPECIAL,
     audit,
-    audit_report,
     build_dataset,
     fit,
     iv_band,
     noise_screen,
-    psi,
-    refit_counts,
-    sparse_bin_warning,
 )
 
 st.set_page_config(page_title="Feature Binner", layout="wide")

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from roadmap_viz import STATUS_COLORS, RoadmapItem, render_roadmap
 
 st.set_page_config(page_title="Product Roadmap Visualizer", page_icon="🗺️", layout="wide")

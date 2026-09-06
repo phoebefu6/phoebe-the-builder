@@ -14,10 +14,7 @@ not a 1:1 table, and the whole §5 argument rests on that distinction.
 
 from __future__ import annotations
 
-import unicodedata
-
 import pytest
-
 import sanitise as S
 
 ALL_PROFILES = [S.WINDOWS, S.WINDOWS_LONG, S.MACOS_APFS, S.LINUX_EXT4, S.OBJECT_STORE]

@@ -6,13 +6,11 @@ from __future__ import annotations
 # it names the purpose, the dataset, the subject, and WHY the basis is broken -
 # no-consent, withdrawn, expired, or purpose-mismatch. Fully offline, pandas/numpy
 # only, no API keys. This is a compliance review queue, not legal advice.
-
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-
 
 # Reproducibility: sample expiry checks are evaluated as-of this fixed date, never
 # datetime.now(), so the demo output is identical on every machine and every day.

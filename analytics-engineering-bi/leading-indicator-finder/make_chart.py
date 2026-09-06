@@ -9,11 +9,10 @@ from typing import Dict
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
-
 import evidence as E  # noqa: E402
 import leadlag as L  # noqa: E402
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
 
 INK = "#16222e"
 MUTE = "#8b9aa7"

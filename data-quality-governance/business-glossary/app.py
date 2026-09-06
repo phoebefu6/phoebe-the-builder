@@ -4,11 +4,9 @@ from __future__ import annotations
 # term card (definition, owner, status, synonyms, related, linked assets), and
 # read the governance-issues panel grouped by severity - each finding explains
 # WHY it fired. Loads the built-in sample glossary. Offline, no API keys.
-
 import pandas as pd
 import streamlit as st
-
-from glossary import Issue, Term, make_sample_glossary
+from glossary import Issue, make_sample_glossary
 
 st.set_page_config(page_title="Business Glossary Manager", page_icon="📖", layout="wide")
 

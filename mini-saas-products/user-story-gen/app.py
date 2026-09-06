@@ -5,7 +5,6 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from story_gen import backlog_to_markdown, generate_backlog
 
 st.set_page_config(page_title="User Story Generator", page_icon="📝", layout="wide")

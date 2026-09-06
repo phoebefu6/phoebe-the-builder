@@ -9,9 +9,10 @@ objective, so tuning is a budgeted, reproducible search that reports the lift
 over the model's out-of-the-box defaults instead of a lucky hand-edit.
 """
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 import numpy as np
+import optuna
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
@@ -19,8 +20,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
-import optuna
 
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 

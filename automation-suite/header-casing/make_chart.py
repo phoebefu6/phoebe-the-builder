@@ -13,8 +13,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import Patch
-
 from headers import (
     CORPUS,
     CORPUS_BY_NAME,
@@ -34,6 +32,7 @@ from headers import (
     verdict_counts,
     wire_cost,
 )
+from matplotlib.patches import Patch
 
 INK = "#141414"
 MUTED = "#8a8a8a"

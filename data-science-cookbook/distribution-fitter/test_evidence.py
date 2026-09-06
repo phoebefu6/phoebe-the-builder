@@ -12,7 +12,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-
 from evidence import (
     confident_winner_on_unfittable_data,
     free_location_cost,

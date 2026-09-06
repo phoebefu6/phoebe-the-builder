@@ -8,23 +8,19 @@ from __future__ import annotations
 
 import contextlib
 import io
-import math
 
 import matplotlib
 
 matplotlib.use("Agg")
+import evidence
 import matplotlib.pyplot as plt
 import numpy as np
-
-import evidence
 from sparkline import (
     Geometry,
     Series,
     banking_deg,
     build_path,
     resolve_domain,
-    segment_slopes_deg,
-    theil_sen_slope,
 )
 
 INK = "#1f2933"

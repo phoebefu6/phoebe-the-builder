@@ -5,9 +5,8 @@ from __future__ import annotations
 # rare categorical values. Every finding says WHICH method flagged it and WHY,
 # so a data steward can trust the alert instead of eyeballing a spreadsheet.
 # Fully offline, standard pandas/numpy only - no API keys.
-
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 import numpy as np
 import pandas as pd

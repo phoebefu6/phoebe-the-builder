@@ -11,11 +11,10 @@ import matplotlib
 
 matplotlib.use("Agg")
 
+import boolparse as B
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
-
-import boolparse as B
 
 INK = "#1d1a17"
 MUTED = "#8a8178"

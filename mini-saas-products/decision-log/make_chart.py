@@ -9,10 +9,9 @@ import matplotlib
 
 matplotlib.use("Agg")
 
+import declog as D
 import matplotlib.pyplot as plt
 import numpy as np
-
-import declog as D
 
 INK, MUTED, GRIDC, PAPER = "#1d1a17", "#8a8178", "#e3ddd5", "#faf7f2"
 ACCENT, COOL, WARM, GREEN = "#c8553d", "#2f6f8f", "#e0a458", "#4f7942"

@@ -16,12 +16,11 @@ A scheduler (or external cron) should hit POST /check on an interval.
 import time
 from typing import Any, Dict, Optional
 
+from alerter import send_alert
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
-
-from alerter import send_alert
 from monitor import Monitor
+from pydantic import BaseModel
 
 app = FastAPI(title="Cron Job Monitor", version="1.0.0")
 mon = Monitor()

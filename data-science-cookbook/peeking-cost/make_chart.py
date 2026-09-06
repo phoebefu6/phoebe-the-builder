@@ -7,7 +7,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
-
 from sequential import (  # noqa: E402
     ALPHA,
     K_DAILY,

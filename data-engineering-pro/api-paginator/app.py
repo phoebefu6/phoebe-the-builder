@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from paginator import MockAPI, paginate
 
 st.set_page_config(page_title="API Pagination Extractor", page_icon="📡", layout="wide")

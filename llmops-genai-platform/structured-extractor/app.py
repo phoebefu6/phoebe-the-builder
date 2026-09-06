@@ -4,10 +4,8 @@ from __future__ import annotations
 # declare the fields you expected, and watch the extract -> repair -> coerce ->
 # validate pipeline turn messy text into a validated object (or tell you
 # exactly why it can't). Fully offline - no API keys.
-
 import pandas as pd
 import streamlit as st
-
 from enforcer import (
     SAMPLE_OUTPUTS,
     TICKET_SCHEMA,

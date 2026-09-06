@@ -7,9 +7,8 @@ from __future__ import annotations
 
 import math
 
-import pytest
-
 import codelay as C
+import pytest
 
 
 @pytest.fixture(scope="module")

@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from streaming import WindowAggregator, make_event_stream
 
 st.set_page_config(page_title="Streaming Window Aggregator", page_icon="🌊", layout="wide")

@@ -13,7 +13,6 @@ from typing import Any, Dict, List
 import pandas as pd
 from pandas.api import types as ptypes
 
-
 # Columns with a unique-ratio at or above this are treated as keys.
 _UNIQUE_KEY_THRESHOLD = 0.95
 # Categoricals: emit an allowed-value set only when distinct count is small.

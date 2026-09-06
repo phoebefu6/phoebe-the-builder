@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from explorer import ExploreQuery, profile_columns, run_query, sample_dataframe
 
 st.set_page_config(page_title="Self-Serve Data Explorer", layout="wide")

@@ -7,9 +7,8 @@ than the app rendering an empty tab.
 
 from __future__ import annotations
 
-import pytest
-
 import capability as C
+import pytest
 
 TOOLS = C.load()
 

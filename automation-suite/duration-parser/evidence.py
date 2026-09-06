@@ -6,7 +6,6 @@ README is typed by hand.
 
 from __future__ import annotations
 
-
 from durations import (
     CORPUS,
     DAY24,

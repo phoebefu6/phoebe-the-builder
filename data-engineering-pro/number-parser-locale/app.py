@@ -4,10 +4,9 @@ from __future__ import annotations
 
 from typing import List
 
+import numlocale as N
 import pandas as pd
 import streamlit as st
-
-import numlocale as N
 
 st.set_page_config(page_title="Number Parser Locale Audit", layout="wide")
 

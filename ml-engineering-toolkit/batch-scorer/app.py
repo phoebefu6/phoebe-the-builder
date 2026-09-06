@@ -13,13 +13,12 @@ from typing import Optional
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from scorer import (
+    FEATURE_NAMES,
     demo_train,
     load_bundle,
-    score_frame,
     sample_new_data,
-    FEATURE_NAMES,
+    score_frame,
 )
 
 st.set_page_config(page_title="Batch Scoring Service", page_icon="📦", layout="wide")

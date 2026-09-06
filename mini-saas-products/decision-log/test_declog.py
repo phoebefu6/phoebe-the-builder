@@ -6,10 +6,9 @@ grid search cannot quietly agree with itself.
 
 from __future__ import annotations
 
+import declog as D
 import numpy as np
 import pytest
-
-import declog as D
 
 # --------------------------------------------------------------------------
 # Shape

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from router import Ticket, route_batch, route_ticket
 
 st.set_page_config(page_title="Ticket Router", page_icon="🎫")

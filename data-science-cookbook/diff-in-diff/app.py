@@ -5,8 +5,6 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 import streamlit as st
-from scipy import stats
-
 from did import (
     aggregate_att,
     event_dummies,
@@ -18,6 +16,7 @@ from did import (
     twfe,
     twfe_cell_weights,
 )
+from scipy import stats
 
 st.set_page_config(page_title="diff-in-diff", page_icon="📐", layout="wide")
 

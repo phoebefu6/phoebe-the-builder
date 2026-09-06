@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import streamlit as st
-
 from cohort import build_retention_matrix, generate_sample_events
 
 st.set_page_config(page_title="Cohort Analysis Tool", layout="wide")

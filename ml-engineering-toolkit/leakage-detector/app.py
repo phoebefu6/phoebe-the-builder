@@ -2,14 +2,12 @@ from __future__ import annotations
 
 """Streamlit UI for the Data Leakage Detector."""
 
-from typing import Optional, List, Dict
+from typing import Dict, List, Optional
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
-from leakage import demo_leaky_data, demo_clean_data, run_all
-
+from leakage import demo_clean_data, demo_leaky_data, run_all
 
 SEVERITY_COLORS = {"high": "#e5484d", "medium": "#f5a623", "low": "#8b8d98"}
 

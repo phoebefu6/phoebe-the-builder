@@ -14,18 +14,16 @@ Run:  cd platform/gateway && uvicorn app:app --reload
 Then open http://localhost:8000
 """
 
-from typing import Dict, Optional
-
-from fastapi import Depends, FastAPI, Request, Response
-from fastapi.responses import HTMLResponse, JSONResponse
-from pydantic import BaseModel
-
 import sys
 from pathlib import Path as _Path
+from typing import Dict, Optional
 
 from audit import log_event, read_events
 from audit import summary as audit_summary
 from auth import create_token, secret_is_default, verify_token
+from fastapi import Depends, FastAPI, Request, Response
+from fastapi.responses import HTMLResponse, JSONResponse
+from pydantic import BaseModel
 from rbac import can_access
 from registry import get_app, visible_apps
 from users import authenticate, seed_if_empty

@@ -13,7 +13,6 @@ import itertools
 import unicodedata
 
 import pytest
-
 import slug as S
 
 # ---------------------------------------------------------------------------

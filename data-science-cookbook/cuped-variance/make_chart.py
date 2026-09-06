@@ -5,10 +5,9 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
+import cuped  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
-
-import cuped  # noqa: E402
 
 INK = "#16222e"
 MUTE = "#8b9aa7"

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from intel import SAMPLE_COMPETITORS, summarize_competitors
 
 st.set_page_config(page_title="Competitive Intel Summarizer", layout="wide")

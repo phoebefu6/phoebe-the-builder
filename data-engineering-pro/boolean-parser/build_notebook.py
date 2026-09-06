@@ -14,9 +14,8 @@ from __future__ import annotations
 
 import json
 
-import nbformat as nbf
-
 import boolparse as B
+import nbformat as nbf
 
 REPO = "phoebefu6/phoebe-the-builder"
 PATH = "data-engineering-pro/boolean-parser"

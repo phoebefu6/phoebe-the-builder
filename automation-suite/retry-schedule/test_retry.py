@@ -11,11 +11,9 @@ Run: python3 -m pytest test_retry.py -q
 
 from __future__ import annotations
 
-import math
 import random
 
 import pytest
-
 import retry as R
 
 # ---------------------------------------------------------------------------

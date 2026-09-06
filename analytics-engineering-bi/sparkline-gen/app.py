@@ -8,13 +8,11 @@ and is not entitled to claim.
 
 from __future__ import annotations
 
-import io
 from typing import List, Optional
 
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
-
 from sparkline import (
     SCALE_MODES,
     Geometry,
@@ -25,7 +23,6 @@ from sparkline import (
     banking_deg,
     build_path,
     endpoint_direction,
-    escape,
     indexed_series,
     render_table,
     resolve_domain,

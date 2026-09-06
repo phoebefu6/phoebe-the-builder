@@ -5,10 +5,8 @@ from __future__ import annotations
 # and see exactly what changed since last run: added / removed / modified rows,
 # schema drift, and change velocity. Every modification names the column and the
 # old -> new value. Fully offline, no API keys.
-
 import pandas as pd
 import streamlit as st
-
 from differ import (
     diff_snapshots,
     make_sample_snapshots,

@@ -8,9 +8,9 @@ from __future__ import annotations
 
 from dataclasses import replace
 
+import goodhart as G
 import numpy as np
 import pytest
-import goodhart as G
 
 W = G.World()
 SMALL = replace(W, n_agents=250)

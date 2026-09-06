@@ -6,8 +6,7 @@ answer without raising. Every table in README.md is printed by this file.
 
 from __future__ import annotations
 
-import csv
-from typing import List, Optional, Sequence
+from typing import List, Sequence
 
 import sniff
 

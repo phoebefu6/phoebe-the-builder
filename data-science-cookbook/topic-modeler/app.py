@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from topics import SAMPLE_DOCS, fit_topics, label_documents, topic_sizes
 
 st.set_page_config(page_title="Topic Modeling Tool", layout="wide")

@@ -7,11 +7,10 @@ from __future__ import annotations
 
 from typing import List
 
+import declog as D
 import numpy as np
 import pandas as pd
 import streamlit as st
-
-import declog as D
 
 st.set_page_config(page_title="Decision Log Scorer", layout="wide")
 

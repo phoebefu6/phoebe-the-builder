@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from slack_qa_agent import SAMPLE_KB, TfidfRetriever, answer_question, post_to_slack
 
 st.set_page_config(page_title="Slack Q&A Agent", page_icon="💬")

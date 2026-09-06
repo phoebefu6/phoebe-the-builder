@@ -8,8 +8,8 @@ construction (path collapse, banking round-trip) it is asserted exactly.
 
 from __future__ import annotations
 
-import io
 import contextlib
+import io
 
 import evidence
 

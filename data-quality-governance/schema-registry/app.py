@@ -4,13 +4,11 @@ from __future__ import annotations
 # history, then paste/edit a PROPOSED schema and see the field-level change list
 # plus the compatibility verdict - color-coded so a steward can approve or block
 # a producer's change BEFORE it ships and breaks downstream jobs silently.
-
 import json
 from typing import Dict, List
 
 import pandas as pd
 import streamlit as st
-
 from registry import (
     Field,
     Schema,

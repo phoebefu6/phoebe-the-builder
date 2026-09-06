@@ -8,7 +8,6 @@ from __future__ import annotations
 # out (before the user sees it). This module is a small, dependency-free rule
 # engine: each rule inspects text and returns a Verdict (ALLOW / REDACT /
 # BLOCK) with a reason. Fully offline - no API keys.
-
 import re
 from dataclasses import dataclass, field
 from enum import Enum

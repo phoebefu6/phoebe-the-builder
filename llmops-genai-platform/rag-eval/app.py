@@ -3,10 +3,8 @@ from __future__ import annotations
 # Streamlit UI for the RAG Evaluation Harness. Four tabs: Corpus, Eval set,
 # Run (score the retriever), A/B (compare two k values as a proxy for old vs
 # new retriever).
-
 import pandas as pd
 import streamlit as st
-
 from harness import (
     SAMPLE_CASES,
     SAMPLE_DOCS,

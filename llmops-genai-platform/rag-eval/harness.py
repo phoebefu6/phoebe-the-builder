@@ -16,7 +16,6 @@ from __future__ import annotations
 # Answer-level metric:
 #   answer_hit  : does the retrieved context contain the gold answer string?
 #                 (a cheap, deterministic stand-in for LLM-graded faithfulness)
-
 import math
 import re
 from collections import Counter

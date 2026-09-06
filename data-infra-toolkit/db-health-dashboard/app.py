@@ -6,9 +6,7 @@ Pulls a metrics snapshot (simulated by default), scores every metric RAG, and
 shows an overall health gauge so on-call engineers get DB visibility at a glance.
 """
 
-import pandas as pd
 import streamlit as st
-
 from health import build_report, overall_health, simulate_metrics
 
 st.set_page_config(page_title="DB Health Dashboard", page_icon="🩺", layout="wide")

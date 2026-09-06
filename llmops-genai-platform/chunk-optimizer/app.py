@@ -4,10 +4,8 @@ from __future__ import annotations
 # over the sample corpus + gold eval set, and see which chunking config
 # retrieves the answer best - the retrieval-quality-vs-chunk-size tradeoff,
 # made visible. Fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from chunker import (
     SAMPLE_CASES,
     SAMPLE_DOCS,

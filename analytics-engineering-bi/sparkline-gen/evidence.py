@@ -12,11 +12,9 @@ import math
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
-
 from sparkline import (
     Geometry,
     Series,
-    Style,
     banked_width,
     banking_deg,
     build_path,

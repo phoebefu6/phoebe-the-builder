@@ -16,11 +16,10 @@ from __future__ import annotations
 # numbers never appear in the context.
 #
 # Fully offline - no API keys.
-
 import math
 import re
 from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 _TOKEN_RE = re.compile(r"[a-z0-9]+(?:\.[0-9]+)?")
 _NUM_RE = re.compile(r"\b\d+(?:\.\d+)?\b")

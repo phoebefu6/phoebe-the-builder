@@ -5,7 +5,6 @@ import io
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from contract import diff_contracts, exit_code, load_contract, validate_dataset
 
 st.set_page_config(page_title="Data Contract Validator", page_icon="📜", layout="wide")

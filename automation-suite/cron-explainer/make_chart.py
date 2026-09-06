@@ -9,16 +9,15 @@ Run:  python3 make_chart.py
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
-
 import cron as C
 import evidence as E
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
 
 UTC = timezone.utc
 INK = "#1c1c1e"
@@ -241,10 +240,10 @@ def panel_utc_drift(ax) -> None:
     for i in range(0, 365, 2):
         d = start + timedelta(days=i)
         u = datetime(d.year, d.month, d.day, 9, tzinfo=UTC).astimezone(tz)
-        l = datetime(d.year, d.month, d.day, 9).replace(tzinfo=tz).astimezone(UTC)
+        local_9am = datetime(d.year, d.month, d.day, 9).replace(tzinfo=tz).astimezone(UTC)
         xs.append(i)
         utc_local.append(u.hour + u.minute / 60)
-        local_utc.append(l.hour + l.minute / 60)
+        local_utc.append(local_9am.hour + local_9am.minute / 60)
     ax.step(xs, utc_local, where="post", color=TIMING_C, lw=2.2,
             label="'0 9 * * *' on a UTC runner -> local time")
     ax.step(xs, local_utc, where="post", color=PORT_C, lw=2.2,

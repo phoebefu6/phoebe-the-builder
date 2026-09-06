@@ -2,10 +2,8 @@ from __future__ import annotations
 
 """Streamlit UI: an A/B test significance calculator with a clear verdict."""
 
-import numpy as np
 import streamlit as st
-
-from abtest import as_dict, required_sample_size, run_ab_test
+from abtest import required_sample_size, run_ab_test
 
 st.set_page_config(page_title="A/B Test Calculator", page_icon="🧪", layout="wide")
 
@@ -44,6 +42,7 @@ c[3].metric("p-value", f"{r.p_value:.4f}")
 st.subheader("Conversion rate with 95% CI on the difference")
 # Bar chart of the two rates with an error bar derived from the CI on the difference.
 import pandas as pd
+
 chart_df = pd.DataFrame({"group": ["control", "variant"],
                          "rate_%": [r.control_rate*100, r.variant_rate*100]}).set_index("group")
 st.bar_chart(chart_df, height=280)

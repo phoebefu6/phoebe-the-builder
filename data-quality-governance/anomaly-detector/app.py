@@ -4,10 +4,8 @@ from __future__ import annotations
 # sample), scan every column for numeric outliers, null spikes, and rare
 # categories, then triage findings by severity - each with a plain-English reason.
 # Fully offline, no API keys.
-
 import pandas as pd
 import streamlit as st
-
 from detector import (
     anomalies_frame,
     make_sample_data,

@@ -4,12 +4,10 @@ from __future__ import annotations
 # sample), see the declarative rule set, run it, and read a pass/fail board with
 # severity colour and sample offending values. The whole point: make the rules
 # visible and runnable, so they stop rotting in a wiki nobody enforces.
-
-from typing import Dict, List
+from typing import List
 
 import pandas as pd
 import streamlit as st
-
 from engine import (
     make_sample_data,
     rollup,

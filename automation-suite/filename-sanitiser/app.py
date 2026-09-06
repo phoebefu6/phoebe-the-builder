@@ -7,9 +7,8 @@ reproduce the bug the tool exists to report.
 from __future__ import annotations
 
 import pandas as pd
-import streamlit as st
-
 import sanitise as S
+import streamlit as st
 
 st.set_page_config(page_title="filename-sanitiser", page_icon="📁", layout="wide")
 

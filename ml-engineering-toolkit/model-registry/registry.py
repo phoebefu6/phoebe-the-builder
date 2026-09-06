@@ -18,10 +18,9 @@ import hashlib
 import io
 import json
 import os
-from typing import Optional, List, Dict
+from typing import Dict, List, Optional
 
 import joblib
-
 
 VALID_STAGES = ("staging", "production", "archived")
 

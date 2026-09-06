@@ -5,8 +5,8 @@ Run: python3 evidence.py
 
 from __future__ import annotations
 
+from decimal import ROUND_HALF_UP, getcontext
 from decimal import Decimal as D
-from decimal import ROUND_HALF_EVEN, ROUND_HALF_UP, getcontext
 from fractions import Fraction
 
 import money as m
@@ -64,7 +64,7 @@ def exp2_sorting_moves_the_penny() -> None:
     led = m.get_ledger("weighted")
     fwd = m.audit(led).reconciliation.allocation
     rows_rev = list(reversed(led.rows))
-    rev = m.allocate(D("1000.02"), [abs(a) for _, a in rows_rev], usd, [l for l, _ in rows_rev])
+    rev = m.allocate(D("1000.02"), [abs(a) for _, a in rows_rev], usd, [lbl for lbl, _ in rows_rev])
     print(f"{'order':22} {'north':>9} {'south':>9} {'east':>9} {'sum':>10}")
     print(RULE)
     for name, alloc in [("as entered", fwd), ("reversed", rev)]:

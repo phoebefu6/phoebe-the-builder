@@ -5,9 +5,6 @@ Run: python3 evidence.py
 
 from __future__ import annotations
 
-import unicodedata
-from typing import List
-
 import sanitise as S
 
 RULE = "-" * 78
@@ -308,8 +305,8 @@ def exp10_the_verdict() -> None:
     for names, why in cases:
         w = S.audit(names, S.WINDOWS, WIN_DEST, "passthrough").verdict.value
         m = S.audit(names, S.MACOS_APFS, "/data", "passthrough").verdict.value
-        l = S.audit(names, S.LINUX_EXT4, "/data", "passthrough").verdict.value
-        print(f"{short(', '.join(names), 32):<34}{w:<11}{m:<11}{l:<11}{why}")
+        linux_verdict = S.audit(names, S.LINUX_EXT4, "/data", "passthrough").verdict.value
+        print(f"{short(', '.join(names), 32):<34}{w:<11}{m:<11}{linux_verdict:<11}{why}")
     print(RULE)
     print("rows 2-4 each fail on a DIFFERENT set of volumes:")
     print("  case pair          lossy on Windows and macOS   (both fold case)")

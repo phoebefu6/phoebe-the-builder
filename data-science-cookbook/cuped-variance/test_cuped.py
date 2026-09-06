@@ -7,10 +7,9 @@ fail if the estimators stop being unbiased or the intervals stop covering.
 
 from __future__ import annotations
 
+import cuped
 import numpy as np
 import pytest
-
-import cuped
 
 W = cuped.World()
 

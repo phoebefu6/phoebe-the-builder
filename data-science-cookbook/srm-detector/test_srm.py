@@ -10,9 +10,8 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-from scipy import stats
-
 import srm
+from scipy import stats
 
 W = srm.World()
 SEED = 20260903

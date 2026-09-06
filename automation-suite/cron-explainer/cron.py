@@ -25,9 +25,9 @@ from __future__ import annotations
 
 import calendar
 import re
-from dataclasses import dataclass, field as dc_field
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from typing import Dict, List, Optional, Sequence, Set, Tuple
 
 try:  # Python 3.9+
     from zoneinfo import ZoneInfo

@@ -15,4 +15,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install ruff
-      - run: ruff check --select E,F,I .
+      # No --select here on purpose.  The rule set, the line length and the
+      # exclusions all live in ./ruff.toml so that a local `ruff check` and CI
+      # cannot disagree - which is exactly how this job stayed red for months.
+      - run: ruff check .

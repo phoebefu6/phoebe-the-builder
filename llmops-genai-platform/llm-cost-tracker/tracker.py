@@ -7,7 +7,6 @@ from __future__ import annotations
 # tag), estimates tokens offline when a provider count isn't handy, and rolls
 # usage up by model, tag, and day - with a monthly budget check. Fully
 # offline: rates live in an editable table, no network calls.
-
 import math
 from dataclasses import dataclass
 from typing import Dict, List, Optional

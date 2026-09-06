@@ -6,7 +6,6 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from interference import (
     assign_by_group,
     assign_within_group,

@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
-from report_agent import Metric, ReportContext, SAMPLE_CONTEXT, generate_report
+from report_agent import SAMPLE_CONTEXT, Metric, ReportContext, generate_report
 
 st.set_page_config(page_title="Report Generation Agent", page_icon="📄")
 st.title("📄 Report Generation Agent")

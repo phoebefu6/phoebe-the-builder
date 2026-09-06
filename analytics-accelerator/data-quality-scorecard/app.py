@@ -12,7 +12,6 @@ import warnings
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from quality import checks_to_frame, sample_dirty_data, score_dataframe
 
 warnings.filterwarnings("ignore")

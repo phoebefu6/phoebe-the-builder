@@ -31,7 +31,9 @@ STATUS_POINTS = {"green": 100, "amber": 60, "red": 20}
 
 def _simulate(seed: int = 7) -> Dict[str, float]:
     rng = random.Random(seed)
-    j = lambda b, s: round(b + rng.uniform(-s, s), 1)
+    def j(b, s):
+        return round(b + rng.uniform(-s, s), 1)
+
     return {"cache_hit_ratio": j(98, 1.5), "conn_pool_usage": j(48, 18), "avg_query_ms": j(60, 30),
             "slow_queries": float(rng.randint(0, 7)), "replication_lag_s": j(3, 3), "disk_usage": j(63, 14)}
 

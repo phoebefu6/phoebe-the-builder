@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from alerting import MetricConfig, detect_anomalies, sample_series, summarize
 
 SEV_COLOR = {"critical": "#c0553b", "warning": "#e08a2b", "info": "#3b6fd6"}

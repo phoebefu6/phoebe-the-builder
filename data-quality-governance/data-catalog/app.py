@@ -4,10 +4,8 @@ from __future__ import annotations
 # the built-in sample tables), auto-profile each into a catalog entry, attach
 # human metadata (owner / description / tags), browse per-column profiles, and
 # search across table + column names, descriptions, and tags. Fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from catalog import Catalog, make_sample_tables, profile_dataframe
 
 st.set_page_config(page_title="Lightweight Data Catalog", page_icon="📖", layout="wide")

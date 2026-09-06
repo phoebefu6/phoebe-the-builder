@@ -12,15 +12,15 @@ an uncalibrated base learner against Platt (sigmoid) and isotonic
 recalibration.
 """
 
-from typing import Optional, List, Dict, Tuple
+from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+from sklearn.calibration import CalibratedClassifierCV
 from sklearn.datasets import make_classification
+from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.calibration import CalibratedClassifierCV, calibration_curve
-from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 
 
 def demo_data(

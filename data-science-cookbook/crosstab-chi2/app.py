@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from crosstab import crosstab_chi2, interpret_v, key_cells, narrate, sample_dataframe
 
 st.set_page_config(page_title="Crosstab & Chi-Square Tool", layout="wide")

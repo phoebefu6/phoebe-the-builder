@@ -3,10 +3,8 @@ from __future__ import annotations
 # Streamlit UI for the LLM Guardrail Filter. Paste text, pick the direction
 # (input to the model, or output from it), and see every rule that fired plus
 # the final ALLOW / REDACT / BLOCK verdict. Fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from guardrails import (
     SAMPLE_INPUTS,
     SAMPLE_OUTPUTS,

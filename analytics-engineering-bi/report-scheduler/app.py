@@ -3,7 +3,6 @@ from __future__ import annotations
 from datetime import datetime
 
 import streamlit as st
-
 from scheduler import (
     SAMPLE_REPORTS,
     ScheduledReport,

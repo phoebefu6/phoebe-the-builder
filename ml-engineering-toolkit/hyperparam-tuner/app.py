@@ -10,7 +10,6 @@ history and the winning params laid out, not hand-edited in a cell.
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from tuner import make_sample_data, summary_frame, tune
 
 st.set_page_config(page_title="Hyperparameter Tuner", page_icon="🎛️", layout="wide")

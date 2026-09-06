@@ -5,10 +5,9 @@
 
 from __future__ import annotations
 
+import capability as C
 import pandas as pd
 import streamlit as st
-
-import capability as C
 
 st.set_page_config(page_title="Capability Map", layout="wide")
 

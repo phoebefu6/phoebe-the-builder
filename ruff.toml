@@ -1,0 +1,32 @@
+# ── The one lint config for the whole repository ──────────────────────────────
+# Before 2026-09-06 there were eight: this file did not exist, the root CI passed
+# `--select E,F,I` on the command line at ruff's default 88 columns, and seven
+# build directories each carried their own ruff.toml at 110.  The CLI flag and
+# the local files disagreed, the CI had been red for months on 9,232 findings
+# that no build had ever been asked to satisfy, and a red CI teaches people to
+# stop reading it.  One file now, and the local ones are gone.
+#
+# What is deliberately NOT enforced across the archive, and why:
+#   E501  line length - 168 shipped builds were written at 110 and the archive is
+#         not worth reflowing.  New work still targets 110 (below); it is simply
+#         not a CI failure on work that already shipped.
+#   E402  import not at top of file - the matplotlib "use('Agg') before importing
+#         pyplot" pattern needs it, and notebook cells legitimately import late.
+#
+# What IS enforced is ruff's own default rule set - F (undefined names, unused
+# imports, shadowed bindings) plus E4/E7/E9 (imports, statements, syntax) - with
+# I (import order) added.  Those are the findings worth a red build.  The whole
+# repository passes it today; keep it that way rather than widening it and going
+# red again.
+
+line-length = 110
+
+[lint]
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = ["E402"]
+
+# demo.ipynb is a GENERATED artifact - build_notebook.py emits it and nbconvert
+# executes it.  Linting it means hand-patching a derived file while its generator
+# says something else, which is the drift this repo has been bitten by before.
+# The generator is the thing that gets linted; the notebook is excluded.
+exclude = ["**/demo.ipynb"]

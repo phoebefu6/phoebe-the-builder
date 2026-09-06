@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import re
+from typing import Dict, List, Optional
+
 import streamlit as st
-from typing import Optional, List, Dict, Tuple
 
 
 def _split_columns(raw: str) -> List[str]:
@@ -122,7 +123,7 @@ def generate_source_yaml(tables: List[Dict], source_name: str) -> str:
         lines.append("        columns:")
         for col in t["columns"]:
             lines.append(f"          - name: {col['name']}")
-            lines.append(f'            description: ""')
+            lines.append('            description: ""')
             if col["is_pk"]:
                 lines.append("            tests:")
                 lines.append("              - unique")
@@ -158,7 +159,6 @@ def generate_staging_model(table: Dict, source_name: str) -> str:
     for col in table["columns"]:
         col_name = col["name"]
         clean_name = re.sub(r"([A-Z])", r"_\1", col_name).lower().strip("_")
-        dbt_type = map_sql_type_to_dbt(col["type"])
 
         if clean_name != col_name.lower():
             col_lines.append(f"        {col_name} as {clean_name}")
@@ -196,7 +196,7 @@ def generate_model_yaml(table: Dict, source_name: str) -> str:
     for col in table["columns"]:
         clean_name = re.sub(r"([A-Z])", r"_\1", col["name"]).lower().strip("_")
         lines.append(f"      - name: {clean_name}")
-        lines.append(f'        description: ""')
+        lines.append('        description: ""')
 
         tests = []
         if col["is_pk"]:

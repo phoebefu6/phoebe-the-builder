@@ -12,14 +12,13 @@ Run:  python3 make_chart.py
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
-
 import tabler as T
 
 try:

@@ -21,7 +21,6 @@ from tznorm import (
     ground_truth,
     local_day,
     normalize,
-    resolve,
     same_rules,
     tzdata_version,
     utc_day,
@@ -233,10 +232,10 @@ def exp_offset_vs_zone(verbose: bool = True) -> Dict[str, Any]:
         print(f"  + 30 days, carried as a zone         -> {later_zone.strftime('%Y-%m-%d %H:%M %Z (%z)')}")
         print(f"  + 30 days, carried as a fixed offset -> {later_fixed.strftime('%Y-%m-%d %H:%M %Z (%z)')}")
         print(
-            f"\nAn hour apart, because the clock changed in between and a stored offset does\n"
-            f"not know that. Store the offset to pin an instant that already happened.\n"
-            f"Store the zone to answer anything about a clock that has not run yet -\n"
-            f"reminders, SLAs, business-hours windows, market opens, batch schedules."
+            "\nAn hour apart, because the clock changed in between and a stored offset does\n"
+            "not know that. Store the offset to pin an instant that already happened.\n"
+            "Store the zone to answer anything about a clock that has not run yet -\n"
+            "reminders, SLAs, business-hours windows, market opens, batch schedules."
         )
 
     return {
@@ -335,13 +334,13 @@ def exp_day_bucketing(verbose: bool = True) -> Dict[str, Any]:
     utc_rev: Dict[dt.date, float] = {}
     local_rev: Dict[dt.date, float] = {}
     for row, r in zip(rows, readings):
-        u, l = utc_day(r), local_day(r)
-        if u is None or l is None:
+        u, loc = utc_day(r), local_day(r)
+        if u is None or loc is None:
             continue
         utc_rev[u] = utc_rev.get(u, 0.0) + row["amount"]
-        local_rev[l] = local_rev.get(l, 0.0) + row["amount"]
-        if u != l:
-            moved.append((row["session_id"], row["office"], row["local_ts"], u, l, row["amount"]))
+        local_rev[loc] = local_rev.get(loc, 0.0) + row["amount"]
+        if u != loc:
+            moved.append((row["session_id"], row["office"], row["local_ts"], u, loc, row["amount"]))
 
     if verbose:
         _hdr("E. Which day did it happen on")
@@ -351,16 +350,16 @@ def exp_day_bucketing(verbose: bool = True) -> Dict[str, Any]:
         )
         print(f"{'session':<9}{'office':<13}{'local time':<18}{'UTC day':<13}{'local day':<13}{'amount':>9}")
         print(RULE)
-        for sid, office, local, u, l, amt in moved:
-            print(f"{sid:<9}{office:<13}{local:<18}{str(u):<13}{str(l):<13}{amt:>9,.0f}")
+        for sid, office, local, u, loc, amt in moved:
+            print(f"{sid:<9}{office:<13}{local:<18}{str(u):<13}{str(loc):<13}{amt:>9,.0f}")
         print(RULE)
         print()
         days = sorted(set(list(utc_rev) + list(local_rev)))
         print(f"{'day':<14}{'revenue by UTC day':>20}{'revenue by local day':>22}{'delta':>12}")
         print(RULE)
         for d in days:
-            u, l = utc_rev.get(d, 0.0), local_rev.get(d, 0.0)
-            print(f"{str(d):<14}{u:>20,.0f}{l:>22,.0f}{l - u:>+12,.0f}")
+            u, loc = utc_rev.get(d, 0.0), local_rev.get(d, 0.0)
+            print(f"{str(d):<14}{u:>20,.0f}{loc:>22,.0f}{loc - u:>+12,.0f}")
         print(RULE)
         print(
             "\nNeither column is wrong. They answer different questions - 'what did the\n"

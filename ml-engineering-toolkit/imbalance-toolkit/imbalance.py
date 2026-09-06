@@ -82,10 +82,12 @@ def imbalance_report(df: pd.DataFrame, target: str) -> Dict[str, float]:
 
 def _build_estimators() -> Dict[str, object]:
     """Return one fitted-able estimator per strategy (scaler included)."""
-    scaler = lambda: StandardScaler()
-    lr = lambda **kw: LogisticRegression(
-        max_iter=1000, random_state=RANDOM_STATE, **kw
-    )
+    def scaler():
+        return StandardScaler()
+
+    def lr(**kw):
+        return LogisticRegression(max_iter=1000, random_state=RANDOM_STATE, **kw)
+
     return {
         "Baseline": ImbPipeline([("scale", scaler()), ("clf", lr())]),
         "Class Weights": ImbPipeline(

@@ -3,7 +3,6 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from feedback_analyzer import SAMPLE_REVIEWS, analyze_feedback
 
 st.set_page_config(page_title="User Feedback Analyzer", page_icon="🗣️")

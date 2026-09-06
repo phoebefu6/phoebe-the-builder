@@ -246,7 +246,7 @@ def main() -> None:
     print("   " + "-" * 72)
     print(f"   {total} findings across {len(rows) - clean} of {len(rows)} lines; "
           f"{clean} line(s) clean")
-    print(f"   by severity: " + ", ".join(f"{k} {v}" for k, v in by_sev.items()))
+    print("   by severity: " + ", ".join(f"{k} {v}" for k, v in by_sev.items()))
     print(f"\n   Every one of these {len(rows)} lines is valid cron. None of them errors.")
 
     z = zone_comparison()

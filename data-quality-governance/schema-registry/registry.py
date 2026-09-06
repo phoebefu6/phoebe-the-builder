@@ -8,12 +8,10 @@ from __future__ import annotations
 # reason for every change, so a data steward can approve or block the change
 # BEFORE three downstream jobs break silently.
 # Fully offline, standard python/pandas only - no API keys.
-
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 import pandas as pd
-
 
 # --- data model -----------------------------------------------------------
 

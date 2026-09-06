@@ -11,14 +11,12 @@ import random
 import sys
 from decimal import Decimal as D
 
-
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import numpy as np
-
 import money as m
+import numpy as np
 
 INK = "#1b1b1f"
 MUTED = "#7a7a85"

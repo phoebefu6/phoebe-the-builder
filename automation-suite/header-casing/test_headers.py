@@ -9,7 +9,6 @@ README stay true.
 from __future__ import annotations
 
 import pytest
-
 from headers import (
     CORPUS,
     HPACK_STATIC_NAMES,

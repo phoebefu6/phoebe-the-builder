@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import datetime as dt
-from typing import Dict, List
 from zoneinfo import ZoneInfo
 
 import matplotlib
@@ -11,8 +10,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import Patch
-
 from evidence import (
     exp_ambiguous,
     exp_day_bucketing,
@@ -21,7 +18,8 @@ from evidence import (
     exp_offset_vs_zone,
     exp_sub_hour,
 )
-from tznorm import UTC, build_session_log, ground_truth, tzdata_version
+from matplotlib.patches import Patch
+from tznorm import UTC, ground_truth, tzdata_version
 
 INK = "#1c1c1c"
 MUTED = "#8a8a8a"
@@ -214,10 +212,10 @@ def panel_days(ax: plt.Axes) -> None:
     x = np.arange(len(days))
     w = 0.38
     u = [e["utc_rev"].get(d, 0.0) for d in days]
-    l = [e["local_rev"].get(d, 0.0) for d in days]
+    loc = [e["local_rev"].get(d, 0.0) for d in days]
     ax.bar(x - w / 2, u, w, color=COOL, label="by UTC day")
-    ax.bar(x + w / 2, l, w, color=WARM, label="by local day")
-    for xi, (uu, ll) in zip(x, zip(u, l)):
+    ax.bar(x + w / 2, loc, w, color=WARM, label="by local day")
+    for xi, (uu, ll) in zip(x, zip(u, loc)):
         if uu != ll:
             ax.text(xi, max(uu, ll) + 60, f"{ll - uu:+,.0f}", ha="center", fontsize=6.8, color=BAD)
     ax.set_xticks(x)

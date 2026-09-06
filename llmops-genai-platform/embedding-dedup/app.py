@@ -5,7 +5,6 @@ from __future__ import annotations
 # reasons, the keep/drop plan, and what dedup does to a retrieval result page.
 import pandas as pd
 import streamlit as st
-
 from dedup import (
     SAMPLE_DOCS,
     cluster_pairs,

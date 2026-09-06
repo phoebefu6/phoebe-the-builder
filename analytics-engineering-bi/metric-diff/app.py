@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from diff import diff_mean, diff_rate, sample_mean_metric, sample_rate_metric
 
 

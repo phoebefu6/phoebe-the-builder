@@ -6,7 +6,6 @@ from __future__ import annotations
 # like id / email / date / category / numeric). Humans then attach the context a
 # machine can't guess - owner, description, tags - and everyone can search across
 # it and export a Markdown data dictionary. Fully offline, pandas/numpy only.
-
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 

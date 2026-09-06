@@ -4,7 +4,6 @@ from datetime import datetime
 
 import pandas as pd
 import streamlit as st
-
 from incident_agent import RUNBOOKS, Incident, execute_runbook
 
 st.set_page_config(page_title="Incident Response Agent", page_icon="🚨")

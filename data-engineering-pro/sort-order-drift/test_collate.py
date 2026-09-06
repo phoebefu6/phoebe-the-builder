@@ -11,12 +11,11 @@ from __future__ import annotations
 import unicodedata
 
 import pytest
-
 from collate import (
-    CORPUS,
-    CORPUS_BY_ID,
     COLLATION_BY_NAME,
     COLLATIONS,
+    CORPUS,
+    CORPUS_BY_ID,
     Verdict,
     bmp_flip,
     distinct_count,

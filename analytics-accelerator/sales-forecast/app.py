@@ -12,7 +12,6 @@ import warnings
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from forecast import forecast_sales
 
 warnings.filterwarnings("ignore")

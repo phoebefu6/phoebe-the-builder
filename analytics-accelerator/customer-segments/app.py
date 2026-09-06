@@ -11,7 +11,6 @@ import io
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from segments import sample_customers, segment_customers, select_numeric_features
 
 st.set_page_config(

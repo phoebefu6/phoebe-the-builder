@@ -10,12 +10,11 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
+import guardrails as G
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
-import guardrails as G
 
 st.set_page_config(page_title="Guardrail Metric", layout="wide")
 

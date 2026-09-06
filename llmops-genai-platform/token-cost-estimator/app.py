@@ -6,7 +6,6 @@ from __future__ import annotations
 # integration. Fully offline; rates are an editable table in estimate.py.
 import pandas as pd
 import streamlit as st
-
 from estimate import (
     CHARS_PER_TOKEN,
     PRICING,

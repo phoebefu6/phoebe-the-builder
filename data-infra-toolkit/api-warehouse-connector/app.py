@@ -1,13 +1,12 @@
 """API to Warehouse Connector — pull data from multiple SaaS APIs into a unified warehouse."""
 from __future__ import annotations
 
-import json
 import hashlib
-import sqlite3
 import logging
+import sqlite3
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import pandas as pd
 import streamlit as st
@@ -23,7 +22,8 @@ DB_PATH = Path("warehouse.db")
 # ---------------------------------------------------------------------------
 
 def _mock_stripe_transactions() -> List[Dict[str, Any]]:
-    import random, string
+    import random
+    import string
     random.seed(int(datetime.now().timestamp()) % 1000)
     rows = []
     for i in range(random.randint(15, 30)):

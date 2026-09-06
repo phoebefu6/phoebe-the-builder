@@ -10,7 +10,6 @@ Run: ``python evidence.py``
 from __future__ import annotations
 
 import numpy as np
-
 import srm
 
 RNG_SEED = 20260903

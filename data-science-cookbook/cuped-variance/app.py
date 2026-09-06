@@ -9,11 +9,10 @@ turns the whole thing into an effect-destroying machine.
 
 from __future__ import annotations
 
+import cuped
 import numpy as np
 import pandas as pd
 import streamlit as st
-
-import cuped
 
 st.set_page_config(page_title="CUPED variance", page_icon="📉", layout="wide")
 

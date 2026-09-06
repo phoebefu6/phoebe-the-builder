@@ -8,9 +8,8 @@ from __future__ import annotations
 
 from decimal import Decimal
 
-import pytest
-
 import numlocale as N
+import pytest
 
 # --------------------------------------------------------------------------
 # Shape

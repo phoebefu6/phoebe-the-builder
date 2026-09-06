@@ -10,10 +10,9 @@ Run:  python3 test_tabler.py     (no pytest required)
 
 from __future__ import annotations
 
-import re
 import sys
 import traceback
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, List, Tuple
 
 import tabler as T
 

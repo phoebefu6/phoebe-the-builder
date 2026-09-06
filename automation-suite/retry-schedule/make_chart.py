@@ -5,7 +5,6 @@ Run: python3 make_chart.py [outfile.png]
 
 from __future__ import annotations
 
-import random
 import sys
 from typing import List
 
@@ -13,7 +12,6 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
 import retry as R
 
 INK = "#1b1b1f"
@@ -88,10 +86,10 @@ def panel_inversion(ax, sims) -> None:
     offsets = {"no_jitter": (0, 16), "fixed_interval": (0, -26),
                "equal_jitter": (0, 16), "full_jitter": (0, 16),
                "decorrelated_jitter": (0, 16)}
-    for n, p, l in zip(names, peaks, lost):
-        ax.scatter([p], [l], s=170, color=COLOR[n], zorder=3,
+    for n, p, lost_pct in zip(names, peaks, lost):
+        ax.scatter([p], [lost_pct], s=170, color=COLOR[n], zorder=3,
                    edgecolor="white", lw=1.4)
-        ax.annotate(n, (p, l), textcoords="offset points", xytext=offsets[n],
+        ax.annotate(n, (p, lost_pct), textcoords="offset points", xytext=offsets[n],
                     ha="center", fontsize=7.5, color=INK)
     ax.axvline(CAPACITY, color=INK, lw=1.0, ls="--")
     ax.text(CAPACITY * 1.1, 200, "capacity", color=INK, fontsize=7.5)
@@ -161,7 +159,7 @@ def panel_floor(ax) -> None:
 def panel_amplification(ax) -> None:
     stacks = [("browser", [3]), ("+ gateway", [3, 3]), ("+ service", [3, 3, 3]),
               ("+ db driver", [3, 3, 3, 2])]
-    vals = [R.amplification(l) for _, l in stacks]
+    vals = [R.amplification(stack) for _, stack in stacks]
     bars = ax.bar([s for s, _ in stacks], vals,
                   color=[COOL, WARN, BAD, BAD], width=0.6)
     for b, v in zip(bars, vals):

@@ -8,9 +8,8 @@ from __future__ import annotations
 # key. Any real embedding matrix can be passed in via `vectors=` - the gate is the
 # part that matters, not the vectorizer.
 import hashlib
-import math
 import re
-from typing import Callable, Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 import numpy as np
 

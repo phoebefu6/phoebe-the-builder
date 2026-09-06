@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from dag_gen import generate_dag, load_yaml, topo_levels
 
 st.set_page_config(page_title="Airflow DAG Generator", page_icon="🌀", layout="wide")

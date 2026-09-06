@@ -10,9 +10,8 @@ Run: ``python evidence.py``
 
 from __future__ import annotations
 
-import numpy as np
-
 import cuped
+import numpy as np
 
 RNG_SEED = 20260904
 TRIALS = 6000

@@ -13,8 +13,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import Patch
-
 from durations import (
     DAY24,
     DEFAULT_ANCHORS,
@@ -27,6 +25,7 @@ from durations import (
     audit_corpus,
     parse_iso,
 )
+from matplotlib.patches import Patch
 
 INK = "#141414"
 MUTED = "#8a8a8a"

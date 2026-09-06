@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import matplotlib.pyplot as plt
-import pandas as pd
 import streamlit as st
-
 from agent_eval import (
     SAMPLE_CASES,
     SAMPLE_TRACES_V1,

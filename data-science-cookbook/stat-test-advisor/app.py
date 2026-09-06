@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import numpy as np
 import streamlit as st
-
 from advisor import recommend, run_test, sample_data
 
 st.set_page_config(page_title="Statistical Test Advisor", layout="wide")

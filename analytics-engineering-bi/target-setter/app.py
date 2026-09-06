@@ -18,7 +18,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 import targets as T
 
 st.set_page_config(page_title="Target Setter", layout="wide")

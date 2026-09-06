@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import re
+from typing import Dict, List
+
 import streamlit as st
-from typing import Dict, List, Optional, Tuple
 
 
 def parse_sql(sql: str) -> Dict[str, Dict]:

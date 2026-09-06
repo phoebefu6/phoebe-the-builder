@@ -1,10 +1,7 @@
 from __future__ import annotations
 
-import io
-
 import pandas as pd
 import streamlit as st
-
 from factory import fit_transform, infer_plan, make_sample_data
 
 ROLE_BADGE = {

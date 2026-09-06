@@ -4,7 +4,6 @@ import io
 
 import pandas as pd
 import streamlit as st
-
 from dictgen import (
     dictionary_to_dataframe,
     dictionary_to_markdown,

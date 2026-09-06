@@ -7,9 +7,8 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import streamlit as st
-
 import power as pw
+import streamlit as st
 
 st.set_page_config(page_title="Sample Size & Power Calculator", layout="wide")
 

@@ -24,8 +24,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
-
-from binning import SENTINEL_NO_BUREAU, Binning, build_dataset, fit
+from binning import Binning, build_dataset, fit
 
 # The three encodings, and the binning settings behind B and C.
 CONSTRAINED = dict(max_bins=6, min_bin_share=0.05, min_bin_events=20, monotone=True)

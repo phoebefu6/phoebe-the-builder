@@ -7,7 +7,6 @@ download a ready-to-commit Model Card in Markdown.
 from __future__ import annotations
 
 import streamlit as st
-
 from model_card import compute_metrics, demo_train, generate_model_card
 
 st.set_page_config(page_title="Model Card Generator", page_icon="📇", layout="wide")

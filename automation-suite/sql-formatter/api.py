@@ -14,9 +14,8 @@ from typing import Any, Dict
 
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
-
 from formatter import analyze, format_sql, lint_sql
+from pydantic import BaseModel
 
 app = FastAPI(title="SQL Formatter & Linter", version="1.0.0")
 

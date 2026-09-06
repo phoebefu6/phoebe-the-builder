@@ -11,9 +11,8 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-
 import costs as C
+import matplotlib.pyplot as plt
 
 INK = "#141414"
 MUTED = "#8a8a8a"

@@ -10,9 +10,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
-import streamlit as st
-
 import retry as R
+import streamlit as st
 
 st.set_page_config(page_title="Retry Schedule Audit", layout="wide")
 

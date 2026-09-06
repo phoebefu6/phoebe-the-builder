@@ -19,9 +19,10 @@ Standard library only. No pandas, no numpy.
 from __future__ import annotations
 
 import datetime as _dt
-from dataclasses import dataclass, field as _dcfield
+from dataclasses import dataclass
+from dataclasses import field as _dcfield
 from decimal import Decimal
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 __all__ = [
     "FieldError",

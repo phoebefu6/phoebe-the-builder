@@ -3,9 +3,15 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
-from dedup import (add_match_keys, dedupe, longest_value, make_sample_customers,
-                   most_complete_record, most_recent, source_priority)
+from dedup import (
+    add_match_keys,
+    dedupe,
+    longest_value,
+    make_sample_customers,
+    most_complete_record,
+    most_recent,
+    source_priority,
+)
 
 st.set_page_config(page_title="Dedup & Survivorship", page_icon="🧬", layout="wide")
 st.title("🧬 Dedup & Survivorship Pipeline")

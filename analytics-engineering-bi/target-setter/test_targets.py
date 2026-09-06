@@ -12,10 +12,9 @@ import itertools
 
 import numpy as np
 import pytest
-from scipy import stats
-
 import targets as T
 from evidence import ORIGIN_REF
+from scipy import stats
 
 N_TEST_PATHS = 200
 TEST_SEED0 = 77_000

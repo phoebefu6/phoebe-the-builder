@@ -5,10 +5,9 @@
 
 from __future__ import annotations
 
+import codelay as C
 import pandas as pd
 import streamlit as st
-
-import codelay as C
 
 st.set_page_config(page_title="Cost of Delay", page_icon="⏱", layout="wide")
 

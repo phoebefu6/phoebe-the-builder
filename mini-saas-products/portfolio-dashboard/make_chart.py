@@ -12,10 +12,9 @@ import matplotlib
 
 matplotlib.use("Agg")
 
+import capability as C
 import matplotlib.pyplot as plt
 import numpy as np
-
-import capability as C
 
 INK, MUTED, GRIDC, PAPER = "#1d1a17", "#8a8178", "#e3ddd5", "#faf7f2"
 ACCENT, COOL, GREEN = "#c8553d", "#2f6f8f", "#4f7942"

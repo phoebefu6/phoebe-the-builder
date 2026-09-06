@@ -11,12 +11,11 @@ from dataclasses import replace
 import matplotlib
 
 matplotlib.use("Agg")
+import goodhart as G  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
-
-import goodhart as G  # noqa: E402
 
 st.set_page_config(page_title="Goodhart detector", layout="wide")
 st.title("A proxy metric is a bet that a correlation survives being optimised")

@@ -3,11 +3,11 @@ CSV to PostgreSQL Loader
 Upload a CSV, preview it, configure column types, and load it into any PostgreSQL database.
 """
 
-import streamlit as st
-import pandas as pd
-from sqlalchemy import create_engine, text
-from io import StringIO
 import re
+
+import pandas as pd
+import streamlit as st
+from sqlalchemy import create_engine, text
 
 
 def infer_sql_type(dtype, sample_values):

@@ -8,14 +8,12 @@ manual" pain point with a single reusable pipeline.
 """
 
 import os
-from typing import Optional, List, Dict
+from typing import Dict, List
 
-import numpy as np
-import pandas as pd
 import joblib
+import pandas as pd
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
-
 
 # Meaningful churn-style feature names for the synthetic dataset.
 FEATURE_NAMES: List[str] = [
@@ -103,7 +101,6 @@ def score_frame(bundle: Dict[str, object], df: pd.DataFrame) -> pd.DataFrame:
     threshold: float = float(bundle.get("threshold", DEFAULT_THRESHOLD))
 
     incoming = set(df.columns)
-    required = set(feature_names)
     missing = [c for c in feature_names if c not in incoming]
     if missing:
         raise ValueError(

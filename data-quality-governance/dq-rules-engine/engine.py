@@ -8,8 +8,7 @@ from __future__ import annotations
 # quality rules OUT of a wiki nobody enforces and INTO code that runs on every
 # batch - so a bad batch is caught before it lands in a report, not after.
 # Fully offline, standard pandas/numpy only - no API keys.
-
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 import numpy as np

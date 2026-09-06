@@ -3,10 +3,8 @@ from __future__ import annotations
 # Streamlit UI for the Semantic Response Cache. Replay a paraphrase-heavy
 # query stream, watch cache hits reuse past answers, and sweep the similarity
 # threshold to see the hit-rate-vs-safety tradeoff. Fully offline.
-
 import pandas as pd
 import streamlit as st
-
 from cache import SAMPLE_QUERIES, run_sample
 
 st.set_page_config(page_title="Semantic Response Cache", page_icon="♻️", layout="wide")

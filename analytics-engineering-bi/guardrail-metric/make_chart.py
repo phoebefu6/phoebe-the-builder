@@ -8,15 +8,13 @@ each figure is defined in exactly one place.
 
 from __future__ import annotations
 
-
 import matplotlib
 
 matplotlib.use("Agg")
+import guardrails as G
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
-
-import guardrails as G
 
 INK = "#141414"
 MUTED = "#8a8a8a"

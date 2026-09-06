@@ -4,13 +4,11 @@ from __future__ import annotations
 # use the built-in sample), view/edit the retention policies, run the engine,
 # and read the action plan grouped by action - past-due, approaching, within.
 # The engine only PLANS; nothing is deleted here. Legal owns the policy.
-
 import io
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
 from enforcer import (
     AS_OF,
     RetentionPolicy,

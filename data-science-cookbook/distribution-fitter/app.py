@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from fitting import (
     DEFAULT_FAMILIES,
     FitReport,

@@ -14,13 +14,11 @@ from zoneinfo import ZoneInfo, available_timezones
 
 import pandas as pd
 import streamlit as st
-
 from tznorm import (
     UTC,
     audit,
     build_session_log,
     classify,
-    find_alias_groups,
     ground_truth,
     local_day,
     normalize,
@@ -174,11 +172,11 @@ if "amount" in (rows[0] if rows else {}):
     utc_rev: Dict[str, float] = {}
     local_rev: Dict[str, float] = {}
     for row, r in zip(rows, readings):
-        u, l = utc_day(r), local_day(r)
-        if u is None or l is None:
+        u, loc = utc_day(r), local_day(r)
+        if u is None or loc is None:
             continue
         utc_rev[str(u)] = utc_rev.get(str(u), 0.0) + float(row.get("amount", 0) or 0)
-        local_rev[str(l)] = local_rev.get(str(l), 0.0) + float(row.get("amount", 0) or 0)
+        local_rev[str(loc)] = local_rev.get(str(loc), 0.0) + float(row.get("amount", 0) or 0)
     days = sorted(set(list(utc_rev) + list(local_rev)))
     comp = pd.DataFrame(
         {

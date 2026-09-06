@@ -10,11 +10,10 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
+import costs as C
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-
-import costs as C
 
 st.set_page_config(page_title="Warehouse Cost Attribution", layout="wide")
 

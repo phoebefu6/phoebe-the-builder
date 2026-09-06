@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import streamlit as st
-
 from summarizer import SAMPLE_TRANSCRIPT, summarize
 
 st.set_page_config(page_title="Meeting Notes Summarizer", layout="wide")

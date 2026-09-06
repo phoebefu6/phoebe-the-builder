@@ -9,9 +9,8 @@ from __future__ import annotations
 import itertools
 import math
 
-import pytest
-
 import costs as C
+import pytest
 
 
 # ------------------------------------------------------------------ the cost function --

@@ -8,12 +8,8 @@ from datetime import date
 
 import pandas as pd
 import streamlit as st
-
 from dsar import (
-    DIRECT,
-    MENTION,
     RETAIN,
-    SPEC_BY_NAME,
     SUBJECT_EMAIL,
     SUBJECT_MAP,
     build_corpus,

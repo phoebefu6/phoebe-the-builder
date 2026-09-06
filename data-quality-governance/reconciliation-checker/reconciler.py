@@ -8,13 +8,11 @@ from __future__ import annotations
 # value mismatches on shared keys, and optional aggregate checks (a numeric sum
 # must agree within a tolerance). Every finding is explainable so a steward can
 # defend the pass/fail verdict. Fully offline, standard pandas/numpy - no API keys.
-
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-
 
 # Absolute tolerance for numeric cell comparisons. Floats rarely survive a
 # system hop bit-for-bit (a DECIMAL becomes a float, a re-rounded currency),

@@ -5,10 +5,9 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
+import codelay as C
 import matplotlib.pyplot as plt
 import numpy as np
-
-import codelay as C
 
 INK = "#1d2433"
 MUTED = "#8b93a7"

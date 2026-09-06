@@ -8,7 +8,6 @@ from typing import Dict, List
 
 import pandas as pd
 import streamlit as st
-
 from type_infer import (
     BUCKETS,
     ColumnType,
