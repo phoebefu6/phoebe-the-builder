@@ -1,0 +1,292 @@
+SYNTHETIC CONTROL: one market, one intervention, a control group that has to be built
+Day 169 - data-science-cookbook - phoebe-the-builder
+
+==============================================================================
+ 1. THE INSTRUMENT WORKS: one treated unit, no control group, a fitted one
+==============================================================================
+A single market got the intervention.  There is no control group, so the three things
+people reach for are the closest-looking single market, the average of the others, and a
+difference-in-differences against that average.  Synthetic control instead asks: which
+WEIGHTED average of the others tracked this market before the intervention?
+
+The panel below is an interactive fixed-effects model - each unit loads on three common
+time factors - and the treated unit's loadings are a lopsided convex combination of the
+donors', so it is genuinely an unusual member of its own pool.  A convex combination that
+reproduces it exists; the estimators differ in whether they can find it.
+
+  600 panels, 20 donors, 30 pre-periods, 12 post, true effect 5.0
+
+  estimator            mean     bias     rmse   x synth rmse
+  synthetic           4.973   -0.027    0.577           1.00
+  diff-in-diff        5.069    0.069    1.214           2.10
+  donor average       5.105    0.105    1.841           3.19
+  closest donor       4.849   -0.151    1.486           2.58
+
+  The fit is sparse by construction: 8.4 donors carry non-zero weight out of 20,
+  the largest one carries 0.29 of the total. That sparsity is the simplex constraint,
+  not a penalty anyone chose - it is what section 6 removes.
+
+==============================================================================
+ 2. THE P-VALUE HAS A FLOOR, AND THE FLOOR IS THE DESIGN, NOT THE DATA
+==============================================================================
+Inference is a permutation: refit the estimator with each donor playing the treated
+unit, and rank the real one.  With N units there are N ranks, so the smallest p-value the
+procedure can return is 1/N = 1/(donors+1).  No effect size changes this.  No sample size
+changes it either - it is arithmetic on the donor count, available before any data.
+
+    donors   floor 1/(J+1)   0.05 reachable  0.10 reachable
+         5          0.1667               NO              NO
+         9          0.1000               NO             yes
+        10          0.0909               NO             yes
+        15          0.0625               NO             yes
+        19          0.0500              yes             yes
+        20          0.0476              yes             yes
+        39          0.0250              yes             yes
+        50          0.0196              yes             yes
+
+  19 donors is the smallest pool that can ever produce p <= 0.05, and 9 the smallest
+  that can produce p <= 0.10.  A study of 12 US states cannot report a 5% result.
+
+  Power of the placebo test, 400 panels each (rejection at the nominal level):
+
+    donors   effect   p<=0.05   p<=0.10   median p
+        10      0.0     0.000     0.048      0.545
+        10      2.0     0.000     0.623      0.091
+        10      5.0     0.000     1.000      0.091
+        10     10.0     0.000     1.000      0.091
+        20      0.0     0.077     0.140      0.429
+        20      2.0     0.710     0.787      0.048
+        20      5.0     0.998     0.998      0.048
+        20     10.0     1.000     1.000      0.048
+        40      0.0     0.068     0.125      0.390
+        40      2.0     0.780     0.868      0.024
+        40      5.0     1.000     1.000      0.024
+        40     10.0     1.000     1.000      0.024
+
+  The 0.05 column is exactly 0.000 for 10 donors at EVERY effect size, including one
+  twice the size that 40 donors detects with certainty.  That is not low power, it is
+  zero power: the test has no outcome that rejects.  Under the null (effect 0.0) the
+  0.10 column sits at the floor's granularity, which is what calibration looks like
+  when the p-value can only take J+1 values.
+
+==============================================================================
+ 3. NEGATIVE: THE PRE-PERIOD FIT IS THE THING EVERYONE SHOWS, AND IT IS NOT EVIDENCE
+==============================================================================
+Every synthetic control paper opens with the pre-period plot: two lines lying on top of
+each other.  It is offered as the credential.  But the weights were CHOSEN to make those
+lines coincide, so the fit is a measure of how much freedom the optimiser had, and the
+freedom grows with the donor count while the accuracy does not.
+
+  10 pre-periods held fixed, donor pool grown, 500 panels each:
+
+    donors   pre-RMSPE   att rmse   corr(pre,|err|)  p of corr
+         5       0.968      0.887            -0.041     0.3612
+        10       0.763      0.888            -0.018     0.6935
+        20       0.574      0.865            -0.048     0.2834
+        40       0.445      0.878             0.110     0.0137
+        80       0.336      0.888             0.014     0.7482
+
+  Going from 5 donors to 80, the pre-period fit improves 2.9x - the picture in the
+  paper gets strictly more convincing - while the error on the actual estimate goes
+  0.887 -> 0.888 (WORSE).  Within a fixed pool the correlation
+  between how good the fit looks and how wrong the answer is stays near zero.
+
+==============================================================================
+ 4. NEGATIVE: THE CONVEX HULL IS A HARD WALL, AND THE LEVER THAT MOVES IT IS NOT THE OBVIOUS ONE
+==============================================================================
+The weights are non-negative and sum to one, so the synthetic unit is a convex
+combination and cannot leave the donor range: never above the highest donor, never below the
+lowest, in any period.  That is a structural guarantee, checked exactly below.  It means a
+treated unit sitting above its whole pool by a constant h simply cannot be matched.
+
+The obvious guess is that the estimator then returns tau + h.  It does not.  The optimiser
+buys back part of h by tilting the weights toward the highest-level donors and paying for it
+in factor fit - so the bias is a FRACTION of h, and the fraction is not a constant.
+
+    shift h   mean att     bias   bias/h   hull excess   pre-RMSPE   in band
+        0.0      5.047    0.047    0.000         0.401       0.857     1.000
+        1.0      5.154    0.154    0.154         0.711       0.979     1.000
+        2.0      5.287    0.287    0.144         1.128       1.289     1.000
+        5.0      6.175    1.175    0.235         2.975       2.886     1.000
+       10.0      9.574    4.574    0.457         7.242       6.793     1.000
+       20.0     19.190   14.190    0.709        17.066      16.213     1.000
+
+  The 'in band' column is 1.000 everywhere: the guarantee holds exactly, in every one
+  of 2400 fits.  'hull excess' is the part of the treated path lying outside the
+  donor range - computable from the data alone, with no counterfactual in it - and it is
+  an honest lower bound on the damage rather than the damage itself.
+
+  Now the two levers, separately, at h = 5.0 (bias to remove: the h=5 row above):
+
+                    held fixed     grown      from        to   bias from   bias to
+                30 pre-periods  n_donors         5        80       1.950     0.717
+                     20 donors     t_pre        15       240       1.837     0.235
+
+  Widening the pool 16x removes 63% of the bias; lengthening the history 16x removes 87%.
+  The donor column is the part worth noticing.  In section 9 - the same estimator, the same
+  panel, but a NOISE problem rather than a coverage problem - growing the pool 16x moved the
+  error by 3% and was indistinguishable from doing nothing.  Here it removes 63% of a real
+  bias.  Donors are not a sample-size lever and they are not useless; they buy hull coverage
+  and nothing else.  Which of the two problems you have is not readable off the pre-period
+  plot everybody publishes - but it IS readable off the hull excess above, which nobody
+  publishes.
+
+==============================================================================
+ 5. THE RECOMMENDED TEST STATISTIC EARNS ITS KEEP (the one place in this build it does)
+==============================================================================
+Abadie ranks units by the RATIO of post-period to pre-period fit error, not by the raw
+gap.  The reason is section 4: a unit the donors cannot fit has a large gap in every period,
+before and after, and a raw-gap ranking reads that as an effect.  Dividing by the pre-period
+error cancels it.  Below, the null is true - there is no effect at all - and the treated unit
+is simply un-fittable (h = 5).
+
+      h  true effect      stat   p<=0.10   p<=0.20   median p
+    0.0          0.0       gap     0.000     0.016      0.714
+    0.0          0.0     ratio     0.094     0.188      0.476
+    5.0          0.0       gap     0.424     0.564      0.143
+    5.0          0.0     ratio     0.036     0.084      0.905
+    0.0          5.0       gap     0.970     0.998      0.048
+    0.0          5.0     ratio     0.998     0.998      0.048
+    5.0          5.0       gap     0.892     0.934      0.048
+    5.0          5.0     ratio     0.482     0.630      0.143
+
+  Three things in that table, in order of how much they matter.
+
+  1. On a TRUE NULL with an un-fittable treated unit the raw-gap statistic fires
+     0.424 of the time at a nominal 0.10 - it is reading section 4's
+     level shift as an effect - while the ratio fires 0.036.  This is
+     the one guard in this build that does the job it is sold for.
+
+  2. It is paid for.  With a real effect on an un-fittable unit the ratio finds it
+     0.482 of the time against the raw gap's 0.892 -
+     it has thrown away the same signal it correctly refused in row 2, because from inside
+     the statistic those two situations are identical.
+
+  3. The raw gap is not merely mis-sized, it is inert on a clean null: 0.000
+     at a nominal 0.10, median p 0.714.  The placebo units are not
+     exchangeable with the treated one - a donor is an extreme point of its own pool and is
+     fitted badly by the units left over, while the treated unit is interior and fits well - so
+     the reference distribution is drawn from harder problems than the one being tested.
+     Dividing by each unit's own pre-period error is what puts them back on the same scale
+     (0.094 at 0.10, median 0.476).  The ratio's
+     real job is normalisation, not robustness.
+
+  None of this repairs the ESTIMATE.  Section 4's bias is still in the number; the test has
+  only stopped calling it an effect.
+
+==============================================================================
+ 6. NEGATIVE: DROPPING THE SIMPLEX CONSTRAINT BUYS A BETTER FIT AND A WORSE ANSWER
+==============================================================================
+The constraint w >= 0, sum w = 1 is the whole method.  Regression on the donors with no
+constraint is strictly better at the thing the pre-period plot measures, and that is exactly
+why it is worse: it extrapolates.
+
+    pre-periods    solver   pre-RMSPE   att rmse  weight sum  neg wts
+             12   simplex       0.646      0.830       1.000      0.0
+             12       ols       0.000      1.511       0.944      8.4
+             30   simplex       0.843      0.593       1.000      0.0
+             30       ols       0.585      1.059       0.945      8.7
+             60   simplex       0.927      0.479       1.000      0.0
+             60       ols       0.836      0.547       0.937      7.5
+
+   12 pre-periods: OLS fits EXACTLY (interpolates) and estimates  1.82x worse
+   30 pre-periods: OLS fits          1.44x tighter and estimates  1.79x worse
+   60 pre-periods: OLS fits          1.11x tighter and estimates  1.14x worse
+
+  With fewer pre-periods than donors the unconstrained fit passes through every
+  pre-period point exactly - a pre-period RMSPE of 0.000, the most convincing
+  version of the picture in section 3 - and is the worst estimator in this build.
+  The gap closes as history lengthens, which is the honest version of the claim: the
+  constraint is a small-sample device, and it is also a device against being fooled
+  by your own diagnostic.
+
+==============================================================================
+ 7. NEGATIVE: A DONOR THAT ALSO GOT TREATED ATTENUATES BY EXACTLY ITS OWN WEIGHT
+==============================================================================
+The donor pool is assumed untouched by the intervention.  When a neighbouring market
+picks up some share gamma of the effect and carries weight w in the fit, that share is
+subtracted from the estimate: the synthetic unit rises with the real one.  The prediction
+is tau * (1 - sum_j w_j gamma_j), using the weights the optimiser actually chose - which
+are not known in advance, so this is not a correction anyone can apply up front.
+
+This is Day 168's finding at a different level: there the contamination was between arms of
+one experiment, here it is between the treated unit and its own control group.
+
+    gamma  donors hit   mean att  measured ratio   predicted      gap
+      0.0           1      5.006          1.0012      1.0000   0.0012
+      0.5           1      4.291          0.8583      0.8571   0.0012
+      1.0           1      3.577          0.7153      0.7141   0.0012
+      1.0           3      1.767          0.3534      0.3522   0.0012
+      0.5           5      2.858          0.5716      0.5704   0.0012
+
+  The gap column is 0.0012 in the uncontaminated row and stays there: it never moves by more
+  than 0.00000 across contaminations that destroy two thirds of the effect.  That constant is
+  the estimator's own clean bias, not an error in the closed form - the attenuation is fully
+  explained by the weights the optimiser happened to choose.
+  Nothing in the output flags this.  The pre-period fit is untouched - the contamination is
+  post-period by construction - so the credential in section 3 is not merely uninformative
+  here, it is perfect while the answer is wrong.
+
+==============================================================================
+ 8. ANTICIPATION IS THE ONE FAILURE THE PRE-PERIOD PLOT CAN SEE - WHEN IT IS LOUD
+==============================================================================
+If the market reacted before the official date - an announcement, a leak, firms moving
+early - then the last few pre-periods already contain part of the effect, and the optimiser
+fits the donors to a partly-treated series.  The received advice is to check the pre-period
+fit and to back the date off if it looks wrong.  Below, the screen is given the best possible
+form - reject when pre-RMSPE exceeds the 90th percentile of its own clean distribution, a
+threshold no real analyst has - and its POWER is measured against the bias it must catch.
+
+  Clean pre-RMSPE 90th percentile (the screen's threshold): 1.0190
+
+    periods   share   mean att     bias  % of effect  screen power
+          0    1.00      4.985   -0.015         -0.3         0.100
+          2    1.00      4.154   -0.846        -16.9         0.830
+          4    1.00      3.734   -1.266        -25.3         0.894
+          6    1.00      3.392   -1.608        -32.2         0.930
+         10    1.00      2.854   -2.146        -42.9         0.930
+          4    0.50      4.333   -0.667        -13.3         0.342
+          4    0.25      4.652   -0.348         -7.0         0.150
+         10    0.25      4.413   -0.587        -11.7         0.172
+
+  This is the one failure in the build the standard screen actually catches, and the reason
+  is structural: anticipation is the only contamination that lands in the pre-period, which
+  is the only place the diagnostic can see.  Two periods of it costs -16.9% of the
+  effect and gets flagged 0.830 of the time.
+
+  It is caught because it is LOUD, not because the screen is good.  At a quarter of the
+  effect leaking early, 4 periods costs -7.0% and is flagged 0.150 -
+  barely above the screen's own 0.10 false-alarm rate - and 10 periods costs
+  -11.7% at 0.172.  Same shape as Day 167's pre-trends test and Day 168's
+  dose-response guard: the diagnostic's power arrives after the damage, it just arrives
+  sooner here than it did there.
+
+  Note the sign.  Every bias in this build so far ran positive; this one runs NEGATIVE -
+  fitting donors to an already-treated pre-period drags the counterfactual up, and the
+  estimate down.  A researcher who suspects anticipation and cannot rule it out does not
+  know which direction they are wrong in without knowing which mechanism they have.
+
+==============================================================================
+ 9. WHICH LEVER: ONE MORE PRE-PERIOD IS WORTH MORE THAN ONE MORE DONOR, UP TO A POINT
+==============================================================================
+Both are things a researcher can go and get: dig up more history, or widen the pool of
+comparison markets.  They are not interchangeable, and the exchange rate is measurable.
+
+  RMSE of the estimate (true effect 5.0):
+
+  pre \ donors           5        10        20        40        80
+  8                  0.916     0.984     0.899     0.972     0.947
+  15                 0.749     0.766     0.762     0.747     0.786
+  30                 0.659     0.656     0.574     0.578     0.558
+  60                 0.520     0.508     0.464     0.472     0.448
+  120                0.482     0.427     0.389     0.390     0.387
+
+  Reading the corners: 8 pre-periods and 80 donors gives 0.947; 120 pre-periods and 5
+  donors gives 0.482.  Along the top row, growing the pool 16x moves the error
+  0.916 -> 0.947 (-3%); down the left column, growing the history 15x moves it
+  0.916 -> 0.482 (+47%).  The pool has a second job though -
+  section 2's p-value floor is 1/(J+1), and no amount of history buys a single rank of it.
+
+==============================================================================
+  total runtime 10.3s
+==============================================================================
