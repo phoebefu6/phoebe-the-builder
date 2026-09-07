@@ -192,6 +192,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Parallel Trends Is an Assumption, and the Test for It Has a Power](data-science-cookbook/diff-in-diff/) | We could not randomise this one, so we compared the change in the group that got the policy against the change in the group that did not, and checked… |
 | [Sample Size & Power Calculator](data-science-cookbook/sample-size-calc/) | "How many users do we need?" gets asked at the start of every experiment and answered by vibes. |
 | [Statistical Test Advisor](data-science-cookbook/stat-test-advisor/) | "Which statistical test do I use?" - describe the data, get the right test (parametric or not), and run it. |
+| [The Control Group Is a Fitted Object, and Its Credential Is the Objective Function](data-science-cookbook/synthetic-control/) | One market got the intervention and there was never going to be a control group, so a weighted average of the other markets is fitted to stand in for… |
 | [Variance Reduction Is a Bet on a Correlation You Already Collected](data-science-cookbook/cuped-variance/) | The test needs six weeks, and somebody says CUPED will halve it. The first claim is arithmetic. |
 
 

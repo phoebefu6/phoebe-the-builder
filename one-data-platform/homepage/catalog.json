@@ -2350,5 +2350,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/interference-check",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/interference-check/demo.ipynb"
+  },
+  {
+    "day": 169,
+    "slug": "synthetic-control",
+    "name": "The Control Group Is a Fitted Object, and Its Credential Is the Objective Function",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "One market got the intervention and there was never going to be a control group, so a weighted average of the other markets is fitted to stand in for one - and the pre-period plot everybody publishes as proof was chosen to look good, which is why\u2026",
+    "status": "done",
+    "date": "2026-09-07",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/synthetic-control",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/synthetic-control/demo.ipynb"
   }
 ]

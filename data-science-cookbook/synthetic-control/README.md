@@ -3,9 +3,7 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/synthetic-control/demo.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/phoebefu6/phoebe-the-builder/main?labpath=data-science-cookbook/synthetic-control/demo.ipynb)
 
-> One market got the intervention and there is no control group, so a weighted average of the
-> other markets gets fitted to stand in for one - and the pre-period plot that everybody
-> publishes as proof was chosen to look good, so it cannot tell you when the fit is lying.
+> One market got the intervention and there was never going to be a control group, so a weighted average of the other markets is fitted to stand in for one - and the pre-period plot everybody publishes as proof was chosen to look good, which is why it cannot tell you when the fit is lying.
 
 ![the audit](synthetic_control_audit.png)
 
