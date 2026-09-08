@@ -1,0 +1,194 @@
+
+====================================================================================================
+1. The two estimators, on the problems they are actually good at
+====================================================================================================
+one truly harmed segment (tau = 0.05 - 0.30 = -0.25), n=20,000, K=20
+  scan finds it (Bonferroni)       0.807
+  the overall test is significant  0.713   true ATE +0.0350
+
+heterogeneity along a covariate: tau(x) = 0.05 + 0.20*x0, sliced on an unrelated segment
+  RMSE, honest CATE tree           0.1307
+  RMSE, the 20-segment scan        0.2283
+  RMSE, one number for everybody   0.2016   (sd of true tau 0.2000)
+  the scan carries 1.75x the tree's error and 1.13x the
+  do-nothing baseline's: slicing in the wrong place is WORSE than not slicing at all,
+  because it adds 20 segments' worth of noise and no signal.
+
+====================================================================================================
+2. THE DESIGN CONSTANT: the alarm rate is arithmetic - and 1-(1-0.025)^K is the wrong arithmetic
+====================================================================================================
+Homogeneous world: every segment has exactly the same true effect, so any segment the scan
+calls HARMED is a false alarm. The number everybody quotes for this is 1-(1-0.025)^K = 39.7%
+at K=20. That expression is this build's world at a true effect of ZERO. With a real effect
+the whole family shifts and the alarm rate falls - so the closed form needs the effect in it:
+
+    P(harm flag) = 1 - (1 - Phi(-1.96 - ate/se_seg))^K,   se_seg = sigma*sqrt(4K/n)
+
+   K  true ate  se_seg  measured  naive cf  this cf    bonf      bh
+  20      0.00   0.100     0.406     0.397    0.397   0.029   0.030
+  20      0.05   0.100     0.150     0.397    0.130   0.007   0.009
+  20      0.10   0.100     0.032     0.397    0.030   0.000   0.001
+   5      0.05   0.050     0.009     0.119    0.008   0.001   0.002
+  50      0.05   0.158     0.435     0.718    0.437   0.009   0.011
+
+The naive form is out by a factor of 3 at K=20 on a launch that worked (0.397 vs 0.130). The
+form with the effect in it matches to MC error everywhere except K=50, where a segment holds
+80 users per arm and the normal approximation inside the test is itself liberal.
+
+The uncomfortable reading: a scan is MOST likely to invent a harmed segment exactly when the
+launch did nothing at all, and a strong launch is partly self-protecting. The story 'it
+worked overall but hurt segment 7' is least trustworthy in the cases people tell it about.
+
+NEGATIVE RESULT - the house pattern does NOT hold here. Days 165/167/168 all found a bias or
+a size flat in n while the experiment's power rose. This one MOVES, because the reference is
+not a zero effect: ate/se_seg grows with sqrt(n), so a bigger test is a safer scan.
+        n  measured  closed form  overall power
+    2,000     0.258        0.239          0.210
+    8,000     0.118        0.130          0.623
+   32,000     0.028        0.030          0.997
+  128,000     0.000        0.001          1.000
+
+====================================================================================================
+3. The worst segment's number is not an estimate of that segment's effect
+====================================================================================================
+K=20, n=8,000, true effect +0.05 in EVERY segment. The segment that came out worst:
+  reported effect                 -0.1365  +/- 0.0014
+  closed form ate + se*E[min Z20] -0.1373   (E[min Z20] = -1.8675)
+  same segment, fresh sample      +0.0446  <- the truth is +0.05
+  and it is called significant    0.132 of the time
+
+The reported harm is 1.86 standard errors of pure selection. Nothing about that
+segment produced it; the MINIMUM operator produced it, and the quadrature knows the number
+before the experiment runs (predicted -0.1373, measured -0.1365, gap 0.0008).
+Re-running the same segment returns the truth, which is why 'it did not replicate' is the
+usual epilogue and why nobody learns anything from it.
+
+With a real harmed segment (tau -0.25 in segment 0) the worst segment IS segment 0
+88.2% of the time - the RANKING carries information even where the number does not.
+
+====================================================================================================
+4. NEGATIVE RESULT: a segment scan is blind by construction, because a segment is 1/K of the data
+====================================================================================================
+n=8,000, K=20. The experiment's own MDE is 0.0626; a segment holds 400 users, so
+its MDE is 0.2802 - 4.47x larger, exactly sqrt(K), and a Bonferroni-corrected
+segment test is larger again. That is arithmetic. The simulation only confirms it.
+
+ harm delta  true seg tau  pre-reg 1  scan 20 bonf  scan 20 bh  overall +ve
+       0.10         -0.05      0.078         0.004       0.004        0.514
+       0.30         -0.25      0.652         0.266       0.278        0.312
+       0.60         -0.55      1.000         0.990       0.990        0.152
+       1.00         -0.95      1.000         1.000       1.000        0.030
+       2.00         -1.95      1.000         1.000       1.000        0.000
+
+'pre-reg 1' is the same test at alpha 0.05 on ONE named segment: naming the segment in advance
+costs nothing in power and deletes section 2 entirely. The gap pre-reg -> bonf is the price of
+the other 19 looks - 0.652 to 0.266 at delta 0.30, i.e. scanning costs 59% of the detections.
+Also visible: the overall column FALLS as the harm grows, because one segment's harm is diluted
+1/K. At delta 1.00 the launch is a wash overall (ATE +0.000) while a twentieth of users lose
+0.95 - the aggregate test is not a weak version of the segment question, it is a different one.
+
+How much traffic does the guard need to reach 0.80 on a harm the size of the ATE itself?
+         n  P(catch, bonf)  overall power
+     8,000           0.007          0.500
+    40,000           0.027          1.000
+   200,000           0.277          1.000
+ 1,000,000           1.000          1.000
+
+The experiment is done at 40,000. The guard protecting it is at 0.027 there and needs roughly
+25x that traffic to be worth reading - the same shape as Day 165's SRM guard and Day 168's
+dose-response guard: calibrated, cheap to run, and blind at the sample size you have.
+
+====================================================================================================
+5. 'We looked at 20 slices' is not 'we ran 20 tests' - and the gap is measurable
+====================================================================================================
+20 overlapping binary cuts (mobile / new / EU / ...), each about half the users, sharing one
+latent factor with loading rho. True effect 0 everywhere, so every flag is a false alarm and
+k-effective is read straight off the alarm rate.
+
+  rho  P(harm flag)  k effective  bonf FWER  raw power  bonf power
+ 0.00         0.226         10.1      0.026      0.738       0.365
+ 0.30         0.183          8.0      0.011      0.685       0.270
+ 0.60         0.176          7.6      0.019      0.680       0.278
+ 0.90         0.137          5.8      0.009      0.690       0.315
+ 0.99         0.069          2.8      0.004      0.708       0.300
+
+Even at rho=0 the 20 cuts behave like ~10 tests, not 20 - independent DEFINITIONS still make
+dependent ESTIMATES, because two half-sample slices share a quarter of the users, giving a
+correlation of 0.5 between their effect estimates before any correlation in the cuts
+themselves. So Bonferroni over overlapping slices is already 2x conservative at rho=0, and
+by rho=0.99 it is 7x: k-effective 2.8, family rate 0.069, alpha divided by 20 anyway, and
+power more than halved (0.708 raw -> 0.300). Both numbers are computable from the slice
+memberships alone, before any outcome is looked at - and neither is the number 20.
+
+====================================================================================================
+6. NEGATIVE RESULT: the CATE tree's subgroup is a FITTED object, and its effect is its objective
+====================================================================================================
+True world: tau = 0.05 for EVERY user, five covariates, none of them doing anything. There is
+no heterogeneity to find. Fit a depth-2 transformed-outcome tree, then read the worst leaf's
+effect two ways - from the data that chose the split, and from a held-out half.
+
+leaves found                       3.62
+worst leaf, in-sample effect       -0.2924   truth +0.05
+worst leaf, honest effect          +0.0450
+in-sample CI covers the truth      0.303   <- nominal 0.95
+honest CI covers the truth         0.950
+in-sample calls it harmed (p<.05)  0.527
+honest calls it harmed (p<.05)     0.007
+
+A subgroup that does not exist is reported as harmed by half of these runs, with an interval
+that covers the truth 0.30 of the time. The tree is not misbehaving - it was asked for the
+split that maximises the difference in the effect signal, and reading the effect off the same
+rows is reading the objective function back out. Day 169 found this in a synthetic control's
+pre-period fit; it is the same failure with a different fitted object, and the fix is the same
+shape: score the thing on data that did not choose it.
+
+With REAL heterogeneity the honest half is not free - it costs half the rows:
+  beta=0.00  leaf |error| in-sample 0.2156 honest 0.1004   coverage 0.597 / 0.948
+  beta=0.10  leaf |error| in-sample 0.2081 honest 0.0945   coverage 0.642 / 0.961
+  beta=0.20  leaf |error| in-sample 0.1939 honest 0.1037   coverage 0.690 / 0.950
+  beta=0.40  leaf |error| in-sample 0.1327 honest 0.0918   coverage 0.857 / 0.949
+The in-sample leaf estimate is worse at EVERY beta, including beta=0.40 where the
+heterogeneity is loud - selection bias does not wash out once the signal is real, it just
+stops being the largest term. Honest coverage sits at nominal across the whole range.
+
+====================================================================================================
+7. NEGATIVE RESULT: a post-assignment segment breaks the parts, and the check that sees it is algebra
+====================================================================================================
+True effect is +0.05 for everybody; treatment also makes engagement more likely.
+  overall effect (correct)            +0.0510
+  'engaged users' segment             -0.0944
+  'not engaged' segment               -0.1097
+  per-segment count check fires       1.000  (SRM test at 0.0005, Day 165)
+
+BOTH parts say the launch hurt while the whole says it helped. That is arithmetically
+impossible for a real partition, and it is the tell: conditioning on a variable treatment
+moved makes each segment a different population in each arm.
+
+So make it a check. Share-weighted mean of the segment effects, minus the overall effect, in
+units of the overall SE - no counterfactual, no assumption, and nobody runs it:
+  pre-assignment partition   -0.00012 sd 0.00698   (max |gap| 0.0468)
+  post-assignment gate       -8.40145 sd 0.50645
+  separation                 1204 legit-sd
+
+This is the only guard in the build without a power problem, and the reason is that it is not
+a test: for a partition fixed before assignment the identity holds up to O(1/n), so the
+legit distribution has almost no width. Days 165, 168 and 169 all ended with a calibrated
+guard that could not see the failure it was built for. The one that works here works because
+it checks an accounting identity instead of estimating a parameter.
+
+====================================================================================================
+8. What the 'no segment may be harmed' gate actually buys
+====================================================================================================
+        gate   blocks a launch that helped everyone   catches a real -0.25 segment
+         raw                                  0.143                          0.728
+  bonferroni                                  0.002                          0.278
+          bh                                  0.003                          0.302
+
+Read the two columns together before choosing. The uncorrected gate is the one people run and
+it is the only one that ever blocks a good launch. Correcting it makes the false alarms
+vanish and leaves detection where section 4 put it - which means the gate is honest about
+being weak rather than dishonest about being strong. If a segment genuinely matters, the way
+to protect it is to name it before the test and size for it, not to scan for it afterwards.
+
+====================================================================================================
+total runtime 75.9s

@@ -218,3 +218,4 @@
 - [x] Day 167 — diff-in-diff: Parallel Trends Is an Assumption, and the Test for It Has a Power (data-science-cookbook/) (2026-09-04)
 - [x] Day 168 — interference-check: A Split Test Measures a Transfer Between the Arms (data-science-cookbook/) (2026-09-06)
 - [x] Day 169 — synthetic-control: The Control Group Is a Fitted Object, and Its Credential Is the Objective Function (data-science-cookbook/) (2026-09-07)
+- [x] Day 170 — heterogeneous-effects: A Segment You Found Is Not a Segment You Named (data-science-cookbook/) (2026-09-08)
