@@ -153,7 +153,7 @@ TASK_OF = {
     "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
     "peeking-cost": "infer", "srm-detector": "infer", "cuped-variance": "infer",
     "diff-in-diff": "infer", "interference-check": "infer",
-    "synthetic-control": "infer",
+    "synthetic-control": "infer", "heterogeneous-effects": "infer",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
     # Learn from it
     "baseline-model": "predict", "feature-factory": "predict",

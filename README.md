@@ -183,6 +183,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 
 | Tool | The problem it was built for |
 |------|------------------------------|
+| [A Segment You Found Is Not a Segment You Named](data-science-cookbook/heterogeneous-effects/) | The test won overall, then somebody sliced it by country, device, plan and tenure and found the segment it hurt - and on a launch that helped every… |
 | [A Split Is a Hypothesis, and Passing Its Test Is Not Evidence](data-science-cookbook/srm-detector/) | The experiment dashboard says the split came out 49.3 / 50.7. |
 | [A Split Test Measures a Transfer Between the Arms](data-science-cookbook/interference-check/) | The A/B test said +26%. It shipped to everybody and nothing moved. |
 | [A Stopping Rule Is Part of the Test](data-science-cookbook/peeking-cost/) | Somebody opens the experiment dashboard every morning and ships the variant the day it goes green. |
