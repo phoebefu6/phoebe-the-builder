@@ -1,0 +1,241 @@
+
+====================================================================================================
+1. A novelty effect gives you three numbers, and the launch needs the one you cannot see
+====================================================================================================
+world: tau(t) = 0.02 + 0.08 * exp(-t/7), 28-day window, daily cohorts, 8,400 users
+
+                           readout     value   x the long-run truth
+                    first-day lift    0.1028                  5.14x
+pooled window lift (the dashboard)    0.0520                  2.60x
+                   final-week lift    0.0230                  1.15x
+            long-run truth tau_inf    0.0200                  1.00x
+
+  tenure  measured lift  true tau(t)
+       0         0.1028       0.1000
+       1         0.0887       0.0894
+       3         0.0730       0.0721
+       7         0.0470       0.0494
+      14         0.0323       0.0308
+      21         0.0269       0.0240
+      27         0.0190       0.0217
+
+The tenure curve is an honest estimator and recovers the shape. Every scalar summary of it
+is a lift AT AN AGE, and the decision is about a population that will be older than any user
+in the test. Nothing in the window is an estimate of the number being decided on.
+
+====================================================================================================
+2. The design constant: how users were let in changes the reported lift, on its own
+====================================================================================================
+Attenuation A = the user-day-weighted mean of exp(-t/lam) over the window. The reported
+lift is tau_inf + (tau0 - tau_inf) * A. There is no n, no sigma and no outcome in A -
+it is a property of the release calendar.
+
+  T/lam   A bigbang   A uniform   ratio  lift bigbang  lift uniform   apart
+      1      0.6783      0.7736   1.140        0.0743        0.0819  10.3%
+      2      0.4639      0.5988   1.291        0.0571        0.0679  18.9%
+      4      0.2634      0.3998   1.518        0.0411        0.0520  26.6%
+      8      0.1341      0.2329   1.737        0.0307        0.0386  25.7%
+     12      0.0894      0.1630   1.823        0.0272        0.0330  21.7%
+
+    enroll  closed form   measured   +/- mc
+   bigbang       0.0411     0.0412   0.0003
+   uniform       0.0520     0.0521   0.0004
+
+continuous-time forms at T=4 lam: bigbang (lam/T)(1-e^-T/lam) = 0.2454,
+uniform (2lam/T)(1-(lam/T)(1-e^-T/lam)) = 0.3773; the discrete daily sums are 0.2634
+and 0.3998, i.e. the integral understates the daily version by ~6.8%.
+
+Two tests of identical length, on identical users, on an identical effect, report lifts
+26.6% apart at T = 4 lam. Continuous enrollment keeps the population younger, so it
+weights the novelty component UP - the opposite of the intuition that a ramp dilutes it.
+
+====================================================================================================
+3. The asymptote is the parameter the window never observes, and its diagnostic points backwards
+====================================================================================================
+    T  T/lam  fit tau_inf       sd  mean CI width  covers 0  covers 5x      r2
+    7    1.0      -0.2928   0.5633       609.3228     0.740      0.910   0.314
+   14    2.0      -0.2944   0.4671        76.1639     0.775      0.625   0.302
+   28    4.0      -0.0637   0.2576         7.3264     0.685      0.245   0.249
+   56    8.0       0.0177   0.0088         0.0351     0.425      0.000   0.158
+   84   12.0       0.0191   0.0056         0.0202     0.092      0.000   0.107
+
+At T = lam the 95% interval on the asymptote is 609 wide on a quantity of 0.02 - it excludes
+nothing anybody would decide between, and the point estimate is negative. The interval is
+usable from about T = 8 lam, where the estimate is 0.0177 against a truth of 0.0200 with an
+sd of 0.0088. THE FIT IS ONLY RELIABLE IN THE REGIME WHERE IT IS UNNECESSARY: at 8 decay
+constants the last window of the test has already measured the asymptote directly, so the
+extrapolation earns its keep on exactly the windows where nobody needs it.
+
+NEGATIVE RESULT: r2 runs the WRONG WAY down this ladder - 0.314 at the useless T = lam and
+0.107 at the reliable T = 12 lam - because a longer window is mostly flat curve, so there is
+less variance for the model to explain precisely when the model is trustworthy. A reader
+choosing between two fits on goodness of fit picks the shorter, worse one. This is Day 169's
+mechanism in a new field: the diagnostic scores the fit on the tenures that were measured,
+and the quantity is defined at the tenures that were not.
+
+====================================================================================================
+4. The early-vs-late guard: size, power, and what the experiment itself already knew
+====================================================================================================
+                       world  guard fires  experiment significant
+ flat 0.05 effect (the null)        0.035                   1.000
+          decay 0.10 -> 0.02        0.637                   1.000
+
+  n users  guard power  expt power  guard MDE on the decay drop
+     1400        0.123       0.977                       0.1615
+     2800        0.287       1.000                       0.1139
+     8400        0.607       1.000                       0.0658
+    33600        0.993       1.000                       0.0329
+
+The guard is calibrated (0.035 on the null) and it is the first one in four builds that is
+neither inert nor free: it needs roughly 6x the users to reach 0.61 where the experiment is
+already at 1.000, and ~24x to be as sure about the decay as the test is about the effect.
+That is a real price on a ladder real tests reach, unlike the SRM check (Day 165), the
+dose-response check (Day 168) and the segment scan (Day 170), which all needed traffic
+nobody has. It also answers a different question: it detects that the lift MOVED, and says
+nothing about where it settles. A guard can be well-powered for the wrong estimand.
+
+====================================================================================================
+5. Decay and a cohort mix shift are the same published plot, five times apart in the decision
+====================================================================================================
+Constructed, not fitted: solve for cohort effects m_k, CONSTANT in tenure, whose aggregate
+lift-by-tenure curve equals the decay curve exactly. Only cohorts enrolled by day T-1-t are
+old enough to appear at tenure t, so the tenure-t lift is a prefix mean of m, and pinning
+those prefix means inverts in closed form.
+
+cohort effects run 0.0217 to 0.3875; mean(m) = 0.100000 = tau0 exactly (gap 0.00e+00)
+
+ tenure  decay world  mix world   target  diff / mc err
+      0       0.0989     0.1015   0.1000          -1.51
+      1       0.0886     0.0881   0.0894           0.27
+      3       0.0756     0.0717   0.0721           2.12
+      7       0.0522     0.0515   0.0494           0.35
+     14       0.0322     0.0321   0.0308           0.03
+     21       0.0273     0.0199   0.0240           2.01
+     27       0.0068     0.0248   0.0217          -1.89
+
+largest standardised discrepancy anywhere: 2.12 at tenure 3, over 28 tenures x 300 runs
+expected max |Z| over 28 pure-noise comparisons: 2.30 - so the largest gap the two
+worlds show anywhere is what noise alone produces, which is the sense in which they are the
+same plot rather than merely a similar one.
+early-vs-late guard mean z: decay    2.24   mix    2.22  (both fire, identically)
+
+                                    decision  decay world  mix world
+                    long-run effect per user       0.0200     0.1000
+                                       ratio          1.0        5.0
+
+       separator (needs the enrollment date)      decay z      mix z
+                  within-cohort tenure slope        -3.30      -0.00
+                         fires at |z| > 1.96        0.900      0.050
+
+                           bookkeeping check        decay        mix
+             exact per-arm recomposition gap     6.36e-18   6.07e-18
+     single-share rollup gap, in overall SEs        0.017      0.016
+
+NEGATIVE RESULT, and it is a limit on the previous build's best find: the free accounting
+guard does NOT generalise here. Day 170's share-weighted identity separated a legitimate
+partition from a post-assignment one by 1,204 sd with no threshold at all. The tenure
+version closes to machine precision in BOTH worlds, because tenure is a legitimate
+partition in both - a mix shift and a decay are each perfectly consistent bookkeeping. An
+identity can only catch a violation of itself, and neither failure here is one.
+
+The published plot cannot tell these apart and never will - they are the same curve by
+construction. What separates them is a COLUMN, not a test: with the enrollment date in the
+table, real decay bends every cohort's own curve and a mix shift bends none of them. Same
+shape as Day 168's cluster level - the fix has to live at the level that contains the
+mechanism, and no amount of the aggregate can substitute for it.
+
+====================================================================================================
+6. Survivorship: the identical estimator fails upward, and the retention check is blind
+====================================================================================================
+world: a PERMANENT effect of 0.05, plus churn whose hazard falls with user value in the
+treated arm only. No decay and no cohort structure anywhere.
+
+  tenure  measured lift   x truth
+       0         0.0828      1.7x
+       3         0.1719      3.4x
+       7         0.2708      5.4x
+      14         0.4106      8.2x
+      21         0.5196     10.4x
+      27         0.6017     12.0x
+
+pooled lift 0.3429 against a truth of 0.0500 - 6.9x, and the sign of the
+tenure slope is POSITIVE, which reads as 'the effect compounds, ship it and expect more'.
+
+     retention at day 27   treated   control     diff     |z|   fires
+                            0.4205    0.4267  -0.0062    0.58   0.088
+
+NEGATIVE RESULT: the obvious guard is nearly inert. Total retention differs by 1.5% while
+the lift is overstated several-fold, because the mechanism is COMPOSITIONAL: the treatment
+sheds low-value users and keeps high-value ones, and those two flows nearly cancel in the
+headcount while doing all the damage to the mean. Counting users cannot see a change in who
+they are. Cross-link to Day 168 - the same estimator failing in both directions, with the
+output unable to say which.
+
+====================================================================================================
+7. What a long-term holdout costs, and why one holdout cannot attribute two launches
+====================================================================================================
+The recommended fix is to hold a slice of users out for months and read the gap. Its
+resolution is arithmetic - MDE ratio against a 50/50 test is 1/(2 sqrt(p(1-p))), with no n
+and no sigma in it.
+
+ holdout share  MDE x 50/50  traffic-time to match
+           50%        1.000                   1.0x
+           20%        1.250                   1.6x
+           10%        1.667                   2.8x
+            5%        2.294                   5.3x
+            1%        5.025                  25.3x
+
+A 5% holdout carries 2.29x the MDE of the 50/50 test that shipped the feature, and the
+quantity it must resolve is SMALLER: tau_inf/tau0 = 0.20 here. Both together, the holdout
+needs 132x the user-days of the original test to reach the same power - which is why
+the honest version of this fix is measured in quarters, not weeks.
+
+measured: 95/5 split, 84 days, reading tenures 56-84 gives 0.0200 +/- 0.0096 (sd across runs)
+against a truth of 0.0200; per-run |z| beats 1.96 in 0.560 of runs at this size
+
+joint cost: 200,000 users, a 5% holdout, 240 days, daily gap SE 0.01026;
+a dedicated 50/50 test on 100,000 users would read one launch at SE 0.00447.
+
+              release calendar  SE per launch  SE of total  x dedicated       cond
+     6 launches, 30 days apart        0.00246      0.00132         0.6x       84.8
+     6 launches, 14 days apart        0.00352      0.00087         0.8x      259.9
+      6 launches, 7 days apart        0.00496      0.00078         1.1x      594.8
+      6 launches, 3 days apart        0.00757      0.00073         1.7x     1490.1
+      6 launches, 1 days apart        0.01310      0.00072         2.9x     4624.9
+  6 launches, all the same day   UNIDENTIFIED           --           --        inf
+
+A holdout accumulates every launch shipped past it, so its gap is a JOINT COST and the
+RELEASE CALENDAR, not the statistics, decides whether one launch's share is recoverable.
+Same structure as Day 161's warehouse invoice: the total is clean at every spacing
+(0.00132 to 0.00072) and the split is a design choice.
+
+NEGATIVE RESULT, and it is the opposite of the intuition that a busy calendar is hopeless:
+attribution is nearly FREE while the launches are separable, and then falls off a cliff. Six
+launches 30 days apart cost 0.55x a dedicated test per launch - BELOW 1, because
+240 days of daily gaps on a small holdout carry more information than one readout of a big
+test - rising only to 2.93x at 1 day apart. Then, on the same day, the per-launch
+effects are not identified at ANY sample size, because the design matrix loses RANK rather
+than becoming imprecise. There is no gradient to manage at the end: the calendar either
+separates the launches or the question is unanswerable, and which of the two you are in is
+computable from the ship dates alone before any data exists. Cross-link to Day 169's
+permutation floor - another design constant with no data in it that decides whether an
+analysis has any outcome at all.
+
+====================================================================================================
+8. What each shipping policy claims, and how wrong the claim is
+====================================================================================================
+                  policy  mean claim      bias       sd     RMSE  x truth
+      pooled 4-week lift      0.0521    0.0321   0.0061   0.0327    2.61x
+         final-week lift      0.0214    0.0014   0.0224   0.0224    1.07x
+        fitted asymptote     -0.0481   -0.0681   0.2336   0.2427   -2.40x
+    5% holdout, 12 weeks      0.0199   -0.0001   0.0092   0.0092    1.00x
+
+The bias-variance split is the whole decision and it is not a tie. The two window readouts
+are precise and wrong by a factor; the fitted asymptote is both biased and 25x noisier than
+the readout it replaces, so its RMSE is 7x worse than the naive pooled lift; the holdout is
+that is both centred and useful, and it costs three months. There is no readout of a
+four-week test that answers the question, so the choice is which wrong number to ship on -
+and the pooled lift, the default, is the one that is confidently wrong.
+
+====================================================================================================
+total runtime 86.5s
