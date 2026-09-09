@@ -154,6 +154,7 @@ TASK_OF = {
     "peeking-cost": "infer", "srm-detector": "infer", "cuped-variance": "infer",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
+    "novelty-decay": "infer",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
     # Learn from it
     "baseline-model": "predict", "feature-factory": "predict",

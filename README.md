@@ -183,6 +183,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 
 | Tool | The problem it was built for |
 |------|------------------------------|
+| [A Measured Lift Is a Lift at an Age](data-science-cookbook/novelty-decay/) | The test said +10%, the launch delivered +2%, and the chart everyone blames it on cannot tell you whether the effect faded or whether you measured… |
 | [A Segment You Found Is Not a Segment You Named](data-science-cookbook/heterogeneous-effects/) | The test won overall, then somebody sliced it by country, device, plan and tenure and found the segment it hurt - and on a launch that helped every… |
 | [A Split Is a Hypothesis, and Passing Its Test Is Not Evidence](data-science-cookbook/srm-detector/) | The experiment dashboard says the split came out 49.3 / 50.7. |
 | [A Split Test Measures a Transfer Between the Arms](data-science-cookbook/interference-check/) | The A/B test said +26%. It shipped to everybody and nothing moved. |
