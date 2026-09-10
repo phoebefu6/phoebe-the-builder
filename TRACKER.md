@@ -220,3 +220,4 @@
 - [x] Day 169 — synthetic-control: The Control Group Is a Fitted Object, and Its Credential Is the Objective Function (data-science-cookbook/) (2026-09-07)
 - [x] Day 170 — heterogeneous-effects: A Segment You Found Is Not a Segment You Named (data-science-cookbook/) (2026-09-08)
 - [x] Day 171 — novelty-decay: A Measured Lift Is a Lift at an Age (data-science-cookbook/) (2026-09-09)
+- [x] Day 172 — forecast-backtest: A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate (data-science-cookbook/) (2026-09-10)

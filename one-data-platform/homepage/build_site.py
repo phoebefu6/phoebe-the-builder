@@ -155,6 +155,7 @@ TASK_OF = {
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
     "novelty-decay": "infer",
+    "forecast-backtest": "predict",
     "crosstab-chi2": "infer", "distribution-fitter": "infer",
     # Learn from it
     "baseline-model": "predict", "feature-factory": "predict",

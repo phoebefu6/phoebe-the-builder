@@ -1,0 +1,183 @@
+
+====================================================================================================
+1. The split reports one draw of an ORIGIN, and the origin moves the number more than the model
+====================================================================================================
+  model               true 12-step RMSE  mean split RMSE  sd across draws  p(split < true/2)
+  naive                           9.266            8.735            2.392              0.013
+  seasonal naive                  5.895            5.699            1.064              0.003
+  drift                           9.102            8.643            2.211              0.007
+  mean                           15.025           14.944            1.216              0.000
+  trend+season                    4.023            3.915            0.802              0.000
+  flexible (deg 6)                6.978            6.225            2.545              0.080
+
+  the two closest models in TRUTH are 'drift' (9.102) and 'naive' (9.266) - a gap of 0.164
+  a single split's spread for the better one is sd 2.211 = 13.50x that gap
+  so one split ranks them BACKWARDS 0.317 of the time, on 300 independent series
+  the pair a project actually chooses between - 'trend+season' (4.023) vs 'seasonal naive' (5.895), a gap of 1.872 - is
+  ranked backwards 0.030 of the time
+
+  DERIVED HERE: the split does not merely add noise to a comparison, it TILTS it. Its
+  mean sits below the truth, and the shortfall grows with the model's own error spread:
+  model               relative sd  split understates truth by
+  mean                      0.081                        0.5%
+  seasonal naive            0.181                        3.3%
+  trend+season              0.199                        2.7%
+  drift                     0.243                        5.0%
+  naive                     0.258                        5.7%
+  flexible (deg 6)          0.365                       10.8%
+  correlation across the six models: 0.972
+  consequence: 'seasonal naive' (5.895) vs 'flexible (deg 6)' (6.978) is
+  ranked backwards 0.527 of the time - WORSE than a coin flip, so a
+  single split is not a weak test of that comparison, it is a wrong one.
+
+  within ONE series, moving the origin over 60 choices gives RMSE 3.043 to 5.747 (sd 0.674)
+  the honest number is 4.023; the best origin available to report is 75.7% of it
+
+====================================================================================================
+2. Best-of-M on one split is a minimum operator - and the shared base model shrinks it
+====================================================================================================
+  8 candidates built to be EQUALLY good by construction (same base fit + an orthogonalised
+  offset of equal norm). Measured true 12-step RMSE: 4.481 to 4.586 (spread 2.3% of the mean)
+
+  reported (winner's split RMSE)  3.663
+  the field's split RMSE          4.418
+  the winner's ACTUAL next-window 4.379   <- what shipping it delivers
+  the field's actual next-window  4.439
+  optimism of the published number: +19.6%
+  selection gain over picking at random: -1.4%
+
+  PREDICTED before any data: E[min of 8] * sd, sd = 0.904 across draws
+    independent candidates : -1.287  -> 3.131
+    equicorrelated at rho=0.681 (they share the base fit): -0.727  -> 3.691
+    measured winner        : 3.663
+
+====================================================================================================
+3. Random k-fold on a lag table: the leak is a function of rho, and the RANKING survives it
+====================================================================================================
+  a stationary seasonal series (trend removed, so 'fit here, score later' is not also a
+  test of extrapolation), a p=6 lag model, k=5. The honest column fits the whole pool and
+  scores a genuinely later stretch of the same series.
+
+   AR(1) rho   random k-fold   blocked+embargo   honest future   random optimism
+        0.00           4.611             4.591           4.600              0.2%
+        0.30           4.303             4.287           4.272              0.7%
+        0.60           3.611             3.627           3.605              0.2%
+        0.90           2.104             2.118           2.107             -0.2%
+
+  NEGATIVE RESULT: at this model size the shuffle is nearly harmless, and the reason is
+  that the ROW ALREADY CONTAINS its neighbours - a lag table's features are the very
+  values the shuffle is accused of leaking, so a 6-parameter model has nothing extra to
+  do with them. The warning as usually stated ('never shuffle a time series') names the
+  wrong culprit.
+
+    lags p   shuffled CV   honest future    optimism
+         3         3.821           3.789        0.8%
+        12         3.558           3.493        1.8%
+        40         3.839           3.633        5.7%
+        80         5.716           4.388       30.3%
+  the shuffle's damage is not in the correlation of the SERIES, it is in the CAPACITY of
+  the model: shuffling buys an over-parameterised fit neighbours to interpolate between,
+  and the optimism grows with p while rho is held fixed.
+
+====================================================================================================
+4. Rolling-origin folds are not independent, so the published standard error is not one
+====================================================================================================
+  k=20 step= 1 (overlap 11/12): reported SE 0.1244  true SE 0.5605  -> k_eff 1.0 of 20 (5%)
+  k=20 step= 6 (overlap 6/12): reported SE 0.1782  true SE 0.2546  -> k_eff 9.8 of 20 (49%)
+  k=20 step=12 (overlap 0/12): reported SE 0.1813  true SE 0.2338  -> k_eff 12.0 of 20 (60%)
+  k= 8 step=12 (overlap 0/12): reported SE 0.2809  true SE 0.2954  -> k_eff 7.2 of 8 (90%)
+
+  the overlap is not the only cause - every origin also shares the SAME training data and
+  the same realised series, which is why even non-overlapping windows (step=12) do not
+  recover k independent folds.
+
+====================================================================================================
+5. The ranking depends on the horizon, and a mean over horizons is a mean over estimands
+====================================================================================================
+  model                  h=1     h=3     h=6     h=9    h=12  mean 1-12
+  naive                 7.23   12.74   10.46    5.68    6.02       8.68
+  seasonal naive        6.31    5.90    5.94    6.03    6.02       5.95
+  drift                 7.16   12.41    9.89    6.19    5.97       8.60
+  mean                 14.34   21.14   18.45    8.83   11.70      15.00
+  trend+season          4.04    4.15    4.21    4.05    4.04       4.03
+  flexible (deg 6)      4.72    5.22    6.02    6.77    8.92       6.30
+
+  rank at h=1 : 1. trend+season, 2. flexible (deg 6), 3. seasonal naive, 4. drift, 5. naive, 6. mean
+  rank at h=12: 1. trend+season, 2. drift, 3. naive, 4. seasonal naive, 5. flexible (deg 6), 6. mean
+  biggest mover: 'flexible (deg 6)' goes from rank 2 at h=1 to rank 5 at h=12 (4.72 -> 8.92, 1.9x) while 'drift' goes 4 -> 2 without changing its error at all
+  h=12 error is up to 1.9x the h=1 error and as low as 0.8x ('mean'), so an unweighted mean over 1..12 is
+  mostly a statement about the long horizons - a model chosen on it was chosen on h>6.
+
+====================================================================================================
+6. After a break, expanding vs sliding is a real choice - and the backtest cannot make it
+====================================================================================================
+  world                          expanding      sliding 36      sliding 72          best
+  no break                           3.872           4.252           3.997     expanding
+  level break +25                    4.465           4.313           9.753    sliding 36
+  trend break 0.15->0.60            16.323           4.321           4.263    sliding 72
+
+
+  Can the backtest itself pick the right one? Score both protocols on the origins BEFORE
+  the final one, take the winner, and check it against what actually wins on the future:
+  no break                 picks the future's winner 0.455 of the time, mean regret +0.148 RMSE
+                             it picks   {'expanding': 148, 'sliding 36': 6, 'sliding 72': 46}
+                             truth is   {'expanding': 112, 'sliding 36': 45, 'sliding 72': 43}
+  level break +25          picks the future's winner 0.075 of the time, mean regret +5.235 RMSE
+                             it picks   {'expanding': 10, 'sliding 36': 17, 'sliding 72': 173}
+                             truth is   {'expanding': 77, 'sliding 36': 123}
+  trend break 0.15->0.60   picks the future's winner 0.540 of the time, mean regret +0.258 RMSE
+                             it picks   {'sliding 36': 200}
+                             truth is   {'sliding 36': 108, 'sliding 72': 92}
+
+  NEGATIVE RESULT, and it reverses what this section looked like one experiment ago: the
+  protocol comparison is PAIRED on the same origins, which removes the origin noise that
+  wrecks section 1 - and it is still wrong 0.925 of the time after a level break, at a
+  regret larger than the error itself. The reason is not noise. The backtest's origins
+  and the DEPLOYMENT origin stand at different distances from the break, so a window that
+  straddles the break during the backtest no longer straddles it when you ship.
+
+  The mechanism is testable: move the break far enough back that every backtest origin AND
+  the deployment origin sit entirely after it, and the same code should recover.
+  break 58 before deployment     accuracy 0.050   mean regret +5.213
+  break 158 before deployment    accuracy 0.625   mean regret +0.125
+  so the protocol choice is answerable, but only once the break is old enough that the
+  backtest and the deployment are asking the same question - which is roughly when the
+  choice has stopped mattering.
+
+====================================================================================================
+7. MAPE does not rank forecasts by accuracy - it rewards forecasting low
+====================================================================================================
+  a lower-level, noisier series (level 40, sigma 12, i.e. a CV around 30%) - the regime every demand and count series lives in
+
+  shift added to the forecast       MAPE %      RMSE
+                          -14.0    29.407    18.338
+                           -6.0    22.474    13.361  <- min MAPE
+                           +0.0    23.713    11.886  <- min RMSE
+                           +6.0    27.339    13.021
+
+  MAPE is minimised at a shift of -6.0, RMSE at +0.0
+  deliberately forecasting 6 units LOW (15% of the
+  level) improves MAPE from 23.713 to 22.474 (-5.2%) while RMSE gets +12.4% worse
+  a leaderboard scored on MAPE is partly a leaderboard of downward bias, and the size of
+  the reward is a property of the SERIES (its coefficient of variation), not of the model.
+
+====================================================================================================
+8. The scoreboard: every protocol scored as an ESTIMATOR of the number it claims to report
+====================================================================================================
+  estimand: true 12-step RMSE of 'trend+season' trained on 168 points = 4.023
+
+  protocol                    origins     mean     bias       sd   RMSE of the estimate
+  single split                      1    4.058   +0.035    0.847                  0.847
+  rolling k=5                       5    4.080   +0.057    0.801                  0.802
+  rolling k=20                     20    4.073   +0.050    0.620                  0.621
+  rolling k=20 step 12              7    4.112   +0.090    0.329                  0.341
+  sliding k=20 (train 72)          20    4.178   +0.155    0.658                  0.675
+
+
+  every protocol here is nearly UNBIASED - the differences are almost entirely in the
+  NOISE of the number they hand you, which is the part a single reported figure does not
+  carry. And that noise does not fall like sqrt(k): 20 overlapping origins buy 1.37x against one split, where sqrt(20) = 4.47, while the 7 NON-overlapping
+  origins available in the same series buy 2.58x - fewer folds, a better
+  estimate, and section 4's k_eff is the reason.
+
+[done in 5s]
