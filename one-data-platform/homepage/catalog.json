@@ -2392,5 +2392,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/novelty-decay",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/novelty-decay/demo.ipynb"
+  },
+  {
+    "day": 172,
+    "slug": "forecast-backtest",
+    "name": "A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate",
+    "task": "predict",
+    "task_title": "Learn from it",
+    "problem": "\"The forecast was excellent in-sample\" - a single train/test split reports one draw of an origin, and the model that won it was chosen by it.",
+    "status": "done",
+    "date": "2026-09-10",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/forecast-backtest",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/forecast-backtest/demo.ipynb"
   }
 ]
