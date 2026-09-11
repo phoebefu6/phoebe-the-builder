@@ -1,0 +1,157 @@
+
+====================================================================================================
+1. A 95% band is a claim about a frequency - kept, and at what width
+====================================================================================================
+  nominal 95%, h=1..12, 600 independent futures, well-specified model, iid noise
+
+  method                        coverage   at h=1  at h=12  mean width  vs narrowest
+  gaussian sqrt(h)                 0.994    0.945    1.000       38.13         2.71x
+  gaussian flat                    0.942    0.945    0.937       15.65         1.11x
+  gaussian + parameter term        0.948    0.948    0.943       15.94         1.13x
+  empirical residual               0.932    0.933    0.928       15.06         1.07x
+  rolling h-step quantile          0.897    0.908    0.888       14.07         1.00x
+  split conformal                  0.967    0.980    0.968       18.90         1.34x
+  bootstrap path                   0.932    0.937    0.927       15.25         1.08x
+
+  The band almost every forecast ships - residual sd widened by sqrt(h) - does not
+  undercover here. It OVERCOVERS, and pays for it in a width nobody can act on.
+
+====================================================================================================
+2. The sqrt(h) fan is an assumption about the MODEL, and it is measurable before shipping
+====================================================================================================
+  trend+season fit         sd(h=1) 3.777  sd(h=12) 3.938  ratio 1.04  fitted exponent +0.010
+  random walk + naive      sd(h=1) 3.715  sd(h=12) 13.640  ratio 3.67  fitted exponent +0.519
+
+  sqrt(12) = 3.46. The random walk grows at exactly that rate (exponent 0.5) because its
+  h-step error is a SUM of h independent shocks. A fitted trend+season forecast makes a
+  DIRECT h-step statement whose error does not accumulate at all - the fan is borrowed
+  from a different estimator. Two lines of numpy tell you which world you are in.
+
+====================================================================================================
+3. The parameter-uncertainty term: what dropping it costs, and where
+====================================================================================================
+  1500 futures per row, so a coverage figure here carries a Monte Carlo se of about 0.0056
+
+   train points   leverage at h=12   flat band  + param term  width cost
+             36             0.3079       0.896         0.937       1.12x
+             60             0.1435       0.928         0.945       1.06x
+            120             0.0597       0.949         0.959       1.03x
+            240             0.0273       0.950         0.957       1.01x
+            480             0.0131       0.953         0.955       1.01x
+
+  The term costs almost nothing to include and is the difference between a band that
+  keeps its promise at 36 training points and one that does not. It is also the term
+  that grows as you forecast further from the training window - the honest version of
+  the fan the previous section just rejected.
+
+====================================================================================================
+4. Conformal's guarantee is MARGINAL, and marginal is not the promise people hear
+====================================================================================================
+  a two-regime world: quiet blocks and volatile blocks, 3x apart in sd, average variance
+  held EQUAL to the single-regime world, so nothing in the aggregate looks different -
+  verified: mean variance 15.99 vs 16.00 in the flat world
+  (the obvious construction, sigma*sqrt(r) and sigma/sqrt(r), is 4.6x louder on average and
+  would have made this a test of MORE noise rather than of the SAME noise, unevenly spread)
+
+  method                        marginal  in quiet  in volatile   spread
+  gaussian + parameter term        0.926     1.000        0.850    0.150
+  split conformal                  0.950     1.000        0.898    0.102
+  rolling h-step quantile          0.855     0.997        0.708    0.289
+
+  NEGATIVE RESULT: the marginal number is the one everybody reports and it is kept. The
+  user standing in the volatile regime - the only regime where an interval matters - gets
+  a materially different frequency, and no marginal check in existence can see it,
+  because the two errors are constructed to cancel in the average.
+
+====================================================================================================
+5. Pointwise coverage is not path coverage, and the horizons are not independent tests
+====================================================================================================
+  pointwise coverage                    0.948
+  whole-path coverage (all 12 inside)    0.535   <- the number a planner needs
+  if the horizons were independent      0.525
+
+  A 95% band is kept 95% of the time AT A POINT and contains the whole twelve-step path
+  barely half the time. Those are different claims and only one of them is published.
+
+  How much widening a simultaneous band needs depends on how many INDEPENDENT horizon
+  tests the path really is - k_eff = log(path coverage) / log(pointwise coverage):
+
+     rho   pointwise     path    k_eff of the 12 horizons
+     0.0       0.951    0.563                       11.38
+     0.4       0.945    0.550                       10.54
+     0.7       0.931    0.593                        7.27
+     0.9       0.891    0.625                        4.08
+
+  At rho=0 the twelve horizons behave like ~12 independent tests, so the Bonferroni
+  intuition is right; by rho=0.9 the path is a handful of tests and Bonferroni is
+  wasteful. The correction is measurable rather than assumed.
+
+
+  NEGATIVE RESULT - small per-point shortfalls COMPOUND along the path. Raise the
+  per-point level to 99% and measured per-point coverage is 0.9876, short of nominal
+  by 0.0024 - a rounding error at a point. Over twelve horizons it becomes
+  0.861 against the 0.886 the nominal level promises (measured path 0.865),
+  i.e. a 0.2-point miss at the point is a 2-point miss on the path. Part of the shortfall
+  is z-for-t: a band 2.58 estimated sds wide is more sensitive to the sd being estimated
+  than one 1.96 wide, and the t quantile recovers some of it, but only some:
+    z quantile (2.576) at nominal 99%: 0.9876  (short by 0.0024)
+    t quantile (2.606) at nominal 99%: 0.9886  (short by 0.0014, 41% of the gap closed)
+  The rest is the estimated sd itself, and it does not go away by choosing a nicer
+  quantile - it goes away by measuring coverage in the tail you intend to quote.
+
+====================================================================================================
+6. Autocorrelated noise: the same interval, swept over rho
+====================================================================================================
+     rho   gaussian + param   split conformal   rolling quantile  true sd(h=12)/sd(h=1)
+     0.0              0.953             0.972              0.896                   0.94
+     0.4              0.941             0.962              0.874                   0.98
+     0.7              0.926             0.945              0.816                   1.03
+     0.9              0.883             0.899              0.679                   1.12
+
+  The residual sd a fitted model reports is the sd of a CORRELATED series, and at rho=0.9
+  the in-sample residuals understate what the next twelve points will do. Note which
+  method degrades least, and that none of them is repaired by widening with sqrt(h).
+
+====================================================================================================
+7. The check itself: how much data it takes to catch a band that is 5 points short
+====================================================================================================
+  power of a one-sided binomial check that a nominally 95% band really covers 90%,
+  at alpha=0.05, as a function of the test points available:
+
+    test points m    if independent    at k_eff=1/12    at k_eff=1/20
+               20             0.326            0.164            0.152
+               50             0.493            0.196            0.176
+              100             0.681            0.238            0.205
+              250             0.925            0.332            0.272
+              500             0.994            0.453            0.359
+             1000             1.000            0.628            0.493
+             5000             1.000            0.986            0.925
+
+  and measured: a coverage figure computed from 20 overlapping rolling windows has sd
+  0.048 across repeats - so 0.95 and 0.90 are within one standard
+  deviation of each other on the evidence a normal backtest supplies.
+
+  DESIGN CONSTANT, no data in it: catching a 5-point coverage shortfall needs hundreds of
+  INDEPENDENT test points, and Day 172 measured that 20 rolling windows stepped by 1 are
+  worth about one. A published 'we validated the intervals' is usually a check with no
+  power, which is why bad bands survive.
+
+====================================================================================================
+8. The scoreboard: coverage can always be bought, a proper score cannot
+====================================================================================================
+  method                        coverage    width  interval score  rank by score
+  gaussian sqrt(h)                 0.996    37.95           38.22              7
+  gaussian flat                    0.942    15.57           18.90              2
+  gaussian + parameter term        0.946    15.87           18.87              1
+  empirical residual               0.932    15.00           19.03              3
+  rolling h-step quantile          0.881    13.89           21.74              6
+  split conformal                  0.966    18.64           20.53              5
+  bootstrap path                   0.933    15.20           19.11              4
+
+  best by interval score: gaussian + parameter term
+  best by coverage alone: gaussian + parameter term
+  Coverage is not a score: a band can buy it by getting wider, which is exactly what the
+  sqrt(h) fan does. The interval score charges for width and for misses in the same units,
+  so it is the column to rank on - and it disagrees with the coverage column.
+
+[done in 17s]

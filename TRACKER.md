@@ -221,3 +221,4 @@
 - [x] Day 170 — heterogeneous-effects: A Segment You Found Is Not a Segment You Named (data-science-cookbook/) (2026-09-08)
 - [x] Day 171 — novelty-decay: A Measured Lift Is a Lift at an Age (data-science-cookbook/) (2026-09-09)
 - [x] Day 172 — forecast-backtest: A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate (data-science-cookbook/) (2026-09-10)
+- [x] Day 173 — prediction-interval: A Prediction Interval Is a Claim About a Frequency, at a Horizon, in a Regime (data-science-cookbook/) (2026-09-11)
