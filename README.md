@@ -207,6 +207,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | Tool | The problem it was built for |
 |------|------------------------------|
 | [A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate](data-science-cookbook/forecast-backtest/) | "The forecast was excellent in-sample" - a single train/test split reports one draw of an origin, and the model that won it was chosen by it. |
+| [A Prediction Interval Is a Claim About a Frequency, at a Horizon, in a Regime](data-science-cookbook/prediction-interval/) | "The point forecast is useless" - so the chart gets a 95% band, and the band's claim is never checked, because the check almost nobody runs has almost… |
 | [Baseline Model Ladder](ml-engineering-toolkit/baseline-model/) | "We got 0.87 AUC." Compared to what? |
 | [Batch Scoring Service](ml-engineering-toolkit/batch-scorer/) | Scoring new data shouldn't be a manual copy-paste ritual. |
 | [Churn Predictor](analytics-accelerator/churn-predictor/) | Spot at-risk customers before they leave - ranked risk scores, churn drivers, and an honest model-quality check. |
