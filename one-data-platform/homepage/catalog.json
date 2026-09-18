@@ -2420,5 +2420,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/prediction-interval",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/prediction-interval/demo.ipynb"
+  },
+  {
+    "day": 174,
+    "slug": "t-test-variants",
+    "name": "Four Procedures Are Called the T-Test, and They Do Not Have the Same Error Rate",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "\"We ran a t-test\" does not name a procedure. On 50 users against 10 with unequal spread, the textbook t-test calls a coin-flip significant 29% of the time while claiming 5%.",
+    "status": "done",
+    "date": "2026-09-18",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/t-test-variants",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/t-test-variants/demo.ipynb"
   }
 ]

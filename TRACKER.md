@@ -222,3 +222,4 @@
 - [x] Day 171 — novelty-decay: A Measured Lift Is a Lift at an Age (data-science-cookbook/) (2026-09-09)
 - [x] Day 172 — forecast-backtest: A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate (data-science-cookbook/) (2026-09-10)
 - [x] Day 173 — prediction-interval: A Prediction Interval Is a Claim About a Frequency, at a Horizon, in a Regime (data-science-cookbook/) (2026-09-11)
+- [x] Day 174 — t-test-variants: Four Procedures Are Called the T-Test, and They Do Not Have the Same Error Rate (data-science-cookbook/) (2026-09-18)
