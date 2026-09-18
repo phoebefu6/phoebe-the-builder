@@ -1,0 +1,455 @@
+{
+  "reps": 40000,
+  "alpha": 0.05,
+  "scipy_max_abs_diff": {
+    "student": 1.1102230246251565e-16,
+    "welch": 0.0,
+    "paired": 3.0531133177191805e-16,
+    "one_sample": 3.885780586188048e-16
+  },
+  "paired_equals_one_sample": 0.0,
+  "noise_floor_runs": [
+    0.04925,
+    0.0511,
+    0.0514,
+    0.04995,
+    0.04775,
+    0.050625,
+    0.05075,
+    0.049625,
+    0.051275,
+    0.0503
+  ],
+  "noise_floor_rel": 0.04500000000000004,
+  "type_i_grid": [
+    {
+      "n1": 20,
+      "n2": 20,
+      "sd_ratio": 1.0,
+      "balance": "balanced",
+      "rates": {
+        "student": 0.05245,
+        "welch": 0.0522,
+        "z-shortcut": 0.059775
+      }
+    },
+    {
+      "n1": 30,
+      "n2": 10,
+      "sd_ratio": 1.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.04985,
+        "welch": 0.050725,
+        "z-shortcut": 0.0665
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 30,
+      "sd_ratio": 1.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.049225,
+        "welch": 0.05,
+        "z-shortcut": 0.065625
+      }
+    },
+    {
+      "n1": 50,
+      "n2": 10,
+      "sd_ratio": 1.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.050675,
+        "welch": 0.0532,
+        "z-shortcut": 0.07235
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 50,
+      "sd_ratio": 1.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.049125,
+        "welch": 0.05015,
+        "z-shortcut": 0.07055
+      }
+    },
+    {
+      "n1": 20,
+      "n2": 20,
+      "sd_ratio": 2.0,
+      "balance": "balanced",
+      "rates": {
+        "student": 0.055175,
+        "welch": 0.05215,
+        "z-shortcut": 0.06325
+      }
+    },
+    {
+      "n1": 30,
+      "n2": 10,
+      "sd_ratio": 2.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.1533,
+        "welch": 0.0501,
+        "z-shortcut": 0.0736
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 30,
+      "sd_ratio": 2.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.0085,
+        "welch": 0.04935,
+        "z-shortcut": 0.058025
+      }
+    },
+    {
+      "n1": 50,
+      "n2": 10,
+      "sd_ratio": 2.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.200325,
+        "welch": 0.04825,
+        "z-shortcut": 0.075825
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 50,
+      "sd_ratio": 2.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.0035,
+        "welch": 0.052075,
+        "z-shortcut": 0.06165
+      }
+    },
+    {
+      "n1": 20,
+      "n2": 20,
+      "sd_ratio": 3.0,
+      "balance": "balanced",
+      "rates": {
+        "student": 0.052,
+        "welch": 0.048325,
+        "z-shortcut": 0.0599
+      }
+    },
+    {
+      "n1": 30,
+      "n2": 10,
+      "sd_ratio": 3.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.214125,
+        "welch": 0.05105,
+        "z-shortcut": 0.0803
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 30,
+      "sd_ratio": 3.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.00465,
+        "welch": 0.050225,
+        "z-shortcut": 0.058325
+      }
+    },
+    {
+      "n1": 50,
+      "n2": 10,
+      "sd_ratio": 3.0,
+      "balance": "small-n has large-sd",
+      "rates": {
+        "student": 0.294025,
+        "welch": 0.051075,
+        "z-shortcut": 0.08115
+      }
+    },
+    {
+      "n1": 10,
+      "n2": 50,
+      "sd_ratio": 3.0,
+      "balance": "large-n has large-sd",
+      "rates": {
+        "student": 0.000725,
+        "welch": 0.050625,
+        "z-shortcut": 0.057375
+      }
+    }
+  ],
+  "welch_range": [
+    0.04825,
+    0.0532
+  ],
+  "z_range": [
+    0.057375,
+    0.08115
+  ],
+  "balanced_student": {
+    "1.0": 0.05245,
+    "2.0": 0.055175,
+    "3.0": 0.052
+  },
+  "welch_df_example": 9.237383630948306,
+  "power": [
+    {
+      "n1": 10,
+      "n2": 10,
+      "d": 0.5,
+      "rates": {
+        "student": 0.185475,
+        "welch": 0.1821,
+        "z-shortcut": 0.22095
+      },
+      "power_lost": 0.003374999999999989
+    },
+    {
+      "n1": 10,
+      "n2": 10,
+      "d": 0.8,
+      "rates": {
+        "student": 0.396775,
+        "welch": 0.3917,
+        "z-shortcut": 0.448275
+      },
+      "power_lost": 0.005074999999999996
+    },
+    {
+      "n1": 20,
+      "n2": 20,
+      "d": 0.5,
+      "rates": {
+        "student": 0.331575,
+        "welch": 0.3305,
+        "z-shortcut": 0.3551
+      },
+      "power_lost": 0.0010749999999999926
+    },
+    {
+      "n1": 20,
+      "n2": 20,
+      "d": 0.8,
+      "rates": {
+        "student": 0.694725,
+        "welch": 0.6938,
+        "z-shortcut": 0.714875
+      },
+      "power_lost": 0.0009250000000000647
+    },
+    {
+      "n1": 50,
+      "n2": 50,
+      "d": 0.8,
+      "rates": {
+        "student": 0.9764,
+        "welch": 0.97635,
+        "z-shortcut": 0.9777
+      },
+      "power_lost": 4.999999999999449e-05
+    },
+    {
+      "n1": 30,
+      "n2": 10,
+      "d": 0.8,
+      "rates": {
+        "student": 0.57125,
+        "welch": 0.539975,
+        "z-shortcut": 0.599425
+      },
+      "power_lost": 0.03127500000000005
+    },
+    {
+      "n1": 50,
+      "n2": 10,
+      "d": 0.8,
+      "rates": {
+        "student": 0.6211,
+        "welch": 0.569125,
+        "z-shortcut": 0.641625
+      },
+      "power_lost": 0.05197499999999999
+    },
+    {
+      "n1": 50,
+      "n2": 10,
+      "d": 0.5,
+      "rates": {
+        "student": 0.3015,
+        "welch": 0.275775,
+        "z-shortcut": 0.335025
+      },
+      "power_lost": 0.025724999999999998
+    }
+  ],
+  "by_distribution": [
+    {
+      "dist": "normal",
+      "n1": 20,
+      "n2": 20,
+      "rates": {
+        "student": 0.04785,
+        "welch": 0.047475,
+        "z-shortcut": 0.05475
+      }
+    },
+    {
+      "dist": "normal",
+      "n1": 50,
+      "n2": 10,
+      "rates": {
+        "student": 0.04955,
+        "welch": 0.050775,
+        "z-shortcut": 0.0704
+      }
+    },
+    {
+      "dist": "normal",
+      "n1": 10,
+      "n2": 50,
+      "rates": {
+        "student": 0.050875,
+        "welch": 0.0515,
+        "z-shortcut": 0.071225
+      }
+    },
+    {
+      "dist": "uniform",
+      "n1": 20,
+      "n2": 20,
+      "rates": {
+        "student": 0.051325,
+        "welch": 0.0511,
+        "z-shortcut": 0.057675
+      }
+    },
+    {
+      "dist": "uniform",
+      "n1": 50,
+      "n2": 10,
+      "rates": {
+        "student": 0.04785,
+        "welch": 0.054325,
+        "z-shortcut": 0.0725
+      }
+    },
+    {
+      "dist": "uniform",
+      "n1": 10,
+      "n2": 50,
+      "rates": {
+        "student": 0.050125,
+        "welch": 0.056475,
+        "z-shortcut": 0.074775
+      }
+    },
+    {
+      "dist": "t3",
+      "n1": 20,
+      "n2": 20,
+      "rates": {
+        "student": 0.046625,
+        "welch": 0.04585,
+        "z-shortcut": 0.0536
+      }
+    },
+    {
+      "dist": "t3",
+      "n1": 50,
+      "n2": 10,
+      "rates": {
+        "student": 0.0538,
+        "welch": 0.042775,
+        "z-shortcut": 0.061375
+      }
+    },
+    {
+      "dist": "t3",
+      "n1": 10,
+      "n2": 50,
+      "rates": {
+        "student": 0.052625,
+        "welch": 0.04145,
+        "z-shortcut": 0.05855
+      }
+    },
+    {
+      "dist": "lognormal",
+      "n1": 20,
+      "n2": 20,
+      "rates": {
+        "student": 0.0388,
+        "welch": 0.035475,
+        "z-shortcut": 0.046025
+      }
+    },
+    {
+      "dist": "lognormal",
+      "n1": 50,
+      "n2": 10,
+      "rates": {
+        "student": 0.05075,
+        "welch": 0.095125,
+        "z-shortcut": 0.1067
+      }
+    },
+    {
+      "dist": "lognormal",
+      "n1": 10,
+      "n2": 50,
+      "rates": {
+        "student": 0.0483,
+        "welch": 0.093575,
+        "z-shortcut": 0.105725
+      }
+    }
+  ],
+  "lognormal_clt": [
+    {
+      "n1": 50,
+      "n2": 10,
+      "rates": {
+        "student": 0.0503,
+        "welch": 0.095175,
+        "z-shortcut": 0.107775
+      }
+    },
+    {
+      "n1": 150,
+      "n2": 30,
+      "rates": {
+        "student": 0.045225,
+        "welch": 0.078975,
+        "z-shortcut": 0.0833
+      }
+    },
+    {
+      "n1": 500,
+      "n2": 100,
+      "rates": {
+        "student": 0.048075,
+        "welch": 0.063975,
+        "z-shortcut": 0.065475
+      }
+    },
+    {
+      "n1": 2500,
+      "n2": 500,
+      "rates": {
+        "student": 0.0478,
+        "welch": 0.053525,
+        "z-shortcut": 0.05385
+      }
+    }
+  ]
+}
