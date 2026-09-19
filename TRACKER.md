@@ -223,3 +223,4 @@
 - [x] Day 172 — forecast-backtest: A Backtest Number Is an Estimate, and the Protocol Decides How Noisy an Estimate (data-science-cookbook/) (2026-09-10)
 - [x] Day 173 — prediction-interval: A Prediction Interval Is a Claim About a Frequency, at a Horizon, in a Regime (data-science-cookbook/) (2026-09-11)
 - [x] Day 174 — t-test-variants: Four Procedures Are Called the T-Test, and They Do Not Have the Same Error Rate (data-science-cookbook/) (2026-09-18)
+- [x] Day 175 — normality-test-trap: A Normality Test Is a Power Curve, Not a Gate (data-science-cookbook/) (2026-09-19)
