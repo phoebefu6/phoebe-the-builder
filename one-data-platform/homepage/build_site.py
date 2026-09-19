@@ -152,7 +152,7 @@ TASK_OF = {
     # Decide what is actually true
     "ab-test-calc": "infer", "sample-size-calc": "infer", "stat-test-advisor": "infer",
     "peeking-cost": "infer", "srm-detector": "infer", "cuped-variance": "infer",
-    "t-test-variants": "infer",
+    "t-test-variants": "infer", "normality-test-trap": "infer",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
     "novelty-decay": "infer",
