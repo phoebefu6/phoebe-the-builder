@@ -224,3 +224,4 @@
 - [x] Day 173 — prediction-interval: A Prediction Interval Is a Claim About a Frequency, at a Horizon, in a Regime (data-science-cookbook/) (2026-09-11)
 - [x] Day 174 — t-test-variants: Four Procedures Are Called the T-Test, and They Do Not Have the Same Error Rate (data-science-cookbook/) (2026-09-18)
 - [x] Day 175 — normality-test-trap: A Normality Test Is a Power Curve, Not a Gate (data-science-cookbook/) (2026-09-19)
+- [x] Day 176 — assumption-pretest-cost: Testing an Assumption and Then Choosing a Test Is One Procedure (data-science-cookbook/) (2026-09-20)

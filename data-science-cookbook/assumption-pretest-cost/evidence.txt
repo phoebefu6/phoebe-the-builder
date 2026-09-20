@@ -1,0 +1,186 @@
+====================================================================================================
+ASSUMPTION-PRETEST COST: what 'we checked the variances first' actually does
+====================================================================================================
+
+Both groups always have the SAME mean, so the null is exactly true everywhere and
+every rejection printed is a false positive. A correct 0.05 procedure reads 0.05.
+
+----------------------------------------------------------------------------------------------------
+0. THE HARNESS MEASURING ITSELF
+----------------------------------------------------------------------------------------------------
+  Student's t on a balanced, equal-variance, normal design, 20,000 reps, 10 seeds.
+  This cell is EXACT - its true error rate is 0.0500 with no approximation anywhere.
+  Observed spread: 0.0476 to 0.0517   (half-width 0.0020)
+  99% Wilson interval on a true 0.05 at 20,000 reps: [0.0462, 0.0541], width 0.0079
+  The band is 0.010 wide, so this replicate count can resolve it.
+  Nothing below is called broken on a point estimate.
+
+----------------------------------------------------------------------------------------------------
+1. FOUR PROCEDURES ANSWER 'ARE THE VARIANCES EQUAL', AND THEY DO NOT AGREE
+----------------------------------------------------------------------------------------------------
+   Rejection rate of each pretest. The sd=1:1 rows are false positives (should be
+   0.05); the rest are power. All at alpha = 0.05.
+
+  design                           levene   brown-forsythe         bartlett           f-test
+  n=20/20 sd=1:1                    0.058            0.044            0.051            0.051
+  n=50/10 sd=1:1                    0.051            0.043            0.047            0.048
+  n=50/10 sd=1:1.5                  0.354            0.297            0.364            0.408
+  n=50/10 sd=1:2                    0.737            0.681            0.771            0.801
+  n=50/10 sd=1:3                    0.969            0.956            0.977            0.981
+
+   Read the two sd=1:1 rows first: that is each pretest's own false-positive rate,
+   and a pretest that cannot hit 0.05 on equal variances has no business gating
+   anything. Then read down the power columns.
+
+   The same four on NON-NORMAL data with EQUAL variances - still all false positives:
+
+  population                       levene   brown-forsythe         bartlett           f-test
+  normal                            0.059            0.042            0.053            0.053
+  t5                                0.054            0.038            0.155            0.155
+  lognormal                         0.111            0.046            0.226            0.226
+  uniform                           0.057            0.034            0.004            0.004
+
+   Bartlett and the F-test are not variance tests on real data - they are normality
+   detectors wearing a variance test's name. Their rejections on the heavy-tailed and
+   skewed rows are reporting a shape difference that is not there, on groups whose
+   variances are IDENTICAL. Brown-Forsythe is the one that holds.
+
+----------------------------------------------------------------------------------------------------
+2. THE THREE PROCEDURES, ON THE SAME SAMPLES
+----------------------------------------------------------------------------------------------------
+   Student's always. Welch's always. And the two-stage move: Brown-Forsythe first,
+   Welch if it rejects, Student's if it does not. Null exactly true throughout.
+
+  design                  pretest   student     welch     GATED  gated vs nominal
+  n=20/20 sd=1:1            0.040    0.0502    0.0500   0.0502   ###...................
+  n=20/20 sd=1:3            0.975    0.0544    0.0502   0.0503   ###...................
+  n=50/50 sd=1:3            1.000    0.0493    0.0476   0.0476   ###...................
+  n=15/15 sd=1:5            0.993    0.0577    0.0507   0.0507   ###...................
+  n=50/10 sd=1:1            0.044    0.0476    0.0506   0.0500   ###...................
+  n=50/10 sd=1:1.5          0.303    0.1361    0.0549   0.1029*  ######................
+  n=50/10 sd=1:2            0.676    0.2064    0.0511   0.0928*  ######................
+  n=50/10 sd=1:3            0.954    0.2873    0.0505   0.0592   ####..................
+  n=30/10 sd=1:1.5          0.246    0.1067    0.0536   0.0886*  ######................
+  n=30/10 sd=1:2            0.598    0.1509    0.0488   0.0850*  #####.................
+  n=100/20 sd=1:5           1.000    0.3463    0.0476   0.0476   ###...................
+  n=10/50 sd=1:3            0.945    0.0010    0.0505   0.0486   ###...................
+  n=10/30 sd=1:3            0.888    0.0037    0.0522   0.0474   ###...................
+  n=20/100 sd=1:5           1.000    0.0001    0.0493   0.0493   ###...................
+   (* = the gated procedure's whole 99% interval is outside [0.045, 0.055])
+
+   Cells where the two-stage procedure beat unconditional Welch AT ALL: 1 of 14
+      n=50/10 sd=1:1: gated 0.0500 vs welch 0.0506 - closer by 0.0005, which is 0.14 of one interval half-width
+   Cells where it beat Welch BY MORE THAN THE MEASUREMENT:         0 of 14
+   Cells where unconditional Welch is outside the band:          0 of 14
+   Cells where the two-stage procedure is outside the band:      4 of 14
+
+   Those two lines are the whole build. `gated_beats_welch` is a real comparison that
+   CAN come out either way - the test suite asserts it returns True on a synthetic
+   cell built for it - and across this grid the only cell it flags wins by a margin
+   far smaller than the noise. Counting that as a win would be reading the
+   measurement error as a result.
+
+----------------------------------------------------------------------------------------------------
+3. THE MECHANISM: THE GATE HANDS STUDENT'S ITS WORST CASES
+----------------------------------------------------------------------------------------------------
+   The pretest reads the sample variances. Student's pooled standard error reads the
+   same sample variances. So 'the pretest passed' does not select a random subset of
+   samples - it selects the ones whose variance ratio happened to look small.
+
+  design                  share passed  Student overall   Student | PASSED   ratio
+  n=20/20 sd=1:3                 0.025           0.0544             0.0909   1.67x
+  n=50/10 sd=1:1.5               0.697           0.1361             0.1406   1.03x
+  n=50/10 sd=1:2                 0.324           0.2064             0.2352   1.14x
+  n=50/10 sd=1:3                 0.046           0.2873             0.3717   1.29x
+  n=30/10 sd=1:1.5               0.754           0.1067             0.1109   1.04x
+  n=30/10 sd=1:2                 0.402           0.1509             0.1747   1.16x
+  n=10/50 sd=1:3                 0.056           0.0010             0.0018   1.80x
+  n=10/30 sd=1:3                 0.112           0.0037             0.0045   1.21x
+
+   Every ratio above 1.00 is the procedure working backwards: on the samples the
+   pretest cleared, Student's is MORE wrong than it is on average, not less. The gate
+   is not filtering out the dangerous cases - it is concentrating them, because a
+   sample where the small group's variance came out low both passes the pretest and
+   understates the pooled standard error.
+
+----------------------------------------------------------------------------------------------------
+4. THE DANGER ZONE IS A MODERATE GAP, NOT A LARGE ONE
+----------------------------------------------------------------------------------------------------
+   n=50/10, walking the variance ratio. Watch the gated column rise and then fall.
+
+   sd ratio  pretest fires   student     welch     GATED   gated / nominal
+       1.00          0.045    0.0470    0.0488    0.0491    0.98x
+       1.25          0.117    0.0893    0.0490    0.0809    1.62x
+       1.50          0.298    0.1318    0.0483    0.0987    1.97x
+       2.00          0.679    0.2039    0.0486    0.0906    1.81x
+       2.50          0.877    0.2556    0.0486    0.0671    1.34x
+       3.00          0.954    0.2922    0.0482    0.0566    1.13x
+       4.00          0.993    0.3350    0.0475    0.0491    0.98x
+       6.00          1.000    0.3745    0.0471    0.0471    0.94x
+
+   Worst at sd ratio 1.5: the gated procedure runs at 0.0987, 2.0x nominal,
+   while Welch on the identical samples holds 0.0483.
+
+   The shape is the point. At a huge gap the pretest always fires, the procedure
+   collapses into Welch, and it is fine. At no gap there is nothing to get wrong. The
+   damage is in the middle - which is where the pretest returns p > 0.05 and the
+   analyst writes down 'variances were checked and found equal'.
+
+----------------------------------------------------------------------------------------------------
+5. DOES A LIBERAL PRETEST ALPHA FIX IT?
+----------------------------------------------------------------------------------------------------
+   The standard advice for a low-power pretest is to run it at a generous alpha so it
+   errs toward rejecting. Measured on the worst design found above:
+
+   pretest alpha    fires   GATED error   vs Welch
+            0.01    0.145        0.1145   +0.0655
+            0.05    0.298        0.0998   +0.0508
+            0.10    0.401        0.0900   +0.0410
+            0.20    0.528        0.0777   +0.0288
+            0.50    0.751        0.0604   +0.0115
+            1.00    1.000        0.0490   +0.0000
+
+   alpha = 1.00 is the pretest always rejecting, i.e. unconditional Welch - it is in
+   the table as the known-answer anchor, and it lands on Welch's own rate. Raising
+   the pretest alpha does help, monotonically. What it converges to is the procedure
+   that skips the pretest entirely, which is the cheapest possible way to get there.
+
+----------------------------------------------------------------------------------------------------
+6. THE OTHER HALF: WHAT EACH PROCEDURE DETECTS WHEN THERE IS SOMETHING TO DETECT
+----------------------------------------------------------------------------------------------------
+   A procedure that never rejects is not safe, it is deaf. Same designs, now with a
+   real difference in means. Higher is better here.
+
+  design                   shift   student     welch     gated   comparable?
+  n=50/10 sd=1:3            1.50    0.6915    0.2914    0.3004   NO - Student's runs at 0.2873 under the null, so its lead here is that same inflation
+  n=10/50 sd=1:3            1.50    0.2273    0.7889    0.7647   YES, and it is the finding - Student's runs at 0.0010 under the null, so this deficit is real
+  n=20/20 sd=1:1            0.80    0.6933    0.6922    0.6932   yes - both hold 0.05 under the null
+  n=50/10 sd=1:1.5          1.00    0.6876    0.4515    0.5754   NO - Student's runs at 0.1361 under the null, so its lead here is that same inflation
+
+   Read the last column before the numbers. Where Student's is INFLATED under the
+   null, its apparent lead here is that same inflation - it rejects more often
+   because it rejects more often, not because it detects more. Those rows are not a
+   power comparison at all.
+
+   The n=10/50 row is the opposite case and the one nobody audits. There Student's
+   holds 0.2273 detection against Welch's 0.7889 - a real deficit,
+   honestly paid for, because its false-positive rate under the null is BELOW
+   nominal. A Type I audit would have called that design safe and said nothing
+   about the detections it was quietly giving up.
+
+----------------------------------------------------------------------------------------------------
+7. THE PRETEST SCORED AS A DECISION ABOUT WHETHER STUDENT'S IS SAFE
+----------------------------------------------------------------------------------------------------
+  Positive  = the pretest rejects on the majority of samples from this design
+  Condition = Student's real error rate is outside [0.045, 0.055]
+
+  designs                       14
+  designs where Student IS bad  9
+  sensitivity                   0.778
+  specificity                   0.400
+  false alarms                  3
+  misses                        2
+
+  Worst two-stage cell: n=50/10 sd=1:1.5 at 0.1029 (2.1x nominal), where Welch holds 0.0549.
+
+  wrote results.json  (208s total)
