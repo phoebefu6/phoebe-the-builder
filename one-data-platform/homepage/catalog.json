@@ -2448,5 +2448,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/normality-test-trap",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/normality-test-trap/demo.ipynb"
+  },
+  {
+    "day": 176,
+    "slug": "assumption-pretest-cost",
+    "name": "Testing an Assumption and Then Choosing a Test Is One Procedure",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "\"We checked the variances first.\" Run Levene, then pick Student's or Welch's. Across 14 measured designs that two-stage move never once beat simply using Welch, and on four of them it\u2026",
+    "status": "done",
+    "date": "2026-09-20",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/assumption-pretest-cost",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/assumption-pretest-cost/demo.ipynb"
   }
 ]
