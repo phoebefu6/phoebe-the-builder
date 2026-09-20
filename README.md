@@ -185,6 +185,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 |------|------------------------------|
 | [A Measured Lift Is a Lift at an Age](data-science-cookbook/novelty-decay/) | The test said +10%, the launch delivered +2%, and the chart everyone blames it on cannot tell you whether the effect faded or whether you measured… |
 | [A Normality Test Is a Power Curve, Not a Gate](data-science-cookbook/normality-test-trap/) | Shapiro-Wilk says your data is not normal, so you abandon the t-test. |
+| [A p-value Is a Random Variable, and the Spread of That Variable Is the Result](data-science-cookbook/p-value-dance/) | "p = 0.049" gets written up as a finding, but nobody has ever watched the same study run twice - so this replays one true effect forty thousand times… |
 | [A Segment You Found Is Not a Segment You Named](data-science-cookbook/heterogeneous-effects/) | The test won overall, then somebody sliced it by country, device, plan and tenure and found the segment it hurt - and on a launch that helped every… |
 | [A Split Is a Hypothesis, and Passing Its Test Is Not Evidence](data-science-cookbook/srm-detector/) | The experiment dashboard says the split came out 49.3 / 50.7. |
 | [A Split Test Measures a Transfer Between the Arms](data-science-cookbook/interference-check/) | The A/B test said +26%. It shipped to everybody and nothing moved. |
