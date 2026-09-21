@@ -1,0 +1,245 @@
+====================================================================================================
+COHEN'S d IS NOT THE EFFECT. IT IS ONE SUMMARY OF IT, AND THE SUMMARIES DISAGREE.
+====================================================================================================
+
+Every population below is standardised to population mean 0 and population SD 1 using its
+ANALYTIC moments, then the treated group is shifted by exactly d. So the population Cohen's d
+is EXACTLY d for every shape. Any disagreement between metrics is therefore not a difference
+in how big the effect is - it is the metrics answering different questions.
+
+Shapes: normal, uniform, t5, contaminated, lognormal, exponential.  Replicates: 20,000 a cell.  Reference draws for a population
+truth: 20,000,000.
+
+----------------------------------------------------------------------------------------------------
+0. CALIBRATION - reproduce a known truth before reporting an unknown one
+----------------------------------------------------------------------------------------------------
+
+For NORMAL data the probability of superiority has a closed form, Phi(d/sqrt(2)). The
+reference sampler must reproduce it. No other shape has a closed form, which is the whole
+reason the rest of this file exists.
+
+shape              d   P(X>Y) measured   +/- 99%   closed form   match
+normal           0.2           0.55643   0.00029       0.55623      OK
+normal           0.5           0.63811   0.00028       0.63816      OK
+normal           0.8           0.71423   0.00026       0.71420      OK
+
+  Calibrated on 3 of 3 normal cells.
+
+----------------------------------------------------------------------------------------------------
+1. THE HEADLINE - one effect size, six shapes, six different answers
+----------------------------------------------------------------------------------------------------
+
+Read this table with the fact that d is IDENTICAL down every column firmly in mind.
+
+shape                  d=0.2         d=0.5         d=0.8
+normal                0.5564        0.6381        0.7142
+uniform               0.5562        0.6338        0.7042
+t5                    0.5638        0.6557        0.7377
+contaminated          0.5773        0.6862        0.7791
+lognormal             0.5968        0.7166        0.8010
+exponential           0.5907        0.6967        0.7754
+
+spread                0.0406        0.0828        0.0968
+
+  Library verdict `truths_disagree` at d = 0.2 (tolerance 0.01): True
+  Library verdict `truths_disagree` at d = 0.5 (tolerance 0.01): True
+  Library verdict `truths_disagree` at d = 0.8 (tolerance 0.01): True
+
+  At d = 0.2: 'uniform' says the treated value wins 55.6% of the time, 'lognormal' says 59.7%.
+  At d = 0.5: 'uniform' says the treated value wins 63.4% of the time, 'lognormal' says 71.7%.
+  At d = 0.8: 'uniform' says the treated value wins 70.4% of the time, 'lognormal' says 80.1%.
+
+  A 'medium' effect of d = 0.5 is taught as 'the treated case beats the control about 64% of
+  the time'. That number is correct for normal data and for nothing else here. Same d.
+
+  NOTE, and it differs from what the sibling `normality-test-trap` found about the t-TEST:
+  there, symmetric non-normality was harmless and SKEW was the whole problem. Here both move
+  the answer and they move it the SAME WAY - the contaminated population is perfectly
+  symmetric and still reads 0.686 at d = 0.5 against normal's 0.639. The mechanism is that a
+  heavy tail inflates the SD that d divides by, so a shift of 'one d' is a larger shift
+  relative to the bulk of the distribution where the comparisons actually happen. Robustness
+  of the TEST and robustness of the EFFECT SIZE are different questions with different answers.
+
+----------------------------------------------------------------------------------------------------
+2. THE ESTIMATORS - what the sample says, at sample sizes people actually have
+----------------------------------------------------------------------------------------------------
+
+True d is 0.5 in every row. 'bias' is the average estimate minus the truth.
+
+shape              n    d-hat     bias  sd(d-hat)        g     bias   P(X>Y)     bias   power
+normal            10   0.5232  +0.0232     0.4817   0.5011  +0.0011   0.6384  +0.0003  0.1834
+normal            20   0.5108  +0.0108     0.3338   0.5007  +0.0007   0.6384  +0.0003  0.3401
+normal            50   0.5030  +0.0030     0.2049   0.4992  -0.0008   0.6378  -0.0004  0.6961
+normal           200   0.5017  +0.0017     0.1021   0.5007  +0.0007   0.6383  +0.0002  0.9990
+uniform           10   0.5085  +0.0085     0.4837   0.4870  -0.0130   0.6334  -0.0004  0.1759
+uniform           20   0.5082  +0.0082     0.3292   0.4981  -0.0019   0.6347  +0.0010  0.3325
+uniform           50   0.5020  +0.0020     0.2046   0.4981  -0.0019   0.6340  +0.0002  0.6935
+uniform          200   0.5013  +0.0013     0.0999   0.5004  +0.0004   0.6342  +0.0004  0.9989
+t5                10   0.5425  +0.0425     0.4889   0.5196  +0.0196   0.6551  -0.0006  0.2020
+t5                20   0.5247  +0.0247     0.3371   0.5142  +0.0142   0.6557  +0.0000  0.3612
+t5                50   0.5099  +0.0099     0.2113   0.5060  +0.0060   0.6554  -0.0003  0.6999
+t5               200   0.5018  +0.0018     0.1044   0.5008  +0.0008   0.6554  -0.0003  0.9982
+contaminated      10   0.6176  +0.1176     0.5150   0.5915  +0.0915   0.6851  -0.0011  0.2576
+contaminated      20   0.5704  +0.0704     0.3602   0.5591  +0.0591   0.6858  -0.0004  0.4256
+contaminated      50   0.5308  +0.0308     0.2304   0.5267  +0.0267   0.6856  -0.0006  0.7137
+contaminated     200   0.5087  +0.0087     0.1148   0.5078  +0.0078   0.6862  +0.0000  0.9973
+lognormal         10   0.6194  +0.1194     0.5196   0.5932  +0.0932   0.7155  -0.0011  0.2616
+lognormal         20   0.5669  +0.0669     0.3603   0.5557  +0.0557   0.7159  -0.0007  0.4143
+lognormal         50   0.5325  +0.0325     0.2278   0.5284  +0.0284   0.7167  +0.0001  0.7203
+lognormal        200   0.5104  +0.0104     0.1144   0.5094  +0.0094   0.7165  -0.0001  0.9972
+exponential       10   0.5715  +0.0715     0.4995   0.5473  +0.0473   0.6973  +0.0007  0.2248
+exponential       20   0.5352  +0.0352     0.3430   0.5245  +0.0245   0.6966  -0.0001  0.3734
+exponential       50   0.5121  +0.0121     0.2171   0.5082  +0.0082   0.6960  -0.0007  0.7000
+exponential      200   0.5043  +0.0043     0.1053   0.5033  +0.0033   0.6969  +0.0002  0.9981
+
+  Worst bias in d-hat:  lognormal, n=10, +0.1194 (23.9% of the truth).
+  Worst bias in P(X>Y): lognormal, n=10, -0.0011.
+
+  d-hat is biased UPWARD and the bias is a small-sample effect: Hedges' correction changes
+  the answer by more than 0.01 on 12 of 24 cells and not on the other 12.
+  Cells where it matters run to n = 20; cells where it does not start at n = 50.
+
+  But it only WORKS where it was derived. Hedges' J assumes normality, and at n = 10:
+
+shape            d-hat bias     g bias   correction removed it?
+normal              +0.0232    +0.0011                      yes
+uniform             +0.0085    -0.0130                       NO
+t5                  +0.0425    +0.0196                       NO
+contaminated        +0.1176    +0.0915                       NO
+lognormal           +0.1194    +0.0932                       NO
+exponential         +0.0715    +0.0473                       NO
+
+  Corrected cleanly on 1 shapes (normal) and left a
+  substantial bias on 5 (uniform, t5, contaminated, lognormal, exponential). On lognormal data at
+  n = 10 the corrected estimate is still +0.0932 out - the correction removed
+  22% of a bias that was never the bias it
+  was designed for. The excess comes from the sample SD, which a skewed sample underestimates
+  in exactly the draws where the sample mean is also low.
+
+  Meanwhile P(X>Y) is unbiased to within 0.0021 on EVERY shape at n = 10. The rank summary
+  needs no small-sample correction because it never divides by an estimated SD.
+
+  NEGATIVE RESULT: the noise swamps the bias at every sample size here. At n = 20 on normal
+  data the bias in d-hat is +0.0108 while its standard deviation is 0.3338 - a ratio of 3.2%.
+  Applying Hedges' correction and then reporting a point estimate with no interval is
+  polishing the third decimal of a number whose first decimal is not settled.
+
+----------------------------------------------------------------------------------------------------
+3. ROBUSTNESS - one contaminated observation in a hundred
+----------------------------------------------------------------------------------------------------
+
+1% of the TREATED values are replaced with +10 SD. The outlier points the same way as the
+effect, which is the charitable case - a big real response, not a data-entry error.
+
+metric                        clean   contaminated     change
+cohens_d                     0.5030         0.4968      -1.2%
+hedges_g                     0.5011         0.4949      -1.2%
+glass_delta                  0.5051         0.6007     +18.9%
+prob_superiority             0.6384         0.6420      +0.6%
+cliffs_delta                 0.2768         0.2840      +2.6%
+point_biserial_r             0.2434         0.2411      -0.9%
+log_odds_median_split        0.7985         0.8149      +2.1%
+
+  Most moved:  glass_delta at +18.9%.
+  Least moved: prob_superiority at +0.6%.
+
+  The result nobody expects: GLASS'S DELTA is the metric that moves, and it is the one
+  recommended precisely for the case where the treatment changes the spread. It divides by the
+  CONTROL group's SD, which the contamination never touches - so the numerator grows and the
+  denominator does not. Cohen's d barely moves because its pooled SD absorbs the same outlier
+  that inflated the mean. The 'safer' choice is the fragile one, and the direction of the
+  failure is upward: it reports a LARGER effect.
+
+----------------------------------------------------------------------------------------------------
+4. SIGNIFICANCE VERSUS MAGNITUDE
+----------------------------------------------------------------------------------------------------
+
+      d    n per group for 80% power   P(X>Y) at that d
+   0.80                           26             0.7142
+   0.50                           64             0.6382
+   0.20                          394             0.5562
+   0.10                        1,571             0.5282
+   0.05                        6,281             0.5141
+   0.02                       39,246             0.5056
+   0.01                      156,979             0.5028
+
+  n per group    smallest d at 50% power     P(X>Y)                           in words
+          100                    0.27852     0.5781    treated wins 57.81% of the time
+        1,000                    0.08769     0.5247    treated wins 52.47% of the time
+       10,000                    0.02772     0.5078    treated wins 50.78% of the time
+      100,000                    0.00876     0.5025    treated wins 50.25% of the time
+    1,000,000                    0.00277     0.5008    treated wins 50.08% of the time
+
+  At n = 100,000 per group the smallest effect the study is not guessing about is d = 0.0088,
+  which means the treated value beats the control 50.25% of the time. That is a
+  coin flip with a statistically significant lean, and it is what 'everything is significant
+  at large n' actually looks like when you write it down in units a person can act on.
+
+  A DEFECT THIS BUILD HIT AND NEARLY SHIPPED, worth recording because nothing warns you:
+    scipy.stats.nct returns **nan** - not an error, not a warning - at 3 of the sample sizes probed,
+    from n = 1,000 to n = 10,000. A nan is silently False in
+    every comparison, so `power >= target` reads as 'not powerful enough' and a monotone
+    binary search walks straight past the answer. The first version of this module reported
+    that d = 0.5 needs n = 11,417 per group for 80% power. The real answer is 64.
+    The fix is a normal-approximation fallback, and it is only trusted because it is measured:
+    across every n where the exact form IS finite, the two formulas differ by at most
+    0.016411 (at n = 5), and once df >= 400 - which is far
+    below where the nan band starts - by at most 4.65e-05 (at n = 201).
+    The search is now a helper that asserts its own monotonicity at both ends and raises
+    rather than returning a plausible number.
+
+----------------------------------------------------------------------------------------------------
+5. WHAT A MEDIAN SPLIT COSTS - and the shapes where it costs nothing
+----------------------------------------------------------------------------------------------------
+
+True d = 0.4 throughout. 'null t' and 'null split' are each test's rejection rate when
+d = 0, run on the same shape and n. A power comparison is only read on rows where BOTH hold a
+nominal 5% - an over-rejecting test detects more of everything, so its power lead would be the
+inflation restated.
+
+shape              n   power t  power split   null t  null split   read?   winner   equiv n
+normal            50    0.5130       0.4170   0.0494      0.0725      NO        -        40
+normal           200    0.9767       0.8996   0.0508      0.0565     yes        t       133
+uniform           50    0.5016       0.2581   0.0512      0.0696      NO        -        23
+uniform          200    0.9784       0.6608   0.0531      0.0585     yes        t        72
+t5                50    0.5205       0.5595   0.0498      0.0702      NO        -        57
+t5               200    0.9760       0.9775   0.0466      0.0534     yes        -       198
+contaminated      50    0.5506       0.6761   0.0465      0.0736      NO        -        74
+contaminated     200    0.9750       0.9961   0.0495      0.0590     yes    split       269
+lognormal         50    0.5502       0.7285   0.0449      0.0717      NO        -        84
+lognormal        200    0.9708       0.9980   0.0471      0.0556     yes    split       295
+exponential       50    0.5236       0.5786   0.0478      0.0704      NO        -        60
+exponential      200    0.9785       0.9807   0.0483      0.0588     yes        -       204
+
+  Only 6 of 12 rows are comparable at all - and the reason is itself a
+  finding: the median-split test is ANTICONSERVATIVE at n = 50, rejecting a true null at
+  0.0696 to 0.0736 against a nominal 0.05, on every shape tested. Before
+  it costs you any power, dichotomising costs you the error rate you thought you had.
+
+  Among the readable rows the t-test wins 2 and the median split wins 2.
+    t wins on normal (n=200): the split has the power of n = 133, so 34% of the sample was thrown away.
+    t wins on uniform (n=200): the split has the power of n = 72, so 64% of the sample was thrown away.
+    SPLIT wins on contaminated (n=200): it has the power of n = 269, i.e. 34% MORE data than you collected.
+    SPLIT wins on lognormal (n=200): it has the power of n = 295, i.e. 48% MORE data than you collected.
+
+  NEGATIVE RESULT: 'never dichotomise your data' is advice about NORMAL data. On normal data
+  it is right and the price is a third of the sample. On skewed and heavy-tailed data the
+  median split is a rank method, the t-test is not, and the split WINS. The rule is real; it
+  is just not a rule about dichotomisation. It is a rule about which yardstick matches the
+  shape of what you measured - which is the same thing section 1 said.
+
+====================================================================================================
+WHAT TO TAKE AWAY
+====================================================================================================
+
+1. At an IDENTICAL true Cohen's d of 0.5, the probability of superiority ranges over 0.083
+   across six distribution shapes. d is not wrong; it is a ratio of two numbers, and the
+   denominator means different things in different shapes.
+2. Reporting an effect size without saying which one, on what shape, with what interval, is
+   reporting a number rather than a magnitude.
+3. Glass's delta - the metric recommended when the treatment changes the spread - moves +19%
+   on one contaminated observation in a hundred. Cohen's d moves about one percent.
+4. At n = 100,000 the smallest effect a study can see is P(X>Y) = 0.5025. Significance stopped
+   carrying information about magnitude long before that.
+5. 'Never dichotomise' is a claim about normal data. Measured on skewed data it is false.
+

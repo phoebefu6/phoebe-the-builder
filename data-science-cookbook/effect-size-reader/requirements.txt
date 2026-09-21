@@ -1,0 +1,11 @@
+# Pinned to the versions this build was actually executed and tested against on 2026-09-21, read
+# off the interpreter that ran evidence.py, pytest and nbconvert - not copied from a neighbouring
+# build. The scipy pin matters more than usual here: 1.17.1 is the version whose `nct` returns nan
+# over a band of large degrees of freedom, which is the defect `analytic_power` works around and
+# `test_effectsize.py` documents.
+numpy==1.26.4
+scipy==1.17.1
+pandas==2.1.4
+matplotlib==3.11.0
+streamlit==1.58.0
+pytest==7.4.0
