@@ -2476,5 +2476,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/p-value-dance",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/p-value-dance/demo.ipynb"
+  },
+  {
+    "day": 178,
+    "slug": "effect-size-reader",
+    "name": "Cohen's d Is Not the Effect. It Is One Summary of It, and the Summaries Disagree",
+    "task": "measure",
+    "task_title": "Turn it into a number people act on",
+    "problem": "\"d = 0.5, a medium effect\" is read as a fact about how big something is - so this holds d exactly fixed, changes nothing but the shape of the distribution, and asks the other effect-size metrics whether they agree.",
+    "status": "done",
+    "date": "2026-09-21",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/effect-size-reader",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/effect-size-reader/demo.ipynb"
   }
 ]

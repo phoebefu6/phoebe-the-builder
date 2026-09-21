@@ -158,6 +158,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 
 | Tool | The problem it was built for |
 |------|------------------------------|
+| [Cohen's d Is Not the Effect. It Is One Summary of It, and the Summaries Disagree](data-science-cookbook/effect-size-reader/) | "d = 0.5, a medium effect" is read as a fact about how big something is - so this holds d exactly fixed, changes nothing but the shape of the… |
 | [Cohort Analysis Tool](analytics-accelerator/cohort-analysis/) | "Retention analysis takes our analyst 2 days" - turn a raw event log into a cohort retention heatmap in seconds. |
 | [Dashboard Spec Generator](analytics-engineering-bi/dashboard-spec/) | Dashboards built from vague asks - this reads the data's shape and recommends the right charts, with the reasoning. |
 | [Funnel Analyzer](analytics-accelerator/funnel-analyzer/) | See exactly where users drop off - biggest leak called out, step-by-step conversion, and a segment comparison. |

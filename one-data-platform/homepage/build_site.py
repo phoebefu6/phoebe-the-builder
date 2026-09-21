@@ -154,6 +154,7 @@ TASK_OF = {
     "peeking-cost": "infer", "srm-detector": "infer", "cuped-variance": "infer",
     "t-test-variants": "infer", "normality-test-trap": "infer",
     "assumption-pretest-cost": "infer", "p-value-dance": "infer",
+    "effect-size-reader": "measure",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
     "novelty-decay": "infer",
