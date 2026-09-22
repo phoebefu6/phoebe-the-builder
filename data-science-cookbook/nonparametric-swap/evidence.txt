@@ -1,0 +1,296 @@
+
+================================================================================================
+0. CALIBRATION - nothing below is read until these land
+================================================================================================
+
+Every population is standardised to mean 0, SD 1 by its ANALYTIC moments. If a density does
+not integrate to 1, its efficiency number is meaningless, so that is checked first.
+
+shape            integral f   integral f^2       ARE   closed form   match
+normal             1.000000       0.282095    0.9549      0.954930      OK
+uniform            1.000000       0.288675    1.0000      1.000000      OK
+t5                 1.000000       0.321609    1.2412             -      OK
+contaminated       1.000000       0.388853    1.8145             -      OK
+lognormal          1.000000       0.498357    2.9803             -      OK
+exponential        1.000000       0.500000    3.0000      3.000000      OK
+
+ARE is the asymptotic relative efficiency of Mann-Whitney to the t-test UNDER A LOCATION
+SHIFT: 12 * sigma^2 * (integral f^2)^2, and sigma = 1 here by construction. Above 1 means
+Mann-Whitney needs FEWER observations for the same power. Three of the six have closed
+forms - normal 3/pi, uniform exactly 1, centred exponential exactly 3 - and they all land.
+
+Hand-rolled uncorrected Mann-Whitney vs SciPy on TIE-FREE data: max |dp| = 3.469e-17
+So in section 5 the only thing separating the two columns is the tie term.
+
+================================================================================================
+1. THE HEADLINE - two defensible tests, one dataset, opposite signs
+================================================================================================
+
+The design, in closed form - no simulation involved in any of these four numbers:
+
+  control    N(0, 0.5^2)
+  treated    0.7 * N(-1.0, 0.5^2)  +  0.3 * N(5.0, 0.5^2)
+
+  true mean difference   mu_B - mu_A  = +0.8000   -> the t-test's target says treated is HIGHER
+  true P(treated > control)           = 0.35505   -> Mann-Whitney's target says treated is LOWER
+  treated SD                          = 2.7946
+  population Cohen's d                = 0.3985
+
+Most treated cases end up slightly worse; a minority end up a lot better. Both tests are
+right. They are answering different questions, and the questions have opposite answers.
+
+ n/group   t sig UP  t sig DOWN   MW sig UP  MW sig DOWN  BOTH, OPPOSITE   t only  MW only  neither
+      10     0.0564      0.0303      0.0027       0.2170          0.0000   0.0540   0.1870   0.7263
+      20     0.1591      0.0040      0.0006       0.3664          0.0000   0.1585   0.3624   0.4745
+      50     0.4828      0.0000      0.0000       0.6885          0.1720   0.3108   0.5165   0.0007
+     100     0.8178      0.0000      0.0000       0.9241          0.7419   0.0759   0.1822   0.0000
+     200     0.9853      0.0000      0.0000       0.9968          0.9821   0.0032   0.0146   0.0000
+     500     1.0000      0.0000      0.0000       1.0000          1.0000   0.0000   0.0000   0.0000
+
+Contradiction rate 1.0000 at n = 500 per group (99% CI [0.9998, 1.0000]).
+Read that as: on this design, at that sample size, you can run both tests, have both clear
+p < 0.05, and get opposite conclusions about the direction of the effect.
+
+The uncomfortable part is the SHAPE of that column. The contradiction rate RISES
+monotonically with n - more data does not resolve it, more data guarantees it. At the
+small sample sizes where an analyst might expect trouble the two tests simply fail to
+disagree, because neither has the power to say anything; the contradiction arrives
+exactly when both tests become trustworthy.
+  monotone in n: True
+
+Side finding at n = 10: the t-test fires DOWNWARD 0.0303 of the
+time against 0.0564 upward, so 34.9%
+of its significant results at that size point the wrong way about its OWN target. A sample
+from this mixture that happens to miss the high component has both a low mean and a low
+variance, and the low variance shrinks the standard error the low mean is divided by - the
+same mechanism Day 175 measured as a tail split under skew.
+
+================================================================================================
+2. WHERE THE SWAP IS FINE - power under a pure location shift
+================================================================================================
+
+Under a pure location shift the two hypotheses COINCIDE, so a power comparison is a fair
+question. Both columns are gated: power is only comparable in a cell where both tests
+control their Type I error, measured at d = 0 on the same design.
+
+d = 0.35, equal n, 100,000 replicates for the null and 40,000 for the power.
+
+  normal   (predicted ARE 0.9549)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0496    0.0489            ok            ok    0.1876    0.1810         yes
+     30    0.0511    0.0493            ok            ok    0.2600    0.2447         yes
+     45    0.0491    0.0485            ok            ok    0.3765    0.3618         yes
+     65    0.0503    0.0500            ok            ok    0.5042    0.4868         yes
+     95    0.0494    0.0491            ok            ok    0.6684    0.6467         yes
+    140    0.0493    0.0489            ok            ok    0.8327    0.8146         yes
+    200    0.0500    0.0502            ok            ok    0.9375    0.9260         yes
+    300    0.0508    0.0498            ok            ok    0.9894    0.9860         yes
+
+  uniform   (predicted ARE 1.0000)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0497    0.0488            ok            ok    0.1825    0.1742         yes
+     30    0.0509    0.0488            ok            ok    0.2580    0.2385         yes
+     45    0.0507    0.0502            ok            ok    0.3721    0.3503         yes
+     65    0.0506    0.0503            ok            ok    0.5063    0.4758         yes
+     95    0.0491    0.0483            ok            ok    0.6699    0.6346         yes
+    140    0.0501    0.0503            ok            ok    0.8328    0.8011         yes
+    200    0.0493    0.0490            ok            ok    0.9396    0.9184         yes
+    300    0.0492    0.0491            ok            ok    0.9896    0.9832         yes
+
+  t5   (predicted ARE 1.2412)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0472    0.0489            ok            ok    0.2013    0.2214         yes
+     30    0.0482    0.0473            ok            ok    0.2791    0.3109         yes
+     45    0.0489    0.0493            ok            ok    0.3845    0.4397         yes
+     65    0.0500    0.0498            ok            ok    0.5192    0.5928         yes
+     95    0.0498    0.0495            ok            ok    0.6783    0.7611         yes
+    140    0.0496    0.0496            ok            ok    0.8306    0.8990         yes
+    200    0.0505    0.0501            ok            ok    0.9365    0.9726         yes
+    300    0.0491    0.0495            ok            ok    0.9898    0.9973         yes
+
+  contaminated   (predicted ARE 1.8145)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0411    0.0487  CONSERVATIVE            ok    0.2403    0.3000          NO
+     30    0.0425    0.0465  CONSERVATIVE            ok    0.3223    0.4239          NO
+     45    0.0456    0.0492            ok            ok    0.4239    0.5943         yes
+     65    0.0465    0.0497            ok            ok    0.5387    0.7578         yes
+     95    0.0478    0.0489            ok            ok    0.6835    0.8964         yes
+    140    0.0496    0.0499            ok            ok    0.8293    0.9752         yes
+    200    0.0495    0.0491            ok            ok    0.9306    0.9972         yes
+    300    0.0495    0.0505            ok            ok    0.9867    1.0000         yes
+
+  lognormal   (predicted ARE 2.9803)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0420    0.0498  CONSERVATIVE            ok    0.2361    0.4214          NO
+     30    0.0446    0.0485            ok            ok    0.3194    0.5827         yes
+     45    0.0456    0.0486            ok            ok    0.4188    0.7660         yes
+     65    0.0465    0.0503            ok            ok    0.5407    0.8976         yes
+     95    0.0484    0.0498            ok            ok    0.6901    0.9748         yes
+    140    0.0486    0.0497            ok            ok    0.8300    0.9974         yes
+    200    0.0491    0.0503            ok            ok    0.9312    1.0000         yes
+    300    0.0501    0.0502            ok            ok    0.9865    1.0000         yes
+
+  exponential   (predicted ARE 3.0000)
+      n    t null   MW null       t null?      MW null?   t power  MW power  comparable
+     20    0.0442    0.0491            ok            ok    0.2118    0.3626         yes
+     30    0.0483    0.0488            ok            ok    0.2902    0.5081         yes
+     45    0.0482    0.0501            ok            ok    0.3928    0.6848         yes
+     65    0.0485    0.0502            ok            ok    0.5180    0.8365         yes
+     95    0.0493    0.0504            ok            ok    0.6701    0.9446         yes
+    140    0.0498    0.0505            ok            ok    0.8292    0.9906         yes
+    200    0.0501    0.0502            ok            ok    0.9363    0.9994         yes
+    300    0.0489    0.0491            ok            ok    0.9877    1.0000         yes
+
+Measured efficiency: the sample size the t-test needs to match Mann-Whitney's power at
+n = 65, read off the t-test's own measured power curve by interpolation in
+log n, using only comparable cells. Above 1 means Mann-Whitney was the more efficient test
+here - the same direction as the predicted ARE. A cell whose target falls outside the
+measured curve reports '-' rather than an extrapolated guess.
+
+shape           predicted ARE   measured n_t/n_mw  cells usable
+normal                 0.9549              0.9512             8
+uniform                1.0000              0.9198             8
+t5                     1.2412              1.1920             8
+contaminated           1.8145              1.7809             6
+lognormal              2.9803              2.7330             7
+exponential            3.0000              2.2065             8
+
+Worst case for Mann-Whitney: uniform at 0.9198 (predicted 1.0000).
+Best case:                   lognormal at 2.7330 (predicted 2.9803).
+So as a POWER decision the folk advice is sound - the rank test gives up a few per cent
+on normal data and wins outright everywhere else. The cost of the swap is not power.
+
+The measured column sits BELOW the predicted one almost everywhere, and the gap grows
+with the prediction. That is expected rather than a discrepancy: ARE is a limit as the
+effect goes to zero and n goes to infinity, while these are finite-n readings at
+d = 0.35 and n = 65, where the high-efficiency shapes have
+already pushed Mann-Whitney's power into the flat top of the curve and interpolation
+has little room left to work in. The two columns are checked for agreement in ORDER,
+not in value - Spearman across the six shapes is asserted in the test suite.
+
+Negative result from the gate: the comparison is NOT available everywhere. Welch is
+measurably conservative on the contaminated population at small n, which disqualifies
+three cells - and they are the cells where Mann-Whitney's advantage looks largest, so
+dropping the gate would have inflated exactly the rows that most flatter the rank test.
+
+================================================================================================
+3. THE COST NOBODY MENTIONS - unequal spread, where the MW null is EXACTLY true
+================================================================================================
+
+Both groups are symmetric with the same centre, and only the SD differs. For symmetric
+populations that makes P(B > A) EXACTLY 0.5, so Mann-Whitney's own null hypothesis is true -
+and the mean null is true as well. Any departure from 5% is not a violated hypothesis. It is
+the test's variance formula, which assumes the two distributions are IDENTICAL rather than
+merely balanced. Welch's t-test is the comparator because Day 176 established it as the one
+procedure that held its rate on every design in that grid.
+
+100,000 replicates a cell.
+
+shape           SD ratio   n1   n2    Welch        Welch?  MannWhitney           MW?
+normal               1.0   30   30   0.0494            ok       0.0475            ok
+normal               1.0   10   50   0.0519            ok       0.0469            ok
+normal               1.0   50   10   0.0519            ok       0.0471            ok
+normal               2.0   30   30   0.0496            ok       0.0559            ok
+normal               2.0   10   50   0.0503            ok       0.0111  CONSERVATIVE
+normal               2.0   50   10   0.0506            ok       0.1111      INFLATED
+normal               4.0   30   30   0.0505            ok       0.0738      INFLATED
+normal               4.0   10   50   0.0490            ok       0.0045  CONSERVATIVE
+normal               4.0   50   10   0.0512            ok       0.1586      INFLATED
+uniform              1.0   30   30   0.0507            ok       0.0479            ok
+uniform              1.0   10   50   0.0554            ok       0.0484            ok
+uniform              1.0   50   10   0.0552            ok       0.0482            ok
+uniform              2.0   30   30   0.0496            ok       0.0610      INFLATED
+uniform              2.0   10   50   0.0529            ok       0.0073  CONSERVATIVE
+uniform              2.0   50   10   0.0560            ok       0.1314      INFLATED
+uniform              4.0   30   30   0.0508            ok       0.0794      INFLATED
+uniform              4.0   10   50   0.0498            ok       0.0036  CONSERVATIVE
+uniform              4.0   50   10   0.0549            ok       0.1796      INFLATED
+t5                   1.0   30   30   0.0476            ok       0.0461            ok
+t5                   1.0   10   50   0.0467            ok       0.0475            ok
+t5                   1.0   50   10   0.0474            ok       0.0466            ok
+t5                   2.0   30   30   0.0478            ok       0.0544            ok
+t5                   2.0   10   50   0.0478            ok       0.0137  CONSERVATIVE
+t5                   2.0   50   10   0.0451            ok       0.1035      INFLATED
+t5                   4.0   30   30   0.0482            ok       0.0715      INFLATED
+t5                   4.0   10   50   0.0497            ok       0.0050  CONSERVATIVE
+t5                   4.0   50   10   0.0464            ok       0.1527      INFLATED
+contaminated         1.0   30   30   0.0432  CONSERVATIVE       0.0484            ok
+contaminated         1.0   10   50   0.0426  CONSERVATIVE       0.0456            ok
+contaminated         1.0   50   10   0.0439            ok       0.0478            ok
+contaminated         2.0   30   30   0.0432  CONSERVATIVE       0.0560            ok
+contaminated         2.0   10   50   0.0428  CONSERVATIVE       0.0136  CONSERVATIVE
+contaminated         2.0   50   10   0.0417  CONSERVATIVE       0.1060      INFLATED
+contaminated         4.0   30   30   0.0431  CONSERVATIVE       0.0723      INFLATED
+contaminated         4.0   10   50   0.0441            ok       0.0053  CONSERVATIVE
+contaminated         4.0   50   10   0.0416  CONSERVATIVE       0.1544      INFLATED
+
+Mann-Whitney misses its nominal rate on 21 of 36 designs; Welch on 7.
+  Most INFLATED: uniform SD ratio 4.0 at n = 50/10 -> 0.1796 (3.59x nominal)
+  Most CONSERVATIVE: uniform SD ratio 4.0 at n = 10/50 -> 0.0036 (13.9x too quiet)
+
+The direction is set by WHICH group is the wide one. Wide group small -> the rank test
+fires too often; wide group large -> it goes quiet and the power is simply gone. Both are
+failures, and only one of them looks like a failure.
+
+Unequal n is NOT the precondition, which is the part that separates this from Day 176's
+Student's-vs-Welch result. Mann-Whitney breaks on 5 of 12 BALANCED cells as well as 16 of 24 unbalanced ones.
+  Worst balanced cell: uniform SD ratio 4.0 at n = 30/30 -> 0.0794 (1.59x nominal)
+What unequal n changes is the SIZE and the sign. Balanced designs are inflated by about
+half again; put the wide group in the small arm and it is three and a half times nominal,
+put it in the large arm and the test all but stops firing.
+
+Welch is not perfect here either, and saying otherwise would be the easy version of this
+table. It is measurably conservative on 7 cells, all of them the
+contaminated population, where one observation in twenty comes from a five-times-wider
+normal. But the two failures are not the same size:
+  Welch's worst departure       0.0416  =  1.20x off nominal
+  Mann-Whitney's worst departure 0.0036  =  13.9x off nominal
+A test that is a fifth conservative and a test that is 14 times too quiet are both wrong
+and they are not comparably wrong.
+
+================================================================================================
+4. TIES - a rank test on a rating scale
+================================================================================================
+
+Ties only ever SHRINK Var(U). The no-ties formula therefore divides by a standard error
+that is too large, and the uncorrected test goes quiet. SciPy applies the correction; a lot
+of hand-rolled rank tests and spreadsheet macros do not.
+
+n = 40 per group, 40,000 replicates a cell, power measured at d = 0.5.
+
+ levels  SD corr/uncorr  null corrected             ?  null uncorrected             ?  power corr  power uncorr
+      2          0.8606          0.0562            ok            0.0172  CONSERVATIVE      0.4263        0.2542
+      3          0.9384          0.0499            ok            0.0357  CONSERVATIVE      0.4946        0.4299
+      5          0.9768          0.0488            ok            0.0434            ok      0.5410        0.5177
+      7          0.9874          0.0503            ok            0.0473            ok      0.5563        0.5430
+
+On a 2-point scale the tie correction shrinks the standard error to 0.8606 of the no-ties value,
+and dropping it takes the test from 0.0562 to 0.0172 under a true null - 3.3x too quiet - costing 0.1720 of power.
+
+Negative result, and it is a negative result about this study rather than about the test:
+the CORRECTED column is flagged on 0 of 4 scales. The
+2-point cell is the highest in the table at 0.0562 and it is above
+nominal, but its 99% Wilson interval still touches the band, so this build does not have
+the resolution to call it broken and does not claim to. The claim that survives is the
+one-sided one: applying the tie correction is necessary, and on the evidence here it is
+also sufficient.
+
+================================================================================================
+SUMMARY
+================================================================================================
+
+1. Mann-Whitney and the t-test answer different questions. On a design whose true mean
+   difference is +0.80 and whose true P(B>A) is 0.3551, both tests clear p < 0.05 and
+   point OPPOSITE ways 100.0% of the time at n = 500 per group.
+2. As a POWER decision the folk advice is right: under a pure location shift the rank test
+   gives up a few per cent on normal data and wins outright on every other shape measured.
+3. As a HYPOTHESIS decision it is a substitution, and nobody announces the substitution.
+4. With unequal spread the rank test misses 5% on 21 of 36 designs
+   where its own null is exactly true - in BOTH directions, and on balanced designs too,
+   up to 3.6x nominal one way and 14x too quiet the other. Welch is conservative on the
+   contaminated cells but by about a fifth, an order of magnitude less.
+5. On a 2-point rating scale, dropping the tie correction costs 0.17 of power
+   and takes a 5% test down to under 2%. It is not a rounding detail.
+
+The honest report is not one test or the other. It is the mean difference AND P(B > A),
+because when they disagree that disagreement is the finding.

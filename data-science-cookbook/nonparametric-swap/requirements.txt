@@ -1,0 +1,7 @@
+# Pins read off the interpreter that actually ran this build, not copied from a neighbour.
+# Day 177 found every inherited pin in the scaffold naming a release never installed here.
+numpy==1.26.4
+scipy==1.17.1
+matplotlib==3.11.0
+streamlit==1.58.0
+pytest==7.4.0
