@@ -2490,5 +2490,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/effect-size-reader",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/effect-size-reader/demo.ipynb"
+  },
+  {
+    "day": 179,
+    "slug": "nonparametric-swap",
+    "name": "Mann-Whitney Is Not a Robust t-test, It Is a Test of a Different Hypothesis",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "Two defensible tests, one dataset, both significant, opposite conclusions - because \"just use Mann-Whitney\" swaps the question, not just the method.",
+    "status": "done",
+    "date": "2026-09-22",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/nonparametric-swap",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/nonparametric-swap/demo.ipynb"
   }
 ]

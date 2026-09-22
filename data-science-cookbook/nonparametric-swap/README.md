@@ -3,9 +3,7 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/nonparametric-swap/demo.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/phoebefu6/phoebe-the-builder/main?labpath=data-science-cookbook/nonparametric-swap/demo.ipynb)
 
-> "The data is not normal, just use Mann-Whitney" swaps a test of the mean for a test of a
-> different quantity, and on ordinary data the two can both be significant while pointing in
-> opposite directions.
+> Two defensible tests, one dataset, both significant, opposite conclusions - because "just use Mann-Whitney" swaps the question, not just the method.
 
 ![audit](nonparametric_swap_audit.png)
 
