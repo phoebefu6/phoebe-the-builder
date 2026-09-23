@@ -155,6 +155,7 @@ TASK_OF = {
     "t-test-variants": "infer", "normality-test-trap": "infer",
     "assumption-pretest-cost": "infer", "p-value-dance": "infer",
     "nonparametric-swap": "infer",
+    "ci-overlap-fallacy": "infer",
     "effect-size-reader": "measure",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",

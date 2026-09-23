@@ -228,3 +228,4 @@
 - [x] Day 177 — p-value-dance: A p-value Is a Random Variable, and the Spread of That Variable Is the Result (data-science-cookbook/) (2026-09-20)
 - [x] Day 178 — effect-size-reader: Cohen's d Is Not the Effect. It Is One Summary of It, and the Summaries Disagree (data-science-cookbook/) (2026-09-21)
 - [x] Day 179 — nonparametric-swap: Mann-Whitney Is Not a Robust t-test, It Is a Test of a Different Hypothesis (data-science-cookbook/) (2026-09-22)
+- [x] Day 180 — ci-overlap-fallacy: Overlapping Error Bars Are Routinely Significant, and on Paired Data the Rule Fails the Other Way (data-science-cookbook/) (2026-09-23)
