@@ -1,0 +1,102 @@
+
+================================================================================================
+1.  CALIBRATION  -  every p-value checked against scipy before any result is read
+================================================================================================
+  on a 15/12 design, all 208 tables:
+    max |z^2 - chi-square|           1.1e-14   <- the SAME test, written twice
+    max |Fisher - scipy|             2.2e-16
+    max |Yates  - scipy|             2.2e-16
+    max |Barnard - scipy|, 8 tables  1.1e-04   <- 400-point nuisance grid, a lower bound
+
+  So 'z-test or chi-square?' is not a choice. The two-sided pooled z-test and the uncorrected
+  chi-square are one test; any report that ran both and 'they agreed' ran one test twice.
+
+================================================================================================
+2.  EXACT SIZE  -  the worst Type I rate over every true common rate 0.01..0.50
+================================================================================================
+  size = max over 50 true rates of P(reject | both arms at that rate).
+  INFLATED above 0.055, CONSERVATIVE below 0.045. Exact - no interval needed.
+
+   n1/n2       z = chi2         Yates            Fisher           Barnard
+  ------------------------------------------------------------------------------------
+    10/10     0.0422 CONSE     0.0128 CONSE     0.0128 CONSE     0.0422 CONSE   
+    20/20     0.0534 ok        0.0215 CONSE     0.0253 CONSE     0.0498 ok      
+    30/30     0.0553 INFLA     0.0274 CONSE     0.0274 CONSE     0.0469 ok      
+    50/50     0.0569 INFLA     0.0352 CONSE     0.0352 CONSE     0.0488 ok      
+   100/100    0.0560 INFLA     0.0400 CONSE     0.0400 CONSE     0.0496 ok      
+   200/200    0.0512 ok        0.0402 CONSE     0.0402 CONSE     0.0496 ok      
+    20/80     0.0877 INFLA     0.0268 CONSE     0.0428 CONSE     0.0462 ok      
+    10/100    0.0826 INFLA     0.0214 CONSE     0.0400 CONSE     0.0452 ok      
+    50/200    0.0813 INFLA     0.0338 CONSE     0.0420 CONSE     0.0461 ok      
+
+  Mean Type I rate over the same grid (what an analyst meets on an average day, not the worst):
+    10/10          z 0.0279     yates 0.0081    fisher 0.0081   barnard 0.0279
+    20/20          z 0.0424     yates 0.0144    fisher 0.0187   barnard 0.0386
+    30/30          z 0.0460     yates 0.0196    fisher 0.0196   barnard 0.0400
+    50/50          z 0.0493     yates 0.0256    fisher 0.0256   barnard 0.0420
+   100/100         z 0.0500     yates 0.0307    fisher 0.0317   barnard 0.0456
+   200/200         z 0.0495     yates 0.0356    fisher 0.0357   barnard 0.0457
+    20/80          z 0.0500     yates 0.0214    fisher 0.0326   barnard 0.0412
+    10/100         z 0.0491     yates 0.0177    fisher 0.0284   barnard 0.0374
+    50/200         z 0.0495     yates 0.0289    fisher 0.0373   barnard 0.0436
+
+  z-test inflated on 6 of 9 designs; worst 0.0877 at 20/80, true rate 0.01.
+  Fisher conservative on 9 of 9; Barnard on 1.
+  Barnard above 0.05 on 0 designs - it controls size by construction, so any row here would be a harness bug.
+
+================================================================================================
+3.  'USE FISHER WHEN AN EXPECTED COUNT IS BELOW 5'  -  the rule scored as a classifier
+================================================================================================
+  450 cells (design x true rate). 'Broken' = z-test exact Type I above 0.055.
+
+                          z actually fine    z actually broken
+  rule says safe (>= 5)          252                  12
+  rule says unsafe (< 5)         174                  12
+
+  Worst cell the rule calls SAFE: 50/50 at p = 0.5, min expected 25.0, z-test Type I 0.0569.
+  Of the 186 cells the rule sends to Fisher, the z-test was already fine on 174 (94%).
+
+================================================================================================
+4.  EXACT POWER  -  and what Fisher's conservatism costs
+================================================================================================
+   p1 -> p2     n1/n2      z = chi2    Yates     Fisher   Barnard   Barnard - Fisher
+  --------------------------------------------------------------------------------------
+  0.10 -> 0.30    30/30     0.4995  0.3716  0.3716  0.4801     +0.1085
+  0.10 -> 0.20   100/100    0.5177  0.4246  0.4442  0.5016     +0.0574
+  0.10 -> 0.20   200/200    0.8110  0.7681  0.7681  0.7976     +0.0295
+  0.05 -> 0.12   200/200    0.7170  0.6601  0.6601  0.7034     +0.0432
+  0.02 -> 0.08   200/200    0.8173  0.7506  0.7506  0.8110     +0.0605
+  0.30 -> 0.45   100/100    0.5944  0.5349  0.5349  0.5895     +0.0545
+  0.10 -> 0.25    20/80     0.2871  0.1436  0.2141  0.2502     +0.0361
+
+  Barnard beats Fisher on 7 of 7 designs, by up to 0.1085 of power, while holding size on every design in section 2.
+  Yates' size equals Fisher's EXACTLY on 5 of 9 designs: the correction
+  does not repair the z-test, it turns it into an approximation of Fisher - conservatism included.
+  The z-test's power lead is NOT a finding wherever section 2 flags it INFLATED - an
+  inflated test detects more because it rejects more of everything.
+
+================================================================================================
+5.  ONE TABLE, FOUR ANSWERS
+================================================================================================
+  Chosen by rule, not by hand: the smallest table on a 20/20 design where the
+  z-test rejects and Fisher does not.
+
+  control 0/20 converted,  variant 4/20 converted
+    z-test = chi-square    p = 0.0350   significant
+    chi-square + Yates     p = 0.1138   not significant
+    Fisher exact           p = 0.1060   not significant
+    Barnard exact          p = 0.0386   significant
+
+  Across all 441 tables on that design:
+    all three reject 214,  z and Barnard only 24,  z only 4,  none 199,  any other pattern 0
+  On this design the rejection regions NEST - Fisher inside Barnard inside z - on all 441
+  tables; measured here, not assumed, and not claimed for other designs.
+
+  How often a reader meets the disagreement, at the true rates of each power design:
+    0.10 -> 0.30    30/30    z says moved, Fisher says not: 0.1279    Barnard says moved, Fisher says not: 0.1085
+    0.10 -> 0.20   100/100   z says moved, Fisher says not: 0.0735    Barnard says moved, Fisher says not: 0.0574
+    0.10 -> 0.20   200/200   z says moved, Fisher says not: 0.0429    Barnard says moved, Fisher says not: 0.0295
+    0.05 -> 0.12   200/200   z says moved, Fisher says not: 0.0569    Barnard says moved, Fisher says not: 0.0432
+    0.02 -> 0.08   200/200   z says moved, Fisher says not: 0.0667    Barnard says moved, Fisher says not: 0.0605
+    0.30 -> 0.45   100/100   z says moved, Fisher says not: 0.0595    Barnard says moved, Fisher says not: 0.0545
+    0.10 -> 0.25    20/80    z says moved, Fisher says not: 0.0730    Barnard says moved, Fisher says not: 0.0361
