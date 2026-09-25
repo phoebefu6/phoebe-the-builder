@@ -156,7 +156,7 @@ TASK_OF = {
     "assumption-pretest-cost": "infer", "p-value-dance": "infer",
     "nonparametric-swap": "infer",
     "ci-overlap-fallacy": "infer",
-    "proportion-test": "infer",
+    "proportion-test": "infer", "anova-posthoc": "infer",
     "effect-size-reader": "measure",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",

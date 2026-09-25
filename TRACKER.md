@@ -230,3 +230,4 @@
 - [x] Day 179 — nonparametric-swap: Mann-Whitney Is Not a Robust t-test, It Is a Test of a Different Hypothesis (data-science-cookbook/) (2026-09-22)
 - [x] Day 180 — ci-overlap-fallacy: Overlapping Error Bars Are Routinely Significant, and on Paired Data the Rule Fails the Other Way (data-science-cookbook/) (2026-09-23)
 - [x] Day 181 — proportion-test: Four Tests on One 2x2, and the Test You Picked Decided the Launch (data-science-cookbook/) (2026-09-24)
+- [x] Day 182 — anova-posthoc: ANOVA Says Something Differs, and the Five Ways to Ask Which Pair Name Different Pairs (data-science-cookbook/) (2026-09-25)
