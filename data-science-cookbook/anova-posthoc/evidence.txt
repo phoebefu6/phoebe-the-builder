@@ -1,0 +1,76 @@
+
+================================================================================================
+1.  CALIBRATION  -  checked against scipy, and three logical identities counted, not assumed
+================================================================================================
+  Tukey decisions vs scipy.stats.tukey_hsd     0 mismatches in 5350 pairs
+  F p-value vs scipy.stats.f_oneway            max gap 7.8e-16
+  over 120,000 complete-null replicates (k = 3, 4, 5, 6, 8, 10):
+    pairs Bonferroni rejects that Holm does not       0
+    replicates where Holm and Bonferroni differ on    0   <- so their FWER is IDENTICAL under the complete null
+       'any rejection'
+    LSD rejections without a significant F            0
+
+================================================================================================
+2.  COMPLETE NULL  -  all k means equal, n=20/group, 20,000 reps; FWER = P(any pair called)
+================================================================================================
+                           no adjustment   protected LSD      Bonferroni            Holm       Tukey HSD
+  k= 3 ( 3 null pairs)   0.1223 INFLA    0.0535 ok       0.0466 ok       0.0466 ok       0.0524 ok    
+  k= 4 ( 6 null pairs)   0.1976 INFLA    0.0510 ok       0.0418 ok       0.0418 ok       0.0499 ok    
+  k= 5 (10 null pairs)   0.2781 INFLA    0.0496 ok       0.0374 CONSE    0.0374 CONSE    0.0482 ok    
+  k= 6 (15 null pairs)   0.3618 INFLA    0.0520 ok       0.0394 CONSE    0.0394 CONSE    0.0508 ok    
+  k= 8 (28 null pairs)   0.4993 INFLA    0.0473 ok       0.0349 CONSE    0.0349 CONSE    0.0461 ok    
+  k=10 (45 null pairs)   0.6188 INFLA    0.0517 ok       0.0390 CONSE    0.0390 CONSE    0.0527 ok    
+
+  Tukey is EXACT here, so its column is the calibration cell: inside the band at every k.
+
+================================================================================================
+3.  PARTIAL NULL  -  one group 3 SD away (F always significant), the other k-1 equal
+================================================================================================
+                           no adjustment   protected LSD      Bonferroni            Holm       Tukey HSD
+  k= 3 ( 1 null pairs)   0.0515 ok       0.0515 ok       0.0179 CONSE    0.0515 ok       0.0205 CONSE 
+  k= 4 ( 3 null pairs)   0.1208 INFLA    0.1208 INFLA    0.0220 CONSE    0.0410 CONSE    0.0276 CONSE 
+  k= 5 ( 6 null pairs)   0.2005 INFLA    0.2005 INFLA    0.0276 CONSE    0.0437 ok       0.0357 CONSE 
+  k= 6 (10 null pairs)   0.2819 INFLA    0.2819 INFLA    0.0276 CONSE    0.0394 CONSE    0.0360 CONSE 
+  k= 8 (21 null pairs)   0.4291 INFLA    0.4291 INFLA    0.0295 CONSE    0.0375 CONSE    0.0393 CONSE 
+  k=10 (36 null pairs)   0.5611 INFLA    0.5611 INFLA    0.0294 CONSE    0.0359 CONSE    0.0413 ok    
+
+  F significant in at least 1.0000 of replicates on every row, so the
+  'protection' has already been spent: protected LSD IS the unadjusted column, to the replicate.
+
+================================================================================================
+4.  POWER  -  per true pair; a procedure is compared only where its partial-null FWER is not INFLATED
+================================================================================================
+  design           F sig   no adjustment   protected LSD      Bonferroni            Holm       Tukey HSD   Tukey-Holm (99% +-)  winner
+  k= 3 one-out   0.8288         0.8014          0.7567          0.6512          0.6845          0.6717    -0.0128 (+-0.0023)  holm
+  k= 5 one-out   0.8101         0.8020*         0.7241*         0.4874          0.5117          0.5244    +0.0127 (+-0.0013)  tukey
+  k= 8 one-out   0.7699         0.8054*         0.6876*         0.3735          0.3852          0.4124    +0.0272 (+-0.0012)  tukey
+  k= 3 spread    0.7962         0.5226          0.4872          0.3829          0.4234          0.3996    -0.0239 (+-0.0021)  holm
+  k= 5 spread    0.7958         0.3700*         0.3416*         0.1631          0.1752          0.1794    +0.0042 (+-0.0006)  tukey
+  k= 8 spread    0.8594         0.3124*         0.2950*         0.0834          0.0876          0.0963    +0.0087 (+-0.0003)  tukey
+  k=10 spread    0.8929         0.2956*         0.2829*         0.0625          0.0650          0.0731    +0.0081 (+-0.0003)  tukey
+  * = not comparable: that procedure's FWER is INFLATED at this k, so its lead is not power
+
+  Tukey beats Holm materially on 5, Holm beats Tukey on 2, tie on 0 of 7
+
+================================================================================================
+5.  THE F TEST AND THE PAIR HUNT DISAGREE, BOTH WAYS
+================================================================================================
+  design          P(F sig)  P(no Tukey pair | F sig)  P(no Holm pair | F sig)  P(Tukey pair, F not sig)
+  k= 3 one-out     0.8288                   0.0238                   0.0384                    0.0073
+  k= 5 one-out     0.8101                   0.0213                   0.0436                    0.0204
+  k= 8 one-out     0.7699                   0.0200                   0.0408                    0.0513
+  k= 3 spread      0.7962                   0.0164                   0.0295                    0.0128
+  k= 5 spread      0.7958                   0.0627                   0.0948                    0.0185
+  k= 8 spread      0.8594                   0.0976                   0.1453                    0.0137
+  k=10 spread      0.8929                   0.1070                   0.1499                    0.0112
+
+================================================================================================
+6.  ONE DATASET  -  first seed of a 5-group ladder where F is significant and Tukey names nothing
+================================================================================================
+  seed 2, group means -0.05, 0.31, 0.73, 0.68, 0.79
+  ANOVA F p = 0.0335
+    no adjustment    names: A-C, A-D, A-E
+    protected LSD    names: A-C, A-D, A-E
+    Bonferroni       names: none
+    Holm             names: none
+    Tukey HSD        names: none
