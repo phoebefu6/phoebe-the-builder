@@ -2546,5 +2546,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/anova-posthoc",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/anova-posthoc/demo.ipynb"
+  },
+  {
+    "day": 183,
+    "slug": "equivalence-test",
+    "name": "No Significant Difference Is Not No Difference, and the n That Makes It One Is Computable",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "The test found no significant difference and everyone read it as \"the two are the same\" - but a small study says that about a difference that matters two times in three.",
+    "status": "done",
+    "date": "2026-09-26",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/equivalence-test",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/equivalence-test/demo.ipynb"
   }
 ]

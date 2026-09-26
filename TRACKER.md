@@ -231,3 +231,4 @@
 - [x] Day 180 — ci-overlap-fallacy: Overlapping Error Bars Are Routinely Significant, and on Paired Data the Rule Fails the Other Way (data-science-cookbook/) (2026-09-23)
 - [x] Day 181 — proportion-test: Four Tests on One 2x2, and the Test You Picked Decided the Launch (data-science-cookbook/) (2026-09-24)
 - [x] Day 182 — anova-posthoc: ANOVA Says Something Differs, and the Five Ways to Ask Which Pair Name Different Pairs (data-science-cookbook/) (2026-09-25)
+- [x] Day 183 — equivalence-test: No Significant Difference Is Not No Difference, and the n That Makes It One Is Computable (data-science-cookbook/) (2026-09-26)
