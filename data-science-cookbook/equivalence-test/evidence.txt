@@ -1,0 +1,102 @@
+
+================================================================================================
+1.  CALIBRATION  -  the exact integral checked against three independent things
+================================================================================================
+  vectorised decisions vs scipy ttest_ind (one- and two-sided)  0 mismatches in 2400
+  TOST verdict vs 'the 90% CI sits inside the margin'            0 mismatches in 300
+  integral P(not significant) vs noncentral-t closed form       max gap 1.0e-13
+  four outcome probabilities sum to 1                           max gap 1.0e-13
+
+  raw-data Monte Carlo, 20,000 reps a design; every outcome inside its 99% Wilson interval?
+    n= 10 delta=0.0*margin  exact equiv 0.0010  MC 0.0013   inside
+    n= 20 delta=1.0*margin  exact equiv 0.0089  MC 0.0092   inside
+    n= 50 delta=0.0*margin  exact equiv 0.5979  MC 0.5972   inside
+    n= 50 delta=1.0*margin  exact equiv 0.0496  MC 0.0487   inside
+    n=100 delta=0.5*margin  exact equiv 0.5464  MC 0.5502   inside
+    n=200 delta=0.0*margin  exact equiv 0.9992  MC 0.9990   inside
+    n=500 delta=0.2*margin  exact equiv 1.0000  MC 1.0000   inside
+
+================================================================================================
+2.  'NO SIGNIFICANT DIFFERENCE'  -  how often the t-test says it, margin = 0.5 SD, alpha = 0.05
+================================================================================================
+   n/group   delta=0.0M   delta=0.2M   delta=0.5M   delta=1.0M   delta=1.5M
+       10       0.9500       0.9448       0.9173       0.8149       0.6449
+       15       0.9500       0.9419       0.8986       0.7376       0.4907
+       20       0.9500       0.9390       0.8797       0.6621       0.3626
+       30       0.9500       0.9332       0.8414       0.5221       0.1850
+       40       0.9500       0.9274       0.8028       0.4019       0.0881
+       50       0.9500       0.9215       0.7642       0.3031       0.0398
+       70       0.9500       0.9096       0.6881       0.1642       0.0072
+      100       0.9500       0.8916       0.5795       0.0596       0.0005
+      150       0.9500       0.8612       0.4215       0.0092       0.0000
+      200       0.9500       0.8305       0.2967       0.0012       0.0000
+      300       0.9500       0.7688       0.1363       0.0000       0.0000
+      500       0.9500       0.6480       0.0233       0.0000       0.0000
+
+  delta = 1.0M is a difference EXACTLY as large as the one the business said matters.
+
+================================================================================================
+3.  TOST  -  P(declared equivalent). delta = 1.0M is the size (<= alpha); delta = 0 is the power
+================================================================================================
+   n/group   delta=0.0M   delta=0.2M   delta=0.5M   delta=1.0M   delta=1.5M
+       10       0.0010       0.0009       0.0008       0.0005       0.0002
+       15       0.0057       0.0055       0.0045       0.0023       0.0007
+       20       0.0303       0.0289       0.0223       0.0089       0.0019
+       30       0.2143       0.1995       0.1370       0.0358       0.0038
+       40       0.4325       0.3961       0.2493       0.0473       0.0029
+       50       0.5979       0.5425       0.3245       0.0496       0.0019
+       70       0.8059       0.7316       0.4285       0.0500       0.0009
+      100       0.9397       0.8749       0.5464       0.0500       0.0003
+      150       0.9925       0.9648       0.6968       0.0500       0.0001
+      200       0.9992       0.9906       0.8026       0.0500       0.0000
+      300       1.0000       0.9994       0.9213       0.0500       0.0000
+      500       1.0000       1.0000       0.9894       0.0500       0.0000
+
+================================================================================================
+4.  HOW MUCH EVIDENCE IS EACH REPORT?  likelihood ratio  P(report | delta=0) / P(report | delta=M)
+================================================================================================
+   n/group   'not significant'   'equivalent (TOST)'
+       10                1.17                 1.86
+       15                1.29                 2.53
+       20                1.43                 3.42
+       30                1.82                 5.98
+       40                2.36                 9.13
+       50                3.13                12.07
+       70                5.79                16.12
+      100               15.95                18.79
+      150              102.90                19.85
+      200              771.64                19.98
+      300            58130.10                20.00
+      500        658963460.12                20.00
+
+  TOST's ratio is capped near power/alpha = 20; the t-test's is unbounded but only once n is large.
+
+================================================================================================
+5.  THE n AT WHICH ABSENCE OF EVIDENCE BECOMES EVIDENCE OF ABSENCE  (80% chance TOST says 'equivalent')
+================================================================================================
+  true delta = 0.0*margin   exact n/group =   70   normal shortcut =   68.5
+  true delta = 0.2*margin   exact n/group =   82   normal shortcut =   77.3
+  true delta = 0.5*margin   exact n/group =  199   normal shortcut =  197.8
+
+================================================================================================
+6.  FOUR OUTCOMES, NOT TWO  -  at true delta = 0.2*margin (a real but immaterial difference)
+================================================================================================
+   n/group   equivalent, not different    equivalent AND different      inconclusive (neither)   different, not equivalent
+       10                      0.0009                      0.0000                      0.9439                      0.0552
+       15                      0.0055                      0.0000                      0.9365                      0.0581
+       20                      0.0289                      0.0000                      0.9102                      0.0610
+       30                      0.1995                      0.0000                      0.7337                      0.0668
+       40                      0.3961                      0.0000                      0.5313                      0.0726
+       50                      0.5425                      0.0000                      0.3790                      0.0785
+       70                      0.7316                      0.0000                      0.1781                      0.0904
+      100                      0.8671                      0.0078                      0.0245                      0.1006
+      150                      0.8612                      0.1035                      0.0000                      0.0352
+      200                      0.8305                      0.1600                      0.0000                      0.0094
+      300                      0.7688                      0.2307                      0.0000                      0.0006
+      500                      0.6480                      0.3520                      0.0000                      0.0000
+
+================================================================================================
+7.  ONE REPORT  -  basket value, SD $20, margin $10, TRUE difference $10, n = 20 a group
+================================================================================================
+  seed 4: observed difference $6.51, t-test p = 0.3449  -> 'no significant difference'
+  TOST p = 0.3052, 90% CI ($-4.96, $17.97) vs margin +-$10  -> inconclusive
