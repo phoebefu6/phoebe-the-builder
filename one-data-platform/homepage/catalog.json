@@ -2560,5 +2560,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/equivalence-test",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/equivalence-test/demo.ipynb"
+  },
+  {
+    "day": 184,
+    "slug": "paired-power",
+    "name": "Before-and-After Data Is Not Two Groups, and Analysing It as Two Throws the Correlation Away",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "We measured the same stores before and after, then tested them as two separate groups - and a change the data clearly shows came out as \"no significant difference\".",
+    "status": "done",
+    "date": "2026-09-27",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/paired-power",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/paired-power/demo.ipynb"
   }
 ]

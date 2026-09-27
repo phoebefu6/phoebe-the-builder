@@ -232,3 +232,4 @@
 - [x] Day 181 — proportion-test: Four Tests on One 2x2, and the Test You Picked Decided the Launch (data-science-cookbook/) (2026-09-24)
 - [x] Day 182 — anova-posthoc: ANOVA Says Something Differs, and the Five Ways to Ask Which Pair Name Different Pairs (data-science-cookbook/) (2026-09-25)
 - [x] Day 183 — equivalence-test: No Significant Difference Is Not No Difference, and the n That Makes It One Is Computable (data-science-cookbook/) (2026-09-26)
+- [x] Day 184 — paired-power: Before-and-After Data Is Not Two Groups, and Analysing It as Two Throws the Correlation Away (data-science-cookbook/) (2026-09-27)

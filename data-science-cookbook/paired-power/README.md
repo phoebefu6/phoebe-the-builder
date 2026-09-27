@@ -73,8 +73,10 @@ not the 64 a two-group calculator tells you.
 - Vectorised decisions vs `scipy.stats.ttest_rel` / `ttest_ind` on raw data: **0 mismatches in 800**
 - Raw bivariate-normal Monte Carlo, 20,000 reps on 6 designs x 2 analyses: 11 of 12 inside their 99%
   Wilson interval. **One miss** (n = 40, rho = 0.95, two-sample: exact 0.7951, MC 0.8025). Twelve 99%
-  checks miss once about 11% of the time by chance, so the rule - set in code, not after the fact - is a
-  re-run at 10x the reps on a fresh seed with both results printed: 0.7949 at 200,000 reps, inside.
+  checks miss once about 11% of the time by chance. The re-check rule was added AFTER this miss was
+  seen, so read it as a follow-up, not a pre-registered test: a re-run at 10x the reps on a fresh seed,
+  with both results printed. It lands at 0.7949 at 200,000 reps (three further 200k seeds: 0.7958,
+  0.7936, 0.7949), which rules out a quadrature error at 1-rho = 0.05.
 - Engine defect caught on the first run: scipy's `nct.cdf(-c, df, nc)` returns **nan** far in the tail
   (nc ~ 10, n = 40, rho = 0.95), which silently made one power cell NaN. The lower tail is now
   `nct.sf(c, df, -nc)` by symmetry, with a test.

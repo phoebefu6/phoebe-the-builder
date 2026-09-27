@@ -158,6 +158,7 @@ TASK_OF = {
     "ci-overlap-fallacy": "infer",
     "proportion-test": "infer", "anova-posthoc": "infer",
     "equivalence-test": "infer",
+    "paired-power": "infer",
     "effect-size-reader": "measure",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
