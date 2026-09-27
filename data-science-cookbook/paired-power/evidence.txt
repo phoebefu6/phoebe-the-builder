@@ -1,0 +1,72 @@
+
+================================================================================================
+1.  CALIBRATION  -  the quadrature and the vectorised tests checked three ways
+================================================================================================
+  quadrature at rho = 0 vs Student's noncentral t (15 designs)   max gap 3.5e-07
+  160 vs 320 Gauss-Legendre nodes at n=20, rho=0.8        gap 1.5e-07
+  vectorised decisions vs scipy ttest_rel / ttest_ind            0 mismatches in 800
+
+  raw bivariate-normal Monte Carlo, 20,000 reps a design; exact inside the 99% Wilson interval?
+    n=10 rho= -0.5 delta=0.0   paired: exact 0.0500 MC 0.0488 inside   independent: exact 0.1072 MC 0.1074 inside
+    n=10 rho=  0.0 delta=0.5   paired: exact 0.1706 MC 0.1686 inside   independent: exact 0.1851 MC 0.1831 inside
+    n=20 rho=  0.5 delta=0.0   paired: exact 0.0500 MC 0.0523 inside   independent: exact 0.0075 MC 0.0076 inside
+    n=20 rho=  0.8 delta=0.5   paired: exact 0.9180 MC 0.9203 inside   independent: exact 0.2161 MC 0.2202 inside
+    n= 5 rho=  0.9 delta=0.5   paired: exact 0.4773 MC 0.4802 inside   independent: exact 0.0283 MC 0.0288 inside
+    n=40 rho= 0.95 delta=0.5   paired: exact 1.0000 MC 1.0000 inside   independent: exact 0.7951 MC 0.8025 OUTSIDE
+      -> independent re-run at 200,000 reps, fresh seed: MC 0.7949 inside (the first miss is reported, not replaced)
+
+================================================================================================
+2.  SIZE  -  how often each analysis rejects a TRUE null (nominal 0.05)
+================================================================================================
+  n pairs   paired  |  independent analysis at rho =   -0.5   -0.2    0.0    0.2    0.4    0.6    0.8    0.9   0.95
+        5   0.050  |                                0.1035 0.0693 0.0500 0.0334 0.0197 0.0092 0.0024 0.0006 0.0002
+       10   0.050  |                                0.1072 0.0717 0.0500 0.0308 0.0154 0.0050 0.0005 0.0000 0.0000
+       20   0.050  |                                0.1085 0.0727 0.0500 0.0296 0.0134 0.0033 0.0001 0.0000 0.0000
+       40   0.050  |                                0.1091 0.0731 0.0500 0.0290 0.0124 0.0026 0.0000 0.0000 0.0000
+       80   0.050  |                                0.1093 0.0734 0.0500 0.0287 0.0119 0.0023 0.0000 0.0000 0.0000
+
+  rho > 0: conservative, so it looks 'safe'.  rho < 0: anti-conservative - the wrong analysis over-rejects.
+
+================================================================================================
+3.  POWER at a true shift of 0.5 SD  -  paired / independent, same data
+================================================================================================
+  n pairs       rho=-0.5       rho=-0.2        rho=0.0        rho=0.2        rho=0.4        rho=0.6        rho=0.8        rho=0.9       rho=0.95
+        5  0.080/0.162    0.087/0.128    0.095/0.108    0.106/0.088    0.125/0.070    0.163/0.052    0.276/0.036    0.477/0.028    0.753/0.025  
+       10  0.130/0.237    0.150/0.207    0.171/0.185    0.201/0.161    0.253/0.134    0.352/0.103    0.606/0.065    0.881/0.043    0.993/0.032  
+       20  0.232/0.369    0.278/0.351    0.324/0.338    0.389/0.321    0.491/0.300    0.660/0.268    0.918/0.216    0.997/0.172    1.000/0.140  
+       40  0.429/0.581    0.512/0.590    0.587/0.598    0.684/0.609    0.804/0.625    0.932/0.650    0.998/0.699    1.000/0.750    1.000/0.795  
+       80  0.723/0.833    0.814/0.860    0.878/0.882    0.937/0.907    0.981/0.936    0.999/0.968    1.000/0.994    1.000/1.000    1.000/1.000  
+
+================================================================================================
+4.  PAIRS NEEDED FOR 80% POWER  -  the sample the wrong analysis wastes
+================================================================================================
+  rho =  0.0   paired  65   analysed as independent  64   wasted  -1 pairs  (1.0x)
+  rho =  0.2   paired  53   analysed as independent  60   wasted   7 pairs  (1.1x)
+  rho =  0.4   paired  40   analysed as independent  56   wasted  16 pairs  (1.4x)
+  rho =  0.5   paired  34   analysed as independent  54   wasted  20 pairs  (1.6x)
+  rho =  0.6   paired  28   analysed as independent  52   wasted  24 pairs  (1.9x)
+  rho =  0.8   paired  15   analysed as independent  46   wasted  31 pairs  (3.1x)
+  rho =  0.9   paired   9   analysed as independent  43   wasted  34 pairs  (4.8x)
+  rho = 0.95   paired   6   analysed as independent  41   wasted  35 pairs  (6.8x)
+
+  The independent analysis never drops below ~31 pairs: it prices mean(D) at variance 2/n whatever rho is.
+
+================================================================================================
+5.  NEGATIVE RESULT  -  below this rho, pairing COSTS power (the paired test gives up n-1 df)
+================================================================================================
+  n =   3 pairs   break-even rho = 0.107
+  n =   5 pairs   break-even rho = 0.086
+  n =  10 pairs   break-even rho = 0.059
+  n =  20 pairs   break-even rho = 0.040
+  n =  40 pairs   break-even rho = 0.028
+  n =  80 pairs   break-even rho = 0.020
+
+  worst case in the grid: n=5, rho=0  paired 0.095 vs independent 0.108
+
+================================================================================================
+6.  ONE REPORT  -  12 stores, weekly sales $k, SD 4, store-to-store rho 0.85, true lift $2k
+================================================================================================
+  seed 0: observed lift $1.46k, sample rho 0.745
+  paired t p = 0.0410    two-sample t p = 0.2538
+  how often the two disagree at this design (MC): only paired rejects 0.7464, only independent rejects 0.0001
+  exact power here: paired 0.821, independent 0.071
