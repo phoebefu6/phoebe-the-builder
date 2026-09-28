@@ -1,0 +1,95 @@
+
+================================================================================================
+1.  CALIBRATION  -  every Bayes factor computed two ways, and one of them by somebody else
+================================================================================================
+  normal-prior BF: closed form vs quadrature over the prior (18 cases)   max |log gap| 1.3e-15
+  JZS BF: quadrature over g vs quadrature over delta (9 cases)          max |log gap| 1.6e-13
+  JZS BF vs pingouin.bayesfactor_ttest (9 cases)                        max |log gap| 5.7e-12
+  t-test decisions vs scipy.stats.ttest_1samp                           0 mismatches in 400
+  max BF10 over normal priors at z = 1.96: closed form vs search        gap 0.0e+00
+
+  raw N(delta, 1) data, 20,000 reps a design; exact inside the 99% Wilson interval?
+    n=   50 delta=0.0    p_significant: 0.0500/0.0497 in  bf01_over_3: 0.8165/0.8181 in  sig_and_bf01_over_1: 0.0048/0.0048 in
+    n=  200 delta=0.1    p_significant: 0.2930/0.2984 in  bf01_over_3: 0.6371/0.6299 in  sig_and_bf01_over_1: 0.1073/0.1068 in
+    n= 1000 delta=0.0    p_significant: 0.0500/0.0485 in  bf01_over_3: 0.9701/0.9701 in  sig_and_bf01_over_1: 0.0415/0.0401 in
+    n= 1000 delta=0.07   p_significant: 0.6001/0.5968 in  bf01_over_3: 0.4833/0.4898 in  sig_and_bf01_over_1: 0.2615/0.2635 in
+    n= 2000 delta=0.05   p_significant: 0.6088/0.6087 in  bf01_over_3: 0.5355/0.5342 in  sig_and_bf01_over_1: 0.3078/0.3100 in
+
+================================================================================================
+2.  LINDLEY'S CURVE  -  hold the p-value at exactly 0.05 and grow n.  BF01 > 1 means evidence FOR H0
+================================================================================================
+          n   normal prior tau=1   JZS r=0.707 (t-test)   normal prior tau=0.1
+         10                0.579                  0.567                  0.881
+         30                0.868                  0.836                  0.732
+        100                1.501                  1.379                  0.541
+        300                2.558                  2.298                  0.474
+       1000                4.644                  4.133                  0.579
+       3000                8.031                  7.127                  0.868
+      10000               14.654                 12.992                  1.501
+     100000               46.329                 41.059                  4.644
+    1000000              146.500                129.833                 14.654
+
+  smallest n at which a result at exactly this p is evidence FOR the null (tau = 1):
+    p = 0.05   BF01 >= 1 from n =     41.6   >= 3 from n =    414.5   >= 10 from n =    4654.5
+    p = 0.01   BF01 >= 1 from n =    753.5   >= 3 from n =   6843.2   >= 10 from n =   76112.4
+    p = 0.005  BF01 >= 1 from n =   2633.5   >= 3 from n =  23772.6   >= 10 from n =  264230.0
+
+================================================================================================
+3.  THE CEILING  -  the most any normal alternative can favour H1 at p = 0.05
+================================================================================================
+  best normal prior at z = 1.96: BF10 = 2.112 (tau * sqrt(n) = 1.686)
+  Sellke-Bayarri-Berger bound 1/(-e p ln p): p = 0.05 -> 2.456,  p = 0.005 -> 13.887
+  best normal prior at p = 0.005: BF10 = 11.107
+  A p of 0.05 can never be better than ~2:1 evidence for an effect, whatever prior you choose.
+
+================================================================================================
+4.  EXACT VERDICT PROBABILITIES WHEN THE NULL IS TRUE (delta = 0, tau = 1)
+================================================================================================
+          n   P(p < .05)   P(BF10 > 3)   P(BF01 > 3)   P(p < .05 AND BF01 > 1)   share of 'findings' the BF calls null
+         10       0.0500        0.0246        0.3615                    0.0000         0.0%
+         30       0.0500        0.0159        0.7417                    0.0000         0.0%
+        100       0.0500        0.0087        0.8819                    0.0191        38.3%
+        300       0.0500        0.0049        0.9394                    0.0333        66.6%
+       1000       0.0500        0.0025        0.9701                    0.0415        82.9%
+       3000       0.0500        0.0014        0.9841                    0.0453        90.7%
+      10000       0.0500        0.0007        0.9919                    0.0476        95.2%
+     100000       0.0500        0.0002        0.9977                    0.0493        98.6%
+    1000000       0.0500        0.0001        0.9993                    0.0498        99.6%
+
+  The p-value's false-positive rate is 0.05 at every n. The Bayes factor's falls toward zero.
+
+================================================================================================
+5.  NEGATIVE RESULT  -  a real but tiny effect (delta = 0.02 SD).  The Bayes factor is not a p-value fix
+================================================================================================
+          n   P(p < .05)   P(BF10 > 3)   P(BF01 > 3, i.e. 'evidence of no effect')
+       1000       0.0969        0.0086        0.9356
+       5000       0.2930        0.0315        0.8643
+      10000       0.5160        0.0841        0.7416
+      20000       0.8074        0.2578        0.4791
+      50000       0.9940        0.8063        0.0623
+     100000       1.0000        0.9956        0.0005
+    1000000       1.0000        1.0000        0.0000
+
+  At n = 20,000 the p-value finds this effect 81% of the time; the Bayes factor calls it
+  'no effect' 48% of the time. It is not wrong - 0.02 SD IS close to zero on a tau = 1 scale - but it has swapped
+  one error for another, not removed it.
+
+  n for 80% chance of a verdict for the effect:  p < .05  vs  BF10 > 3
+    delta = 0.5        32  vs      45   (1.41x)
+    delta = 0.2       197  vs     339   (1.72x)
+    delta = 0.1       785  vs    1546   (1.97x)
+    delta = 0.05     3140  vs    6939   (2.21x)
+
+================================================================================================
+6.  PRIOR SENSITIVITY  -  one dataset, one p, six Bayes factors
+================================================================================================
+  seed 3: n = 10,000 observations, true delta 0.02 SD, observed d = 0.0199
+  one-sample t = 1.991   p = 0.0465   ->  'significant'
+  JZS BF01 (r = 0.707, the software default) = 12.23   ->  'strong evidence for no effect'
+    normal prior tau = 0.05   BF01 =   0.759
+    normal prior tau = 0.1    BF01 =   1.413
+    normal prior tau = 0.2    BF01 =   2.774
+    normal prior tau = 0.5    BF01 =   6.900
+    normal prior tau = 1.0    BF01 =  13.790
+    normal prior tau = 2.0    BF01 =  27.575
+  The verdict turns on tau: a prior expecting effects of ~0.05 SD calls the same data weak evidence FOR an effect.
