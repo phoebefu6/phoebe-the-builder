@@ -206,6 +206,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Statistical Test Advisor](data-science-cookbook/stat-test-advisor/) | "Which statistical test do I use?" - describe the data, get the right test (parametric or not), and run it. |
 | [Testing an Assumption and Then Choosing a Test Is One Procedure](data-science-cookbook/assumption-pretest-cost/) | "We checked the variances first." Run Levene, then pick Student's or Welch's. |
 | [The Control Group Is a Fitted Object, and Its Credential Is the Objective Function](data-science-cookbook/synthetic-control/) | One market got the intervention and there was never going to be a control group, so a weighted average of the other markets is fitted to stand in for… |
+| [Two Analysts, One Dataset, Two Verdicts - a p = 0.05 Result Is Evidence for the Null Once n Is Large](data-science-cookbook/bayes-vs-p/) | One analyst reported "significant, p = 0.047", the other ran a Bayesian test on the same numbers and reported "strong evidence of no effect" - and… |
 | [Variance Reduction Is a Bet on a Correlation You Already Collected](data-science-cookbook/cuped-variance/) | The test needs six weeks, and somebody says CUPED will halve it. The first claim is arithmetic. |
 
 

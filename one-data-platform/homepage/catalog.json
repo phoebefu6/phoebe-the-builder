@@ -2574,5 +2574,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/paired-power",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/paired-power/demo.ipynb"
+  },
+  {
+    "day": 185,
+    "slug": "bayes-vs-p",
+    "name": "Two Analysts, One Dataset, Two Verdicts - a p = 0.05 Result Is Evidence for the Null Once n Is Large",
+    "task": "infer",
+    "task_title": "Decide what is actually true",
+    "problem": "One analyst reported \"significant, p = 0.047\", the other ran a Bayesian test on the same numbers and reported \"strong evidence of no effect\" - and nobody could say which of them was wrong.",
+    "status": "done",
+    "date": "2026-09-28",
+    "product_line": "Data Science Cookbook",
+    "product_slug": "data-science-cookbook",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/bayes-vs-p",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/bayes-vs-p/demo.ipynb"
   }
 ]

@@ -159,6 +159,7 @@ TASK_OF = {
     "proportion-test": "infer", "anova-posthoc": "infer",
     "equivalence-test": "infer",
     "paired-power": "infer",
+    "bayes-vs-p": "infer",
     "effect-size-reader": "measure",
     "diff-in-diff": "infer", "interference-check": "infer",
     "synthetic-control": "infer", "heterogeneous-effects": "infer",
