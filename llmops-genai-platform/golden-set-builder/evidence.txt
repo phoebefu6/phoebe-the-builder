@@ -1,0 +1,87 @@
+
+================================================================================================
+0.  THE TRAFFIC  -  synthetic, declared: 12 intents, two launch after the set is built
+================================================================================================
+  intent            share m0 share m12 pass rate
+  billing              0.373     0.260      0.94
+  password reset       0.174     0.135      0.92
+  order status         0.111     0.095      0.95
+  refund               0.081     0.076      0.83
+  shipping             0.064     0.064      0.90
+  account update       0.052     0.056      0.88
+  product question     0.044     0.051      0.78
+  cancel               0.038     0.047      0.86
+  bulk export          0.033     0.044      0.72
+  API errors           0.030     0.041      0.70
+  voice agent          0.000     0.080      0.55
+  invoice split        0.000     0.050      0.60
+
+  true production pass rate: month 0 0.8986   month 12 0.8443
+
+================================================================================================
+1.  CALIBRATION  -  exact moments vs raw simulation of drawing and labelling the set
+================================================================================================
+  proportional month  0 raw         bias exact +0.00019 MC +0.00007 (z -0.91)   sd exact 0.01900 MC 0.01913 (ratio 1.007)
+  proportional month 12 raw         bias exact +0.05448 MC +0.05446 (z -0.17)   sd exact 0.01900 MC 0.01916 (ratio 1.008)
+  proportional month 12 reweighted  bias exact +0.04110 MC +0.04094 (z -1.05)   sd exact 0.02167 MC 0.02160 (ratio 0.997)
+  equal        month  0 raw         bias exact -0.05056 MC -0.05068 (z -0.77)   sd exact 0.02253 MC 0.02234 (ratio 0.992)
+  equal        month 12 raw         bias exact +0.00373 MC +0.00393 (z +1.26)   sd exact 0.02253 MC 0.02258 (ratio 1.002)
+  equal        month 12 reweighted  bias exact +0.04110 MC +0.04075 (z -2.25)   sd exact 0.02172 MC 0.02177 (ratio 1.002)
+  one-sided exact McNemar vs scipy.stats.binomtest: 0 mismatches in 224
+
+================================================================================================
+2.  THE HEADLINE  -  error of the golden-set pass rate vs production, m = 240, in percentage points
+================================================================================================
+  design        allocation                                         m0 raw        m12 raw   m12 reweighted
+  random        multinomial on month-0 traffic               +0.0 +/-1.9   +5.4 +/-1.9     +4.1 +/-2.3
+  proportional  90 42 27 19 15 12 11 9 8 7                   +0.0 +/-1.9   +5.4 +/-1.9     +4.1 +/-2.2
+  sqrt          51 35 28 24 21 19 17 16 15 14                -2.4 +/-2.1   +3.0 +/-2.1     +4.1 +/-2.0
+  equal         24 24 24 24 24 24 24 24 24 24                -5.1 +/-2.3   +0.4 +/-2.3     +4.1 +/-2.2
+  (bias +/- SD. random + reweighted is Monte Carlo; every other cell is exact)
+
+  equal allocation, month 0: raw -5.1 pts, reweighted by the traffic mix +0.0 pts, RMSE 2.34 vs proportional 1.90
+
+================================================================================================
+3.  STALENESS  -  a frozen proportional set, month by month
+================================================================================================
+  month    truth   raw bias  reweighted bias  traffic with no cases
+      0   0.8986       +0.0             +0.0                   0.0%
+      2   0.8895       +0.9             +0.7                   2.2%
+      4   0.8805       +1.8             +1.4                   4.3%
+      6   0.8714       +2.7             +2.1                   6.5%
+      8   0.8624       +3.6             +2.8                   8.7%
+     10   0.8533       +4.5             +3.5                  10.8%
+     12   0.8443       +5.4             +4.1                  13.0%
+
+  month 12: the dashboard reads 0.899, production is 0.844. Reweighting (free) removes +1.3 of +5.4 pts;
+  the other +4.1 is the 13% of traffic from intents that did not exist at month 0.
+
+================================================================================================
+4.  NEGATIVE RESULT  -  a bigger frozen set does not fix staleness
+================================================================================================
+  m =    60   raw bias +5.3 (SD 3.83)   reweighted bias +4.1 (SD 4.29)
+  m =   240   raw bias +5.4 (SD 1.90)   reweighted bias +4.1 (SD 2.17)
+  m =   960   raw bias +5.4 (SD 0.95)   reweighted bias +4.1 (SD 1.08)
+  m =  2400   raw bias +5.4 (SD 0.60)   reweighted bias +4.1 (SD 0.68)
+  The SD shrinks with m. The bias does not move: 10x the labels buys a more precise wrong number.
+
+================================================================================================
+5.  THE REFRESH  -  add cases for the new intents only, and reweight
+================================================================================================
+  + 0 per new intent ( 0 labels)   raw bias +5.4   reweighted bias +4.1  RMSE 4.65
+  + 5 per new intent (10 labels)   raw bias +4.2   reweighted bias +0.0  RMSE 2.81
+  +10 per new intent (20 labels)   raw bias +3.0   reweighted bias +0.0  RMSE 2.40
+  +20 per new intent (40 labels)   raw bias +0.8   reweighted bias +0.0  RMSE 2.16
+  +40 per new intent (80 labels)   raw bias -2.6   reweighted bias +0.0  RMSE 2.03
+  Month-0 RMSE was 1.90. Raw WITHOUT reweighting overshoots once the new intents are over-represented: the refresh needs the reweighting too.
+
+================================================================================================
+6.  CATCHING A REGRESSION  -  v2 breaks 50% of the passing 'bulk export' cases (0.72 -> 0.36)
+================================================================================================
+  8% of cases are flaky (coin flip every run). Monte Carlo, 20,000 reps. Production pass rate falls 1.6 pts at month 12.
+  design        cases there   aggregate McNemar   per-intent (Bonferroni)   false alarm agg / per
+  proportional            8               0.118                     0.000        0.022 / 0.000
+  sqrt                   15               0.298                     0.125        0.021 / 0.000
+  equal                  24               0.568                     0.521        0.024 / 0.000
+
+  The set built to estimate the average (proportional) misses a halved intent almost 9 times in 10.
