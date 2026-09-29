@@ -2588,5 +2588,19 @@
     "product_slug": "data-science-cookbook",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-science-cookbook/bayes-vs-p",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-science-cookbook/bayes-vs-p/demo.ipynb"
+  },
+  {
+    "day": 186,
+    "slug": "golden-set-builder",
+    "name": "A Golden Set Is a Sample of Last Year's Traffic, and Reweighting Cannot See What It Never Sampled",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "We labelled 240 real conversations once, called it our eval set, and a year later it still said 90% while customers were getting 84%.",
+    "status": "done",
+    "date": "2026-09-29",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/golden-set-builder",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/golden-set-builder/demo.ipynb"
   }
 ]

@@ -186,6 +186,7 @@ TASK_OF = {
     # Check the AI is any good
     "rag-eval": "evaluate", "agent-eval-dashboard": "evaluate",
     "hallucination-checker": "evaluate", "llm-guardrails": "evaluate",
+    "golden-set-builder": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
