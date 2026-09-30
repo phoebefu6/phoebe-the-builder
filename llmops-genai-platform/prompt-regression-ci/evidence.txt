@@ -1,0 +1,79 @@
+
+====================================================================================================
+0.  THE HELD-OUT SET  -  synthetic, declared
+====================================================================================================
+  300 cases: 246 stable pass (pi = 0.995), 24 stable fail, 30 flaky (pi ~ Beta(2, 2), mean 0.479)
+  scenarios: a no-op PR; a side effect that breaks 6 stable-pass cases hard (-> 0.0050000000000000044),
+  intermittently (-> 0.5), or breaks 6 of the flaky cases hard
+
+====================================================================================================
+1.  CALIBRATION  -  exact red rates vs raw simulated runs
+====================================================================================================
+  Poisson-binomial convolution vs scipy binom on 50 equal cases: max gap 1.5e-16
+  naive k=1                   no-op                T=13   exact 0.0370   MC 0.0367   inside
+  naive k=1                   intermittent break   T=13   exact 0.2591   MC 0.2596   inside
+  majority k=3                no-op                T=10   exact 0.0377   MC 0.0384   inside
+  majority k=3                intermittent break   T=10   exact 0.3419   MC 0.3400   inside
+  majority k=5                no-op                T= 9   exact 0.0422   MC 0.0425   inside
+  majority k=5                intermittent break   T= 9   exact 0.3869   MC 0.3819   inside
+  fisher k=5                  no-op                T= 2   exact 0.0192   MC 0.0202   inside
+  fisher k=5                  intermittent break   T= 2   exact 0.3872   MC 0.3866   inside
+  quarantine + naive k=1      no-op                T= 7   exact 0.0193   MC 0.0195   inside
+  quarantine + naive k=1      intermittent break   T= 7   exact 0.3143   MC 0.3176   inside
+  quarantine + majority k=3   no-op                T= 4   exact 0.0257   MC 0.0250   inside
+  quarantine + majority k=3   intermittent break   T= 4   exact 0.6268   MC 0.6257   inside
+
+====================================================================================================
+2.  A NO-OP PR  -  nothing changed, what does CI say?
+====================================================================================================
+  rule                        phantom breaks  P(red), zero tolerance calibrated T P(red) at T  months with a false red at T
+  naive k=1                             7.79                   1.000           13       0.037                         0.779
+  majority k=3                          5.57                   0.998           10       0.038                         0.785
+  majority k=5                          4.90                   0.996            9       0.042                         0.822
+  fisher k=5                            0.21                   0.193            2       0.019                         0.540
+  quarantine + naive k=1                2.71                   0.936            7       0.019                         0.542
+  quarantine + majority k=3             1.14                   0.686            4       0.026                         0.647
+
+  'zero tolerance' = red on any broken case. At 40 PRs a month, a gate that is red 4% of the time on
+  a no-op still goes red for nothing in most months. That is the calibrated version.
+
+====================================================================================================
+3.  HARD BREAK  -  6 cases really broken; gate at its calibrated T
+====================================================================================================
+  rule                         P(red)  recall per case  report precision  cases listed  calls/PR
+  naive k=1                     0.671            0.990             0.434         13.70       600
+  majority k=3                  0.837            1.000             0.518         11.57     1,800
+  majority k=5                  0.893            1.000             0.550         10.90     3,000
+  fisher k=5                    1.000            0.999             0.966          6.21     3,000
+  quarantine + naive k=1        0.901            0.970             0.685          8.50       600
+  quarantine + majority k=3     1.000            0.980             0.838          7.01     1,800
+
+====================================================================================================
+3.  INTERMITTENT BREAK  -  6 cases really broken; gate at its calibrated T
+====================================================================================================
+  rule                         P(red)  recall per case  report precision  cases listed  calls/PR
+  naive k=1                     0.259            0.497             0.278         10.75       600
+  majority k=3                  0.342            0.500             0.350          8.57     1,800
+  majority k=5                  0.387            0.500             0.380          7.90     3,000
+  fisher k=5                    0.387            0.184             0.838          1.32     3,000
+  quarantine + naive k=1        0.314            0.488             0.522          5.61       600
+  quarantine + majority k=3     0.627            0.490             0.721          4.08     1,800
+
+====================================================================================================
+3.  BREAK ON FLAKY CASES  -  6 cases really broken; gate at its calibrated T
+====================================================================================================
+  rule                         P(red)  recall per case  report precision  cases listed  calls/PR
+  naive k=1                     0.129            0.520             0.326          9.56       600
+  majority k=3                  0.178            0.526             0.420          7.52     1,800
+  majority k=5                  0.217            0.525             0.453          6.94     3,000
+  fisher k=5                    0.582            0.265             0.906          1.76     3,000
+  quarantine + naive k=1        0.037            0.117             0.222          3.15       600
+  quarantine + majority k=3     0.073            0.122             0.444          1.65     1,800
+
+====================================================================================================
+4.  NEGATIVE RESULT  -  quarantine buys a quiet gate by going blind on the flaky cases
+====================================================================================================
+  quarantine drops 28.3 of 300 cases on average (the flaky ones, plus stable ones that fail 1 run in 200)
+  hard break on stable cases: P(red) 0.837 -> 1.000
+  hard break on FLAKY cases:  P(red) 0.178 -> 0.073
+  Whatever the quarantined cases test, the gate no longer tests it - and they are the cases most likely to move.

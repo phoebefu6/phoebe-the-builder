@@ -1,0 +1,355 @@
+{
+ "calibration": {
+  "poisson_binomial_vs_binom_gap": 1.5265566588595902e-16,
+  "red_rates": [
+   {
+    "T": 13,
+    "exact": 0.0370036553077946,
+    "inside_99": true,
+    "mc": 0.03665,
+    "rule": "naive k=1",
+    "scenario": "no-op"
+   },
+   {
+    "T": 13,
+    "exact": 0.2591456085176493,
+    "inside_99": true,
+    "mc": 0.2596,
+    "rule": "naive k=1",
+    "scenario": "intermittent break"
+   },
+   {
+    "T": 10,
+    "exact": 0.037666683543618844,
+    "inside_99": true,
+    "mc": 0.03835,
+    "rule": "majority k=3",
+    "scenario": "no-op"
+   },
+   {
+    "T": 10,
+    "exact": 0.34185077958320315,
+    "inside_99": true,
+    "mc": 0.34,
+    "rule": "majority k=3",
+    "scenario": "intermittent break"
+   },
+   {
+    "T": 9,
+    "exact": 0.042245488919060034,
+    "inside_99": true,
+    "mc": 0.04245,
+    "rule": "majority k=5",
+    "scenario": "no-op"
+   },
+   {
+    "T": 9,
+    "exact": 0.386899242952495,
+    "inside_99": true,
+    "mc": 0.3819,
+    "rule": "majority k=5",
+    "scenario": "intermittent break"
+   },
+   {
+    "T": 2,
+    "exact": 0.019224202227260238,
+    "inside_99": true,
+    "mc": 0.0202,
+    "rule": "fisher k=5",
+    "scenario": "no-op"
+   },
+   {
+    "T": 2,
+    "exact": 0.38724215232838366,
+    "inside_99": true,
+    "mc": 0.38655,
+    "rule": "fisher k=5",
+    "scenario": "intermittent break"
+   },
+   {
+    "T": 7,
+    "exact": 0.01931395982142098,
+    "inside_99": true,
+    "mc": 0.0195,
+    "rule": "quarantine + naive k=1",
+    "scenario": "no-op"
+   },
+   {
+    "T": 7,
+    "exact": 0.3142955204954946,
+    "inside_99": true,
+    "mc": 0.31765,
+    "rule": "quarantine + naive k=1",
+    "scenario": "intermittent break"
+   },
+   {
+    "T": 4,
+    "exact": 0.025678688351608733,
+    "inside_99": true,
+    "mc": 0.02505,
+    "rule": "quarantine + majority k=3",
+    "scenario": "no-op"
+   },
+   {
+    "T": 4,
+    "exact": 0.6267895986695217,
+    "inside_99": true,
+    "mc": 0.6257,
+    "rule": "quarantine + majority k=3",
+    "scenario": "intermittent break"
+   }
+  ]
+ },
+ "config": {
+  "alpha_gate": 0.05,
+  "flaky": 30,
+  "flaky_pi": [
+   0.7909121127802591,
+   0.6703102573322428,
+   0.32598532781471873,
+   0.4570524610851594,
+   0.44337859380690714,
+   0.4479407218176913,
+   0.7447062101611425,
+   0.4830365256860664,
+   0.26696301898704017,
+   0.4140680227686466,
+   0.5534046315516011,
+   0.2409520739368333,
+   0.45495242224807253,
+   0.22442797309178505,
+   0.6687339860090294,
+   0.6630024121816179,
+   0.6188474125071097,
+   0.6618484273669248,
+   0.6738162304578071,
+   0.3051977273619237,
+   0.3983204719594867,
+   0.47935696471295236,
+   0.8162533690966808,
+   0.345406848648529,
+   0.2878073083955319,
+   0.7460738593941284,
+   0.28428675326138153,
+   0.39189698293176706,
+   0.40068496320128955,
+   0.10296030870901311
+  ],
+  "mc_reps": 20000,
+  "n": 300,
+  "n_break": 6,
+  "numpy": "1.26.4",
+  "prs_per_month": 40,
+  "q_runs": 4,
+  "scipy": "1.17.1",
+  "stable_fail": 24,
+  "stable_p": 0.995,
+  "stable_pass": 246
+ },
+ "rules": [
+  {
+   "T": 13,
+   "break on flaky cases": {
+    "expected_flags": 9.563863827630609,
+    "precision": 0.3262176912484053,
+    "recall": 0.5199835962106322,
+    "red_at_T": 0.12878913420173674,
+    "red_at_T1": 0.9999933546668802
+   },
+   "calls_per_pr": 600,
+   "gated_cases": 300.0,
+   "hard break": {
+    "expected_flags": 13.702585059933227,
+    "precision": 0.43350579281344354,
+    "recall": 0.990025,
+    "red_at_T": 0.6707732408559874,
+    "red_at_T1": 1.0000000000000133
+   },
+   "intermittent break": {
+    "expected_flags": 10.747435059933226,
+    "precision": 0.27774068727599693,
+    "recall": 0.4974999999999999,
+    "red_at_T": 0.2591456085176493,
+    "red_at_T1": 0.9999970556489748
+   },
+   "k": 1,
+   "month_any_false_red_T": 0.7786978944855963,
+   "month_any_false_red_T1": 1.0,
+   "noop_expected_flags": 7.79228505993323,
+   "noop_red_at_T": 0.0370036553077946,
+   "noop_red_at_T1": 0.9998225086690928,
+   "quarantine": false,
+   "rule": "naive k=1"
+  },
+  {
+   "T": 10,
+   "break on flaky cases": {
+    "expected_flags": 7.517212792579098,
+    "precision": 0.4197508039329849,
+    "recall": 0.5258926855033992,
+    "red_at_T": 0.17801147795100053,
+    "red_at_T1": 0.9999682789878737
+   },
+   "calls_per_pr": 1800,
+   "gated_cases": 300.0,
+   "hard break": {
+    "expected_flags": 11.570253151736438,
+    "precision": 0.518493671214535,
+    "recall": 0.9998505055875618,
+    "red_at_T": 0.8369384274950635,
+    "red_at_T1": 1.0000000000000024
+   },
+   "intermittent break": {
+    "expected_flags": 8.570925868211063,
+    "precision": 0.3499943642175171,
+    "recall": 0.49996262500000027,
+    "red_at_T": 0.34185077958320315,
+    "red_at_T1": 0.9999691310097658
+   },
+   "k": 3,
+   "month_any_false_red_T": 0.7847114851696857,
+   "month_any_false_red_T1": 1.0,
+   "noop_expected_flags": 5.571598584685687,
+   "noop_red_at_T": 0.037666683543618844,
+   "noop_red_at_T1": 0.9980261558910482,
+   "quarantine": false,
+   "rule": "majority k=3"
+  },
+  {
+   "T": 9,
+   "break on flaky cases": {
+    "expected_flags": 6.940550238029003,
+    "precision": 0.45344556052873747,
+    "recall": 0.5245269488434873,
+    "red_at_T": 0.2173918201725706,
+    "red_at_T1": 0.9999665984341344
+   },
+   "calls_per_pr": 3000,
+   "gated_cases": 300.0,
+   "hard break": {
+    "expected_flags": 10.899519823719086,
+    "precision": 0.5504816000451058,
+    "recall": 0.9999975187140387,
+    "red_at_T": 0.8927774599150272,
+    "red_at_T1": 0.9999999999999862
+   },
+   "intermittent break": {
+    "expected_flags": 7.899530989503606,
+    "precision": 0.37976891059164825,
+    "recall": 0.49999937967812486,
+    "red_at_T": 0.386899242952495,
+    "red_at_T1": 0.9999325613101415
+   },
+   "k": 5,
+   "month_any_false_red_T": 0.8221031539455729,
+   "month_any_false_red_T1": 1.0,
+   "noop_expected_flags": 4.899542155288119,
+   "noop_red_at_T": 0.042245488919060034,
+   "noop_red_at_T1": 0.9956839881059091,
+   "quarantine": false,
+   "rule": "majority k=5"
+  },
+  {
+   "T": 2,
+   "break on flaky cases": {
+    "expected_flags": 1.7584031547522287,
+    "precision": 0.9058906912171657,
+    "recall": 0.2654868415494902,
+    "red_at_T": 0.5816678120987437,
+    "red_at_T1": 0.915146779065425
+   },
+   "calls_per_pr": 3000,
+   "gated_cases": 300.0,
+   "hard break": {
+    "expected_flags": 6.206937760166131,
+    "precision": 0.9656013783101765,
+    "recall": 0.9989046093836492,
+    "red_at_T": 1.0000000000000089,
+    "red_at_T1": 1.0000000000000164
+   },
+   "intermittent break": {
+    "expected_flags": 1.3152594019105273,
+    "precision": 0.8376669244454008,
+    "recall": 0.18362488300771476,
+    "red_at_T": 0.38724215232838366,
+    "red_at_T1": 0.7610952584582089
+   },
+   "k": 5,
+   "month_any_false_red_T": 0.5399663336452548,
+   "month_any_false_red_T1": 0.9998114405541548,
+   "noop_expected_flags": 0.2135101220774682,
+   "noop_red_at_T": 0.019224202227260238,
+   "noop_red_at_T1": 0.1929764515927563,
+   "quarantine": false,
+   "rule": "fisher k=5"
+  },
+  {
+   "T": 7,
+   "break on flaky cases": {
+    "expected_flags": 3.152973603274261,
+    "precision": 0.2222289193951074,
+    "recall": 0.11678031945615618,
+    "red_at_T": 0.03678207512214501,
+    "red_at_T1": 0.9618308169202714
+   },
+   "calls_per_pr": 600,
+   "gated_cases": 271.69164700438023,
+   "hard break": {
+    "expected_flags": 8.50389702820282,
+    "precision": 0.6846549341485424,
+    "recall": 0.9703725099750312,
+    "red_at_T": 0.9010096185765253,
+    "red_at_T1": 0.9999999999554616
+   },
+   "intermittent break": {
+    "expected_flags": 5.607408229583883,
+    "precision": 0.5217644482874335,
+    "recall": 0.4876243768718749,
+    "red_at_T": 0.3142955204954946,
+    "red_at_T1": 0.9988085107064746
+   },
+   "k": 1,
+   "month_any_false_red_T": 0.5416473666619925,
+   "month_any_false_red_T1": 1.0,
+   "noop_expected_flags": 2.710919430964946,
+   "noop_red_at_T": 0.01931395982142098,
+   "noop_red_at_T1": 0.9360527383330635,
+   "quarantine": true,
+   "rule": "quarantine + naive k=1"
+  },
+  {
+   "T": 4,
+   "break on flaky cases": {
+    "expected_flags": 1.6488989677306802,
+    "precision": 0.4435985397559361,
+    "recall": 0.12190819571506668,
+    "red_at_T": 0.07306497836487807,
+    "red_at_T1": 0.8292139895163549
+   },
+   "calls_per_pr": 1800,
+   "gated_cases": 271.69164700438023,
+   "hard break": {
+    "expected_flags": 7.014972118990578,
+    "precision": 0.8382097243607238,
+    "recall": 0.9800029743762092,
+    "red_at_T": 0.999951059044461,
+    "red_at_T1": 0.9999999999798899
+   },
+   "intermittent break": {
+    "expected_flags": 4.0751829779576685,
+    "precision": 0.7214961195921271,
+    "recall": 0.4900381175373911,
+    "red_at_T": 0.6267895986695217,
+    "red_at_T1": 0.9944678451195995
+   },
+   "k": 3,
+   "month_any_false_red_T": 0.6467451894009397,
+   "month_any_false_red_T1": 1.0,
+   "noop_expected_flags": 1.1353938369247538,
+   "noop_red_at_T": 0.025678688351608733,
+   "noop_red_at_T1": 0.6856039149784825,
+   "quarantine": true,
+   "rule": "quarantine + majority k=3"
+  }
+ ]
+}
