@@ -2602,5 +2602,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/golden-set-builder",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/golden-set-builder/demo.ipynb"
+  },
+  {
+    "day": 187,
+    "slug": "prompt-regression-ci",
+    "name": "A Prompt CI Gate Is a Test With a False-Alarm Rate, and Zero Tolerance Is Always Red",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "Our prompt CI said eight cases broke on a change that fixed a typo, so we stopped reading it - and then a real regression shipped.",
+    "status": "done",
+    "date": "2026-09-30",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/prompt-regression-ci",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/prompt-regression-ci/demo.ipynb"
   }
 ]
