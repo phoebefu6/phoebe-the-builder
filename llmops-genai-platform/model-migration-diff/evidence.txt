@@ -1,0 +1,81 @@
+
+====================================================================================================
+0.  THE EVAL SET  -  synthetic, declared
+====================================================================================================
+  400 cases in 8 intents: billing 80, account 70, shipping 60, product 50, returns 50, tech 40, refunds 30, legal 20
+  per intent: 8% flaky (pass prob ~ Beta(2, 2)), 7% stable fail, rest stable pass (pi = 0.995)  ->  [339, 29, 32] pass/fail/flaky
+  migrations: break 20 stable passes (all in 'refunds', or spread) and fix 20 stable fails elsewhere; or break 20 spread with no fixes
+
+====================================================================================================
+1.  CALIBRATION  -  exact gate rates vs raw simulated runs
+====================================================================================================
+  2D convolution vs scipy binom (closed-form margin): max gap 2.9e-16; mass off the fixed = 0 row 0.0e+00
+  no change                score delta     exact 0.0414   MC 0.0409   inside
+  no change                mcnemar         exact 0.0292   MC 0.0302   inside
+  no change                tost            exact 0.2224   MC 0.2177   inside
+  no change                per-intent      exact 0.0000   MC 0.0000   inside
+  no change                churn vs rerun  exact 0.0317   MC 0.0314   inside
+  net zero, concentrated   score delta     exact 0.0414   MC 0.0404   inside
+  net zero, concentrated   mcnemar         exact 0.0001   MC 0.0001   inside
+  net zero, concentrated   tost            exact 0.0000   MC 0.0000   inside
+  net zero, concentrated   per-intent      exact 1.0000   MC 1.0000   inside
+  net zero, concentrated   churn vs rerun  exact 1.0000   MC 1.0000   inside
+  net zero, spread         score delta     exact 0.0414   MC 0.0413   inside
+  net zero, spread         mcnemar         exact 0.0001   MC 0.0001   inside
+  net zero, spread         tost            exact 0.0000   MC 0.0000   inside
+  net zero, spread         per-intent      exact 0.0000   MC 0.0000   inside
+  net zero, spread         churn vs rerun  exact 1.0000   MC 1.0000   inside
+  plain regression         score delta     exact 0.9966   MC 0.9960   inside
+  plain regression         mcnemar         exact 0.9488   MC 0.9506   inside
+  plain regression         tost            exact 0.0000   MC 0.0000   inside
+  plain regression         per-intent      exact 0.0022   MC 0.0026   inside
+  plain regression         churn vs rerun  exact 0.9783   MC 0.9781   inside
+
+====================================================================================================
+2.  FOUR MIGRATIONS  -  what the score says, what changed, and which gate notices
+====================================================================================================
+  noise churn (A vs A run again): 17.47 cases expected
+
+  NO CHANGE   cases really changed: 0
+    score 88.3% -> 88.3%   expected broke 8.73  fixed 8.73  churn 17.47
+    worst intent: billing 88.5% -> 88.5%
+    score delta 0.041   mcnemar 0.029   tost 0.222   per-intent 0.000   churn vs rerun 0.032   (tost = P(certified equivalent))
+
+  NET ZERO, CONCENTRATED   cases really changed: 40
+    score 88.3% -> 88.3%   expected broke 28.34  fixed 28.34  churn 56.67
+    worst intent: refunds 87.9% -> 21.9%
+    score delta 0.041   mcnemar 0.000   tost 0.000   per-intent 1.000   churn vs rerun 1.000   (tost = P(certified equivalent))
+
+  NET ZERO, SPREAD   cases really changed: 40
+    score 88.3% -> 88.3%   expected broke 28.34  fixed 28.34  churn 56.67
+    worst intent: refunds 87.9% -> 81.3%
+    score delta 0.041   mcnemar 0.000   tost 0.000   per-intent 0.000   churn vs rerun 1.000   (tost = P(certified equivalent))
+
+  PLAIN REGRESSION   cases really changed: 20
+    score 88.3% -> 83.3%   expected broke 28.43  fixed 8.63  churn 37.07
+    worst intent: legal 91.1% -> 81.2%
+    score delta 0.997   mcnemar 0.949   tost 0.000   per-intent 0.002   churn vs rerun 0.978   (tost = P(certified equivalent))
+
+====================================================================================================
+3.  SWEEP  -  a net-zero spread migration of k breaks + k fixes
+====================================================================================================
+    k  changed     score delta         mcnemar            tost      per-intent  churn vs rerun
+    0        0           0.041           0.029           0.222           0.000           0.032
+    2        4           0.041           0.015           0.103           0.000           0.141
+    4        8           0.041           0.008           0.029           0.000           0.381
+    6       12           0.041           0.004           0.003           0.000           0.686
+    8       16           0.041           0.003           0.000           0.000           0.896
+   10       20           0.041           0.002           0.000           0.000           0.978
+   12       24           0.041           0.001           0.000           0.000           0.997
+   14       28           0.041           0.001           0.000           0.000           1.000
+   16       32           0.041           0.000           0.000           0.000           1.000
+   18       36           0.041           0.000           0.000           0.000           1.000
+   20       40           0.041           0.000           0.000           0.000           1.000
+  McNemar gets QUIETER as the swap grows: it compares broke with fixed, and more of both makes a
+  balanced split more likely, not less.
+
+====================================================================================================
+4.  NEGATIVE RESULT  -  slicing by intent does not detect a spread regression
+====================================================================================================
+  plain regression, 20 breaks spread over 8 intents: whole-set McNemar 0.949, per-intent Bonferroni 0.002
+  Each intent sees 2-3 breaks; an exact test at 0.05/8 needs about 8. Slice to diagnose, not to detect.

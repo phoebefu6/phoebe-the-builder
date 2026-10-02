@@ -1,0 +1,481 @@
+{
+ "calibration": {
+  "conv_vs_binom_gap": 2.914335439641036e-16,
+  "fixed_mass_off_zero": 0.0,
+  "rates": [
+   {
+    "exact": 0.04144804014908971,
+    "gate": "score delta",
+    "inside_99": true,
+    "mc": 0.0409,
+    "scenario": "no change"
+   },
+   {
+    "exact": 0.029247160656823715,
+    "gate": "mcnemar",
+    "inside_99": true,
+    "mc": 0.0302,
+    "scenario": "no change"
+   },
+   {
+    "exact": 0.2224274833146522,
+    "gate": "tost",
+    "inside_99": true,
+    "mc": 0.21775,
+    "scenario": "no change"
+   },
+   {
+    "exact": 5.149729587761165e-06,
+    "gate": "per-intent",
+    "inside_99": true,
+    "mc": 0.0,
+    "scenario": "no change"
+   },
+   {
+    "exact": 0.03173752698977546,
+    "gate": "churn vs rerun",
+    "inside_99": true,
+    "mc": 0.0314,
+    "scenario": "no change"
+   },
+   {
+    "exact": 0.041448040149089455,
+    "gate": "score delta",
+    "inside_99": true,
+    "mc": 0.0404,
+    "scenario": "net zero, concentrated"
+   },
+   {
+    "exact": 0.00010933721105309078,
+    "gate": "mcnemar",
+    "inside_99": true,
+    "mc": 0.00015,
+    "scenario": "net zero, concentrated"
+   },
+   {
+    "exact": 1.2209098997170195e-35,
+    "gate": "tost",
+    "inside_99": true,
+    "mc": 0.0,
+    "scenario": "net zero, concentrated"
+   },
+   {
+    "exact": 0.9999999369682514,
+    "gate": "per-intent",
+    "inside_99": true,
+    "mc": 1.0,
+    "scenario": "net zero, concentrated"
+   },
+   {
+    "exact": 0.9999999931280454,
+    "gate": "churn vs rerun",
+    "inside_99": true,
+    "mc": 1.0,
+    "scenario": "net zero, concentrated"
+   },
+   {
+    "exact": 0.04144804014908947,
+    "gate": "score delta",
+    "inside_99": true,
+    "mc": 0.04125,
+    "scenario": "net zero, spread"
+   },
+   {
+    "exact": 0.00010933721105309076,
+    "gate": "mcnemar",
+    "inside_99": true,
+    "mc": 0.00015,
+    "scenario": "net zero, spread"
+   },
+   {
+    "exact": 1.220909899717019e-35,
+    "gate": "tost",
+    "inside_99": true,
+    "mc": 0.0,
+    "scenario": "net zero, spread"
+   },
+   {
+    "exact": 2.4558618028081014e-08,
+    "gate": "per-intent",
+    "inside_99": true,
+    "mc": 0.0,
+    "scenario": "net zero, spread"
+   },
+   {
+    "exact": 0.9999999931280453,
+    "gate": "churn vs rerun",
+    "inside_99": true,
+    "mc": 1.0,
+    "scenario": "net zero, spread"
+   },
+   {
+    "exact": 0.9966248499776033,
+    "gate": "score delta",
+    "inside_99": true,
+    "mc": 0.99595,
+    "scenario": "plain regression"
+   },
+   {
+    "exact": 0.9487652657456055,
+    "gate": "mcnemar",
+    "inside_99": true,
+    "mc": 0.95055,
+    "scenario": "plain regression"
+   },
+   {
+    "exact": 1.638535307172794e-18,
+    "gate": "tost",
+    "inside_99": true,
+    "mc": 0.0,
+    "scenario": "plain regression"
+   },
+   {
+    "exact": 0.002175050913203358,
+    "gate": "per-intent",
+    "inside_99": true,
+    "mc": 0.00255,
+    "scenario": "plain regression"
+   },
+   {
+    "exact": 0.9783052974699447,
+    "gate": "churn vs rerun",
+    "inside_99": true,
+    "mc": 0.97815,
+    "scenario": "plain regression"
+   }
+  ]
+ },
+ "churn_threshold": 24,
+ "config": {
+  "alpha": 0.05,
+  "concentrate_in": "refunds",
+  "fail_share": 0.07,
+  "flaky_share": 0.08,
+  "intents": {
+   "account": 70,
+   "billing": 80,
+   "legal": 20,
+   "product": 50,
+   "refunds": 30,
+   "returns": 50,
+   "shipping": 60,
+   "tech": 40
+  },
+  "kinds": [
+   339,
+   29,
+   32
+  ],
+  "margin": 0.02,
+  "mc_reps": 20000,
+  "n": 400,
+  "n_swap": 20,
+  "numpy": "1.26.4",
+  "scipy": "1.17.1",
+  "stable_p": 0.995
+ },
+ "noise_churn": 17.467080206943216,
+ "scenarios": [
+  {
+   "cases_changed": 0,
+   "expected_broke": 8.733540103471608,
+   "expected_churn": 17.467080206943216,
+   "expected_fixed": 8.733540103471608,
+   "gates": {
+    "churn vs rerun": 0.03173752698977546,
+    "mcnemar": 0.029247160656823715,
+    "per-intent": 5.149729587761165e-06,
+    "score delta": 0.04144804014908971,
+    "tost": 0.2224274833146522
+   },
+   "intent_scores": {
+    "account": [
+     0.8776161497584474,
+     0.8776161497584474
+    ],
+    "billing": [
+     0.8853197434329623,
+     0.8853197434329623
+    ],
+    "legal": [
+     0.9110713138635829,
+     0.9110713138635829
+    ],
+    "product": [
+     0.8769836571429228,
+     0.8769836571429228
+    ],
+    "refunds": [
+     0.8794548423970103,
+     0.8794548423970103
+    ],
+    "returns": [
+     0.8747764898170738,
+     0.8747764898170738
+    ],
+    "shipping": [
+     0.8899160701006268,
+     0.8899160701006268
+    ],
+    "tech": [
+     0.8816814398896821,
+     0.8816814398896821
+    ]
+   },
+   "scenario": "no change",
+   "score_a": 0.8827850266413373,
+   "score_b": 0.8827850266413373
+  },
+  {
+   "cases_changed": 40,
+   "expected_broke": 28.335540103471608,
+   "expected_churn": 56.6710802069432,
+   "expected_fixed": 28.3355401034716,
+   "gates": {
+    "churn vs rerun": 0.9999999931280454,
+    "mcnemar": 0.00010933721105309078,
+    "per-intent": 0.9999999369682514,
+    "score delta": 0.041448040149089455,
+    "tost": 1.2209098997170195e-35
+   },
+   "intent_scores": {
+    "account": [
+     0.8776161497584474,
+     0.9200447211870189
+    ],
+    "billing": [
+     0.8853197434329623,
+     0.934819743432962
+    ],
+    "legal": [
+     0.9110713138635829,
+     0.960571313863583
+    ],
+    "product": [
+     0.8769836571429228,
+     0.9363836571429228
+    ],
+    "refunds": [
+     0.8794548423970103,
+     0.2194548423970101
+    ],
+    "returns": [
+     0.8747764898170738,
+     0.9341764898170737
+    ],
+    "shipping": [
+     0.8899160701006268,
+     0.9394160701006268
+    ],
+    "tech": [
+     0.8816814398896821,
+     0.955931439889682
+    ]
+   },
+   "scenario": "net zero, concentrated",
+   "score_a": 0.8827850266413373,
+   "score_b": 0.8827850266413374
+  },
+  {
+   "cases_changed": 40,
+   "expected_broke": 28.3355401034716,
+   "expected_churn": 56.6710802069432,
+   "expected_fixed": 28.3355401034716,
+   "gates": {
+    "churn vs rerun": 0.9999999931280453,
+    "mcnemar": 0.00010933721105309076,
+    "per-intent": 2.4558618028081014e-08,
+    "score delta": 0.04144804014908947,
+    "tost": 1.220909899717019e-35
+   },
+   "intent_scores": {
+    "account": [
+     0.8776161497584474,
+     0.8776161497584474
+    ],
+    "billing": [
+     0.8853197434329623,
+     0.8976947434329622
+    ],
+    "legal": [
+     0.9110713138635829,
+     0.8615713138635828
+    ],
+    "product": [
+     0.8769836571429228,
+     0.8769836571429228
+    ],
+    "refunds": [
+     0.8794548423970103,
+     0.8134548423970104
+    ],
+    "returns": [
+     0.8747764898170738,
+     0.8945764898170738
+    ],
+    "shipping": [
+     0.8899160701006268,
+     0.8899160701006268
+    ],
+    "tech": [
+     0.8816814398896821,
+     0.9064314398896819
+    ]
+   },
+   "scenario": "net zero, spread",
+   "score_a": 0.8827850266413373,
+   "score_b": 0.8827850266413373
+  },
+  {
+   "cases_changed": 20,
+   "expected_broke": 28.434540103471605,
+   "expected_churn": 37.069080206943205,
+   "expected_fixed": 8.634540103471608,
+   "gates": {
+    "churn vs rerun": 0.9783052974699447,
+    "mcnemar": 0.9487652657456055,
+    "per-intent": 0.002175050913203358,
+    "score delta": 0.9966248499776033,
+    "tost": 1.638535307172794e-18
+   },
+   "intent_scores": {
+    "account": [
+     0.8776161497584474,
+     0.835187578329876
+    ],
+    "billing": [
+     0.8853197434329623,
+     0.8481947434329623
+    ],
+    "legal": [
+     0.9110713138635829,
+     0.8120713138635827
+    ],
+    "product": [
+     0.8769836571429228,
+     0.8175836571429228
+    ],
+    "refunds": [
+     0.8794548423970103,
+     0.8134548423970104
+    ],
+    "returns": [
+     0.8747764898170738,
+     0.8351764898170738
+    ],
+    "shipping": [
+     0.8899160701006268,
+     0.8404160701006268
+    ],
+    "tech": [
+     0.8816814398896821,
+     0.832181439889682
+    ]
+   },
+   "scenario": "plain regression",
+   "score_a": 0.8827850266413373,
+   "score_b": 0.8332850266413374
+  }
+ ],
+ "sweep": [
+  {
+   "churn vs rerun": 0.03173752698977546,
+   "churn_cases": 0,
+   "mcnemar": 0.029247160656823715,
+   "per-intent": 5.149729587761165e-06,
+   "score delta": 0.04144804014908971,
+   "swap": 0,
+   "tost": 0.2224274833146522
+  },
+  {
+   "churn vs rerun": 0.14115700802555842,
+   "churn_cases": 4,
+   "mcnemar": 0.014903842379251617,
+   "per-intent": 8.349259347228966e-07,
+   "score delta": 0.041448040149089704,
+   "swap": 2,
+   "tost": 0.10296874719657025
+  },
+  {
+   "churn vs rerun": 0.3814014945625441,
+   "churn_cases": 8,
+   "mcnemar": 0.007798748745341867,
+   "per-intent": 6.171820204903256e-07,
+   "score delta": 0.04144804014908966,
+   "swap": 4,
+   "tost": 0.029405283250803632
+  },
+  {
+   "churn vs rerun": 0.6864846169501964,
+   "churn_cases": 12,
+   "mcnemar": 0.004277323124770103,
+   "per-intent": 6.054753773909738e-07,
+   "score delta": 0.04144804014908965,
+   "swap": 6,
+   "tost": 0.0033038417419785525
+  },
+  {
+   "churn vs rerun": 0.8961229252154762,
+   "churn_cases": 16,
+   "mcnemar": 0.00255181119834841,
+   "per-intent": 1.8360406648376681e-06,
+   "score delta": 0.04144804014908961,
+   "swap": 8,
+   "tost": 7.844915740836693e-05
+  },
+  {
+   "churn vs rerun": 0.9783052974699443,
+   "churn_cases": 20,
+   "mcnemar": 0.0015861077803338464,
+   "per-intent": 3.350113809696964e-07,
+   "score delta": 0.0414480401490896,
+   "swap": 10,
+   "tost": 1.928665806983638e-07
+  },
+  {
+   "churn vs rerun": 0.9971558212530671,
+   "churn_cases": 24,
+   "mcnemar": 0.0009663720220051507,
+   "per-intent": 9.41434739054614e-08,
+   "score delta": 0.041448040149089566,
+   "swap": 12,
+   "tost": 1.6597658630678244e-11
+  },
+  {
+   "churn vs rerun": 0.9997748860561176,
+   "churn_cases": 28,
+   "mcnemar": 0.0005693780610490826,
+   "per-intent": 1.5924312402049168e-07,
+   "score delta": 0.04144804014908953,
+   "swap": 14,
+   "tost": 8.338606042122576e-17
+  },
+  {
+   "churn vs rerun": 0.9999896736213977,
+   "churn_cases": 32,
+   "mcnemar": 0.0003374950391785935,
+   "per-intent": 2.581719519278991e-07,
+   "score delta": 0.04144804014908951,
+   "swap": 16,
+   "tost": 9.674177215027642e-23
+  },
+  {
+   "churn vs rerun": 0.9999996913981358,
+   "churn_cases": 36,
+   "mcnemar": 0.00019019956131240283,
+   "per-intent": 5.1419407731678746e-08,
+   "score delta": 0.04144804014908951,
+   "swap": 18,
+   "tost": 4.632364062088724e-29
+  },
+  {
+   "churn vs rerun": 0.9999999931280453,
+   "churn_cases": 40,
+   "mcnemar": 0.00010933721105309076,
+   "per-intent": 2.4558618028081014e-08,
+   "score delta": 0.04144804014908947,
+   "swap": 20,
+   "tost": 1.220909899717019e-35
+  }
+ ]
+}
