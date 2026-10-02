@@ -188,6 +188,7 @@ TASK_OF = {
     "hallucination-checker": "evaluate", "llm-guardrails": "evaluate",
     "golden-set-builder": "evaluate",
     "prompt-regression-ci": "evaluate",
+    "model-migration-diff": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

@@ -2616,5 +2616,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/prompt-regression-ci",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/prompt-regression-ci/demo.ipynb"
+  },
+  {
+    "day": 188,
+    "slug": "model-migration-diff",
+    "name": "An Unchanged Score Is a Net, and McNemar Is Quieter on a Swap Than on No Change",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "We upgraded the model, the eval score didn't move, so we shipped it - and the refunds team said it had stopped working.",
+    "status": "done",
+    "date": "2026-10-02",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/model-migration-diff",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/model-migration-diff/demo.ipynb"
   }
 ]

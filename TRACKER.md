@@ -236,3 +236,4 @@
 - [x] Day 185 — bayes-vs-p: Two Analysts, One Dataset, Two Verdicts - a p = 0.05 Result Is Evidence for the Null Once n Is Large (data-science-cookbook/) (2026-09-28)
 - [x] Day 186 — golden-set-builder: A Golden Set Is a Sample of Last Year's Traffic, and Reweighting Cannot See What It Never Sampled (llmops-genai-platform/) (2026-09-29)
 - [x] Day 187 — prompt-regression-ci: A Prompt CI Gate Is a Test With a False-Alarm Rate, and Zero Tolerance Is Always Red (llmops-genai-platform/) (2026-09-30)
+- [x] Day 188 — model-migration-diff: An Unchanged Score Is a Net, and McNemar Is Quieter on a Swap Than on No Change (llmops-genai-platform/) (2026-10-02)
