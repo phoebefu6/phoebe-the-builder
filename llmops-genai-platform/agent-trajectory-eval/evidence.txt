@@ -1,0 +1,61 @@
+
+====================================================================================================
+0.  THE TASK  -  synthetic, declared
+====================================================================================================
+  refund request, eligible with p = 0.7. reference path: lookup_order > check_policy > issue_refund (or decline)
+  invariants of a valid path: unsupported decision, acted before reading, duplicate action, wrong argument, wrong action
+  v1 careful      plan {'lookup>policy': 0.6, 'policy>lookup': 0.3, 'lookup only': 0.07, 'no reads': 0.03}  kb 0.35  rash 0.03  dup 0.03  badarg 0.02  (512 enumerated runs, mass 1.000000000000)
+  v2 fewer calls  plan {'lookup>policy': 0.45, 'policy>lookup': 0.15, 'lookup only': 0.25, 'no reads': 0.15}  kb 0.1  rash 0.1  dup 0.03  badarg 0.02  (512 enumerated runs, mass 1.000000000000)
+
+====================================================================================================
+1.  CALIBRATION  -  exact enumeration vs raw step-by-step simulation
+====================================================================================================
+  v1 careful      good              exact 0.8284   MC 0.8293   inside
+  v1 careful      outcome           exact 0.9292   MC 0.9292   inside
+  v1 careful      strict            exact 0.3640   MC 0.3612   OUTSIDE
+  v1 careful      unordered         exact 0.5543   MC 0.5528   inside
+  v1 careful      superset          exact 0.8821   MC 0.8823   inside
+  v1 careful      outcome+superset  exact 0.8712   MC 0.8714   inside
+  v2 fewer calls  good              exact 0.5163   MC 0.5154   inside
+  v2 fewer calls  outcome           exact 0.7960   MC 0.7942   inside
+  v2 fewer calls  strict            exact 0.3534   MC 0.3520   inside
+  v2 fewer calls  unordered         exact 0.4968   MC 0.4946   inside
+  v2 fewer calls  superset          exact 0.5798   MC 0.5781   inside
+  v2 fewer calls  outcome+superset  exact 0.5640   MC 0.5625   inside
+  11 of 12 inside their 99% Wilson interval
+  v1 strict, closed form 0.364001586 vs enumeration 0.364001586: gap 1.9e-16
+  the one OUTSIDE cell above, reseeded 4 times: z = +0.96, +0.18, +0.16, -0.03  (12 cells at 99% expect 0.12 misses; seed 189 drew one)
+
+====================================================================================================
+2.  WHAT EACH SCORER REPORTS, AND HOW OFTEN IT IS WRONG
+====================================================================================================
+
+  V1 CAREFUL   truly valid runs 82.8%   answer right 92.9%   tool calls 2.93
+    scorer             reports  passes bad  fails good  bad among passes
+    outcome              92.9%       58.7%        0.0%             10.8%
+    strict               36.4%        2.9%       56.7%              1.4%
+    unordered            55.4%        9.3%       35.0%              2.9%
+    superset             88.2%       31.3%        0.0%              6.1%
+    outcome+superset     87.1%       24.9%        0.0%              4.9%
+    right answer, broken path: unsupported decision 5.8%, acted before reading 6.2%, duplicate action 2.0%, wrong argument 4.2%, wrong action 0.0%
+
+  V2 FEWER CALLS   truly valid runs 51.6%   answer right 79.6%   tool calls 2.27
+    scorer             reports  passes bad  fails good  bad among passes
+    outcome              79.6%       57.8%        0.0%             35.1%
+    strict               35.3%        1.0%       32.5%              1.4%
+    unordered            49.7%        6.6%       10.0%              6.5%
+    superset             58.0%       13.1%        0.0%             11.0%
+    outcome+superset     56.4%        9.9%        0.0%              8.5%
+    right answer, broken path: unsupported decision 23.2%, acted before reading 22.5%, duplicate action 1.8%, wrong argument 12.5%, wrong action 0.0%
+
+====================================================================================================
+3.  THE PROMPT CHANGE  -  v1 -> v2 as each scorer sees it
+====================================================================================================
+  truly valid        -31.2 pts
+  outcome            -13.3 pts
+  strict              -1.1 pts
+  unordered           -5.8 pts
+  superset           -30.2 pts
+  outcome+superset   -30.7 pts
+  tool calls 2.93 -> 2.27. The strict match barely moves: v2 also dropped the
+  harmless variation (extra kb search, reads in the other order) that strict was failing all along.

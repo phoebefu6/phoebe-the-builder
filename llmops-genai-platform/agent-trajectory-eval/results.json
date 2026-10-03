@@ -1,0 +1,239 @@
+{
+ "agents": {
+  "v1 careful": {
+   "calls": 2.933806480000004,
+   "hidden_by_outcome": {
+    "acted before reading": 0.06222999999999998,
+    "duplicate action": 0.01983323999999999,
+    "unsupported decision": 0.057999999999999975,
+    "wrong action": 0,
+    "wrong argument": 0.04160197999999999
+   },
+   "p_correct": 0.9292000000000011,
+   "p_good": 0.8283854268000004,
+   "scorers": {
+    "outcome": {
+     "bad_among_passes": 0.1084960968575117,
+     "false_fail": 0.0,
+     "false_pass": 0.5874476235914458,
+     "reported": 0.9292000000000011
+    },
+    "outcome+superset": {
+     "bad_among_passes": 0.04914436776859501,
+     "false_fail": 0.0,
+     "false_pass": 0.24948098755053796,
+     "reported": 0.8712000000000004
+    },
+    "strict": {
+     "bad_among_passes": 0.013831169735617576,
+     "false_fail": 0.5666666666666662,
+     "false_pass": 0.029336481314630056,
+     "reported": 0.36400158600000015
+    },
+    "superset": {
+     "bad_among_passes": 0.06090248949108265,
+     "false_fail": 0.0,
+     "false_pass": 0.3130420231700935,
+     "reported": 0.8821080000000008
+    },
+    "unordered": {
+     "bad_among_passes": 0.028670590137320054,
+     "false_fail": 0.34999999999999987,
+     "false_pass": 0.09261082135185494,
+     "reported": 0.5543438940000002
+    }
+   }
+  },
+  "v2 fewer calls": {
+   "calls": 2.2665504000000003,
+   "hidden_by_outcome": {
+    "acted before reading": 0.22540000000000002,
+    "duplicate action": 0.017875199999999994,
+    "unsupported decision": 0.232,
+    "wrong action": 0,
+    "wrong argument": 0.12476379999999995
+   },
+   "p_correct": 0.7960000000000002,
+   "p_good": 0.5163002639999997,
+   "scorers": {
+    "outcome": {
+     "bad_among_passes": 0.3513815778894471,
+     "false_fail": 0.0,
+     "false_pass": 0.5782507518259217,
+     "reported": 0.7960000000000002
+    },
+    "outcome+superset": {
+     "bad_among_passes": 0.084574,
+     "false_fail": 0.0,
+     "false_pass": 0.09861435194167642,
+     "reported": 0.5640000000000001
+    },
+    "strict": {
+     "bad_among_passes": 0.013728208619586967,
+     "false_fail": 0.32500000000000023,
+     "false_pass": 0.01002876668925864,
+     "reported": 0.3533535900000001
+    },
+    "superset": {
+     "bad_among_passes": 0.10958149834437088,
+     "false_fail": 0.0,
+     "false_pass": 0.13136194062342835,
+     "reported": 0.5798399999999999
+    },
+    "unordered": {
+     "bad_among_passes": 0.06468156798636535,
+     "false_fail": 0.10000000000000002,
+     "false_pass": 0.06643394653413659,
+     "reported": 0.49680431999999997
+    }
+   }
+  }
+ },
+ "calibration": [
+  {
+   "agent": "v1 careful",
+   "exact": 0.8283854268000004,
+   "inside_99": true,
+   "mc": 0.829305,
+   "quantity": "good"
+  },
+  {
+   "agent": "v1 careful",
+   "exact": 0.9292000000000011,
+   "inside_99": true,
+   "mc": 0.929165,
+   "quantity": "outcome"
+  },
+  {
+   "agent": "v1 careful",
+   "exact": 0.36400158600000015,
+   "inside_99": false,
+   "mc": 0.361215,
+   "quantity": "strict"
+  },
+  {
+   "agent": "v1 careful",
+   "exact": 0.5543438940000002,
+   "inside_99": true,
+   "mc": 0.552795,
+   "quantity": "unordered"
+  },
+  {
+   "agent": "v1 careful",
+   "exact": 0.8821080000000008,
+   "inside_99": true,
+   "mc": 0.88233,
+   "quantity": "superset"
+  },
+  {
+   "agent": "v1 careful",
+   "exact": 0.8712000000000004,
+   "inside_99": true,
+   "mc": 0.871385,
+   "quantity": "outcome+superset"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.5163002639999997,
+   "inside_99": true,
+   "mc": 0.51537,
+   "quantity": "good"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.7960000000000002,
+   "inside_99": true,
+   "mc": 0.79423,
+   "quantity": "outcome"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.3533535900000001,
+   "inside_99": true,
+   "mc": 0.352045,
+   "quantity": "strict"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.49680431999999997,
+   "inside_99": true,
+   "mc": 0.494595,
+   "quantity": "unordered"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.5798399999999999,
+   "inside_99": true,
+   "mc": 0.578115,
+   "quantity": "superset"
+  },
+  {
+   "agent": "v2 fewer calls",
+   "exact": 0.5640000000000001,
+   "inside_99": true,
+   "mc": 0.56251,
+   "quantity": "outcome+superset"
+  }
+ ],
+ "closed_form_gap": 1.9233746539892849e-16,
+ "config": {
+  "agents": {
+   "v1 careful": {
+    "badarg": 0.02,
+    "dup": 0.03,
+    "kb": 0.35,
+    "misread": 0.02,
+    "plan": [
+     0.6,
+     0.3,
+     0.07,
+     0.03
+    ],
+    "rash": 0.03
+   },
+   "v2 fewer calls": {
+    "badarg": 0.02,
+    "dup": 0.03,
+    "kb": 0.1,
+    "misread": 0.02,
+    "plan": [
+     0.45,
+     0.15,
+     0.25,
+     0.15
+    ],
+    "rash": 0.1
+   }
+  },
+  "mc_reps": 200000,
+  "numpy": "1.26.4",
+  "p_elig": 0.7,
+  "plans": [
+   "lookup>policy",
+   "policy>lookup",
+   "lookup only",
+   "no reads"
+  ],
+  "scorers": [
+   "outcome",
+   "strict",
+   "unordered",
+   "superset",
+   "outcome+superset"
+  ]
+ },
+ "deltas": {
+  "outcome": -0.13320000000000098,
+  "outcome+superset": -0.30720000000000036,
+  "strict": -0.010647996000000048,
+  "superset": -0.30226800000000087,
+  "truly valid": -0.31208516280000065,
+  "unordered": -0.057539574000000204
+ },
+ "reseed_z": [
+  0.9558798872880362,
+  0.17977249679583882,
+  0.15653574857751296,
+  -0.02935823716909396
+ ]
+}
