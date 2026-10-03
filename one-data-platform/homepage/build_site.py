@@ -189,6 +189,7 @@ TASK_OF = {
     "golden-set-builder": "evaluate",
     "prompt-regression-ci": "evaluate",
     "model-migration-diff": "evaluate",
+    "agent-trajectory-eval": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

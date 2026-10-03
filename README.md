@@ -282,6 +282,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Prompt Registry & Versioning](llmops-genai-platform/prompt-registry/) | Prompts get pasted into random .py files and Slack threads - no history, no diff, no rollback. |
 | [RAG Evaluation Harness](llmops-genai-platform/rag-eval/) | You changed the chunking or swapped the embedding model. Did RAG get better or worse? |
 | [Semantic Response Cache](llmops-genai-platform/semantic-cache/) | Stop paying for repeated similar queries - reuse an answer when the meaning matches. |
+| [The Answer Was Right and the Path Was Not, and Strict Reference Match Reported -1 for a -31 Change](llmops-genai-platform/agent-trajectory-eval/) | Our agent eval said the refund bot got the answer right, and it had sent the refund to the wrong order. |
 | [Token & Cost Estimator](llmops-genai-platform/token-cost-estimator/) | Price an LLM feature before you build it - not after the invoice lands. |
 
 
