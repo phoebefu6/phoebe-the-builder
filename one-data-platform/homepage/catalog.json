@@ -2658,5 +2658,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/citation-verifier",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/citation-verifier/demo.ipynb"
+  },
+  {
+    "day": 191,
+    "slug": "rag-staleness",
+    "name": "It Answered From Last Quarter's Document - the Index Read 89% Fresh While 27% of Answers Quoted a Changed Fact, and the Dashboard Ranked a Dearer, Worse Reindex Schedule Above a Cheaper, Better One",
+    "task": "observe",
+    "task_title": "Know when it breaks",
+    "problem": "The dashboard said the index was 89% fresh, and 27% of the answers it served quoted a fact the source had already changed.",
+    "status": "done",
+    "date": "2026-10-05",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/rag-staleness",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/rag-staleness/demo.ipynb"
   }
 ]
