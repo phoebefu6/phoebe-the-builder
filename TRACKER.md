@@ -238,3 +238,4 @@
 - [x] Day 187 — prompt-regression-ci: A Prompt CI Gate Is a Test With a False-Alarm Rate, and Zero Tolerance Is Always Red (llmops-genai-platform/) (2026-09-30)
 - [x] Day 188 — model-migration-diff: An Unchanged Score Is a Net, and McNemar Is Quieter on a Swap Than on No Change (llmops-genai-platform/) (2026-10-02)
 - [x] Day 189 — agent-trajectory-eval: The Answer Was Right and the Path Was Not, and Strict Reference Match Reported -1 for a -31 Change (llmops-genai-platform/) (2026-10-03)
+- [x] Day 190 — citation-verifier: The Citation Does Not Say That - Citation Coverage Rose 24 Points While the Cited Passages Supported 8 Fewer Claims (llmops-genai-platform/) (2026-10-05)

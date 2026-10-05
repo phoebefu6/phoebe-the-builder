@@ -2644,5 +2644,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/agent-trajectory-eval",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/agent-trajectory-eval/demo.ipynb"
+  },
+  {
+    "day": 190,
+    "slug": "citation-verifier",
+    "name": "The Citation Does Not Say That - Citation Coverage Rose 24 Points While the Cited Passages Supported 8 Fewer Claims",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "We told the model to cite every sentence, citation coverage went from 74% to 98%, and the passages it cited supported 8 points fewer of its claims.",
+    "status": "done",
+    "date": "2026-10-05",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/citation-verifier",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/citation-verifier/demo.ipynb"
   }
 ]
