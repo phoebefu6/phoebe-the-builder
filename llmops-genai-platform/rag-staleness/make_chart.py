@@ -54,8 +54,7 @@ ax.set_yticklabels([f"{n}\n{P[n]['reindex_per_day']:.0f} reindex/day" for n in n
 ax.set_xlim(0, 54)
 ax.set_ylim(-0.75, 2.78)
 ax.set_xlabel("stale share (%)", color=INK)
-ax.set_title("A. Dashboard ranks weekly first, answers rank it last", loc="left", color=INK, fontsize=12,
-             weight="bold")
+ax.set_title("A. Dashboard ranks weekly first, answers last", loc="left", color=INK, fontsize=12, weight="bold")
 texts.append(ax.text(16, 2.52, "grey: docs not fresh (the dashboard)", fontsize=8.6, color=MUTED))
 texts.append(ax.text(16, 2.34, "colour: answers from a changed fact", fontsize=8.6, color=INK))
 rt = R["ratios"]
@@ -148,7 +147,10 @@ fig.canvas.draw()
 rend = fig.canvas.get_renderer()
 # Axes titles join the check: Day 191 shipped panel A's title running into panel B's, which the text-only
 # check could not see. A title may leave its own axes (it sits above it) but may not overlap any other text.
-titles = [ax.title for ax in axes]
+# `ax.title` is only the CENTRE title artist; loc="left"/"right" titles live in _left_title/_right_title, so a
+# check on ax.title alone measures an empty string and passes - the first version of this check did exactly that.
+titles = [t for ax in axes for t in (ax.title, ax._left_title, ax._right_title) if t.get_text()]
+assert len(titles) == len(axes), "a panel title was not found by the geometry check"
 boxes = [t.get_window_extent(rend) for t in texts]
 tboxes = [t.get_window_extent(rend) for t in titles]
 for i in range(len(tboxes)):
