@@ -1,0 +1,463 @@
+{
+ "archive": {
+  "0": {
+   "answer_staleness": 0.2728127138034505,
+   "docs": 200,
+   "hash_freshness": 0.8865761986511027
+  },
+  "300": {
+   "answer_staleness": 0.2728127138034505,
+   "docs": 500,
+   "hash_freshness": 0.9306348380495714
+  },
+  "1000": {
+   "answer_staleness": 0.2728127138034505,
+   "docs": 1200,
+   "hash_freshness": 0.947768753371198
+  }
+ },
+ "audit": {
+  "docs": 0.0609518915494628,
+  "queries": 0.2728127138034505
+ },
+ "calibration": [
+  {
+   "exact": 0.5880822775106503,
+   "inside_99": true,
+   "mc": 0.58874,
+   "policy": "v1 monthly full",
+   "quantity": "hot hash_stale"
+  },
+  {
+   "exact": 0.4372412584896611,
+   "inside_99": true,
+   "mc": 0.43753,
+   "policy": "v1 monthly full",
+   "quantity": "hot fact_stale"
+  },
+  {
+   "exact": 0.270125678548888,
+   "inside_99": true,
+   "mc": 0.27112,
+   "policy": "v1 monthly full",
+   "quantity": "warm hash_stale"
+  },
+  {
+   "exact": 0.1495939317213677,
+   "inside_99": true,
+   "mc": 0.149825,
+   "policy": "v1 monthly full",
+   "quantity": "warm fact_stale"
+  },
+  {
+   "exact": 0.0399927356847829,
+   "inside_99": true,
+   "mc": 0.039485,
+   "policy": "v1 monthly full",
+   "quantity": "cold hash_stale"
+  },
+  {
+   "exact": 0.012228056374274932,
+   "inside_99": true,
+   "mc": 0.01194,
+   "policy": "v1 monthly full",
+   "quantity": "cold fact_stale"
+  },
+  {
+   "exact": 0.2728127138034505,
+   "inside_99": true,
+   "mc": 0.271735,
+   "policy": "v1 monthly full",
+   "quantity": "answer_staleness"
+  },
+  {
+   "exact": 0.03487891585631864,
+   "inside_99": true,
+   "mc": 0.035295,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "hot hash_stale"
+  },
+  {
+   "exact": 0.021125700949273907,
+   "inside_99": true,
+   "mc": 0.02133,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "hot fact_stale"
+  },
+  {
+   "exact": 0.07389693622170501,
+   "inside_99": true,
+   "mc": 0.07407,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "warm hash_stale"
+  },
+  {
+   "exact": 0.03789996186831068,
+   "inside_99": true,
+   "mc": 0.038185,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "warm fact_stale"
+  },
+  {
+   "exact": 0.11374950731309408,
+   "inside_99": true,
+   "mc": 0.114015,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "cold hash_stale"
+  },
+  {
+   "exact": 0.036090929489803636,
+   "inside_99": true,
+   "mc": 0.035945,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "cold fact_stale"
+  },
+  {
+   "exact": 0.029241476552016237,
+   "inside_99": true,
+   "mc": 0.028865,
+   "policy": "v2b tiered 1/7/90",
+   "quantity": "answer_staleness"
+  }
+ ],
+ "config": {
+  "classes": [
+   {
+    "change_every": 14.0,
+    "docs": 10,
+    "fact_share": 0.6,
+    "name": "hot",
+    "query_share": 0.5,
+    "what": "pricing, limits, policy"
+   },
+   {
+    "change_every": 45.0,
+    "docs": 40,
+    "fact_share": 0.5,
+    "name": "warm",
+    "query_share": 0.35,
+    "what": "how-to guides, release notes"
+   },
+   {
+    "change_every": 365.0,
+    "docs": 150,
+    "fact_share": 0.3,
+    "name": "cold",
+    "query_share": 0.15,
+    "what": "archive, legal, reference"
+   }
+  ],
+  "mc_reps": 200000,
+  "numpy": "1.26.4",
+  "policies": {
+   "v1 monthly full": {
+    "cold": 30.0,
+    "hot": 30.0,
+    "warm": 30.0
+   },
+   "v2a weekly full": {
+    "cold": 7.0,
+    "hot": 7.0,
+    "warm": 7.0
+   },
+   "v2b tiered 1/7/90": {
+    "cold": 90.0,
+    "hot": 1.0,
+    "warm": 7.0
+   }
+  },
+  "seed": 191
+ },
+ "cycle": [
+  {
+   "answer_staleness": 0.0,
+   "day": 0
+  },
+  {
+   "answer_staleness": 0.024966478602873356,
+   "day": 1
+  },
+  {
+   "answer_staleness": 0.04901014819074775,
+   "day": 2
+  },
+  {
+   "answer_staleness": 0.07216839752040712,
+   "day": 3
+  },
+  {
+   "answer_staleness": 0.09447706141948874,
+   "day": 4
+  },
+  {
+   "answer_staleness": 0.11597048581530678,
+   "day": 5
+  },
+  {
+   "answer_staleness": 0.136681590037384,
+   "day": 6
+  },
+  {
+   "answer_staleness": 0.1566419265080448,
+   "day": 7
+  },
+  {
+   "answer_staleness": 0.17588173793062556,
+   "day": 8
+  },
+  {
+   "answer_staleness": 0.19443001208026195,
+   "day": 9
+  },
+  {
+   "answer_staleness": 0.2123145342978109,
+   "day": 10
+  },
+  {
+   "answer_staleness": 0.22956193778324555,
+   "day": 11
+  },
+  {
+   "answer_staleness": 0.24619775178082054,
+   "day": 12
+  },
+  {
+   "answer_staleness": 0.26224644774443334,
+   "day": 13
+  },
+  {
+   "answer_staleness": 0.2777314835678975,
+   "day": 14
+  },
+  {
+   "answer_staleness": 0.29267534596129036,
+   "day": 15
+  },
+  {
+   "answer_staleness": 0.30709959105113277,
+   "day": 16
+  },
+  {
+   "answer_staleness": 0.32102488327889656,
+   "day": 17
+  },
+  {
+   "answer_staleness": 0.3344710326692104,
+   "day": 18
+  },
+  {
+   "answer_staleness": 0.3474570305361408,
+   "day": 19
+  },
+  {
+   "answer_staleness": 0.3600010836930572,
+   "day": 20
+  },
+  {
+   "answer_staleness": 0.37212064722884075,
+   "day": 21
+  },
+  {
+   "answer_staleness": 0.3838324559105653,
+   "day": 22
+  },
+  {
+   "answer_staleness": 0.3951525542702555,
+   "day": 23
+  },
+  {
+   "answer_staleness": 0.40609632543091084,
+   "day": 24
+  },
+  {
+   "answer_staleness": 0.416678518724671,
+   "day": 25
+  },
+  {
+   "answer_staleness": 0.42691327615377533,
+   "day": 26
+  },
+  {
+   "answer_staleness": 0.43681415774285154,
+   "day": 27
+  },
+  {
+   "answer_staleness": 0.44639416582902475,
+   "day": 28
+  },
+  {
+   "answer_staleness": 0.4556657683343946,
+   "day": 29
+  },
+  {
+   "answer_staleness": 0.4646409210635552,
+   "day": 30
+  }
+ ],
+ "deltas": {
+  "tiered: answer staleness": -0.24357123725143429,
+  "tiered: hash freshness": 0.011588337826919815,
+  "weekly: answer staleness": -0.1910866788558063,
+  "weekly: hash freshness": 0.08084532258133936
+ },
+ "elapsed_s": 0.14256811141967773,
+ "policies": {
+  "v1 monthly full": {
+   "answer_staleness": 0.2728127138034505,
+   "docs": 200,
+   "fact_freshness": 0.9390481084505372,
+   "hash_freshness": 0.8865761986511027,
+   "per_class": {
+    "cold": {
+     "fact_stale": 0.012228056374274932,
+     "hash_stale": 0.0399927356847829,
+     "period": 30.0
+    },
+    "hot": {
+     "fact_stale": 0.4372412584896611,
+     "hash_stale": 0.5880822775106503,
+     "period": 30.0
+    },
+    "warm": {
+     "fact_stale": 0.1495939317213677,
+     "hash_stale": 0.270125678548888,
+     "period": 30.0
+    }
+   },
+   "reindex_per_day": 6.666666666666666
+  },
+  "v2a weekly full": {
+   "answer_staleness": 0.08172603494764422,
+   "docs": 200,
+   "fact_freshness": 0.9834635683916899,
+   "hash_freshness": 0.9674215212324421,
+   "per_class": {
+    "cold": {
+     "fact_stale": 0.002871203272482248,
+     "hash_stale": 0.009528034069271385,
+     "period": 7.0
+    },
+    "hot": {
+     "fact_stale": 0.1360607356057263,
+     "hash_stale": 0.21306131942526685,
+     "period": 7.0
+    },
+    "warm": {
+     "fact_stale": 0.03789996186831068,
+     "hash_stale": 0.07389693622170501,
+     "period": 7.0
+    }
+   },
+   "reindex_per_day": 28.57142857142857
+  },
+  "v2b tiered 1/7/90": {
+   "answer_staleness": 0.029241476552016237,
+   "docs": 200,
+   "fact_freshness": 0.9642955254615214,
+   "hash_freshness": 0.8981645364780225,
+   "per_class": {
+    "cold": {
+     "fact_stale": 0.036090929489803636,
+     "hash_stale": 0.11374950731309408,
+     "period": 90.0
+    },
+    "hot": {
+     "fact_stale": 0.021125700949273907,
+     "hash_stale": 0.03487891585631864,
+     "period": 1.0
+    },
+    "warm": {
+     "fact_stale": 0.03789996186831068,
+     "hash_stale": 0.07389693622170501,
+     "period": 7.0
+    }
+   },
+   "reindex_per_day": 17.380952380952383
+  }
+ },
+ "ratios": {
+  "cost_weekly_over_tiered": 1.6438356164383559,
+  "stale_answers_weekly_over_tiered": 2.794866900864796,
+  "v1_answer_over_hash_stale": 2.4052510192659207
+ },
+ "similarity": {
+  "max_abs_gap": 0.0,
+  "n": 12,
+  "rows": [
+   {
+    "fresh_sim": 0.6,
+    "gap": 0.0,
+    "query": "Pro plan includes",
+    "stale_sim": 0.6
+   },
+   {
+    "fresh_sim": 0.8888888888888888,
+    "gap": 0.0,
+    "query": "Pro plan allows API calls per minute of",
+    "stale_sim": 0.8888888888888888
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Pro plan offers refunds within",
+    "stale_sim": 0.7142857142857143
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Pro plan stores logs for",
+    "stale_sim": 0.7142857142857143
+   },
+   {
+    "fresh_sim": 0.6,
+    "gap": 0.0,
+    "query": "Basic plan includes",
+    "stale_sim": 0.6
+   },
+   {
+    "fresh_sim": 0.8888888888888888,
+    "gap": 0.0,
+    "query": "Basic plan allows API calls per minute of",
+    "stale_sim": 0.8888888888888888
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Basic plan offers refunds within",
+    "stale_sim": 0.7142857142857143
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Basic plan stores logs for",
+    "stale_sim": 0.7142857142857143
+   },
+   {
+    "fresh_sim": 0.6,
+    "gap": 0.0,
+    "query": "Enterprise plan includes",
+    "stale_sim": 0.6
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Enterprise plan guarantees uptime of",
+    "stale_sim": 0.7142857142857143
+   },
+   {
+    "fresh_sim": 0.7777777777777778,
+    "gap": 0.0,
+    "query": "Enterprise plan responds to support tickets within",
+    "stale_sim": 0.7777777777777778
+   },
+   {
+    "fresh_sim": 0.7142857142857143,
+    "gap": 0.0,
+    "query": "Enterprise plan stores logs for",
+    "stale_sim": 0.7142857142857143
+   }
+  ],
+  "stale_at_least_as_similar": 12,
+  "stale_passed_by_gate_keeping_all_fresh": 1.0
+ }
+}

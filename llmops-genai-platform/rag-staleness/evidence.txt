@@ -1,0 +1,79 @@
+
+====================================================================================================
+0.  THE CORPUS AND THE MODEL  -  synthetic, declared
+====================================================================================================
+  hot     10 docs  edited every    14 d  fact-bearing 60%  query share 50%   lambda 0.07143/d  mu 0.04286/d   (pricing, limits, policy)
+  warm    40 docs  edited every    45 d  fact-bearing 50%  query share 35%   lambda 0.02222/d  mu 0.01111/d   (how-to guides, release notes)
+  cold   150 docs  edited every   365 d  fact-bearing 30%  query share 15%   lambda 0.00274/d  mu 0.00082/d   (archive, legal, reference)
+  stale(mu, T) = 1 - (1 - exp(-mu T)) / (mu T): a doc reindexed every T days, served at a uniform phase
+  hash_freshness: doc-weighted, any edit.  fact_freshness: doc-weighted, fact edits.  answer_staleness: query-weighted
+
+====================================================================================================
+1.  CALIBRATION  -  closed form vs raw simulation
+====================================================================================================
+  v1 monthly full    hot hash_stale       exact 0.5881   MC 0.5887   inside
+  v1 monthly full    hot fact_stale       exact 0.4372   MC 0.4375   inside
+  v1 monthly full    warm hash_stale      exact 0.2701   MC 0.2711   inside
+  v1 monthly full    warm fact_stale      exact 0.1496   MC 0.1498   inside
+  v1 monthly full    cold hash_stale      exact 0.0400   MC 0.0395   inside
+  v1 monthly full    cold fact_stale      exact 0.0122   MC 0.0119   inside
+  v1 monthly full    answer_staleness     exact 0.2728   MC 0.2717   inside
+  v2b tiered 1/7/90  hot hash_stale       exact 0.0349   MC 0.0353   inside
+  v2b tiered 1/7/90  hot fact_stale       exact 0.0211   MC 0.0213   inside
+  v2b tiered 1/7/90  warm hash_stale      exact 0.0739   MC 0.0741   inside
+  v2b tiered 1/7/90  warm fact_stale      exact 0.0379   MC 0.0382   inside
+  v2b tiered 1/7/90  cold hash_stale      exact 0.1137   MC 0.1140   inside
+  v2b tiered 1/7/90  cold fact_stale      exact 0.0361   MC 0.0359   inside
+  v2b tiered 1/7/90  answer_staleness     exact 0.0292   MC 0.0289   inside
+  14 of 14 inside their 99% Wilson interval at seed 191, 200,000 reps per cell
+
+====================================================================================================
+2.  THREE POLICIES, THREE NUMBERS  -  the dashboard ranks them one way, the user the other
+====================================================================================================
+  policy             hash fresh fact fresh answers stale reindex/day
+  v1 monthly full         88.7%      93.9%         27.3%         6.7
+  v2a weekly full         96.7%      98.3%          8.2%        28.6
+  v2b tiered 1/7/90       89.8%      96.4%          2.9%        17.4
+  v1 monthly full    per class fact-stale: hot 43.7% (T=30), warm 15.0% (T=30), cold 1.2% (T=30)
+  v2a weekly full    per class fact-stale: hot 13.6% (T=7), warm 3.8% (T=7), cold 0.3% (T=7)
+  v2b tiered 1/7/90  per class fact-stale: hot 2.1% (T=1), warm 3.8% (T=7), cold 3.6% (T=90)
+  weekly: hash freshness         +8.1 pts
+  weekly: answer staleness      -19.1 pts
+  tiered: hash freshness         +1.2 pts
+  tiered: answer staleness      -24.4 pts
+  weekly full serves 2.8x the stale answers of tiered at 1.6x the reindex cost, and scores higher on index freshness
+
+====================================================================================================
+3.  INSIDE THE CYCLE  -  the average is not what the user on day 29 gets
+====================================================================================================
+  day  0: 0.0% of answers stale
+  day  1: 2.5% of answers stale
+  day  7: 15.7% of answers stale
+  day 14: 27.8% of answers stale
+  day 21: 37.2% of answers stale
+  day 29: 45.6% of answers stale
+  day 30: 46.5% of answers stale
+  phase-averaged (what a monthly metric reports): 27.3%
+
+====================================================================================================
+4.  ADDING DOCUMENTS NOBODY ASKS ABOUT  -  the metric improves, the answers do not
+====================================================================================================
+  +   0 archive docs ( 200 total): hash freshness 88.7%   answers stale 27.3%
+  + 300 archive docs ( 500 total): hash freshness 93.1%   answers stale 27.3%
+  +1000 archive docs (1200 total): hash freshness 94.8%   answers stale 27.3%
+
+====================================================================================================
+5.  THE AUDIT SAMPLE  -  two unbiased estimators of two different numbers
+====================================================================================================
+  sample documents uniformly:        expected stale share 6.1%  (= 1 - fact freshness)
+  sample from the query log:         expected stale share 27.3%  (= answer staleness)
+
+====================================================================================================
+6.  NEGATIVE RESULT  -  retrieval similarity cannot see staleness
+====================================================================================================
+  Pro plan includes                                    stale 0.600  fresh 0.600  gap +0.000
+  Pro plan allows API calls per minute of              stale 0.889  fresh 0.889  gap +0.000
+  Pro plan offers refunds within                       stale 0.714  fresh 0.714  gap +0.000
+  Pro plan stores logs for                             stale 0.714  fresh 0.714  gap +0.000
+  ... 12 facts; stale chunk at least as similar as the fresh one in 12 of 12; max |gap| 0.000
+  a similarity gate that keeps every fresh chunk passes 100% of stale chunks: the query asks about the attribute and never carries the value
