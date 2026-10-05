@@ -1,0 +1,96 @@
+
+====================================================================================================
+0.  THE CORPUS AND THE GENERATOR  -  synthetic, declared
+====================================================================================================
+  [ 1] (billing ) Basic plan costs $12 per month when billed annually.   neighbour -> [2]
+  [ 2] (billing ) Pro plan costs $29 per month when billed annually.   neighbour -> [1]
+  [ 3] (billing ) Basic plan includes 2 seats.   neighbour -> [4]
+  [ 4] (billing ) Pro plan includes 5 seats.   neighbour -> [3]
+  [ 5] (refunds ) Basic plan offers refunds within 14 days for first-time purchases.   neighbour -> [6]
+  [ 6] (refunds ) Pro plan offers refunds within 30 days for first-time purchases.   neighbour -> [7]
+  [ 7] (refunds ) Enterprise plan offers refunds within 60 days under the master agreement.   neighbour -> [8]
+  [ 8] (refunds ) Add-on packs offers refunds within 7 days if unused.   neighbour -> [5]
+  [ 9] (support ) Basic plan gets a support response within 48 hours on business days.   neighbour -> [10]
+  [10] (support ) Pro plan gets a support response within 8 hours on business days.   neighbour -> [11]
+  [11] (support ) Enterprise plan gets a support response within 1 hour around the clock.   neighbour -> [12]
+  [12] (support ) Add-on packs gets a support response within 48 hours on business days.   neighbour -> [9]
+  a claim = one true fact, one edit, one citation choice, verbatim or paraphrased
+  SUPPORTED = the cited passage states the same (entity, attribute, value, scope, polarity)
+  v1 cites when sure   edit {'none': 0.8, 'polarity': 0.04, 'scope': 0.05, 'value_near': 0.04, 'value_far': 0.02, 'entity': 0.05}
+                       cite {'source': 0.62, 'neighbour': 0.08, 'unrelated': 0.04, 'none': 0.26}  paraphrase 0.35  (576 enumerated claims, mass 1.000000000000)
+  v2 always cite       edit {'none': 0.8, 'polarity': 0.04, 'scope': 0.05, 'value_near': 0.04, 'value_far': 0.02, 'entity': 0.05}
+                       cite {'source': 0.52, 'neighbour': 0.32, 'unrelated': 0.14, 'none': 0.02}  paraphrase 0.35  (576 enumerated claims, mass 1.000000000000)
+  lexical threshold tau = 0.4 (content-word coverage of the claim in the passage); the sweep below varies it
+
+====================================================================================================
+1.  CALIBRATION  -  exact enumeration vs raw simulation
+====================================================================================================
+  v1 cites when sure   supported                        exact 0.4984   MC 0.4968   inside
+  v1 cites when sure   has_citation                     exact 0.7400   MC 0.7382   inside
+  v1 cites when sure   context_lexical                  exact 0.9800   MC 0.9803   inside
+  v1 cites when sure   cited_lexical                    exact 0.6875   MC 0.6855   inside
+  v1 cites when sure   cited_lexical+numbers            exact 0.5922   MC 0.5902   inside
+  v1 cites when sure   cited_lexical+numbers+negation   exact 0.5671   MC 0.5649   inside
+  v2 always cite       supported                        exact 0.4191   MC 0.4180   inside
+  v2 always cite       has_citation                     exact 0.9800   MC 0.9801   inside
+  v2 always cite       context_lexical                  exact 0.9800   MC 0.9803   inside
+  v2 always cite       cited_lexical                    exact 0.7996   MC 0.7990   inside
+  v2 always cite       cited_lexical+numbers            exact 0.5254   MC 0.5242   inside
+  v2 always cite       cited_lexical+numbers+negation   exact 0.5035   MC 0.5025   inside
+  12 of 12 inside their 99% Wilson interval at seed 190
+
+====================================================================================================
+2.  WHAT EACH CHECKER REPORTS, AND HOW OFTEN IT IS WRONG
+====================================================================================================
+
+  V1 CITES WHEN SURE   supported by its citation 49.8%   claim true 80.8%   carries a citation 74.0%
+    checker                           reports  passes bad  fails good  bad among passes
+    has_citation                        74.0%       48.2%        0.0%             32.6%
+    context_lexical                     98.0%       96.0%        0.0%             49.1%
+    cited_lexical                       68.8%       37.7%        0.0%             27.5%
+    cited_lexical+numbers               59.2%       18.7%        0.0%             15.8%
+    cited_lexical+numbers+negation      56.7%       13.7%        0.0%             12.1%
+    what the sharpest checker still passes: scope 3.1%, entity 2.7%, misattributed 0.8%, value_near 0.3%
+
+  V2 ALWAYS CITE   supported by its citation 41.9%   claim true 80.7%   carries a citation 98.0%
+    checker                           reports  passes bad  fails good  bad among passes
+    has_citation                        98.0%       96.6%        0.0%             57.2%
+    context_lexical                     98.0%       96.6%        0.0%             57.2%
+    cited_lexical                       80.0%       65.5%        0.0%             47.6%
+    cited_lexical+numbers               52.5%       18.3%        0.0%             20.2%
+    cited_lexical+numbers+negation      50.4%       14.5%        0.0%             16.8%
+    what the sharpest checker still passes: scope 2.7%, misattributed 2.5%, entity 2.2%, value_near 1.0%
+
+====================================================================================================
+3.  THE INSTRUCTION CHANGE  -  'always cite your sources', as each checker sees it
+====================================================================================================
+  truly supported                    -7.9 pts
+  has_citation                      +24.0 pts
+  context_lexical                    +0.0 pts
+  cited_lexical                     +11.2 pts
+  cited_lexical+numbers              -6.7 pts
+  cited_lexical+numbers+negation     -6.4 pts
+  citations 74% -> 98%; true claims unchanged at 80.8%. The new citations
+  point at the neighbouring passage (same attribute, other plan), which shares most of the claim's words.
+
+====================================================================================================
+4.  THE THRESHOLD CANNOT SEPARATE A POLARITY FLIP FROM AN HONEST PARAPHRASE
+====================================================================================================
+    tau   fails a supported paraphrase   passes a polarity flip
+   0.30                           0.0%                   100.0%
+   0.35                           0.0%                   100.0%
+   0.40                           0.0%                   100.0%
+   0.45                           0.0%                   100.0%
+   0.50                           0.0%                   100.0%
+   0.55                          16.6%                    94.2%
+   0.60                          16.6%                    94.2%
+   0.65                          16.6%                    94.2%
+   0.70                          16.6%                    94.2%
+   0.75                          16.6%                    94.2%
+   0.80                          16.6%                    94.2%
+   0.85                          58.1%                    79.6%
+   0.90                         100.0%                    65.0%
+   0.95                         100.0%                    65.0%
+   1.00                         100.0%                    65.0%
+  a verbatim flip ('does not include' for 'includes') has coverage 1.00: the stopword list drops 'not', so it is lexically identical to its source.
+  across every (flip, supported paraphrase) pair: flip scores above 78.8%, level 7.3%, below 13.9%.

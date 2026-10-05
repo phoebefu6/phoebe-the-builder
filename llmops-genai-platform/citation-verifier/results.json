@@ -1,0 +1,392 @@
+{
+ "calibration": [
+  {
+   "exact": 0.49839999999999995,
+   "inside_99": true,
+   "mc": 0.496835,
+   "model": "v1 cites when sure",
+   "quantity": "supported"
+  },
+  {
+   "exact": 0.74,
+   "inside_99": true,
+   "mc": 0.73817,
+   "model": "v1 cites when sure",
+   "quantity": "has_citation"
+  },
+  {
+   "exact": 0.98,
+   "inside_99": true,
+   "mc": 0.98028,
+   "model": "v1 cites when sure",
+   "quantity": "context_lexical"
+  },
+  {
+   "exact": 0.6875216666666666,
+   "inside_99": true,
+   "mc": 0.6855,
+   "model": "v1 cites when sure",
+   "quantity": "cited_lexical"
+  },
+  {
+   "exact": 0.5921516666666666,
+   "inside_99": true,
+   "mc": 0.590175,
+   "model": "v1 cites when sure",
+   "quantity": "cited_lexical+numbers"
+  },
+  {
+   "exact": 0.567085,
+   "inside_99": true,
+   "mc": 0.564895,
+   "model": "v1 cites when sure",
+   "quantity": "cited_lexical+numbers+negation"
+  },
+  {
+   "exact": 0.4190666666666667,
+   "inside_99": true,
+   "mc": 0.41802,
+   "model": "v2 always cite",
+   "quantity": "supported"
+  },
+  {
+   "exact": 0.98,
+   "inside_99": true,
+   "mc": 0.980145,
+   "model": "v2 always cite",
+   "quantity": "has_citation"
+  },
+  {
+   "exact": 0.98,
+   "inside_99": true,
+   "mc": 0.98028,
+   "model": "v2 always cite",
+   "quantity": "context_lexical"
+  },
+  {
+   "exact": 0.799555,
+   "inside_99": true,
+   "mc": 0.798975,
+   "model": "v2 always cite",
+   "quantity": "cited_lexical"
+  },
+  {
+   "exact": 0.5253899999999999,
+   "inside_99": true,
+   "mc": 0.524195,
+   "model": "v2 always cite",
+   "quantity": "cited_lexical+numbers"
+  },
+  {
+   "exact": 0.5035233333333334,
+   "inside_99": true,
+   "mc": 0.50246,
+   "model": "v2 always cite",
+   "quantity": "cited_lexical+numbers+negation"
+  }
+ ],
+ "config": {
+  "checkers": [
+   "has_citation",
+   "context_lexical",
+   "cited_lexical",
+   "cited_lexical+numbers",
+   "cited_lexical+numbers+negation"
+  ],
+  "cites": [
+   "source",
+   "neighbour",
+   "unrelated",
+   "none"
+  ],
+  "edits": [
+   "none",
+   "polarity",
+   "scope",
+   "value_near",
+   "value_far",
+   "entity"
+  ],
+  "mc_reps": 200000,
+  "models": {
+   "v1 cites when sure": {
+    "cite": [
+     0.62,
+     0.08,
+     0.04,
+     0.26
+    ],
+    "edit": [
+     0.8,
+     0.04,
+     0.05,
+     0.04,
+     0.02,
+     0.05
+    ],
+    "para": 0.35
+   },
+   "v2 always cite": {
+    "cite": [
+     0.52,
+     0.32,
+     0.14,
+     0.02
+    ],
+    "edit": [
+     0.8,
+     0.04,
+     0.05,
+     0.04,
+     0.02,
+     0.05
+    ],
+    "para": 0.35
+   }
+  },
+  "numpy": "1.26.4",
+  "tau": 0.4
+ },
+ "deltas": {
+  "cited_lexical": 0.11203333333333343,
+  "cited_lexical+numbers": -0.06676166666666672,
+  "cited_lexical+numbers+negation": -0.06356166666666652,
+  "context_lexical": 0.0,
+  "has_citation": 0.24,
+  "truly supported": -0.07933333333333326
+ },
+ "elapsed_s": 0.3834857940673828,
+ "models": {
+  "v1 cites when sure": {
+   "p_cited": 0.7399999999999999,
+   "p_supported": 0.49839999999999995,
+   "p_true": 0.8075,
+   "scorers": {
+    "cited_lexical": {
+     "bad_among_passes": 0.2750773915003891,
+     "false_fail": 0.0,
+     "false_pass": 0.37703681552365764,
+     "passed_bad_by_class": {
+      "entity": 0.030041666666666675,
+      "misattributed": 0.05858333333333335,
+      "polarity": 0.027586666666666666,
+      "scope": 0.03576666666666666,
+      "value_far": 0.013069999999999998,
+      "value_near": 0.024073333333333332
+     },
+     "reported": 0.6875216666666666
+    },
+    "cited_lexical+numbers": {
+     "bad_among_passes": 0.1583237402579857,
+     "false_fail": 0.0,
+     "false_pass": 0.18690523657628919,
+     "passed_bad_by_class": {
+      "entity": 0.026608333333333335,
+      "misattributed": 0.008183333333333334,
+      "polarity": 0.025066666666666657,
+      "scope": 0.03133333333333333,
+      "value_near": 0.00256
+     },
+     "reported": 0.5921516666666666
+    },
+    "cited_lexical+numbers+negation": {
+     "bad_among_passes": 0.12111940890695398,
+     "false_fail": 0.0,
+     "false_pass": 0.13693181818181815,
+     "passed_bad_by_class": {
+      "entity": 0.026608333333333335,
+      "misattributed": 0.008183333333333334,
+      "scope": 0.03133333333333333,
+      "value_near": 0.00256
+     },
+     "reported": 0.567085
+    },
+    "context_lexical": {
+     "bad_among_passes": 0.4914285714285715,
+     "false_fail": 0.0,
+     "false_pass": 0.960127591706539,
+     "passed_bad_by_class": {
+      "entity": 0.04583333333333333,
+      "misattributed": 0.09915000000000003,
+      "polarity": 0.03999999999999999,
+      "scope": 0.049999999999999996,
+      "uncited true": 0.20995000000000005,
+      "value_near": 0.03666666666666665
+     },
+     "reported": 0.98
+    },
+    "has_citation": {
+     "bad_among_passes": 0.3264864864864865,
+     "false_fail": 0.0,
+     "false_pass": 0.48165869218500795,
+     "passed_bad_by_class": {
+      "entity": 0.03391666666666667,
+      "misattributed": 0.09915000000000003,
+      "polarity": 0.029599999999999998,
+      "scope": 0.037000000000000005,
+      "value_far": 0.014799999999999999,
+      "value_near": 0.027133333333333332
+     },
+     "reported": 0.74
+    }
+   }
+  },
+  "v2 always cite": {
+   "p_cited": 0.9799999999999995,
+   "p_supported": 0.4190666666666667,
+   "p_true": 0.8074999999999994,
+   "scorers": {
+    "cited_lexical": {
+     "bad_among_passes": 0.47587512220339234,
+     "false_fail": 0.0,
+     "false_pass": 0.6549604085379847,
+     "passed_bad_by_class": {
+      "entity": 0.036050000000000006,
+      "misattributed": 0.22390000000000004,
+      "polarity": 0.03183333333333334,
+      "scope": 0.04450833333333332,
+      "value_far": 0.015310000000000002,
+      "value_near": 0.02888666666666667
+     },
+     "reported": 0.799555
+    },
+    "cited_lexical+numbers": {
+     "bad_among_passes": 0.20237030269577524,
+     "false_fail": 0.0,
+     "false_pass": 0.1830215744778517,
+     "passed_bad_by_class": {
+      "entity": 0.022316666666666672,
+      "misattributed": 0.02456666666666667,
+      "polarity": 0.021866666666666666,
+      "scope": 0.02733333333333334,
+      "value_near": 0.01024
+     },
+     "reported": 0.5253899999999999
+    },
+    "cited_lexical+numbers+negation": {
+     "bad_among_passes": 0.16773138616548716,
+     "false_fail": 0.0,
+     "false_pass": 0.14538099609823268,
+     "passed_bad_by_class": {
+      "entity": 0.022316666666666672,
+      "misattributed": 0.02456666666666667,
+      "scope": 0.02733333333333334,
+      "value_near": 0.01024
+     },
+     "reported": 0.5035233333333334
+    },
+    "context_lexical": {
+     "bad_among_passes": 0.5723809523809525,
+     "false_fail": 0.0,
+     "false_pass": 0.9655726417259582,
+     "passed_bad_by_class": {
+      "entity": 0.04583333333333331,
+      "misattributed": 0.3722833333333334,
+      "polarity": 0.04000000000000001,
+      "scope": 0.04999999999999997,
+      "uncited true": 0.016150000000000005,
+      "value_near": 0.036666666666666674
+     },
+     "reported": 0.98
+    },
+    "has_citation": {
+     "bad_among_passes": 0.5723809523809524,
+     "false_fail": 0.0,
+     "false_pass": 0.965572641725958,
+     "passed_bad_by_class": {
+      "entity": 0.044916666666666646,
+      "misattributed": 0.3722833333333334,
+      "polarity": 0.03920000000000001,
+      "scope": 0.048999999999999974,
+      "value_far": 0.019600000000000006,
+      "value_near": 0.035933333333333345
+     },
+     "reported": 0.98
+    }
+   }
+  }
+ },
+ "order": {
+  "flip_above": 0.7878745318352082,
+  "flip_below": 0.13913857677902397,
+  "tied": 0.07298689138576786,
+  "verbatim_flip_coverage_min": 1.0
+ },
+ "sweep": [
+  {
+   "fails_supported_paraphrase": 0.0,
+   "passes_polarity_flip": 1.0,
+   "tau": 0.3
+  },
+  {
+   "fails_supported_paraphrase": 0.0,
+   "passes_polarity_flip": 1.0,
+   "tau": 0.35
+  },
+  {
+   "fails_supported_paraphrase": 0.0,
+   "passes_polarity_flip": 1.0,
+   "tau": 0.4
+  },
+  {
+   "fails_supported_paraphrase": 0.0,
+   "passes_polarity_flip": 1.0,
+   "tau": 0.45
+  },
+  {
+   "fails_supported_paraphrase": 0.0,
+   "passes_polarity_flip": 1.0,
+   "tau": 0.5
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.55
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.6
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.65
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.7
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.75
+  },
+  {
+   "fails_supported_paraphrase": 0.16586409844836802,
+   "passes_polarity_flip": 0.9416666666666667,
+   "tau": 0.8
+  },
+  {
+   "fails_supported_paraphrase": 0.5805243445692883,
+   "passes_polarity_flip": 0.7958333333333335,
+   "tau": 0.85
+  },
+  {
+   "fails_supported_paraphrase": 1.0,
+   "passes_polarity_flip": 0.6500000000000002,
+   "tau": 0.9
+  },
+  {
+   "fails_supported_paraphrase": 1.0,
+   "passes_polarity_flip": 0.6500000000000002,
+   "tau": 0.95
+  },
+  {
+   "fails_supported_paraphrase": 1.0,
+   "passes_polarity_flip": 0.6500000000000002,
+   "tau": 1.0
+  }
+ ]
+}
