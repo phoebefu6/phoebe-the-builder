@@ -1,0 +1,116 @@
+
+====================================================================================================
+0.  THE LOG AND THE READING MODEL  -  synthetic, declared
+====================================================================================================
+  2,000 queries, 30 candidate chunks each of 120-520 tokens; the answer needs 1 fact 60%, 2 facts 30%, 3 facts 10%
+  a needed fact's chunk sits at retriever rank r with P(r) ~ 0.82^r, and is missed entirely 6%
+    hit@1  0.170
+    hit@3  0.423
+    hit@5  0.593
+    hit@10 0.813
+    hit@30 0.940
+  read(u, L): first / middle / last = (0.76, 0.54, 0.66) at L = 4,000 tokens, minus 0.025 per 1,000 tokens beyond; comply(d) = 0.98 - 0.03 per 1,000 tokens between the instruction and the question
+    L =  2,000: read first 0.810  middle 0.590  last 0.710   comply (instruction at top, d ~ L) 0.927
+    L =  4,000: read first 0.760  middle 0.540  last 0.660   comply (instruction at top, d ~ L) 0.867
+    L =  8,000: read first 0.660  middle 0.440  last 0.560   comply (instruction at top, d ~ L) 0.747
+    L = 12,000: read first 0.560  middle 0.340  last 0.460   comply (instruction at top, d ~ L) 0.627
+
+====================================================================================================
+1.  CALIBRATION  -  exact expectation vs raw Bernoulli simulation
+====================================================================================================
+  v1 rank, 4k              effective_recall  exact 0.5331   MC 0.5321   inside
+  v1 rank, 4k              answer_rate       exact 0.3713   MC 0.3715   inside
+  v2 rank, 12k             effective_recall  exact 0.4899   MC 0.4904   inside
+  v2 rank, 12k             answer_rate       exact 0.2657   MC 0.2656   inside
+  v3 reorder, 4k           effective_recall  exact 0.5409   MC 0.5413   inside
+  v3 reorder, 4k           answer_rate       exact 0.3781   MC 0.3785   inside
+  v4 reorder+repeat, 4k    effective_recall  exact 0.5316   MC 0.5314   inside
+  v4 reorder+repeat, 4k    answer_rate       exact 0.4165   MC 0.4170   inside
+  8 of 8 inside their 99% Wilson interval at seed 192, 200 replicates per query
+
+====================================================================================================
+2.  FOUR POLICIES, THREE NUMBERS  -  the dashboard ranks the big window first, the user ranks it last
+====================================================================================================
+  policy                   context recall effective recall answer rate  comply  tokens chunks
+  v1 rank, 4k                       83.0%            53.3%       37.1%   86.9%    3943   12.0
+  v2 rank, 12k                      92.9%            49.0%       26.6%   69.2%    9842   30.0
+  v3 reorder, 4k                    83.0%            54.1%       37.8%   86.9%    3943   12.0
+  v4 reorder+repeat, 4k             81.6%            53.2%       41.6%   98.0%    3941   11.4
+  12k window: context recall         +9.9 pts
+  12k window: answer rate           -10.6 pts
+  reorder: context recall            +0.0 pts
+  reorder: answer rate               +0.7 pts
+  reorder+repeat: context recall     -1.4 pts
+  reorder+repeat: answer rate        +4.5 pts
+  by context recall the order is: v2 rank, 12k > v1 rank, 4k > v3 reorder, 4k > v4 reorder+repeat, 4k
+  by answer rate the order is:    v4 reorder+repeat, 4k > v3 reorder, 4k > v1 rank, 4k > v2 rank, 12k
+
+====================================================================================================
+3.  WHERE THE ANSWERS WENT  -  three failure classes, and the dashboard sees one of them
+====================================================================================================
+  policy                   retrieval miss  present, unread instruction ignored   (sum = 1 - answer rate)
+  v1 rank, 4k                       23.4%            33.9%                5.6%
+  v2 rank, 12k                      10.2%            51.4%               11.8%
+  v3 reorder, 4k                    23.4%            33.1%                5.7%
+  v4 reorder+repeat, 4k             25.3%            32.2%                0.8%
+  v1: the largest failure class is a fact that WAS in the window (33.9% of queries); context recall counts it as a success
+  v2: the big window turns 13.1% of retrieval misses into 17.5% more unread and 6.2% more ignored
+
+====================================================================================================
+4.  THE BUDGET SWEEP  -  context recall is monotone in the budget; the answer rate is not
+====================================================================================================
+  rank, top
+    budget  1,000: context recall 34.0%  answer rate 17.0%  comply 95.9%  tokens 945
+    budget  1,500: context recall 50.0%  answer rate 25.0%  comply 94.4%  tokens 1446
+    budget  2,000: context recall 59.9%  answer rate 29.1%  comply 92.9%  tokens 1944
+    budget  3,000: context recall 74.2%  answer rate 35.0%  comply 89.9%  tokens 2944
+    budget  4,000: context recall 83.0%  answer rate 37.1%  comply 86.9%  tokens 3943
+    budget  5,000: context recall 88.1%  answer rate 37.0%  comply 83.9%  tokens 4940
+    budget  6,000: context recall 90.2%  answer rate 35.3%  comply 80.9%  tokens 5937
+    budget  8,000: context recall 92.4%  answer rate 31.1%  comply 75.0%  tokens 7919
+    budget 10,000: context recall 92.8%  answer rate 27.1%  comply 69.9%  tokens 9593
+    budget 12,000: context recall 92.9%  answer rate 26.6%  comply 69.2%  tokens 9842
+    answer rate peaks at 4,000 tokens (37.1%); context recall never falls
+  reorder, both
+    budget  1,000: context recall 26.8%  answer rate 14.1%  comply 98.0%  tokens 945
+    budget  1,500: context recall 44.9%  answer rate 23.5%  comply 98.0%  tokens 1447
+    budget  2,000: context recall 56.1%  answer rate 29.2%  comply 98.0%  tokens 1947
+    budget  3,000: context recall 72.0%  answer rate 37.3%  comply 98.0%  tokens 2944
+    budget  4,000: context recall 81.6%  answer rate 41.6%  comply 98.0%  tokens 3941
+    budget  5,000: context recall 87.2%  answer rate 43.4%  comply 98.0%  tokens 4939
+    budget  6,000: context recall 90.0%  answer rate 43.4%  comply 98.0%  tokens 5939
+    budget  8,000: context recall 92.3%  answer rate 40.9%  comply 98.0%  tokens 7921
+    budget 10,000: context recall 92.8%  answer rate 37.9%  comply 98.0%  tokens 9684
+    budget 12,000: context recall 92.9%  answer rate 37.3%  comply 98.0%  tokens 10022
+    answer rate peaks at 5,000 tokens (43.4%); context recall never falls
+  every candidate fits by ~9842 tokens, so 12k and larger are the same window
+
+====================================================================================================
+5.  SAME CHUNKS, DIFFERENT ORDER  -  the retrieval log cannot tell v1 from v3
+====================================================================================================
+  identical kept sets on all 2,000 queries: True;  context recall gap +0.0000;  tokens gap +0.0
+  gold chunks in the middle third: 24.2% (rank order) -> 12.8% (reorder)
+  answer rate gap +0.7 pts - the published mitigation is nearly a wash here, and the next section says why
+
+====================================================================================================
+6.  BY RETRIEVER RANK  -  reorder helps rank 3+, and sends rank 2 to the far end
+====================================================================================================
+  rank     n    v1 read  v3 read  v2 read   (P(kept and read) for a needed fact at this rank)
+     1   522      0.761    0.761    0.614
+     2   390      0.694    0.661    0.587
+     3   330      0.641    0.693    0.564
+     4   249      0.598    0.614    0.539
+     5   214      0.568    0.639    0.518
+     6   172      0.550    0.577    0.501
+     7   140      0.543    0.598    0.483
+     8   116      0.548    0.553    0.463
+     9   101      0.561    0.562    0.449
+    10    99      0.569    0.527    0.438
+  rank 2 is read 0.694 second from the top under v1 and 0.661 at the far end under v3; 39% of needed facts sit at rank 1-2
+
+====================================================================================================
+7.  ORDER ALONE AT 4K  -  three orders, instruction at the top
+====================================================================================================
+  rank     effective recall 53.3%  answer rate 37.1%  gold in middle third 24.2%
+  reorder  effective recall 54.1%  answer rate 37.8%  gold in middle third 12.8%
+  reverse  effective recall 50.2%  answer rate 34.4%  gold in middle third 24.4%
