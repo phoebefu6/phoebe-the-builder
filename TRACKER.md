@@ -240,3 +240,4 @@
 - [x] Day 189 — agent-trajectory-eval: The Answer Was Right and the Path Was Not, and Strict Reference Match Reported -1 for a -31 Change (llmops-genai-platform/) (2026-10-03)
 - [x] Day 190 — citation-verifier: The Citation Does Not Say That - Citation Coverage Rose 24 Points While the Cited Passages Supported 8 Fewer Claims (llmops-genai-platform/) (2026-10-05)
 - [x] Day 191 — rag-staleness: It Answered From Last Quarter's Document - the Index Read 89% Fresh While 27% of Answers Quoted a Changed Fact, and the Dashboard Ranked a Dearer, Worse Reindex Schedule Above a Cheaper, Better One (llmops-genai-platform/) (2026-10-05)
+- [x] Day 192 — context-packing: The Fact Was in the Context, and the Model Did Not Read It - Context Recall Said 83% of Needed Facts Were in the Window, 34% of Queries Lost One That Was There, and a 12k Window Scored +9.9 on Recall and -10.6 on Answers (llmops-genai-platform/) (2026-10-06)

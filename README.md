@@ -285,6 +285,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Semantic Response Cache](llmops-genai-platform/semantic-cache/) | Stop paying for repeated similar queries - reuse an answer when the meaning matches. |
 | [The Answer Was Right and the Path Was Not, and Strict Reference Match Reported -1 for a -31 Change](llmops-genai-platform/agent-trajectory-eval/) | Our agent eval said the refund bot got the answer right, and it had sent the refund to the wrong order. |
 | [The Citation Does Not Say That - Citation Coverage Rose 24 Points While the Cited Passages Supported 8 Fewer Claims](llmops-genai-platform/citation-verifier/) | We told the model to cite every sentence, citation coverage went from 74% to 98%, and the passages it cited supported 8 points fewer of its claims. |
+| [The Fact Was in the Context, and the Model Did Not Read It - Context Recall Said 83% of Needed Facts Were in the Window, 34% of Queries Lost One That Was There, and a 12k Window Scored +9.9 on Recall and -10.6 on Answers](llmops-genai-platform/context-packing/) | Context recall said 83% of the facts the answers needed were in the window, and 34% of the queries lost a fact that was there - more than were lost to… |
 | [Token & Cost Estimator](llmops-genai-platform/token-cost-estimator/) | Price an LLM feature before you build it - not after the invoice lands. |
 
 

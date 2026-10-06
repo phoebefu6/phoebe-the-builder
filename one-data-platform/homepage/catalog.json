@@ -2672,5 +2672,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/rag-staleness",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/rag-staleness/demo.ipynb"
+  },
+  {
+    "day": 192,
+    "slug": "context-packing",
+    "name": "The Fact Was in the Context, and the Model Did Not Read It - Context Recall Said 83% of Needed Facts Were in the Window, 34% of Queries Lost One That Was There, and a 12k Window Scored +9.9 on Recall and -10.6 on Answers",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "Context recall said 83% of the facts the answers needed were in the window, and 34% of the queries lost a fact that was there - more than were lost to retrieval, and the dashboard counts every one of them as a success.",
+    "status": "done",
+    "date": "2026-10-06",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/context-packing",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/context-packing/demo.ipynb"
   }
 ]
