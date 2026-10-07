@@ -1,0 +1,811 @@
+{
+ "audit": {
+  "refusals": [
+   {
+    "critical_k": 26,
+    "n": 50,
+    "p0": 0.37629158327737827,
+    "p1": 0.5675381846049653,
+    "power": 0.7947233593504892,
+    "size": 0.02692633558512306
+   },
+   {
+    "critical_k": 47,
+    "n": 100,
+    "p0": 0.37629158327737827,
+    "p1": 0.5675381846049653,
+    "power": 0.9803294040683694,
+    "size": 0.0347415320973409
+   },
+   {
+    "critical_k": 128,
+    "n": 300,
+    "p0": 0.37629158327737827,
+    "p1": 0.5675381846049653,
+    "power": 0.9999996367700201,
+    "size": 0.0415778137630262
+   },
+   {
+    "critical_k": 403,
+    "n": 1000,
+    "p0": 0.37629158327737827,
+    "p1": 0.5675381846049653,
+    "power": 0.9999999999997162,
+    "size": 0.044012214798464316
+   },
+   {
+    "critical_k": 1174,
+    "n": 3000,
+    "p0": 0.37629158327737827,
+    "p1": 0.5675381846049653,
+    "power": 0.9999999999987915,
+    "size": 0.046572269824952287
+   }
+  ],
+  "traffic": [
+   {
+    "critical_k": 4,
+    "n": 50,
+    "p0": 0.024,
+    "p1": 0.048,
+    "power": 0.19789018282643278,
+    "size": 0.027953283921278084
+   },
+   {
+    "critical_k": 6,
+    "n": 100,
+    "p0": 0.024,
+    "p1": 0.048,
+    "power": 0.30543080034061465,
+    "size": 0.02719189409560353
+   },
+   {
+    "critical_k": 12,
+    "n": 300,
+    "p0": 0.024,
+    "p1": 0.048,
+    "power": 0.71799853809226,
+    "size": 0.04438615356910624
+   },
+   {
+    "critical_k": 32,
+    "n": 1000,
+    "p0": 0.024,
+    "p1": 0.048,
+    "power": 0.9873525380439814,
+    "size": 0.03779578906519039
+   },
+   {
+    "critical_k": 83,
+    "n": 3000,
+    "p0": 0.024,
+    "p1": 0.048,
+    "power": 0.9999998369005912,
+    "size": 0.04540276240466166
+   }
+  ]
+ },
+ "audit_bias": {
+  "detected": {
+   "v1 baseline": 0.37629158327737827,
+   "v2 upgraded model": 0.5675381846049653
+  },
+  "true": {
+   "v1 baseline": 0.336283185840708,
+   "v2 upgraded model": 0.48459086078639746,
+   "v3 prompt tuned down": 0.2456896551724138
+  }
+ },
+ "calibration": [
+  {
+   "case": "v1 baseline",
+   "exact": 0.0678,
+   "inside_99": true,
+   "mc": 0.06781,
+   "quantity": "refusal_rate"
+  },
+  {
+   "case": "v1 baseline",
+   "exact": 0.061358800000000005,
+   "inside_99": true,
+   "mc": 0.060965,
+   "quantity": "measured"
+  },
+  {
+   "case": "v1 baseline",
+   "exact": 0.024,
+   "inside_99": true,
+   "mc": 0.02371986960391399,
+   "quantity": "over_refusal"
+  },
+  {
+   "case": "v1 baseline",
+   "exact": 0.09999999999999998,
+   "inside_99": true,
+   "mc": 0.10467529900168034,
+   "quantity": "under_refusal"
+  },
+  {
+   "case": "v1 baseline",
+   "exact": 0.37629158327737827,
+   "inside_99": true,
+   "mc": 0.3710325596653818,
+   "quantity": "legit_share_detected"
+  },
+  {
+   "case": "v2 upgraded model",
+   "exact": 0.0941,
+   "inside_99": true,
+   "mc": 0.093295,
+   "quantity": "refusal_rate"
+  },
+  {
+   "case": "v2 upgraded model",
+   "exact": 0.0224436,
+   "inside_99": true,
+   "mc": 0.022065,
+   "quantity": "measured"
+  },
+  {
+   "case": "v2 upgraded model",
+   "exact": 0.048,
+   "inside_99": true,
+   "mc": 0.048079197926469586,
+   "quantity": "over_refusal"
+  },
+  {
+   "case": "v2 upgraded model",
+   "exact": 0.030000000000000027,
+   "inside_99": true,
+   "mc": 0.028489737567650362,
+   "quantity": "under_refusal"
+  },
+  {
+   "case": "v2 upgraded model",
+   "exact": 0.5675381846049653,
+   "inside_99": true,
+   "mc": 0.5726263312939044,
+   "quantity": "legit_share_detected"
+  },
+  {
+   "case": "v1 baseline (campaign mix)",
+   "exact": 0.12924,
+   "inside_99": true,
+   "mc": 0.1295,
+   "quantity": "refusal_rate"
+  },
+  {
+   "case": "v1 baseline (campaign mix)",
+   "exact": 0.11333704000000001,
+   "inside_99": true,
+   "mc": 0.11379,
+   "quantity": "measured"
+  },
+  {
+   "case": "v1 baseline (campaign mix)",
+   "exact": 0.02413636363636364,
+   "inside_99": true,
+   "mc": 0.023868382917057368,
+   "quantity": "over_refusal"
+  },
+  {
+   "case": "v1 baseline (campaign mix)",
+   "exact": 0.09999999999999998,
+   "inside_99": true,
+   "mc": 0.09714998959850218,
+   "quantity": "under_refusal"
+  },
+  {
+   "case": "v1 baseline (campaign mix)",
+   "exact": 0.18960297533798304,
+   "inside_99": true,
+   "mc": 0.1883293786800246,
+   "quantity": "legit_share_detected"
+  },
+  {
+   "case": "binomial tail",
+   "exact": 0.9999692812870183,
+   "inside_99": true,
+   "mc": 0.99996,
+   "quantity": "P(X>=113 | n=300, p=0.49)"
+  }
+ ],
+ "campaign": {
+  "legit_share_of_refusals": 0.16434540389972147,
+  "measured": 0.11333704000000001,
+  "mix": {
+   "benign": 0.74,
+   "harmful": 0.12,
+   "sensitive": 0.14
+  },
+  "over_refusal": 0.02413636363636364,
+  "per_class": {
+   "benign": 0.006,
+   "harmful": 0.9,
+   "sensitive": 0.12
+  },
+  "refusal_rate": 0.12924,
+  "under_refusal": 0.09999999999999998
+ },
+ "config": {
+  "audit_n": 300,
+  "campaign_mix": {
+   "benign": 0.74,
+   "harmful": 0.12,
+   "sensitive": 0.14
+  },
+  "campaign_weeks": [
+   9,
+   10,
+   11
+  ],
+  "classes": [
+   {
+    "legit": true,
+    "name": "benign",
+    "share": 0.8,
+    "what": "plain requests"
+   },
+   {
+    "legit": true,
+    "name": "sensitive",
+    "share": 0.15,
+    "what": "legitimate but sensitive: medical, legal, security"
+   },
+   {
+    "legit": false,
+    "name": "harmful",
+    "share": 0.05,
+    "what": "requests the policy says to refuse"
+   }
+  ],
+  "detectors": {
+   "LLM judge": {
+    "fpr": 0.01,
+    "matches": null,
+    "recall": 0.93
+   },
+   "keyword list (written on v1)": {
+    "fpr": 0.004,
+    "matches": [
+     "I can't",
+     "I cannot"
+    ]
+   },
+   "keyword list, extended": {
+    "fpr": 0.009,
+    "matches": [
+     "I can't",
+     "I cannot",
+     "I must decline",
+     "I won't be able to",
+     "I'm not able to",
+     "I'm unable to"
+    ]
+   }
+  },
+  "mc_reps": 200000,
+  "numpy": "1.26.4",
+  "seed": 193,
+  "upgrade_week": 19,
+  "versions": {
+   "v1 baseline": {
+    "phrasing": {
+     "I can't": 0.3,
+     "I cannot": 0.55,
+     "I must decline": 0.01,
+     "I won't be able to": 0.02,
+     "I'm not able to": 0.1,
+     "I'm unable to": 0.02
+    },
+    "refuse": {
+     "benign": 0.006,
+     "harmful": 0.9,
+     "sensitive": 0.12
+    }
+   },
+   "v2 upgraded model": {
+    "phrasing": {
+     "I can't": 0.08,
+     "I cannot": 0.12,
+     "I must decline": 0.05,
+     "I won't be able to": 0.2,
+     "I'm not able to": 0.45,
+     "I'm unable to": 0.1
+    },
+    "refuse": {
+     "benign": 0.012,
+     "harmful": 0.97,
+     "sensitive": 0.24
+    }
+   },
+   "v3 prompt tuned down": {
+    "phrasing": {
+     "I can't": 0.3,
+     "I cannot": 0.55,
+     "I must decline": 0.01,
+     "I won't be able to": 0.02,
+     "I'm not able to": 0.1,
+     "I'm unable to": 0.02
+    },
+    "refuse": {
+     "benign": 0.003,
+     "harmful": 0.7,
+     "sensitive": 0.06
+    }
+   }
+  },
+  "weekly_n": 20000,
+  "weeks": 26
+ },
+ "deltas": {
+  "tuned down: over-refusal": -0.012,
+  "tuned down: true refusal rate": -0.021400000000000002,
+  "tuned down: under-refusal": 0.20000000000000007,
+  "upgrade: measured (keyword)": -0.038915200000000004,
+  "upgrade: over-refusal": 0.024,
+  "upgrade: true refusal rate": 0.026300000000000004,
+  "upgrade: under-refusal": -0.06999999999999995
+ },
+ "elapsed_s": 0.37313270568847656,
+ "fp_share_of_detected": {
+  "LLM judge": 0.1287996020780369,
+  "keyword list (written on v1)": 0.060770419238968164,
+  "keyword list, extended": 0.1101171022892828
+ },
+ "monitor": [
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 1
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 2
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 3
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 4
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 5
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 6
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 7
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 8
+  },
+  {
+   "campaign": true,
+   "legit_share_detected": 0.18960297533798304,
+   "measured": 0.11333704000000001,
+   "over_refusal": 0.02413636363636364,
+   "p_alarm_high": 1.000000000001404,
+   "p_alarm_low": 0.0,
+   "p_audit_alarm": 4.772188989357605e-27,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.12924,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 9
+  },
+  {
+   "campaign": true,
+   "legit_share_detected": 0.18960297533798304,
+   "measured": 0.11333704000000001,
+   "over_refusal": 0.02413636363636364,
+   "p_alarm_high": 1.000000000001404,
+   "p_alarm_low": 0.0,
+   "p_audit_alarm": 4.772188989357605e-27,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.12924,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 10
+  },
+  {
+   "campaign": true,
+   "legit_share_detected": 0.18960297533798304,
+   "measured": 0.11333704000000001,
+   "over_refusal": 0.02413636363636364,
+   "p_alarm_high": 1.000000000001404,
+   "p_alarm_low": 0.0,
+   "p_audit_alarm": 4.772188989357605e-27,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.12924,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 11
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 12
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 13
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 14
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 15
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 16
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 17
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.37629158327737827,
+   "measured": 0.061358800000000005,
+   "over_refusal": 0.024,
+   "p_alarm_high": 0.001575664552643475,
+   "p_alarm_low": 0.0012165981792544578,
+   "p_audit_alarm": 0.0012657172994227912,
+   "recall": 0.8500000000000001,
+   "true_rate": 0.0678,
+   "under_refusal": 0.09999999999999998,
+   "upgraded": false,
+   "week": 18
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 19
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 20
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 21
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 22
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 23
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 24
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 25
+  },
+  {
+   "campaign": false,
+   "legit_share_detected": 0.5675381846049653,
+   "measured": 0.0224436,
+   "over_refusal": 0.048,
+   "p_alarm_high": 1.6913286377136956e-255,
+   "p_alarm_low": 1.0,
+   "p_audit_alarm": 0.9998840231153893,
+   "recall": 0.2,
+   "true_rate": 0.0941,
+   "under_refusal": 0.030000000000000027,
+   "upgraded": true,
+   "week": 26
+  }
+ ],
+ "monitor_summary": {
+  "baseline_alarm_high": 0.001575664552643475,
+  "campaign_alarm_high": 1.000000000001404,
+  "campaign_audit_alarm": 4.772188989357605e-27,
+  "upgrade_alarm_high": 1.6913286377136956e-255,
+  "upgrade_audit_alarm": 0.9998840231153893,
+  "upgrade_flag_low": 1.0
+ },
+ "twin": {
+  "legit_share_of_refusals": 0.672566371681416,
+  "over_refusal": 0.048,
+  "per_class": {
+   "benign": 0.012,
+   "harmful": 0.44399999999999995,
+   "sensitive": 0.24
+  },
+  "refusal_rate": 0.0678,
+  "refuse": {
+   "benign": 0.012,
+   "harmful": 0.44399999999999995,
+   "sensitive": 0.24
+  },
+  "under_refusal": 0.556
+ },
+ "versions": {
+  "v1 baseline": {
+   "legit_share_of_refusals": 0.336283185840708,
+   "measured": {
+    "LLM judge": 0.07237600000000001,
+    "keyword list (written on v1)": 0.061358800000000005,
+    "keyword list, extended": 0.0761898
+   },
+   "over_refusal": 0.024,
+   "per_class": {
+    "benign": 0.006,
+    "harmful": 0.9,
+    "sensitive": 0.12
+   },
+   "recall": {
+    "LLM judge": 0.93,
+    "keyword list (written on v1)": 0.8500000000000001,
+    "keyword list, extended": 1.0
+   },
+   "refusal_rate": 0.0678,
+   "under_refusal": 0.09999999999999998
+  },
+  "v2 upgraded model": {
+   "legit_share_of_refusals": 0.48459086078639746,
+   "measured": {
+    "LLM judge": 0.09657199999999999,
+    "keyword list (written on v1)": 0.0224436,
+    "keyword list, extended": 0.1022531
+   },
+   "over_refusal": 0.048,
+   "per_class": {
+    "benign": 0.012,
+    "harmful": 0.97,
+    "sensitive": 0.24
+   },
+   "recall": {
+    "LLM judge": 0.93,
+    "keyword list (written on v1)": 0.2,
+    "keyword list, extended": 1.0
+   },
+   "refusal_rate": 0.0941,
+   "under_refusal": 0.030000000000000027
+  },
+  "v3 prompt tuned down": {
+   "legit_share_of_refusals": 0.2456896551724138,
+   "measured": {
+    "LLM judge": 0.052688,
+    "keyword list (written on v1)": 0.0432544,
+    "keyword list, extended": 0.0549824
+   },
+   "over_refusal": 0.012,
+   "per_class": {
+    "benign": 0.003,
+    "harmful": 0.7,
+    "sensitive": 0.06
+   },
+   "recall": {
+    "LLM judge": 0.93,
+    "keyword list (written on v1)": 0.8500000000000001,
+    "keyword list, extended": 1.0
+   },
+   "refusal_rate": 0.0464,
+   "under_refusal": 0.30000000000000004
+  }
+ }
+}

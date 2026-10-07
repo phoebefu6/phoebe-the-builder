@@ -1,0 +1,106 @@
+
+====================================================================================================
+0.  THE MODEL  -  synthetic, declared
+====================================================================================================
+  benign      80% of traffic   legitimate   (plain requests)
+  sensitive   15% of traffic   legitimate   (legitimate but sensitive: medical, legal, security)
+  harmful      5% of traffic   to be refused   (requests the policy says to refuse)
+  refusal_rate = sum share_c * refuse_c;  over-refusal = P(refuse | legitimate);  under-refusal = P(comply | harmful)
+  measured = sum share_c * (refuse_c * recall(detector, version) + (1 - refuse_c) * fpr);  recall = phrasing mass matched
+  v1 baseline            refuse per class benign 0.006, sensitive 0.120, harmful 0.900   phrasing: 'I cannot' 55%, 'I can't' 30%, 'I'm not able to' 10%
+  v2 upgraded model      refuse per class benign 0.012, sensitive 0.240, harmful 0.970   phrasing: 'I cannot' 12%, 'I'm not able to' 45%, 'I won't be able to' 20%, 'I'm unable to' 10%
+  v3 prompt tuned down   refuse per class benign 0.003, sensitive 0.060, harmful 0.700   phrasing: 'I cannot' 55%, 'I can't' 30%, 'I'm not able to' 10%
+  detector keyword list (written on v1)   matches ["I can't", 'I cannot']   fpr 0.004
+  detector keyword list, extended         matches ["I can't", 'I cannot', 'I must decline', "I won't be able to", "I'm not able to", "I'm unable to"]   fpr 0.009
+  detector LLM judge                      recall 0.93   fpr 0.01
+
+====================================================================================================
+1.  CALIBRATION  -  closed form and exact tails vs raw simulation
+====================================================================================================
+  v1 baseline                  refusal_rate                 exact 0.0678   MC 0.0678   inside
+  v1 baseline                  measured                     exact 0.0614   MC 0.0610   inside
+  v1 baseline                  over_refusal                 exact 0.0240   MC 0.0237   inside
+  v1 baseline                  under_refusal                exact 0.1000   MC 0.1047   inside
+  v1 baseline                  legit_share_detected         exact 0.3763   MC 0.3710   inside
+  v2 upgraded model            refusal_rate                 exact 0.0941   MC 0.0933   inside
+  v2 upgraded model            measured                     exact 0.0224   MC 0.0221   inside
+  v2 upgraded model            over_refusal                 exact 0.0480   MC 0.0481   inside
+  v2 upgraded model            under_refusal                exact 0.0300   MC 0.0285   inside
+  v2 upgraded model            legit_share_detected         exact 0.5675   MC 0.5726   inside
+  v1 baseline (campaign mix)   refusal_rate                 exact 0.1292   MC 0.1295   inside
+  v1 baseline (campaign mix)   measured                     exact 0.1133   MC 0.1138   inside
+  v1 baseline (campaign mix)   over_refusal                 exact 0.0241   MC 0.0239   inside
+  v1 baseline (campaign mix)   under_refusal                exact 0.1000   MC 0.0971   inside
+  v1 baseline (campaign mix)   legit_share_detected         exact 0.1896   MC 0.1883   inside
+  binomial tail                P(X>=113 | n=300, p=0.49)    exact 1.0000   MC 1.0000   inside
+  16 of 16 inside their 99% Wilson interval at seed 193, 200,000 reps per case
+
+====================================================================================================
+2.  THREE VERSIONS, ONE MIX  -  the true rate, the two errors, and what each detector reports
+====================================================================================================
+  version                true rate over-ref under-ref legit share | keyword list ( keyword list,       LLM judge   (measured)
+  v1 baseline                6.78%    2.40%     10.0%       33.6% |          6.14%          7.62%          7.24%
+                                                                  |    recall 0.85    recall 1.00    recall 0.93
+  v2 upgraded model          9.41%    4.80%      3.0%       48.5% |          2.24%         10.23%          9.66%
+                                                                  |    recall 0.20    recall 1.00    recall 0.93
+  v3 prompt tuned down       4.64%    1.20%     30.0%       24.6% |          4.33%          5.50%          5.27%
+                                                                  |    recall 0.85    recall 1.00    recall 0.93
+  upgrade: true refusal rate        +2.63 pts
+  upgrade: measured (keyword)       -3.89 pts
+  upgrade: over-refusal             +2.40 pts
+  upgrade: under-refusal            -7.00 pts
+  tuned down: true refusal rate     -2.14 pts
+  tuned down: over-refusal          -1.20 pts
+  tuned down: under-refusal        +20.00 pts
+  the upgrade raises the true rate +39% and the keyword dashboard reads -63%: recall fell 0.85 -> 0.20 because the new model says 'I'm not able to'
+  the tuned-down prompt cuts the rate -2.1 pts and halves over-refusal; under-refusal 10% -> 30% on the 5% of traffic that should be refused
+
+====================================================================================================
+3.  THE MIX MOVES, THE MODEL DOES NOT  -  a campaign week
+====================================================================================================
+  harmful share 5% -> 12%: true refusal rate 6.78% -> 12.92% (measured 6.14% -> 11.33%)
+  over-refusal 2.40% -> 2.41%; under-refusal 10% -> 10%: nothing about the model moved, and the refusal rate nearly doubled
+
+====================================================================================================
+4.  A FLAT AGGREGATE IS NEVER NEUTRAL  -  the twin that doubles over-refusal at the same rate
+====================================================================================================
+  legitimate refusal rates x2 (0.012, 0.24); aggregate held at 6.78% forces harmful refusals 90% -> 44.4%
+  over-refusal 2.40% -> 4.80%, under-refusal 10% -> 56%, legitimate share of refusals 34% -> 67%
+  at a fixed mix the aggregate is a weighted sum, so a rise in one error at a flat rate IS a fall in refusals of the other class
+
+====================================================================================================
+5.  WHERE TO SPEND THE LABELS  -  n labels on traffic vs n labels on detected refusals
+====================================================================================================
+  detect the upgrade's over-refusal doubling (2.40% -> 4.80%), one-sided alpha 0.05, exact binomial
+   labels    traffic sample: power   size    refusal sample: power   size
+       50                    0.198  0.028                    0.795  0.027
+      100                    0.305  0.027                    0.980  0.035
+      300                    0.718  0.044                    1.000  0.042
+     1000                    0.987  0.038                    1.000  0.044
+     3000                    1.000  0.045                    1.000  0.047
+  the refusal sample tests 37.6% -> 56.8% (legitimate share of detected refusals); the traffic sample tests 2.40% -> 4.80% on ~95% of its labels
+  the refusal sample's own bias: legitimate share is 33.6% of TRUE refusals and 37.6% of DETECTED ones on v1 (56.8% vs 48.5% on v2) - the detector's false positives are compliant legitimate responses, so the labeller must also mark 'was this a refusal'
+
+====================================================================================================
+6.  TWENTY-SIX WEEKS  -  an aggregate chart and a refusal audit on the same traffic
+====================================================================================================
+  weekly n = 20,000 responses, keyword detector, 3-sigma limits from the v1 baseline; audit = 300 labelled detected refusals/week
+  week state                     true measured over-ref   P(alarm high) P(flag low)   P(audit alarm)
+     1 v1 baseline              6.78%    6.14%    2.40%           0.002       0.001            0.001
+     8 v1 baseline              6.78%    6.14%    2.40%           0.002       0.001            0.001
+     9 campaign mix            12.92%   11.33%    2.41%           1.000       0.000            0.000
+    11 campaign mix            12.92%   11.33%    2.41%           1.000       0.000            0.000
+    12 v1 baseline              6.78%    6.14%    2.40%           0.002       0.001            0.001
+    18 v1 baseline              6.78%    6.14%    2.40%           0.002       0.001            0.001
+    19 v2 upgraded model        9.41%    2.24%    4.80%           0.000       1.000            1.000
+    26 v2 upgraded model        9.41%    2.24%    4.80%           0.000       1.000            1.000
+  campaign weeks: the aggregate alarm fires with probability 1.000; the audit 0.000. Model unchanged.
+  upgrade weeks: the aggregate alarm fires 0.000 and the chart flags a DROP 1.000 (measured 2.24%, true 9.41%); the audit fires 1.000
+
+====================================================================================================
+7.  THE DETECTOR THAT GETS THE SIGN RIGHT  -  and what it costs
+====================================================================================================
+  keyword list, extended       v1 measured 7.62% (true 6.78%)  v2 10.23% (true 9.41%)  v3 5.50% (true 4.64%)
+  LLM judge                    v1 measured 7.24% (true 6.78%)  v2 9.66% (true 9.41%)  v3 5.27% (true 4.64%)
+  share of DETECTED refusals that are false positives on v1: keyword list (written on v1) 6.1%, keyword list, extended 11.0%, LLM judge 12.9%
+  a version-independent recall gets every sign right; its false positives are the price, and they land on legitimate traffic
