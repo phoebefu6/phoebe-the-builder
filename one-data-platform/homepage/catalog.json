@@ -2686,5 +2686,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/context-packing",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/context-packing/demo.ipynb"
+  },
+  {
+    "day": 193,
+    "slug": "refusal-rate-monitor",
+    "name": "It Started Refusing Valid Requests - the Dashboard Read the Upgrade as a Two-Thirds Cut in Refusals While True Refusals Rose 39% and Over-Refusal Doubled, and a Campaign Week Doubled the Rate With Both Errors Unchanged",
+    "task": "observe",
+    "task_title": "Know when it breaks",
+    "problem": "The dashboard said the upgrade cut refusals by two thirds. The model was refusing 39% more requests than before, twice as many of them legitimate - it had started saying \"I'm not able to\"\u2026",
+    "status": "done",
+    "date": "2026-10-07",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/refusal-rate-monitor",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/refusal-rate-monitor/demo.ipynb"
   }
 ]
