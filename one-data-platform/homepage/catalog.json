@@ -2700,5 +2700,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/refusal-rate-monitor",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/refusal-rate-monitor/demo.ipynb"
+  },
+  {
+    "day": 194,
+    "slug": "latency-budget",
+    "name": "It Is Slow and Nobody Knows Where - Per-Hop p99s Summed to 792 ms Over an SLO the Chain Missed by 51, the LLM Owned 83% of the Mean and the Reranker 52% of the Tail, and Three Config Fixes Beat a Smaller Model on p99 While Saving 6x Less Mean",
+    "task": "observe",
+    "task_title": "Know when it breaks",
+    "problem": "Every hop of the RAG chain has its own latency dashboard, and adding them up said we were 792 ms over the SLO.",
+    "status": "done",
+    "date": "2026-10-09",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/latency-budget",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/latency-budget/demo.ipynb"
   }
 ]
