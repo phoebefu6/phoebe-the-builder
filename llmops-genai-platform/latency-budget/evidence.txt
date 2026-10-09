@@ -1,0 +1,53 @@
+latency-budget evidence  (seed 194, exact on a 1 ms grid, Monte Carlo n = 200,000)
+
+1. Per-hop percentiles vs end-to-end (ms)
+hop           p50    p95    p99     mean  p99/p50
+gateway         8     13     16      8.4      2.0
+embed          25     40    325     31.8     13.0
+search         50    272    293     65.0      5.9
+rerank         61    111    468     74.8      7.7
+llm           900   1096   1190    906.5      1.3
+END-TO-END   1064   1371   1551   1086.4
+sum of per-hop p99 = 2292 ms vs true p99 1551 ms  (overstates by 741 ms)
+SLO p99 <= 1500 ms: per-hop sum says 792 ms over; truth 51 ms over, P(T > SLO) = 1.64%
+
+2. Fan-out: one shard p99 = 82 ms (GC pause 0.8% sits above it)
+   search step waits for 8 shards: P(some shard pauses) = 6.2%, search p95 = 272 ms
+
+3. Who owns the slow requests (T > p99 = 1551 ms, P = 0.993%)
+hop         mean share  tail excess ms  tail share
+gateway           0.8%             0.1        0.0%
+embed             2.9%            60.0       10.7%
+search            6.0%            63.5       11.4%
+rerank            6.9%           288.1       51.6%
+llm              83.4%           146.5       26.2%
+
+4. Four fixes and their sum, ranked two ways
+fix                              d mean  d p50  d p99    p99  P(T>SLO)
+smaller LLM (-15% median)        -136.0   -137   -154   1397     0.33%
+warm embedding pool                -6.0     -3    -22   1529     1.33%
+hedge shard calls at 80 ms        -10.5     -5    -25   1526     1.30%
+rerank timeout 400 -> 120 ms       -7.9     -1    -89   1462     0.61%
+all three config fixes            -24.4     -9   -190   1361     0.07%
+ranked by mean: smaller LLM (-15% median) > all three config fixes > hedge shard calls at 80 ms > rerank timeout 400 -> 120 ms > warm embedding pool
+ranked by p99 : all three config fixes > smaller LLM (-15% median) > rerank timeout 400 -> 120 ms > hedge shard calls at 80 ms > warm embedding pool
+
+5. Calibration: 18/18 exact tail probabilities inside the 99% Wilson interval of the simulation
+   base                           t= 1371  exact 0.04995  mc 0.05001  ok
+   base                           t= 1551  exact 0.00993  mc 0.00996  ok
+   base                           t= 1500  exact 0.01641  mc 0.01616  ok
+   smaller LLM (-15% median)      t= 1223  exact 0.04996  mc 0.05022  ok
+   smaller LLM (-15% median)      t= 1397  exact 0.00992  mc 0.00991  ok
+   smaller LLM (-15% median)      t= 1500  exact 0.00328  mc 0.00333  ok
+   warm embedding pool            t= 1348  exact 0.04972  mc 0.04981  ok
+   warm embedding pool            t= 1529  exact 0.00997  mc 0.00988  ok
+   warm embedding pool            t= 1500  exact 0.01334  mc 0.01316  ok
+   hedge shard calls at 80 ms     t= 1333  exact 0.04977  mc 0.05051  ok
+   hedge shard calls at 80 ms     t= 1526  exact 0.00990  mc 0.01016  ok
+   hedge shard calls at 80 ms     t= 1500  exact 0.01295  mc 0.01330  ok
+   rerank timeout 400 -> 120 ms   t= 1324  exact 0.04964  mc 0.05028  ok
+   rerank timeout 400 -> 120 ms   t= 1462  exact 0.00993  mc 0.01023  ok
+   rerank timeout 400 -> 120 ms   t= 1500  exact 0.00606  mc 0.00608  ok
+   all three config fixes         t= 1262  exact 0.04974  mc 0.04976  ok
+   all three config fixes         t= 1361  exact 0.00987  mc 0.00992  ok
+   all three config fixes         t= 1500  exact 0.00067  mc 0.00069  ok

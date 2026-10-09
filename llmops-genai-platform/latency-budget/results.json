@@ -1,0 +1,265 @@
+{
+ "study": {
+  "hops": {
+   "gateway": {
+    "p50": 8,
+    "p95": 13,
+    "p99": 16,
+    "mean": 8.368222861069945
+   },
+   "embed": {
+    "p50": 25,
+    "p95": 40,
+    "p99": 325,
+    "mean": 31.793585187477564
+   },
+   "search": {
+    "p50": 50,
+    "p95": 272,
+    "p99": 293,
+    "mean": 64.95776636602285
+   },
+   "rerank": {
+    "p50": 61,
+    "p95": 111,
+    "p99": 468,
+    "mean": 74.7616715997391
+   },
+   "llm": {
+    "p50": 900,
+    "p95": 1096,
+    "p99": 1190,
+    "mean": 906.5033840881222
+   }
+  },
+  "e2e": {
+   "p50": 1064,
+   "p95": 1371,
+   "p99": 1551,
+   "mean": 1086.3846301024282
+  },
+  "shard": {
+   "p50": 30,
+   "p95": 55,
+   "p99": 82,
+   "mean": 33.89494016402297
+  },
+  "sum_of_hop_p99": 2292,
+  "sum_of_hop_p50": 1044,
+  "p_over_slo": 0.01641171392615456,
+  "p_any_shard_gc": 0.062236387107684754,
+  "mean_share": {
+   "gateway": 0.007702817795094321,
+   "embed": 0.02926549612956136,
+   "search": 0.059792604355879374,
+   "rerank": 0.06881694524037063,
+   "llm": 0.8344221364790975
+  },
+  "tail_excess_ms": {
+   "gateway": 0.0682069837361432,
+   "embed": 59.971723103685605,
+   "search": 63.53767402789971,
+   "rerank": 288.10638471165174,
+   "llm": 146.4840184870984
+  },
+  "tail_share": {
+   "gateway": 0.00012219794549737478,
+   "embed": 0.10744385618278646,
+   "search": 0.11383252568280602,
+   "rerank": 0.5161642747996826,
+   "llm": 0.2624371453892275
+  },
+  "p_tail": 0.009930904365014263
+ },
+ "fixes": [
+  {
+   "fix": "smaller LLM (-15% median)",
+   "d_mean": -135.9755076132185,
+   "d_p50": -137,
+   "d_p99": -154,
+   "p_over_slo": 0.00328248867927528,
+   "p99": 1397
+  },
+  {
+   "fix": "warm embedding pool",
+   "d_mean": -6.0,
+   "d_p50": -3,
+   "d_p99": -22,
+   "p_over_slo": 0.013338147632736701,
+   "p99": 1529
+  },
+  {
+   "fix": "hedge shard calls at 80 ms",
+   "d_mean": -10.503415739791762,
+   "d_p50": -5,
+   "d_p99": -25,
+   "p_over_slo": 0.012951330605100977,
+   "p99": 1526
+  },
+  {
+   "fix": "rerank timeout 400 -> 120 ms",
+   "d_mean": -7.924701346747497,
+   "d_p50": -1,
+   "d_p99": -89,
+   "p_over_slo": 0.0060555282015367405,
+   "p99": 1462
+  },
+  {
+   "fix": "all three config fixes",
+   "d_mean": -24.42811708653744,
+   "d_p50": -9,
+   "d_p99": -190,
+   "p_over_slo": 0.0006676253789083499,
+   "p99": 1361
+  }
+ ],
+ "calibration": [
+  {
+   "chain": "base",
+   "t": 1371,
+   "exact": 0.049946452344311075,
+   "mc": 0.05001,
+   "inside": true
+  },
+  {
+   "chain": "base",
+   "t": 1551,
+   "exact": 0.009930904365014263,
+   "mc": 0.00996,
+   "inside": true
+  },
+  {
+   "chain": "base",
+   "t": 1500,
+   "exact": 0.01641171392615456,
+   "mc": 0.01616,
+   "inside": true
+  },
+  {
+   "chain": "smaller LLM (-15% median)",
+   "t": 1223,
+   "exact": 0.04995886047246711,
+   "mc": 0.050215,
+   "inside": true
+  },
+  {
+   "chain": "smaller LLM (-15% median)",
+   "t": 1397,
+   "exact": 0.009922250804294694,
+   "mc": 0.009905,
+   "inside": true
+  },
+  {
+   "chain": "smaller LLM (-15% median)",
+   "t": 1500,
+   "exact": 0.00328248867927528,
+   "mc": 0.003335,
+   "inside": true
+  },
+  {
+   "chain": "warm embedding pool",
+   "t": 1348,
+   "exact": 0.049723849803245776,
+   "mc": 0.049805,
+   "inside": true
+  },
+  {
+   "chain": "warm embedding pool",
+   "t": 1529,
+   "exact": 0.00996522869775228,
+   "mc": 0.009875,
+   "inside": true
+  },
+  {
+   "chain": "warm embedding pool",
+   "t": 1500,
+   "exact": 0.013338147632736701,
+   "mc": 0.01316,
+   "inside": true
+  },
+  {
+   "chain": "hedge shard calls at 80 ms",
+   "t": 1333,
+   "exact": 0.04976587417523475,
+   "mc": 0.050505,
+   "inside": true
+  },
+  {
+   "chain": "hedge shard calls at 80 ms",
+   "t": 1526,
+   "exact": 0.009901612159130975,
+   "mc": 0.010155,
+   "inside": true
+  },
+  {
+   "chain": "hedge shard calls at 80 ms",
+   "t": 1500,
+   "exact": 0.012951330605100977,
+   "mc": 0.0133,
+   "inside": true
+  },
+  {
+   "chain": "rerank timeout 400 -> 120 ms",
+   "t": 1324,
+   "exact": 0.04963874122360355,
+   "mc": 0.05028,
+   "inside": true
+  },
+  {
+   "chain": "rerank timeout 400 -> 120 ms",
+   "t": 1462,
+   "exact": 0.009929986465321342,
+   "mc": 0.01023,
+   "inside": true
+  },
+  {
+   "chain": "rerank timeout 400 -> 120 ms",
+   "t": 1500,
+   "exact": 0.0060555282015367405,
+   "mc": 0.00608,
+   "inside": true
+  },
+  {
+   "chain": "all three config fixes",
+   "t": 1262,
+   "exact": 0.04974147591772441,
+   "mc": 0.049765,
+   "inside": true
+  },
+  {
+   "chain": "all three config fixes",
+   "t": 1361,
+   "exact": 0.009868858226480669,
+   "mc": 0.009925,
+   "inside": true
+  },
+  {
+   "chain": "all three config fixes",
+   "t": 1500,
+   "exact": 0.0006676253789083499,
+   "mc": 0.00069,
+   "inside": true
+  }
+ ],
+ "slo_ms": 1500,
+ "shards": 8,
+ "base": {
+  "gateway_median": 8.0,
+  "gateway_sigma": 0.3,
+  "embed_median": 25.0,
+  "embed_sigma": 0.25,
+  "embed_cold_p": 0.02,
+  "embed_cold_ms": 300.0,
+  "shard_median": 30.0,
+  "shard_sigma": 0.35,
+  "shard_gc_p": 0.008,
+  "shard_gc_ms": 250.0,
+  "hedge_after_ms": 0.0,
+  "rerank_median": 60.0,
+  "rerank_sigma": 0.3,
+  "rerank_hang_p": 0.03,
+  "rerank_timeout_ms": 400.0,
+  "llm_median": 900.0,
+  "llm_sigma": 0.12
+ }
+}
