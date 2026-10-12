@@ -2714,5 +2714,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/latency-budget",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/latency-budget/demo.ipynb"
+  },
+  {
+    "day": 195,
+    "slug": "human-escalation-policy",
+    "name": "When Should a Human Take Over? - 'Escalate Below 90%' Flooded a 700/Day Team and Cost More Than Never Escalating, Calibrated Per-Segment Pricing Lost to One Cutoff Because Capacity Binds, and a Same-Skill Model With Louder Confidence Cut Escalations to 1.2% While the Bill Rose 27%",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "We told the AI agent to hand anything under 90% confidence to a person. It sent 3,655 tickets a day to a team that can review 700, and the day cost more than letting the agent decide\u2026",
+    "status": "done",
+    "date": "2026-10-12",
+    "product_line": "LLMOps & GenAI Platform",
+    "product_slug": "llmops-genai-platform",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/human-escalation-policy",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/human-escalation-policy/demo.ipynb"
   }
 ]

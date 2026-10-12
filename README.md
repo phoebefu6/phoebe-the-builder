@@ -340,6 +340,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Startup Idea Validator](mini-saas-products/idea-validator/) | We build before we validate - this scores an idea across five dimensions, builds a Lean Canvas, and hands you the cheapest experiment to test your… |
 | [The Exercise Works, the Matrix That Scores It Cannot Rank](mini-saas-products/pre-mortem/) | A pre-mortem is cheap and it works: assume the project already failed, then write down why. |
 | [User Story Generator](mini-saas-products/user-story-gen/) | Writing good user stories takes practice - paste raw feature ideas and get INVEST-scored stories with Given/When/Then acceptance criteria. |
+| [When Should a Human Take Over? - 'Escalate Below 90%' Flooded a 700/Day Team and Cost More Than Never Escalating, Calibrated Per-Segment Pricing Lost to One Cutoff Because Capacity Binds, and a Same-Skill Model With Louder Confidence Cut Escalations to 1.2% While the Bill Rose 27%](llmops-genai-platform/human-escalation-policy/) | We told the AI agent to hand anything under 90% confidence to a person. |
 
 
 ---

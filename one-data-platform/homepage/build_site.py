@@ -193,6 +193,7 @@ TASK_OF = {
     "rag-staleness": "observe", "context-packing": "evaluate",
     "refusal-rate-monitor": "observe",
     "latency-budget": "observe",
+    "human-escalation-policy": "decide",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
