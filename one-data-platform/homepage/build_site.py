@@ -194,6 +194,7 @@ TASK_OF = {
     "refusal-rate-monitor": "observe",
     "latency-budget": "observe",
     "human-escalation-policy": "decide",
+    "disparate-impact": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

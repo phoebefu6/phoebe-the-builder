@@ -2728,5 +2728,19 @@
     "product_slug": "llmops-genai-platform",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/llmops-genai-platform/human-escalation-policy",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/llmops-genai-platform/human-escalation-policy/demo.ipynb"
+  },
+  {
+    "day": 196,
+    "slug": "disparate-impact",
+    "name": "The Model Is Fine Overall - a Qualified Applicant From the Smaller Group Is Selected 46% vs 66%, Every Fairness Fix Meets One Definition and Breaks Another, None of 56,977 Threshold Pairs Meets All Three, and Fixing the Data Beats Every Threshold",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "The screening model is 78% accurate with an AUC of 0.85, and it selects a qualified applicant from the smaller group 46% of the time against 66% for everyone else.",
+    "status": "done",
+    "date": "2026-10-13",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/disparate-impact",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/disparate-impact/demo.ipynb"
   }
 ]
