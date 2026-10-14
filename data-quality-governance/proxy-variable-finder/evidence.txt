@@ -1,0 +1,23 @@
+proxy-variable-finder evidence  (seeds 197, 198, 199, n = 80,000 each, half train / half test, gradient boosting; mean [min-max] across seeds)
+
+1. The world: same skill, biased history
+skill gap A minus B -0.002 sd; truly qualified A 36.4%, B 36.5%
+past decisions (the training labels) selected A 36.6%, B 13.0%
+
+2. Three proxy screens (AUC for predicting the group; 0.5 = no information)
+   one feature at a time:  zip 0.838  exp 0.637  cert 0.502  commute 0.504  shift 0.502
+   pairs (hidden from the single screen):  commute+shift 0.923
+   all five together: 0.972
+   flagged at AUC > 0.60 by the single screen: zip, exp; missed by it, caught by pairs: commute+shift
+   drop-one importance (joint AUC lost when the feature is removed):  shift 0.120  commute 0.119  zip 0.030  exp 0.003  cert 0.000
+
+3. Seven models, all trained on the biased history, top 30% selected
+model                                       B/A ratio  AUC vs history  AUC vs truth  group from score  qualified sel A  qualified sel B
+aware (group as a feature)           0.218 [0.22-0.22]           0.844         0.778             0.782            68.9%            20.3%
+unaware (group removed)              0.385 [0.37-0.42]           0.836         0.793             0.699            66.0%            31.0%
+drop zip                             0.450 [0.37-0.53]           0.834         0.801             0.663            65.0%            34.6%
+drop zip + the commute/shift pair    0.639 [0.63-0.65]           0.827         0.812             0.603            62.5%            44.1%
+linear repair of every feature       0.582 [0.49-0.68]           0.824         0.805             0.606            62.7%            40.9%
+drop zip + pair, repair exp          1.012 [1.00-1.03]           0.805         0.817             0.502            57.5%            57.6%
+cert only                            1.002 [0.98-1.02]           0.733         0.739             0.502            50.1%            50.0%
+aware -> drop zip + pair, repair exp: AUC vs history 0.844 -> 0.805, AUC vs truth 0.778 -> 0.817
