@@ -110,6 +110,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Policy-Driven PII Redactor](data-quality-governance/pii-redactor/) | "We masked the PII, so the extract is safe to share." Two things are usually wrong with that. |
 | [Privacy Policy Generator](mini-saas-products/privacy-policy-gen/) | Legal templates cost money and are still generic - answer a short questionnaire and get a GDPR/CCPA-aware policy draft plus a checklist of the… |
 | [Subject Access Request Extractor](data-quality-governance/dsar-extractor/) | A subject access request arrives with one email address. Finding the rows is easy. |
+| [We Removed the Attribute and It Still Discriminates - Two Features That Each Look Like Noise Predict the Group at 0.92 Together, Drop-One Importance Hides the Obvious Proxy, and the Fix That Reaches Parity Lowers Accuracy Against History While Raising It Against True Skill](data-quality-governance/proxy-variable-finder/) | We took group out of the model. It still selects that group at well under half the rate of everyone else, two of the… |
 
 
 ---

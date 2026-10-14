@@ -195,6 +195,7 @@ TASK_OF = {
     "latency-budget": "observe",
     "human-escalation-policy": "decide",
     "disparate-impact": "evaluate",
+    "proxy-variable-finder": "govern",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
