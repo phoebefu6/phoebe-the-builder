@@ -2756,5 +2756,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/proxy-variable-finder",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/proxy-variable-finder/demo.ipynb"
+  },
+  {
+    "day": 198,
+    "slug": "fairness-accuracy-frontier",
+    "name": "What Does Fairness Cost? - Parity Cost 4.8 Points Against Past Decisions and Gained 1.6 Against True Merit, an Honest History Prices It at 0.39 Despite a Real Skill Gap, and a 2,000-Row Audit Reads the Same Cost Anywhere From 1.4 to 5.0",
+    "task": "decide",
+    "task_title": "Choose, and be able to defend it",
+    "problem": "Everyone says fairness costs accuracy, and nobody has measured how much. Measured against our past decisions, parity cost us almost 5 points.",
+    "status": "done",
+    "date": "2026-10-15",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/fairness-accuracy-frontier",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/fairness-accuracy-frontier/demo.ipynb"
   }
 ]

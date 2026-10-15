@@ -342,6 +342,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Startup Idea Validator](mini-saas-products/idea-validator/) | We build before we validate - this scores an idea across five dimensions, builds a Lean Canvas, and hands you the cheapest experiment to test your… |
 | [The Exercise Works, the Matrix That Scores It Cannot Rank](mini-saas-products/pre-mortem/) | A pre-mortem is cheap and it works: assume the project already failed, then write down why. |
 | [User Story Generator](mini-saas-products/user-story-gen/) | Writing good user stories takes practice - paste raw feature ideas and get INVEST-scored stories with Given/When/Then acceptance criteria. |
+| [What Does Fairness Cost? - Parity Cost 4.8 Points Against Past Decisions and Gained 1.6 Against True Merit, an Honest History Prices It at 0.39 Despite a Real Skill Gap, and a 2,000-Row Audit Reads the Same Cost Anywhere From 1.4 to 5.0](data-quality-governance/fairness-accuracy-frontier/) | Everyone says fairness costs accuracy, and nobody has measured how much. |
 | [When Should a Human Take Over? - 'Escalate Below 90%' Flooded a 700/Day Team and Cost More Than Never Escalating, Calibrated Per-Segment Pricing Lost to One Cutoff Because Capacity Binds, and a Same-Skill Model With Louder Confidence Cut Escalations to 1.2% While the Bill Rose 27%](llmops-genai-platform/human-escalation-policy/) | We told the AI agent to hand anything under 90% confidence to a person. |
 
 

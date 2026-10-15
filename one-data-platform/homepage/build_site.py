@@ -196,6 +196,7 @@ TASK_OF = {
     "human-escalation-policy": "decide",
     "disparate-impact": "evaluate",
     "proxy-variable-finder": "govern",
+    "fairness-accuracy-frontier": "decide",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
