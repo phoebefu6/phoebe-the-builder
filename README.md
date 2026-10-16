@@ -85,6 +85,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Schema Diff Tool](data-infra-toolkit/schema-diff/) | Database migrations break things silently - catch schema changes before they hit production. |
 | [Schema Registry](data-quality-governance/schema-registry/) | A producer changes a column type and three downstream jobs break silently - we find out from the dashboard, not before. |
 | [Source-to-Target Reconciliation](data-quality-governance/reconciliation-checker/) | We copied a table from the source system into the warehouse and can't prove it matched - row counts drift and values silently differ. |
+| [The Training Set Is Not the Population - a Quota on the Marginals Passed the One-Attribute Audit While Rural B Fell From 12% to 0.5% of the Training Set, Half of Its Good Payers Were Rejected While Overall Accuracy Moved 1.7 Points, and an Empty Cell Cannot Be Reweighted](data-quality-governance/sampling-bias-audit/) | Our training data matched the population on every attribute we checked. |
 
 
 ---

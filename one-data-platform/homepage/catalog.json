@@ -2770,5 +2770,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/fairness-accuracy-frontier",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/fairness-accuracy-frontier/demo.ipynb"
+  },
+  {
+    "day": 199,
+    "slug": "sampling-bias-audit",
+    "name": "The Training Set Is Not the Population - a Quota on the Marginals Passed the One-Attribute Audit While Rural B Fell From 12% to 0.5% of the Training Set, Half of Its Good Payers Were Rejected While Overall Accuracy Moved 1.7 Points, and an Empty Cell Cannot Be Reweighted",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "Our training data matched the population on every attribute we checked. It still had almost none of the one group the model then got wrong: half of rural B's good payers were rejected, and\u2026",
+    "status": "done",
+    "date": "2026-10-16",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/sampling-bias-audit",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/sampling-bias-audit/demo.ipynb"
   }
 ]
