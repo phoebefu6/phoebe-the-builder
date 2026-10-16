@@ -1,0 +1,32 @@
+sampling-bias-audit evidence  (seeds 199, 200, 201; training set n = 20,000, deployment population n = 60,000; gradient boosting, approve when p >= 0.5; mean [min-max] across seeds)
+
+1. The audit (training share / population share; flag outside [0.80, 1.25] when the 99% Wilson interval agrees)
+segment        kind        rows   train  population  ratio  flag
+group B        marginal   6,000   30.0%       30.0%   1.00  ok
+region rural   marginal   8,000   40.0%       40.0%   1.00  ok
+A-urban        cell       6,100   30.5%       42.0%   0.73  FLAG
+A-rural        cell       7,900   39.5%       28.0%   1.41  FLAG
+B-urban        cell       5,900   29.5%       18.0%   1.64  FLAG
+B-rural        cell         100    0.5%       12.0%   0.04  FLAG
+control (a proportional sample of the same size): 0 segments flagged
+
+2. What the miss costs (share of good payers rejected, scored on the deployment population)
+cell                quota-trained   proportional-trained
+overall       18.1% [17.0%-19.0%]    14.0% [13.6%-14.8%]
+A-urban       13.8% [13.4%-14.1%]    14.2% [13.4%-15.7%]
+A-rural       13.8% [13.3%-14.2%]    14.0% [13.5%-14.3%]
+B-urban       13.1% [12.4%-13.5%]    13.2% [12.8%-13.7%]
+B-rural       50.5% [40.9%-58.0%]    14.9% [14.6%-15.4%]
+overall accuracy: the team's own test split 82.5% [82.2%-82.8%], deployment 80.8% [80.5%-81.3%], proportional-trained 82.3% [82.2%-82.5%]
+
+3. Two fixes for rural B (good payers rejected)
+reweight the 100 rows to the population cell shares: 21.0% [15.6%-27.3%]
+a training set with NO rural B rows: 64.6% [63.5%-66.8%]; reweighted: 65.3% [63.9%-67.5%]
+collect more rural B rows (quota sample + k extra):
+    100 rural B rows: 50.5% [40.9%-58.0%]
+    150 rural B rows: 44.7% [38.6%-50.1%]
+    200 rural B rows: 32.8% [25.3%-40.1%]
+    300 rural B rows: 29.1% [17.8%-41.9%]
+    500 rural B rows: 24.5% [17.0%-30.2%]
+  1,000 rural B rows: 17.3% [15.8%-18.3%]
+  2,000 rural B rows: 15.7% [14.0%-17.1%]
