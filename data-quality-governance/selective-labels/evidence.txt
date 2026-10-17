@@ -1,0 +1,31 @@
+selective-labels evidence  (seeds 200, 201, 202; 40,000 applicants per period; 40% approved; gradient boosting on x and group; mean [min-max] across seeds)
+
+1. The label set (outcomes observed only for the 40% the officers approved)
+repay rate, all applicants: 61.3% [61.2%-61.4%]; labeled (approved) rows: 90.9% [90.9%-91.1%]
+labeled repay rate by group: A 89.9% [89.8%-89.9%], B 94.7% [94.4%-95.2%] (B cleared a 0.6 sd higher bar)
+
+2. Two models scored on the truth (approve the top 40%)
+model                    repay among approved    share of B approved    TPR A    TPR B
+oracle (all outcomes)     82.8% [82.6%-83.0%]    39.3% [38.2%-40.4%]    55.1%    53.2%
+trained on labels         76.4% [73.1%-78.6%]    69.0% [61.5%-74.9%]    39.8%    76.1%
+
+3. The same two models as each estimator reports them
+estimator                        oracle repay    label-trained repay     oracle TPR gap A-B (pts)  ranks right?
+truth (all outcomes)      82.8% [82.6%-83.0%]    76.4% [73.1%-78.6%]          +2.0 [+0.9 to +3.1]  yes
+labeled rows only         93.7% [93.3%-93.9%]    94.3% [94.2%-94.5%]          -5.7 [-6.7 to -4.7]  NO
+rejected = bad            62.5% [62.4%-62.7%]    52.7% [50.3%-55.0%]          -5.7 [-6.7 to -4.7]  yes
+IPW on x, group           93.2% [92.8%-93.5%]    92.9% [92.6%-93.2%]          -0.2 [-1.5 to +1.0]  tie
+5% random explore         82.9% [81.5%-84.6%]    77.1% [71.8%-80.4%]          +4.3 [+3.2 to +5.7]  yes
+
+4. How big the random-explore slice must be (oracle model, repay among approved; truth 82.8%)
+  explore   1%:    162 labeled approvals, estimate 80.2% [77.2%-82.9%], 95% CI +/- 6.1 pts
+  explore   2%:    325 labeled approvals, estimate 81.9% [81.1%-82.4%], 95% CI +/- 4.2 pts
+  explore   5%:    804 labeled approvals, estimate 82.9% [81.5%-84.6%], 95% CI +/- 2.6 pts
+  explore  10%:  1,623 labeled approvals, estimate 83.1% [82.5%-83.5%], 95% CI +/- 1.8 pts
+
+5. Control: officers used recorded data only (sel_u = 0)
+truth (all outcomes)   oracle repay 82.8% [82.6%-83.0%]   TPR B 53.2% [52.1%-54.3%]
+labeled rows only      oracle repay 84.3% [84.0%-84.5%]   TPR B 93.5% [92.9%-94.6%]
+rejected = bad         oracle repay 67.4% [66.9%-67.7%]   TPR B 93.5% [92.9%-94.6%]
+IPW on x, group        oracle repay 82.5% [82.4%-82.7%]   TPR B 67.2% [65.0%-69.2%]
+label-trained model, true repay 82.3% [82.0%-82.4%]; share of B approved 39.3% [35.6%-41.6%] vs oracle 39.3% [38.2%-40.4%]
