@@ -292,6 +292,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [The Fact Was in the Context, and the Model Did Not Read It - Context Recall Said 83% of Needed Facts Were in the Window, 34% of Queries Lost One That Was There, and a 12k Window Scored +9.9 on Recall and -10.6 on Answers](llmops-genai-platform/context-packing/) | Context recall said 83% of the facts the answers needed were in the window, and 34% of the queries lost a fact that was there - more than were lost to… |
 | [The Model Is Fine Overall - a Qualified Applicant From the Smaller Group Is Selected 46% vs 66%, Every Fairness Fix Meets One Definition and Breaks Another, None of 56,977 Threshold Pairs Meets All Three, and Fixing the Data Beats Every Threshold](data-quality-governance/disparate-impact/) | The screening model is 78% accurate with an AUC of 0.85, and it selects a qualified applicant from the smaller group 46% of the time against 66% for… |
 | [Token & Cost Estimator](llmops-genai-platform/token-cost-estimator/) | Price an LLM feature before you build it - not after the invoice lands. |
+| [We Only Know Outcomes for the People We Approved - the Labeled Rows Ranked a Model 6.4 Points Worse on True Repayment First at Every Seed, a Higher Bar Against Group B Became a Model Approving 69% of B vs 39%, IPW Called It a Tie, and a 5% Random-Approval Slice Got Both Right to +/-2.6](data-quality-governance/selective-labels/) | We only ever see repayment for the loans we approved, so every model is trained and judged on past decisions. |
 
 
 ---

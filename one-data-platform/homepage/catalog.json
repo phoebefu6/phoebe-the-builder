@@ -2784,5 +2784,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/sampling-bias-audit",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/sampling-bias-audit/demo.ipynb"
+  },
+  {
+    "day": 200,
+    "slug": "selective-labels",
+    "name": "We Only Know Outcomes for the People We Approved - the Labeled Rows Ranked a Model 6.4 Points Worse on True Repayment First at Every Seed, a Higher Bar Against Group B Became a Model Approving 69% of B vs 39%, IPW Called It a Tie, and a 5% Random-Approval Slice Got Both Right to +/-2.6",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "We only ever see repayment for the loans we approved, so every model is trained and judged on past decisions.",
+    "status": "done",
+    "date": "2026-10-17",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/selective-labels",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/selective-labels/demo.ipynb"
   }
 ]

@@ -198,6 +198,7 @@ TASK_OF = {
     "proxy-variable-finder": "govern",
     "fairness-accuracy-frontier": "decide",
     "sampling-bias-audit": "trust",
+    "selective-labels": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
