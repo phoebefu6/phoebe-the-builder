@@ -2798,5 +2798,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/selective-labels",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/selective-labels/demo.ipynb"
+  },
+  {
+    "day": 201,
+    "slug": "exploration-budget",
+    "name": "What Does a Random-Approval Slice Cost? - Lending Only Where a Challenger Disagrees With Production Ranked the Better Model First for $23k vs $91k Uniform, Day 200's 5% Was a $227k Slice Sized for the Wrong Question, and the Cheap Design Overstates Group B's TPR by 9.5 Points at Any Spend",
+    "task": "evaluate",
+    "task_title": "Check the AI is any good",
+    "problem": "We know a random-approval slice is the only honest way to judge a credit model, and risk wants to know what it costs in bad loans.",
+    "status": "done",
+    "date": "2026-10-18",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/exploration-budget",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/exploration-budget/demo.ipynb"
   }
 ]

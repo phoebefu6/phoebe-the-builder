@@ -199,6 +199,7 @@ TASK_OF = {
     "fairness-accuracy-frontier": "decide",
     "sampling-bias-audit": "trust",
     "selective-labels": "evaluate",
+    "exploration-budget": "evaluate",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
