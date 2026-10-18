@@ -1,0 +1,34 @@
+exploration-budget evidence  (seeds 200, 201, 202; 40,000 applicants per period; 400 replayed slices per point; +$300 per repaid loan, -$1,500 per default; costs per 10,000 applicants; mean [min-max] across seeds)
+
+1. What each design has to lend into
+true repay among approvals: oracle 82.8% [82.6%-83.0%], label-trained 76.4% [73.1%-78.6%]
+repay rate of rows production refused (uniform's extra loans): 41.3% [41.1%-41.5%]
+repay rate of rows a challenger wants and production refused (targeted's pool): 54.3% [50.1%-56.4%]
+oracle approvals the label-trained model also approves: 74.4% [70.6%-77.1%]
+
+2. Cost and power by design (P = chance the slice ranks the oracle above the label-trained model)
+design            extra loans   net cost   P right (worst seed)   95% CI on gap  bias oracle
+uniform 0.25%              15    $11,351        85.2% (77.0%)     +/-11.5 pts      +0.34 pts
+uniform 0.50%              30    $22,702        90.6% (82.0%)      +/-8.0 pts      +0.12 pts
+uniform 1.00%              60    $45,405        96.9% (92.2%)      +/-5.4 pts      +0.04 pts
+uniform 2.00%             120    $90,810        99.5% (98.8%)      +/-4.0 pts      -0.06 pts
+uniform 5.00%             300   $227,025       100.0% (100.0%)      +/-2.4 pts      +0.00 pts
+uniform 10.00%            600   $454,050       100.0% (100.0%)      +/-1.6 pts      +0.02 pts
+targeted 1.00%             22    $11,640        95.5% (91.8%)      +/-6.0 pts      -0.03 pts
+targeted 2.00%             44    $23,280        99.5% (98.8%)      +/-4.1 pts      +0.02 pts
+targeted 5.00%            111    $58,199       100.0% (100.0%)      +/-2.7 pts      -0.04 pts
+targeted 10.00%           221   $116,398       100.0% (100.0%)      +/-1.8 pts      -0.00 pts
+targeted 20.00%           443   $232,795       100.0% (100.0%)      +/-1.2 pts      -0.02 pts
+targeted 50.00%         1,107   $581,988       100.0% (100.0%)      +/-0.6 pts      +0.02 pts
+
+3. Cheapest point that ranks the models right with 95% probability at every seed
+uniform   2.00% slice: 120 extra loans, net cost $90,810
+targeted  2.00% slice: 44 extra loans, net cost $23,280
+targeted is 3.9x cheaper for the same verdict
+at about the same spend: uniform 0.50% $22,702 -> P 90.6%, CI +/-8.0; targeted 2.00% $23,280 -> P 99.5%, CI +/-4.1
+
+4. What targeted cannot do: the fairness audit (oracle's TPR for group B)
+true TPR B 53.2% [52.1%-54.3%]; B good payers no design but uniform can ever label: 15.2% [13.1%-17.6%]
+  uniform 5%: TPR B bias -0.1 pts [-0.2 to -0.1]
+  targeted 5%: TPR B bias +9.5 pts [+8.1 to +11.2]
+  targeted 50%: TPR B bias +9.6 pts [+8.2 to +11.3]
