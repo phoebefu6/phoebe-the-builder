@@ -86,6 +86,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Schema Registry](data-quality-governance/schema-registry/) | A producer changes a column type and three downstream jobs break silently - we find out from the dashboard, not before. |
 | [Source-to-Target Reconciliation](data-quality-governance/reconciliation-checker/) | We copied a table from the source system into the warehouse and can't prove it matched - row counts drift and values silently differ. |
 | [The Training Set Is Not the Population - a Quota on the Marginals Passed the One-Attribute Audit While Rural B Fell From 12% to 0.5% of the Training Set, Half of Its Good Payers Were Rejected While Overall Accuracy Moved 1.7 Points, and an Empty Cell Cannot Be Reweighted](data-quality-governance/sampling-bias-audit/) | Our training data matched the population on every attribute we checked. |
+| [The Valid Address Was Rejected - Ten Validators Against the RFC, None Error-Free, the Tutorial Regex Refuses 1.18% of Sign-Ups (O'Brien, International), 9 of 10 Accept a Trailing Newline, and a 65-Octet Local Part Passes All Ten](data-quality-governance/email-validator/) | A customer called O'Brien cannot sign up because the form says their real address is invalid, while the same form accepts an address with a newline on… |
 
 
 ---

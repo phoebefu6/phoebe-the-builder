@@ -200,6 +200,7 @@ TASK_OF = {
     "sampling-bias-audit": "trust",
     "selective-labels": "evaluate",
     "exploration-budget": "evaluate",
+    "email-validator": "trust",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

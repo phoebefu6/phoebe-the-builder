@@ -2812,5 +2812,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/exploration-budget",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/exploration-budget/demo.ipynb"
+  },
+  {
+    "day": 202,
+    "slug": "email-validator",
+    "name": "The Valid Address Was Rejected - Ten Validators Against the RFC, None Error-Free, the Tutorial Regex Refuses 1.18% of Sign-Ups (O'Brien, International), 9 of 10 Accept a Trailing Newline, and a 65-Octet Local Part Passes All Ten",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "A customer called O'Brien cannot sign up because the form says their real address is invalid, while the same form accepts an address with a newline on the end.",
+    "status": "done",
+    "date": "2026-10-19",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/email-validator",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/email-validator/demo.ipynb"
   }
 ]
