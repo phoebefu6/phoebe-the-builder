@@ -1,0 +1,546 @@
+{
+ "main": {
+  "tiers": {
+   "ok": 36,
+   "grey": 5,
+   "bad": 27
+  },
+  "per": {
+   "contains @": {
+    "false_reject": [],
+    "false_accept": [
+     "a@b@example.com",
+     "@example.com",
+     "john@",
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example..com",
+     "john@example.com.",
+     "john doe@example.com",
+     "john@example.com\n",
+     "john\t@example.com",
+     "john@-example.com",
+     "john@example-.com",
+     "john@ex_ample.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+     "\"john@example.com",
+     "\"a\"b\"@example.com",
+     "john.\"doe\"@example.com",
+     "john,doe@example.com",
+     "john[1]@example.com",
+     "john(work)@example.com",
+     "<john@example.com>",
+     "John <john@example.com>",
+     "user@[300.1.1.1]"
+    ],
+    "grey_accept": [
+     "user@localhost",
+     "admin@mailserver1",
+     "user@[192.168.1.1]",
+     "user@[IPv6:2001:db8::1]",
+     "user@example.123"
+    ],
+    "groups_rejected": [],
+    "groups_accepted_bad": [
+     "RFC 5322 header syntax",
+     "bad domain label",
+     "broken quoting",
+     "dot misuse",
+     "empty part",
+     "illegal symbol",
+     "malformed IP literal",
+     "no @ / two @",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.0
+   },
+   "hand-rolled split": {
+    "false_reject": [
+     "\"john smith\"@example.com",
+     "\"a@b\"@example.com"
+    ],
+    "false_accept": [
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example..com",
+     "john@example.com\n",
+     "john\t@example.com",
+     "john@-example.com",
+     "john@example-.com",
+     "john@ex_ample.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+     "\"john@example.com",
+     "\"a\"b\"@example.com",
+     "john.\"doe\"@example.com",
+     "john,doe@example.com",
+     "john[1]@example.com",
+     "john(work)@example.com",
+     "<john@example.com>",
+     "user@[300.1.1.1]"
+    ],
+    "grey_accept": [
+     "user@[192.168.1.1]",
+     "user@example.123"
+    ],
+    "groups_rejected": [
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "RFC 5322 header syntax",
+     "bad domain label",
+     "broken quoting",
+     "dot misuse",
+     "illegal symbol",
+     "malformed IP literal",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 6.666666666666667e-05
+   },
+   "\\S+@\\S+\\.\\S+": {
+    "false_reject": [
+     "\"john smith\"@example.com"
+    ],
+    "false_accept": [
+     "a@b@example.com",
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example..com",
+     "john@example.com.",
+     "john@example.com\n",
+     "john@-example.com",
+     "john@example-.com",
+     "john@ex_ample.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+     "\"john@example.com",
+     "\"a\"b\"@example.com",
+     "john.\"doe\"@example.com",
+     "john,doe@example.com",
+     "john[1]@example.com",
+     "john(work)@example.com",
+     "<john@example.com>",
+     "user@[300.1.1.1]"
+    ],
+    "grey_accept": [
+     "user@[192.168.1.1]",
+     "user@example.123"
+    ],
+    "groups_rejected": [
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "RFC 5322 header syntax",
+     "bad domain label",
+     "broken quoting",
+     "dot misuse",
+     "illegal symbol",
+     "malformed IP literal",
+     "no @ / two @",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 3.3333333333333335e-05
+   },
+   "tutorial regex": {
+    "false_reject": [
+     "o'brien@example.ie",
+     "d'angelo@example.it",
+     "user!tag@example.com",
+     "a/b@example.com",
+     "x=y@example.com",
+     "user#1@example.com",
+     "{a}@example.com",
+     "~home@example.com",
+     "user&co@example.com",
+     "\"john smith\"@example.com",
+     "\"john..doe\"@example.com",
+     "\"a@b\"@example.com",
+     "josé@example.com",
+     "user@münchen.de",
+     "用户@例子.广告"
+    ],
+    "false_accept": [
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example..com",
+     "john@example.com\n",
+     "john@-example.com",
+     "john@example-.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com"
+    ],
+    "grey_accept": [],
+    "groups_rejected": [
+     "apostrophe",
+     "international (SMTPUTF8)",
+     "other legal symbol",
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "bad domain label",
+     "dot misuse",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.011774999999999999
+   },
+   "strict TLD{2,4}": {
+    "false_reject": [
+     "a.b.c@company.co.uk",
+     "john+news@gmail.com",
+     "j.smith+billing@company.com",
+     "anna@mail.eng.example.com",
+     "ops@eu-west.corp.example.net",
+     "kim@my-company.com",
+     "kim@a-b-c.co.uk",
+     "lee@studio.photography",
+     "lee@firm.technology",
+     "nina@art.museum",
+     "o'brien@example.ie",
+     "d'angelo@example.it",
+     "user!tag@example.com",
+     "a/b@example.com",
+     "x=y@example.com",
+     "user#1@example.com",
+     "{a}@example.com",
+     "~home@example.com",
+     "user&co@example.com",
+     "-x@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+     "\"john smith\"@example.com",
+     "\"john..doe\"@example.com",
+     "\"a@b\"@example.com",
+     "josé@example.com",
+     "user@münchen.de",
+     "用户@例子.广告",
+     "user@xn--mnchen-3ya.de"
+    ],
+    "false_accept": [
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example.com\n",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"
+    ],
+    "grey_accept": [],
+    "groups_rejected": [
+     "apostrophe",
+     "at the length limit",
+     "hyphen in domain",
+     "international (SMTPUTF8)",
+     "long TLD",
+     "other legal symbol",
+     "plain",
+     "plus tag",
+     "quoted local part",
+     "subdomain"
+    ],
+    "groups_accepted_bad": [
+     "dot misuse",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.2464166666666666
+   },
+   "OWASP regex": {
+    "false_reject": [
+     "lee@studio.photography",
+     "lee@firm.technology",
+     "o'brien@example.ie",
+     "d'angelo@example.it",
+     "user!tag@example.com",
+     "a/b@example.com",
+     "x=y@example.com",
+     "user#1@example.com",
+     "{a}@example.com",
+     "~home@example.com",
+     "\"john smith\"@example.com",
+     "\"john..doe\"@example.com",
+     "\"a@b\"@example.com",
+     "josé@example.com",
+     "user@münchen.de",
+     "用户@例子.广告"
+    ],
+    "false_accept": [
+     "john@example.com\n",
+     "john@-example.com",
+     "john@example-.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com"
+    ],
+    "grey_accept": [],
+    "groups_rejected": [
+     "apostrophe",
+     "international (SMTPUTF8)",
+     "long TLD",
+     "other legal symbol",
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "bad domain label",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.021649999999999996
+   },
+   "HTML5 type=email": {
+    "false_reject": [
+     "\"john smith\"@example.com",
+     "\"john..doe\"@example.com",
+     "\"a@b\"@example.com",
+     "josé@example.com",
+     "user@münchen.de",
+     "用户@例子.广告"
+    ],
+    "false_accept": [
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example.com\n",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com"
+    ],
+    "grey_accept": [
+     "user@localhost",
+     "admin@mailserver1",
+     "user@example.123"
+    ],
+    "groups_rejected": [
+     "international (SMTPUTF8)",
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "dot misuse",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.007899999999999999
+   },
+   "RFC 5322 regex": {
+    "false_reject": [
+     "\"john smith\"@example.com",
+     "josé@example.com",
+     "user@münchen.de",
+     "用户@例子.广告"
+    ],
+    "false_accept": [
+     "john@example.com\n",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com"
+    ],
+    "grey_accept": [
+     "user@[192.168.1.1]",
+     "user@example.123"
+    ],
+    "groups_rejected": [
+     "international (SMTPUTF8)",
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.007833333333333333
+   },
+   "stdlib parseaddr": {
+    "false_reject": [],
+    "false_accept": [
+     "@example.com",
+     ".john@example.com",
+     "john.@example.com",
+     "john..doe@example.com",
+     "john@example..com",
+     "john@example.com.",
+     "john doe@example.com",
+     "john@example.com\n",
+     "john\t@example.com",
+     "john@-example.com",
+     "john@example-.com",
+     "john@ex_ample.com",
+     "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+     "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+     "\"john@example.com",
+     "john.\"doe\"@example.com",
+     "john(work)@example.com",
+     "<john@example.com>",
+     "John <john@example.com>"
+    ],
+    "grey_accept": [
+     "user@localhost",
+     "admin@mailserver1",
+     "user@example.123"
+    ],
+    "groups_rejected": [],
+    "groups_accepted_bad": [
+     "RFC 5322 header syntax",
+     "bad domain label",
+     "broken quoting",
+     "dot misuse",
+     "empty part",
+     "over a length limit",
+     "space / control char"
+    ],
+    "signups_lost": 0.0
+   },
+   "email-validator 2.3": {
+    "false_reject": [
+     "\"john smith\"@example.com",
+     "\"john..doe\"@example.com",
+     "\"a@b\"@example.com"
+    ],
+    "false_accept": [
+     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"
+    ],
+    "grey_accept": [],
+    "groups_rejected": [
+     "quoted local part"
+    ],
+    "groups_accepted_bad": [
+     "over a length limit"
+    ],
+    "signups_lost": 0.0001
+   }
+  },
+  "rejected_by_none": [
+   "john.smith@example.com",
+   "jane@example.org",
+   "j@e.co",
+   "first_last@example.com",
+   "info@3m.com",
+   "John.Smith@Example.COM",
+   "ANNA@EXAMPLE.ORG",
+   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"
+  ],
+  "ok_rejected_by_k": {
+   "john.smith@example.com": 0,
+   "jane@example.org": 0,
+   "a.b.c@company.co.uk": 1,
+   "j@e.co": 0,
+   "first_last@example.com": 0,
+   "info@3m.com": 0,
+   "john+news@gmail.com": 1,
+   "j.smith+billing@company.com": 1,
+   "anna@mail.eng.example.com": 1,
+   "ops@eu-west.corp.example.net": 1,
+   "kim@my-company.com": 1,
+   "kim@a-b-c.co.uk": 1,
+   "lee@studio.photography": 2,
+   "lee@firm.technology": 2,
+   "nina@art.museum": 1,
+   "John.Smith@Example.COM": 0,
+   "ANNA@EXAMPLE.ORG": 0,
+   "o'brien@example.ie": 3,
+   "d'angelo@example.it": 3,
+   "user!tag@example.com": 3,
+   "a/b@example.com": 3,
+   "x=y@example.com": 3,
+   "user#1@example.com": 3,
+   "{a}@example.com": 3,
+   "~home@example.com": 3,
+   "user&co@example.com": 2,
+   "-x@example.com": 1,
+   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com": 0,
+   "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com": 1,
+   "\"john smith\"@example.com": 8,
+   "\"john..doe\"@example.com": 5,
+   "\"a@b\"@example.com": 6,
+   "josé@example.com": 5,
+   "user@münchen.de": 5,
+   "用户@例子.广告": 5,
+   "user@xn--mnchen-3ya.de": 1
+  },
+  "bad_accepted_by_k": {
+   "john.example.com": 0,
+   "a@b@example.com": 2,
+   "@example.com": 2,
+   "john@": 1,
+   ".john@example.com": 7,
+   "john.@example.com": 7,
+   "john..doe@example.com": 7,
+   "john@example..com": 5,
+   "john@example.com.": 3,
+   "john doe@example.com": 2,
+   "john@example.com\n": 9,
+   "john\t@example.com": 3,
+   "john@-example.com": 6,
+   "john@example-.com": 6,
+   "john@ex_ample.com": 4,
+   "john@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com": 8,
+   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com": 10,
+   "x@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com": 8,
+   "\"john@example.com": 4,
+   "\"a\"b\"@example.com": 3,
+   "john.\"doe\"@example.com": 4,
+   "john,doe@example.com": 3,
+   "john[1]@example.com": 3,
+   "john(work)@example.com": 4,
+   "<john@example.com>": 4,
+   "John <john@example.com>": 2,
+   "user@[300.1.1.1]": 3
+  },
+  "perfect": [],
+  "stack": [
+   "HTML5 type=email",
+   "tutorial regex",
+   "email-validator 2.3"
+  ],
+  "stack_false_reject": [
+   "o'brien@example.ie",
+   "d'angelo@example.it",
+   "user!tag@example.com",
+   "a/b@example.com",
+   "x=y@example.com",
+   "user#1@example.com",
+   "{a}@example.com",
+   "~home@example.com",
+   "user&co@example.com",
+   "\"john smith\"@example.com",
+   "\"john..doe\"@example.com",
+   "\"a@b\"@example.com",
+   "josé@example.com",
+   "user@münchen.de",
+   "用户@例子.广告"
+  ],
+  "stack_signups_lost": 0.011774999999999999,
+  "newline_accepted_by": [
+   "contains @",
+   "hand-rolled split",
+   "\\S+@\\S+\\.\\S+",
+   "tutorial regex",
+   "strict TLD{2,4}",
+   "OWASP regex",
+   "HTML5 type=email",
+   "RFC 5322 regex",
+   "stdlib parseaddr"
+  ]
+ },
+ "share": {
+  "plain": 0.88,
+  "plus tag": 0.03,
+  "subdomain": 0.02,
+  "hyphen in domain": 0.02,
+  "long TLD": 0.015,
+  "uppercase": 0.02,
+  "apostrophe": 0.003,
+  "other legal symbol": 0.001,
+  "at the length limit": 0.0005,
+  "quoted local part": 0.0001,
+  "international (SMTPUTF8)": 0.0104
+ }
+}

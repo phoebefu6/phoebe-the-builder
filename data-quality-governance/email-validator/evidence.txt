@@ -1,0 +1,51 @@
+email-validator evidence  (68 addresses: 36 deliverable, 5 valid-but-local, 27 invalid; truth = RFC 5321 + RFC 6531 reference parser, agreeing with a hand label on every row; no randomness, every number exact)
+
+1. Each validator against the reference (FR = deliverable rejected, FA = invalid accepted)
+validator               FR  FA  grey ok  sign-ups lost
+contains @               0  26        5          0.00%
+hand-rolled split        2  20        2          0.01%
+\S+@\S+\.\S+             1  21        2          0.00%
+tutorial regex          15  10        0          1.18%
+strict TLD{2,4}         28   6        0         24.64%
+OWASP regex             16   6        0          2.16%
+HTML5 type=email         6   6        3          0.79%
+RFC 5322 regex           4   4        2          0.78%
+stdlib parseaddr         0  20        3          0.00%
+email-validator 2.3      3   1        0          0.01%
+
+2. Which deliverable groups each validator rejects
+contains @             -
+hand-rolled split      quoted local part
+\S+@\S+\.\S+           quoted local part
+tutorial regex         apostrophe, international (SMTPUTF8), other legal symbol, quoted local part
+strict TLD{2,4}        apostrophe, at the length limit, hyphen in domain, international (SMTPUTF8), long TLD, other legal symbol, plain, plus tag, quoted local part, subdomain
+OWASP regex            apostrophe, international (SMTPUTF8), long TLD, other legal symbol, quoted local part
+HTML5 type=email       international (SMTPUTF8), quoted local part
+RFC 5322 regex         international (SMTPUTF8), quoted local part
+stdlib parseaddr       -
+email-validator 2.3    quoted local part
+
+3. Deliverable addresses rejected by the most validators (of 10)
+ 8  '"john smith"@example.com'
+ 6  '"a@b"@example.com'
+ 5  '"john..doe"@example.com'
+ 5  'josé@example.com'
+ 5  'user@münchen.de'
+ 5  '用户@例子.广告'
+ 3  "o'brien@example.ie"
+ 3  "d'angelo@example.it"
+
+4. Invalid addresses accepted by the most validators (of 10)
+10  'aaaaaaaaaaaaaaaaaa...aa@example.com' (77 octets)  (local part over 64 octets)
+ 9  'john@example.com\n'  (domain label invalid)
+ 8  'john@aaaaaaaaaaaaa...aaaaaaaaaa.com' (73 octets)  (domain label invalid)
+ 8  'x@aaaaaaaaaaaaaaaa...bbbbbbbbbb.com' (255 octets)  (address over 254 octets)
+ 7  '.john@example.com'  (local part not a dot-string or quoted-string)
+ 7  'john.@example.com'  (local part not a dot-string or quoted-string)
+ 7  'john..doe@example.com'  (local part not a dot-string or quoted-string)
+ 6  'john@-example.com'  (domain label invalid)
+
+5. The overlap
+validators with zero errors: 0
+accept 'john@example.com\n' (trailing newline): 9 of 10
+stacked HTML5 type=email + tutorial regex + email-validator 2.3: rejects 15 deliverable addresses, 1.18% of sign-ups
