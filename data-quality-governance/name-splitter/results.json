@@ -1,0 +1,1516 @@
+{
+ "main": {
+  "n": 51,
+  "groups": [
+   "plain",
+   "middle name",
+   "particle",
+   "two surnames",
+   "family first",
+   "Western-ordered East Asian",
+   "title or suffix",
+   "mononym",
+   "patronymic",
+   "hyphenated",
+   "double-barrelled",
+   "comma inverted"
+  ],
+  "per": {
+   "split(\" \", 1)": {
+    "given_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Wang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Kim"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Tanaka"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Nguyen"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Chen"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Dr."
+     ],
+     [
+      "Mrs. Ellen Park",
+      "title or suffix",
+      "Mrs."
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "title or suffix",
+      "Prof."
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "van"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Hale,"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "Pérez"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Okafor,"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Thomas Edward Barlow",
+      "middle name",
+      "Edward Barlow"
+     ],
+     [
+      "Claire Louise Fenwick",
+      "middle name",
+      "Louise Fenwick"
+     ],
+     [
+      "Michael James Ortega",
+      "middle name",
+      "James Ortega"
+     ],
+     [
+      "Aisha Noor Rahman",
+      "middle name",
+      "Noor Rahman"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "María Pérez López"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Luis Navarro Gil"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Fang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Min-jun"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Yuki"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Van An"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Lin"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Robert Hale Jr."
+     ],
+     [
+      "Margaret Osei PhD",
+      "title or suffix",
+      "Osei PhD"
+     ],
+     [
+      "James Whitmore III",
+      "title or suffix",
+      "Whitmore III"
+     ],
+     [
+      "Mrs. Ellen Park",
+      "title or suffix",
+      "Ellen Park"
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "title or suffix",
+      "Henrik Dahl"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "bin Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "binti Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "bin Yusof"
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "den Broek, Pieter"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Robert"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "López, Ana María"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Daniel"
+     ]
+    ],
+    "both_right": 27,
+    "greeted_wrong": 0.162,
+    "groups_failed": [
+     "comma inverted",
+     "family first",
+     "middle name",
+     "patronymic",
+     "title or suffix",
+     "two surnames"
+    ],
+    "greeted_as_affix": [
+     [
+      "Dr. Robert Hale Jr.",
+      "Dr."
+     ],
+     [
+      "Mrs. Ellen Park",
+      "Mrs."
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "Prof."
+     ],
+     [
+      "van den Broek, Pieter",
+      "van"
+     ]
+    ]
+   },
+   "rsplit(\" \", 1)": {
+    "given_wrong": [
+     [
+      "Thomas Edward Barlow",
+      "middle name",
+      "Thomas Edward"
+     ],
+     [
+      "Claire Louise Fenwick",
+      "middle name",
+      "Claire Louise"
+     ],
+     [
+      "Michael James Ortega",
+      "middle name",
+      "Michael James"
+     ],
+     [
+      "Aisha Noor Rahman",
+      "middle name",
+      "Aisha Noor"
+     ],
+     [
+      "Pieter van den Broek",
+      "particle",
+      "Pieter van den"
+     ],
+     [
+      "Anna von Halden",
+      "particle",
+      "Anna von"
+     ],
+     [
+      "Luc de la Fontaine",
+      "particle",
+      "Luc de la"
+     ],
+     [
+      "Marco di Stefano",
+      "particle",
+      "Marco di"
+     ],
+     [
+      "Sophie De Smet",
+      "particle",
+      "Sophie De"
+     ],
+     [
+      "Omar al Rashid",
+      "particle",
+      "Omar al"
+     ],
+     [
+      "Vincent van der Berg",
+      "particle",
+      "Vincent van der"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana María Pérez"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Carlos Ruiz"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Lucía Fernández"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "João Silva"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José Luis Navarro"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Wang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Kim"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Tanaka"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Nguyen Van"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Chen"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Dr. Robert Hale"
+     ],
+     [
+      "Margaret Osei PhD",
+      "title or suffix",
+      "Margaret Osei"
+     ],
+     [
+      "James Whitmore III",
+      "title or suffix",
+      "James Whitmore"
+     ],
+     [
+      "Mrs. Ellen Park",
+      "title or suffix",
+      "Mrs. Ellen"
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "title or suffix",
+      "Prof. Henrik"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Abdullah bin"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Siti binti"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Farid bin"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Rupert Ashby"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Harriet Vane"
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "van den Broek,"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Hale,"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "Pérez López, Ana"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Okafor,"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Pieter van den Broek",
+      "particle",
+      "Broek"
+     ],
+     [
+      "Anna von Halden",
+      "particle",
+      "Halden"
+     ],
+     [
+      "Luc de la Fontaine",
+      "particle",
+      "Fontaine"
+     ],
+     [
+      "Marco di Stefano",
+      "particle",
+      "Stefano"
+     ],
+     [
+      "Sophie De Smet",
+      "particle",
+      "Smet"
+     ],
+     [
+      "Omar al Rashid",
+      "particle",
+      "Rashid"
+     ],
+     [
+      "Vincent van der Berg",
+      "particle",
+      "Berg"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "López"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Delgado"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Ortiz"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "Santos"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Gil"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Fang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Min-jun"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Yuki"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "An"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Lin"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Jr."
+     ],
+     [
+      "Margaret Osei PhD",
+      "title or suffix",
+      "PhD"
+     ],
+     [
+      "James Whitmore III",
+      "title or suffix",
+      "III"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Yusof"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Lowe"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Tempest"
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "Pieter"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Robert"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "María"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Daniel"
+     ]
+    ],
+    "both_right": 15,
+    "greeted_wrong": 0.38500000000000023,
+    "groups_failed": [
+     "comma inverted",
+     "double-barrelled",
+     "family first",
+     "middle name",
+     "particle",
+     "patronymic",
+     "title or suffix",
+     "two surnames"
+    ],
+    "greeted_as_affix": [
+     [
+      "Pieter van den Broek",
+      "Pieter van den"
+     ],
+     [
+      "Anna von Halden",
+      "Anna von"
+     ],
+     [
+      "Luc de la Fontaine",
+      "Luc de la"
+     ],
+     [
+      "Marco di Stefano",
+      "Marco di"
+     ],
+     [
+      "Sophie De Smet",
+      "Sophie De"
+     ],
+     [
+      "Omar al Rashid",
+      "Omar al"
+     ],
+     [
+      "Vincent van der Berg",
+      "Vincent van der"
+     ],
+     [
+      "Nguyen Van An",
+      "Nguyen Van"
+     ]
+    ]
+   },
+   "first + last word": {
+    "given_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Wang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Kim"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Tanaka"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Nguyen"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Chen"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Dr."
+     ],
+     [
+      "Mrs. Ellen Park",
+      "title or suffix",
+      "Mrs."
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "title or suffix",
+      "Prof."
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "van"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Hale,"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "Pérez"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Okafor,"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Pieter van den Broek",
+      "particle",
+      "Broek"
+     ],
+     [
+      "Anna von Halden",
+      "particle",
+      "Halden"
+     ],
+     [
+      "Luc de la Fontaine",
+      "particle",
+      "Fontaine"
+     ],
+     [
+      "Marco di Stefano",
+      "particle",
+      "Stefano"
+     ],
+     [
+      "Sophie De Smet",
+      "particle",
+      "Smet"
+     ],
+     [
+      "Omar al Rashid",
+      "particle",
+      "Rashid"
+     ],
+     [
+      "Vincent van der Berg",
+      "particle",
+      "Berg"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "López"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Delgado"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Ortiz"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "Santos"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Gil"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Fang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Min-jun"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Yuki"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "An"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Lin"
+     ],
+     [
+      "Dr. Robert Hale Jr.",
+      "title or suffix",
+      "Jr."
+     ],
+     [
+      "Margaret Osei PhD",
+      "title or suffix",
+      "PhD"
+     ],
+     [
+      "James Whitmore III",
+      "title or suffix",
+      "III"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Yusof"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Lowe"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Tempest"
+     ],
+     [
+      "van den Broek, Pieter",
+      "comma inverted",
+      "Pieter"
+     ],
+     [
+      "Hale, Robert",
+      "comma inverted",
+      "Robert"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "María"
+     ],
+     [
+      "Okafor, Daniel",
+      "comma inverted",
+      "Daniel"
+     ]
+    ],
+    "both_right": 19,
+    "greeted_wrong": 0.162,
+    "groups_failed": [
+     "comma inverted",
+     "double-barrelled",
+     "family first",
+     "particle",
+     "patronymic",
+     "title or suffix",
+     "two surnames"
+    ],
+    "greeted_as_affix": [
+     [
+      "Dr. Robert Hale Jr.",
+      "Dr."
+     ],
+     [
+      "Mrs. Ellen Park",
+      "Mrs."
+     ],
+     [
+      "Prof. Henrik Dahl",
+      "Prof."
+     ],
+     [
+      "van den Broek, Pieter",
+      "van"
+     ]
+    ]
+   },
+   "particle-aware rules": {
+    "given_wrong": [
+     [
+      "Thomas Edward Barlow",
+      "middle name",
+      "Thomas Edward"
+     ],
+     [
+      "Claire Louise Fenwick",
+      "middle name",
+      "Claire Louise"
+     ],
+     [
+      "Michael James Ortega",
+      "middle name",
+      "Michael James"
+     ],
+     [
+      "Aisha Noor Rahman",
+      "middle name",
+      "Aisha Noor"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana María Pérez"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Carlos Ruiz"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Lucía Fernández"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "João Silva"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José Luis Navarro"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Wang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Kim"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Tanaka"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Nguyen"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Chen"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Abdullah bin"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Siti binti"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Farid bin"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Rupert Ashby"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Harriet Vane"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "López"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Delgado"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Ortiz"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "Santos"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Gil"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Fang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Min-jun"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Yuki"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Van An"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Lin"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Yusof"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Lowe"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Tempest"
+     ]
+    ],
+    "both_right": 31,
+    "greeted_wrong": 0.24499999999999997,
+    "groups_failed": [
+     "double-barrelled",
+     "family first",
+     "middle name",
+     "patronymic",
+     "two surnames"
+    ],
+    "greeted_as_affix": []
+   },
+   "+ East Asian surname list": {
+    "given_wrong": [
+     [
+      "Thomas Edward Barlow",
+      "middle name",
+      "Thomas Edward"
+     ],
+     [
+      "Claire Louise Fenwick",
+      "middle name",
+      "Claire Louise"
+     ],
+     [
+      "Michael James Ortega",
+      "middle name",
+      "Michael James"
+     ],
+     [
+      "Aisha Noor Rahman",
+      "middle name",
+      "Aisha Noor"
+     ],
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana María Pérez"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Carlos Ruiz"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Lucía Fernández"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "João Silva"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José Luis Navarro"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Lin Chen",
+      "Western-ordered East Asian",
+      "Chen"
+     ],
+     [
+      "Chen Lin",
+      "Western-ordered East Asian",
+      "Lin"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Abdullah bin"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Siti binti"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Farid bin"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Rupert Ashby"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Harriet Vane"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "López"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Delgado"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Ortiz"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "Santos"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Gil"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Lin Chen",
+      "Western-ordered East Asian",
+      "Lin"
+     ],
+     [
+      "Chen Lin",
+      "Western-ordered East Asian",
+      "Chen"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "Yusof"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Lowe"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Tempest"
+     ]
+    ],
+    "both_right": 34,
+    "greeted_wrong": 0.2433333333333333,
+    "groups_failed": [
+     "Western-ordered East Asian",
+     "double-barrelled",
+     "family first",
+     "middle name",
+     "patronymic",
+     "two surnames"
+    ],
+    "greeted_as_affix": []
+   },
+   "nameparser 2.5": {
+    "given_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "Ana"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "José"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Wang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Kim"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Tanaka"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Nagy"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Nguyen"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Chen"
+     ],
+     [
+      "Pérez López, Ana María",
+      "comma inverted",
+      "Ana"
+     ]
+    ],
+    "family_wrong": [
+     [
+      "Ana María Pérez López",
+      "two surnames",
+      "López"
+     ],
+     [
+      "Carlos Ruiz Delgado",
+      "two surnames",
+      "Delgado"
+     ],
+     [
+      "Lucía Fernández Ortiz",
+      "two surnames",
+      "Ortiz"
+     ],
+     [
+      "João Silva Santos",
+      "two surnames",
+      "Santos"
+     ],
+     [
+      "José Luis Navarro Gil",
+      "two surnames",
+      "Gil"
+     ],
+     [
+      "Wang Fang",
+      "family first",
+      "Fang"
+     ],
+     [
+      "Kim Min-jun",
+      "family first",
+      "Min-jun"
+     ],
+     [
+      "Tanaka Yuki",
+      "family first",
+      "Yuki"
+     ],
+     [
+      "Nagy Eszter",
+      "family first",
+      "Eszter"
+     ],
+     [
+      "Nguyen Van An",
+      "family first",
+      "Van An"
+     ],
+     [
+      "Chen Lin",
+      "family first",
+      "Lin"
+     ],
+     [
+      "Abdullah bin Ahmad",
+      "patronymic",
+      "bin Ahmad"
+     ],
+     [
+      "Siti binti Hassan",
+      "patronymic",
+      "binti Hassan"
+     ],
+     [
+      "Farid bin Yusof",
+      "patronymic",
+      "bin Yusof"
+     ],
+     [
+      "Rupert Ashby Lowe",
+      "double-barrelled",
+      "Lowe"
+     ],
+     [
+      "Harriet Vane Tempest",
+      "double-barrelled",
+      "Tempest"
+     ]
+    ],
+    "both_right": 34,
+    "greeted_wrong": 0.09149999999999998,
+    "groups_failed": [
+     "comma inverted",
+     "double-barrelled",
+     "family first",
+     "patronymic",
+     "two surnames"
+    ],
+    "greeted_as_affix": []
+   }
+  },
+  "by_group": {
+   "split(\" \", 1)": {
+    "plain": 1.0,
+    "middle name": 0.0,
+    "particle": 1.0,
+    "two surnames": 0.6,
+    "family first": 0.0,
+    "Western-ordered East Asian": 1.0,
+    "title or suffix": 0.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 1.0,
+    "comma inverted": 0.0
+   },
+   "rsplit(\" \", 1)": {
+    "plain": 1.0,
+    "middle name": 0.0,
+    "particle": 0.0,
+    "two surnames": 0.0,
+    "family first": 0.0,
+    "Western-ordered East Asian": 1.0,
+    "title or suffix": 0.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 0.0,
+    "comma inverted": 0.0
+   },
+   "first + last word": {
+    "plain": 1.0,
+    "middle name": 1.0,
+    "particle": 0.0,
+    "two surnames": 0.0,
+    "family first": 0.0,
+    "Western-ordered East Asian": 1.0,
+    "title or suffix": 0.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 0.0,
+    "comma inverted": 0.0
+   },
+   "particle-aware rules": {
+    "plain": 1.0,
+    "middle name": 0.0,
+    "particle": 1.0,
+    "two surnames": 0.0,
+    "family first": 0.0,
+    "Western-ordered East Asian": 1.0,
+    "title or suffix": 1.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 0.0,
+    "comma inverted": 1.0
+   },
+   "+ East Asian surname list": {
+    "plain": 1.0,
+    "middle name": 0.0,
+    "particle": 1.0,
+    "two surnames": 0.0,
+    "family first": 0.8333333333333334,
+    "Western-ordered East Asian": 0.3333333333333333,
+    "title or suffix": 1.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 0.0,
+    "comma inverted": 1.0
+   },
+   "nameparser 2.5": {
+    "plain": 1.0,
+    "middle name": 1.0,
+    "particle": 1.0,
+    "two surnames": 0.0,
+    "family first": 0.0,
+    "Western-ordered East Asian": 1.0,
+    "title or suffix": 1.0,
+    "mononym": 1.0,
+    "patronymic": 0.0,
+    "hyphenated": 1.0,
+    "double-barrelled": 0.0,
+    "comma inverted": 0.75
+   }
+  },
+  "ceiling": {
+   "by_string": 50,
+   "ambiguous_strings": [
+    "Chen Lin"
+   ],
+   "by_shape": 41,
+   "WWW": {
+    "G-F": 4,
+    "GFF": 5
+   }
+  },
+  "wrong_by_all": [
+   "Ana María Pérez López",
+   "José Luis Navarro Gil",
+   "Nagy Eszter",
+   "Abdullah bin Ahmad",
+   "Siti binti Hassan",
+   "Farid bin Yusof"
+  ],
+  "best": "nameparser 2.5"
+ },
+ "share": {
+  "plain": 0.51,
+  "middle name": 0.12,
+  "particle": 0.04,
+  "two surnames": 0.06,
+  "family first": 0.05,
+  "Western-ordered East Asian": 0.06,
+  "title or suffix": 0.03,
+  "mononym": 0.005,
+  "patronymic": 0.01,
+  "hyphenated": 0.04,
+  "double-barrelled": 0.005,
+  "comma inverted": 0.07
+ }
+}

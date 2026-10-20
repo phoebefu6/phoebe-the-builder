@@ -1,0 +1,44 @@
+name-splitter evidence  (51 fictional full names in 12 naming conventions; truth = hand-labelled given + family from each person's own convention; no randomness, every number exact)
+
+1. Each splitter against the truth (both right = given AND family exactly right)
+splitter                     both right  given wrong  family wrong  greeted wrong
+split(" ", 1)                     27/51           15            24         16.20%
+rsplit(" ", 1)                    15/51           36            30         38.50%
+first + last word                 19/51           15            30         16.20%
+particle-aware rules              31/51           20            16         24.50%
++ East Asian surname list         34/51           17            13         24.33%
+nameparser 2.5                    34/51            9            16          9.15%
+
+2. Share of each convention split exactly right
+convention                      1    2    3    4    5    6
+plain                        100% 100% 100% 100% 100% 100%
+middle name                    0%   0% 100%   0%   0% 100%
+particle                     100%   0%   0% 100% 100% 100%
+two surnames                  60%   0%   0%   0%   0%   0%
+family first                   0%   0%   0%   0%  83%   0%
+Western-ordered East Asian   100% 100% 100% 100%  33% 100%
+title or suffix                0%   0%   0% 100% 100% 100%
+mononym                      100% 100% 100% 100% 100% 100%
+patronymic                     0%   0%   0%   0%   0%   0%
+hyphenated                   100% 100% 100% 100% 100% 100%
+double-barrelled             100%   0%   0%   0%   0%   0%
+comma inverted                 0%   0%   0% 100% 100%  75%
+   columns: 1 = split(" ", 1); 2 = rsplit(" ", 1); 3 = first + last word; 4 = particle-aware rules; 5 = + East Asian surname list; 6 = nameparser 2.5
+
+3. Greetings that came out as a title or a particle ('Dear ___')
+split(" ", 1)                'Dr. Robert Hale Jr.' -> 'Dr.', 'Mrs. Ellen Park' -> 'Mrs.', 'Prof. Henrik Dahl' -> 'Prof.', 'van den Broek, Pieter' -> 'van'
+rsplit(" ", 1)               'Pieter van den Broek' -> 'Pieter van den', 'Anna von Halden' -> 'Anna von', 'Luc de la Fontaine' -> 'Luc de la', 'Marco di Stefano' -> 'Marco di', 'Sophie De Smet' -> 'Sophie De', 'Omar al Rashid' -> 'Omar al', 'Vincent van der Berg' -> 'Vincent van der', 'Nguyen Van An' -> 'Nguyen Van'
+first + last word            'Dr. Robert Hale Jr.' -> 'Dr.', 'Mrs. Ellen Park' -> 'Mrs.', 'Prof. Henrik Dahl' -> 'Prof.', 'van den Broek, Pieter' -> 'van'
+
+4. Names every splitter gets wrong (6)
+   Ana María Pérez López
+   José Luis Navarro Gil
+   Nagy Eszter
+   Abdullah bin Ahmad
+   Siti binti Hassan
+   Farid bin Yusof
+
+5. The ceiling: the best any splitter that sees only the string can do
+by string: 50/51  (same string, two truths: Chen Lin)
+by shape : 41/51  (three plain words W W W: middle name 4, two surnames or double-barrelled 5)
+best splitter here: nameparser 2.5, 34/51
