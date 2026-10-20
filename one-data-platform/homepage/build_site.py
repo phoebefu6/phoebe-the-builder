@@ -201,6 +201,7 @@ TASK_OF = {
     "selective-labels": "evaluate",
     "exploration-budget": "evaluate",
     "email-validator": "trust",
+    "name-splitter": "shape",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

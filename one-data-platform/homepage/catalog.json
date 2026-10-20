@@ -2826,5 +2826,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/email-validator",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/email-validator/demo.ipynb"
+  },
+  {
+    "day": 203,
+    "slug": "name-splitter",
+    "name": "First Name Came Out as Van - Six Splitters Against Twelve Naming Conventions, the Library Greets 9.15% Wrong and rsplit 38.50%, a Surname List Fixes Family-First Names by Breaking Western-Ordered Ones, and No Rule Over Word Positions Can Beat 41 of 51",
+    "task": "shape",
+    "task_title": "Make raw values usable",
+    "problem": "The welcome email said \"Dear van\" because the import script split a full name on the first space, and no rule can fix it reliably: the string does not say where the surname starts.",
+    "status": "done",
+    "date": "2026-10-20",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/name-splitter",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/name-splitter/demo.ipynb"
   }
 ]
