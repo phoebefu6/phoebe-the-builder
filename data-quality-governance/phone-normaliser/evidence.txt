@@ -1,0 +1,44 @@
+phone-normaliser evidence  (40 CRM rows, 15 real customers; truth = hand-labelled E.164 per row; default region SG; seeded sweep, every number exact)
+
+1. Each normaliser against the truth (pairs = row pairs; 'customers' = records left after matching on the key)
+normaliser                           E.164 right  wrong  refused  false split  false merge  customers
+digits only                                    -      -        0      37/48              2    29/15
+last 9 digits                                  -      -        0       4/48             11    16/15
+US script (+1 if 10 digits)                   20     20        0      28/48              2    26/15
+phonenumbers, region=SG                       13      3       24       3/48              4    36/15
+phonenumbers, region=country field            33      2        5       4/48              5    20/15
+phonenumbers, no region (+ only)              12      0       28       0/48              0    39/15
+
+2. Two customers made one (false merges)
+digits only                          '9123 4567' = '9123 4567'
+last 9 digits                        '+33 6 12 34 56 78' = '+34 612 34 56 78'; '+33 6 12 34 56 78' = '612 345 678'; '0033612345678' = '+34 612 34 56 78'; +4 more
+US script (+1 if 10 digits)          '9123 4567' = '9123 4567'
+phonenumbers, region=SG              '+65 9123 4567' = '9123 4567'; '9123 4567' = '9123 4567'
+phonenumbers, region=country field   '+33 6 12 34 56 78' = '612 345 678'; '+65 9123 4567' = '9123 4567'; '0033612345678' = '612 345 678'; +2 more
+
+3. Wrong numbers produced by the library (a valid number, not the customer's)
+phonenumbers, region=SG              '0033612345678' [FR] -> +3612345678, truth +33612345678
+phonenumbers, region=SG              '9123 4567' [HK] -> +6591234567, truth +85291234567
+phonenumbers, region=SG              '9123 4567' [SG] -> +6591234567, truth +85291234567
+phonenumbers, region=country field   '612 345 678' [FR] -> +33612345678, truth +34612345678
+phonenumbers, region=country field   '9123 4567' [SG] -> +6591234567, truth +85291234567
+
+4. How many valid numbers each typed string can be (distinct E.164 across 245 regions)
+   '612 345 678'           30
+   '06 12 34 56 78'        28
+   '9123 4567'             27
+   '012-345 6789'          19
+   '030 123456'            15
+   '0491 570 156'          15
+   '0491 570 159'          15
+   '0491570156'            15
+   strings with exactly one reading: 13 of 36 distinct
+
+5. Seeded sweep: random strings typed without a country code
+   0 + 9 digits (trunk-0 national)    n=600  valid somewhere 100%  valid as 3+ numbers 100%  median 21  max 35
+   8 digits, no trunk                 n=600  valid somewhere 100%  valid as 3+ numbers 100%  median 32  max 53
+
+6. The ceiling
+string only           : 13/40 rows recoverable (one valid reading in the world)
+string + country field: 39/40  (same input, two truths: 9123 4567 [SG])
+best normaliser here  : phonenumbers, region=country field, 33/40
