@@ -64,6 +64,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Report the Collisions a Sanitiser Creates](automation-suite/filename-sanitiser/) | sanitise(name) -> str is the wrong shape, and not because of which characters are on the deny-list. |
 | [Report the Collisions a Slugifier Creates](automation-suite/slug-collider/) | slugify("Node.js at scale") and slugify("NodeJS at scale") both return nodejs-at-scale. Neither call is wrong. |
 | [Truncate to N Does Not Name an Operation](data-engineering-pro/unicode-width-truncator/) | "Truncate to 20" does not name an operation. A truncator is three decisions - a unit of length, a boundary rule, and… |
+| [Two Formats, One Number, Two Customers - Digits-Only Splits 37 of 48 Duplicate Pairs, the Last-9-Digits Fix Merges 11 Pairs of Different People, the Library With the Country Field Gets 33/40 and Files a Spanish Mobile Under a French Customer, and 600 Seeded Strings Without a + All Had 3+ Valid Readings](data-quality-governance/phone-normaliser/) | The same customer typed their number two ways and became two customers, while a Spanish customer with a French address was filed under a French… |
 
 
 ---

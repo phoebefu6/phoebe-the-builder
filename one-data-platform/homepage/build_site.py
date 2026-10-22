@@ -202,6 +202,7 @@ TASK_OF = {
     "exploration-budget": "evaluate",
     "email-validator": "trust",
     "name-splitter": "shape",
+    "phone-normaliser": "shape",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

@@ -2840,5 +2840,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/name-splitter",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/name-splitter/demo.ipynb"
+  },
+  {
+    "day": 204,
+    "slug": "phone-normaliser",
+    "name": "Two Formats, One Number, Two Customers - Digits-Only Splits 37 of 48 Duplicate Pairs, the Last-9-Digits Fix Merges 11 Pairs of Different People, the Library With the Country Field Gets 33/40 and Files a Spanish Mobile Under a French Customer, and 600 Seeded Strings Without a + All Had 3+ Valid Readings",
+    "task": "shape",
+    "task_title": "Make raw values usable",
+    "problem": "The same customer typed their number two ways and became two customers, while a Spanish customer with a French address was filed under a French customer's number.",
+    "status": "done",
+    "date": "2026-10-22",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/phone-normaliser",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/phone-normaliser/demo.ipynb"
   }
 ]
