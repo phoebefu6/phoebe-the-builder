@@ -1,0 +1,52 @@
+dedupe-key-choice evidence  (45 CRM rows, 23 real customers, 37 true duplicate pairs; truth = hand-labelled customer id per row; every name fictional; no randomness)
+
+1. Each key against the truth ('customers' = records left after matching on the key)
+key                         false split  false merge  customers  chained
+exact                            37/37             1    44/23        0
+normalised                       27/37             1    36/23        0
+soundex                          20/37            13    25/23        0
+metaphone                        19/37            11    25/23        0
+jaro-winkler >= 0.9              14/37            19    19/23        3
+token-set ratio >= 85             9/37            18    19/23        5
+
+2. Pairs the ROW key merges that the COLUMN key keeps apart
+                                  exact   normalised      soundex    metaphone jaro-winkler token-set ratio
+exact                                 0            0            0            0            0            0
+normalised                           10            0            0            0            0            0
+soundex                              29           19            0            2            2            2
+metaphone                            28           18            1            0            3            3
+jaro-winkler >= 0.9                  41           31           14           16            0            3
+token-set ratio >= 85                45           35           18           20            7            0
+
+3. Two customers made one (false merges, first three per key)
+exact                      'John Smith' = 'John Smith'
+normalised                 'John Smith' = 'John Smith'
+soundex                    'Dr. Elena Petrova' = 'Elena Petrov'; 'Elena Petrova ' = 'Elena Petrov'; 'John Smith' = 'John Smith'; +9 more
+metaphone                  'Dr. Elena Petrova' = 'Elena Petrov'; 'Elena Petrova ' = 'Elena Petrov'; 'John Smith' = 'John Smith'; +7 more
+jaro-winkler >= 0.9        'Anna Mueller-Schmidt' = 'Anna Müller'; 'Anna Muller Schmidt' = 'Anna Müller'; 'Anna Müller-Schmidt' = 'Anna Müller'; +15 more
+token-set ratio >= 85      'Anna Mueller-Schmidt' = 'Anna Müller'; 'Anna Muller Schmidt' = 'Anna Müller'; 'Anna Müller-Schmidt' = 'Anna Müller'; +14 more
+
+4. Chained: in one cluster although the pair itself is below the threshold
+jaro-winkler >= 0.9        direct 16 splits / 18 merges -> clustered 14 / 19; 3 chained pairs
+   'Anna Mueller-Schmidt' ~ 'Anna Müller' at 0.892
+   'Priya Raman' ~ 'Priya Subramanian Raman' at 0.896
+   'Priya Subramanian Raman' ~ 'Priya Ramen' at 0.869
+token-set ratio >= 85      direct 11 splits / 15 merges -> clustered 9 / 18; 5 chained pairs
+   'Anna Mueller-Schmidt' ~ 'Anna Müller' at 71
+   'Anna Schmidt' ~ 'Anna Müller' at 53.3
+   'Priya S. Raman' ~ 'Priya Ramen' at 83.3
+
+5. The frontier: the best any single threshold reaches, judged pair by pair
+jaro-winkler >= 0.9        best threshold 0.969: 22 splits / 5 merges; a zero-error threshold exists: no
+token-set ratio >= 85      best threshold 96.552: 20 splits / 3 merges; a zero-error threshold exists: no
+
+6. The ceiling
+identical string, two people  : 'John Smith' (every key merges them)
+true pairs no key here merges : 7 of 37
+   'Jonathan Smith' = 'Jon Smith'
+   'Smith, Jonathan' = 'Jon Smith'
+   'Jonathon Smith' = 'Jon Smith'
+   'William Jones' = 'Bill Jones'
+   'Bill Jones' = 'W. Jones'
+   'Mohammed Al-Sayed' = 'Mohamed Alsayed'
+   'Mohamed Alsayed' = 'Muhammad Al Sayed'

@@ -1,0 +1,3015 @@
+{
+ "main": {
+  "n": 45,
+  "true_customers": 23,
+  "per": {
+   "exact": {
+    "false_splits": [
+     [
+      "Mary O'Brien",
+      "mary o'brien"
+     ],
+     [
+      "Mary O'Brien",
+      "MARY  O'BRIEN"
+     ],
+     [
+      "Mary O'Brien",
+      "Mary OBrien"
+     ],
+     [
+      "mary o'brien",
+      "MARY  O'BRIEN"
+     ],
+     [
+      "mary o'brien",
+      "Mary OBrien"
+     ],
+     [
+      "MARY  O'BRIEN",
+      "Mary OBrien"
+     ],
+     [
+      "José Núñez",
+      "Jose Nunez"
+     ],
+     [
+      "José Núñez",
+      "JOSE NUNEZ"
+     ],
+     [
+      "Jose Nunez",
+      "JOSE NUNEZ"
+     ],
+     [
+      "Jonathan Smith",
+      "Smith, Jonathan"
+     ],
+     [
+      "Jonathan Smith",
+      "Jonathon Smith"
+     ],
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jonathon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "William Jones",
+      "W. Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Catherine Lee",
+      "Kathryn Lee"
+     ],
+     [
+      "Stephen Baker",
+      "Steven Baker"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Muller Schmidt"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Mueller-Schmidt"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Mueller-Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Priya Raman",
+      "Priya S. Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya Subramanian Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Li Wei",
+      "Wei Li"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Muhammad Al Sayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ],
+     [
+      "Dr. Elena Petrova",
+      "Elena Petrova "
+     ]
+    ],
+    "false_merges": [
+     [
+      "John Smith",
+      "John Smith"
+     ]
+    ],
+    "customers": 44,
+    "chained_pairs": 0,
+    "labels": [
+     "Mary O'Brien",
+     "mary o'brien",
+     "MARY  O'BRIEN",
+     "Mary OBrien",
+     "José Núñez",
+     "Jose Nunez",
+     "JOSE NUNEZ",
+     "Jonathan Smith",
+     "Smith, Jonathan",
+     "Jonathon Smith",
+     "Jon Smith",
+     "Johnathan Smith",
+     "John Smith",
+     "John Smith",
+     "William Jones",
+     "Bill Jones",
+     "W. Jones",
+     "Catherine Lee",
+     "Kathryn Lee",
+     "Catherine Leigh",
+     "Stephen Baker",
+     "Steven Baker",
+     "Stefan Becker",
+     "Anna Müller-Schmidt",
+     "Anna Muller Schmidt",
+     "Anna Mueller-Schmidt",
+     "Anna Schmidt",
+     "Anna Müller",
+     "Priya Raman",
+     "Priya S. Raman",
+     "Priya Subramanian Raman",
+     "Priya Ramen",
+     "Li Wei",
+     "Wei Li",
+     "Li Wen",
+     "Mohammed Al-Sayed",
+     "Mohamed Alsayed",
+     "Muhammad Al Sayed",
+     "Mohammed Al-Said",
+     "Dr. Elena Petrova",
+     "Elena Petrova ",
+     "Elena Petrov",
+     "Sam Ng",
+     "Sam Ong",
+     "Sam Ngo"
+    ]
+   },
+   "normalised": {
+    "false_splits": [
+     [
+      "Mary O'Brien",
+      "Mary OBrien"
+     ],
+     [
+      "mary o'brien",
+      "Mary OBrien"
+     ],
+     [
+      "MARY  O'BRIEN",
+      "Mary OBrien"
+     ],
+     [
+      "Jonathan Smith",
+      "Jonathon Smith"
+     ],
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jonathon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "William Jones",
+      "W. Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Catherine Lee",
+      "Kathryn Lee"
+     ],
+     [
+      "Stephen Baker",
+      "Steven Baker"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Mueller-Schmidt"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Mueller-Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Priya Raman",
+      "Priya S. Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya Subramanian Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Muhammad Al Sayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ]
+    ],
+    "false_merges": [
+     [
+      "John Smith",
+      "John Smith"
+     ]
+    ],
+    "customers": 36,
+    "chained_pairs": 0,
+    "labels": [
+     "brien mary o",
+     "brien mary o",
+     "brien mary o",
+     "mary obrien",
+     "jose nunez",
+     "jose nunez",
+     "jose nunez",
+     "jonathan smith",
+     "jonathan smith",
+     "jonathon smith",
+     "jon smith",
+     "johnathan smith",
+     "john smith",
+     "john smith",
+     "jones william",
+     "bill jones",
+     "jones w",
+     "catherine lee",
+     "kathryn lee",
+     "catherine leigh",
+     "baker stephen",
+     "baker steven",
+     "becker stefan",
+     "anna muller schmidt",
+     "anna muller schmidt",
+     "anna mueller schmidt",
+     "anna schmidt",
+     "anna muller",
+     "priya raman",
+     "priya raman s",
+     "priya raman subramanian",
+     "priya ramen",
+     "li wei",
+     "li wei",
+     "li wen",
+     "al mohammed sayed",
+     "alsayed mohamed",
+     "al muhammad sayed",
+     "al mohammed said",
+     "elena petrova",
+     "elena petrova",
+     "elena petrov",
+     "ng sam",
+     "ong sam",
+     "ngo sam"
+    ]
+   },
+   "soundex": {
+    "false_splits": [
+     [
+      "Mary O'Brien",
+      "Mary OBrien"
+     ],
+     [
+      "mary o'brien",
+      "Mary OBrien"
+     ],
+     [
+      "MARY  O'BRIEN",
+      "Mary OBrien"
+     ],
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "William Jones",
+      "W. Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Catherine Lee",
+      "Kathryn Lee"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Priya Raman",
+      "Priya S. Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya Subramanian Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ]
+    ],
+    "false_merges": [
+     [
+      "Jonathan Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Johnathan Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "John Smith",
+      "John Smith"
+     ],
+     [
+      "Stephen Baker",
+      "Stefan Becker"
+     ],
+     [
+      "Steven Baker",
+      "Stefan Becker"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Muhammad Al Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Dr. Elena Petrova",
+      "Elena Petrov"
+     ],
+     [
+      "Elena Petrova ",
+      "Elena Petrov"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ngo"
+     ]
+    ],
+    "customers": 25,
+    "chained_pairs": 0,
+    "labels": [
+     "B650 M600 O000",
+     "B650 M600 O000",
+     "B650 M600 O000",
+     "M600 O165",
+     "J200 N520",
+     "J200 N520",
+     "J200 N520",
+     "J535 S530",
+     "J535 S530",
+     "J535 S530",
+     "J500 S530",
+     "J535 S530",
+     "J500 S530",
+     "J500 S530",
+     "J520 W450",
+     "B400 J520",
+     "J520 W000",
+     "C365 L000",
+     "K365 L000",
+     "C365 L200",
+     "B260 S315",
+     "B260 S315",
+     "B260 S315",
+     "A500 M460 S530",
+     "A500 M460 S530",
+     "A500 M460 S530",
+     "A500 S530",
+     "A500 M460",
+     "P600 R550",
+     "P600 R550 S000",
+     "P600 R550 S165",
+     "P600 R550",
+     "L000 W000",
+     "L000 W000",
+     "L000 W500",
+     "A400 M530 S300",
+     "A423 M530",
+     "A400 M530 S300",
+     "A400 M530 S300",
+     "E450 P361",
+     "E450 P361",
+     "E450 P361",
+     "N200 S500",
+     "O520 S500",
+     "N200 S500"
+    ]
+   },
+   "metaphone": {
+    "false_splits": [
+     [
+      "Mary O'Brien",
+      "Mary OBrien"
+     ],
+     [
+      "mary o'brien",
+      "Mary OBrien"
+     ],
+     [
+      "MARY  O'BRIEN",
+      "Mary OBrien"
+     ],
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "William Jones",
+      "W. Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Priya Raman",
+      "Priya S. Raman"
+     ],
+     [
+      "Priya Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Subramanian Raman"
+     ],
+     [
+      "Priya S. Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Priya Subramanian Raman",
+      "Priya Ramen"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ]
+    ],
+    "false_merges": [
+     [
+      "Jonathan Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Johnathan Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "John Smith",
+      "John Smith"
+     ],
+     [
+      "Stephen Baker",
+      "Stefan Becker"
+     ],
+     [
+      "Steven Baker",
+      "Stefan Becker"
+     ],
+     [
+      "Dr. Elena Petrova",
+      "Elena Petrov"
+     ],
+     [
+      "Elena Petrova ",
+      "Elena Petrov"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ngo"
+     ]
+    ],
+    "customers": 25,
+    "chained_pairs": 0,
+    "labels": [
+     "BRN MR O",
+     "BRN MR O",
+     "BRN MR O",
+     "MR OBRN",
+     "JS NNS",
+     "JS NNS",
+     "JS NNS",
+     "JN0N SM0",
+     "JN0N SM0",
+     "JN0N SM0",
+     "JN SM0",
+     "JN0N SM0",
+     "JN SM0",
+     "JN SM0",
+     "JNS WLM",
+     "BL JNS",
+     " JNS",
+     "K0RN L",
+     "K0RN L",
+     "K0RN LKH",
+     "BKR STFN",
+     "BKR STFN",
+     "BKR STFN",
+     "AN MLR SXMTT",
+     "AN MLR SXMTT",
+     "AN MLR SXMTT",
+     "AN SXMTT",
+     "AN MLR",
+     "PRY RMN",
+     "PRY RMN S",
+     "PRY RMN SBRMNN",
+     "PRY RMN",
+     "L W",
+     "L W",
+     "L WN",
+     "AL MHMT SYT",
+     "ALSYT MHMT",
+     "AL MHMT SYT",
+     "AL MHMT ST",
+     "ELN PTRF",
+     "ELN PTRF",
+     "ELN PTRF",
+     "NK SM",
+     "ONK SM",
+     "NK SM"
+    ]
+   },
+   "jaro-winkler >= 0.9": {
+    "false_splits": [
+     [
+      "Mary O'Brien",
+      "Mary OBrien"
+     ],
+     [
+      "mary o'brien",
+      "Mary OBrien"
+     ],
+     [
+      "MARY  O'BRIEN",
+      "Mary OBrien"
+     ],
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Catherine Lee",
+      "Kathryn Lee"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Schmidt"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ]
+    ],
+    "false_merges": [
+     [
+      "Jonathan Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Johnathan Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "John Smith",
+      "John Smith"
+     ],
+     [
+      "Catherine Lee",
+      "Catherine Leigh"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Li Wei",
+      "Li Wen"
+     ],
+     [
+      "Wei Li",
+      "Li Wen"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Muhammad Al Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Dr. Elena Petrova",
+      "Elena Petrov"
+     ],
+     [
+      "Elena Petrova ",
+      "Elena Petrov"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ong"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ngo"
+     ],
+     [
+      "Sam Ong",
+      "Sam Ngo"
+     ]
+    ],
+    "customers": 19,
+    "chained_pairs": 3,
+    "labels": [
+     "2",
+     "2",
+     "2",
+     "3",
+     "6",
+     "6",
+     "6",
+     "11",
+     "11",
+     "11",
+     "13",
+     "11",
+     "13",
+     "13",
+     "16",
+     "15",
+     "16",
+     "19",
+     "18",
+     "19",
+     "21",
+     "21",
+     "22",
+     "27",
+     "27",
+     "27",
+     "26",
+     "27",
+     "30",
+     "30",
+     "30",
+     "30",
+     "34",
+     "34",
+     "34",
+     "38",
+     "36",
+     "38",
+     "38",
+     "41",
+     "41",
+     "41",
+     "44",
+     "44",
+     "44"
+    ]
+   },
+   "token-set ratio >= 85": {
+    "false_splits": [
+     [
+      "Jonathan Smith",
+      "Jon Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Jon Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Jon Smith"
+     ],
+     [
+      "William Jones",
+      "Bill Jones"
+     ],
+     [
+      "William Jones",
+      "W. Jones"
+     ],
+     [
+      "Bill Jones",
+      "W. Jones"
+     ],
+     [
+      "Catherine Lee",
+      "Kathryn Lee"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohamed Alsayed"
+     ],
+     [
+      "Mohamed Alsayed",
+      "Muhammad Al Sayed"
+     ]
+    ],
+    "false_merges": [
+     [
+      "Jonathan Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Smith, Jonathan",
+      "Johnathan Smith"
+     ],
+     [
+      "Jonathon Smith",
+      "Johnathan Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "Jon Smith",
+      "John Smith"
+     ],
+     [
+      "John Smith",
+      "John Smith"
+     ],
+     [
+      "Catherine Lee",
+      "Catherine Leigh"
+     ],
+     [
+      "Anna Müller-Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Anna Muller Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Anna Mueller-Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Anna Schmidt",
+      "Anna Müller"
+     ],
+     [
+      "Mohammed Al-Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Muhammad Al Sayed",
+      "Mohammed Al-Said"
+     ],
+     [
+      "Dr. Elena Petrova",
+      "Elena Petrov"
+     ],
+     [
+      "Elena Petrova ",
+      "Elena Petrov"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ong"
+     ],
+     [
+      "Sam Ng",
+      "Sam Ngo"
+     ],
+     [
+      "Sam Ong",
+      "Sam Ngo"
+     ]
+    ],
+    "customers": 19,
+    "chained_pairs": 5,
+    "labels": [
+     "3",
+     "3",
+     "3",
+     "3",
+     "6",
+     "6",
+     "6",
+     "11",
+     "11",
+     "11",
+     "13",
+     "11",
+     "13",
+     "13",
+     "14",
+     "15",
+     "16",
+     "19",
+     "18",
+     "19",
+     "21",
+     "21",
+     "22",
+     "27",
+     "27",
+     "27",
+     "27",
+     "27",
+     "31",
+     "31",
+     "31",
+     "31",
+     "33",
+     "33",
+     "34",
+     "38",
+     "36",
+     "38",
+     "38",
+     "41",
+     "41",
+     "41",
+     "44",
+     "44",
+     "44"
+    ]
+   }
+  },
+  "disagreement": {
+   "exact": {
+    "exact": 0,
+    "normalised": 0,
+    "soundex": 0,
+    "metaphone": 0,
+    "jaro-winkler >= 0.9": 0,
+    "token-set ratio >= 85": 0
+   },
+   "normalised": {
+    "exact": 10,
+    "normalised": 0,
+    "soundex": 0,
+    "metaphone": 0,
+    "jaro-winkler >= 0.9": 0,
+    "token-set ratio >= 85": 0
+   },
+   "soundex": {
+    "exact": 29,
+    "normalised": 19,
+    "soundex": 0,
+    "metaphone": 2,
+    "jaro-winkler >= 0.9": 2,
+    "token-set ratio >= 85": 2
+   },
+   "metaphone": {
+    "exact": 28,
+    "normalised": 18,
+    "soundex": 1,
+    "metaphone": 0,
+    "jaro-winkler >= 0.9": 3,
+    "token-set ratio >= 85": 3
+   },
+   "jaro-winkler >= 0.9": {
+    "exact": 41,
+    "normalised": 31,
+    "soundex": 14,
+    "metaphone": 16,
+    "jaro-winkler >= 0.9": 0,
+    "token-set ratio >= 85": 3
+   },
+   "token-set ratio >= 85": {
+    "exact": 45,
+    "normalised": 35,
+    "soundex": 18,
+    "metaphone": 20,
+    "jaro-winkler >= 0.9": 7,
+    "token-set ratio >= 85": 0
+   }
+  },
+  "ceiling": {
+   "two_truths": [
+    "John Smith"
+   ],
+   "true_pairs": 37,
+   "best_frontier": {
+    "jaro-winkler >= 0.9": {
+     "threshold": 0.969,
+     "false_splits": 22,
+     "false_merges": 5,
+     "zero_exists": false
+    },
+    "token-set ratio >= 85": {
+     "threshold": 96.552,
+     "false_splits": 20,
+     "false_merges": 3,
+     "zero_exists": false
+    }
+   }
+  },
+  "frontier": {
+   "jaro-winkler >= 0.9": [
+    {
+     "threshold": 1.0,
+     "false_splits": 27,
+     "false_merges": 1
+    },
+    {
+     "threshold": 0.985,
+     "false_splits": 27,
+     "false_merges": 1
+    },
+    {
+     "threshold": 0.979,
+     "false_splits": 25,
+     "false_merges": 3
+    },
+    {
+     "threshold": 0.973,
+     "false_splits": 25,
+     "false_merges": 5
+    },
+    {
+     "threshold": 0.971,
+     "false_splits": 23,
+     "false_merges": 5
+    },
+    {
+     "threshold": 0.969,
+     "false_splits": 22,
+     "false_merges": 5
+    },
+    {
+     "threshold": 0.964,
+     "false_splits": 22,
+     "false_merges": 5
+    },
+    {
+     "threshold": 0.962,
+     "false_splits": 21,
+     "false_merges": 6
+    },
+    {
+     "threshold": 0.953,
+     "false_splits": 21,
+     "false_merges": 7
+    },
+    {
+     "threshold": 0.952,
+     "false_splits": 20,
+     "false_merges": 9
+    },
+    {
+     "threshold": 0.945,
+     "false_splits": 20,
+     "false_merges": 9
+    },
+    {
+     "threshold": 0.944,
+     "false_splits": 20,
+     "false_merges": 12
+    },
+    {
+     "threshold": 0.94,
+     "false_splits": 20,
+     "false_merges": 12
+    },
+    {
+     "threshold": 0.936,
+     "false_splits": 19,
+     "false_merges": 12
+    },
+    {
+     "threshold": 0.933,
+     "false_splits": 18,
+     "false_merges": 14
+    },
+    {
+     "threshold": 0.925,
+     "false_splits": 18,
+     "false_merges": 15
+    },
+    {
+     "threshold": 0.916,
+     "false_splits": 18,
+     "false_merges": 15
+    },
+    {
+     "threshold": 0.913,
+     "false_splits": 17,
+     "false_merges": 17
+    },
+    {
+     "threshold": 0.908,
+     "false_splits": 17,
+     "false_merges": 17
+    },
+    {
+     "threshold": 0.904,
+     "false_splits": 16,
+     "false_merges": 18
+    },
+    {
+     "threshold": 0.896,
+     "false_splits": 16,
+     "false_merges": 18
+    },
+    {
+     "threshold": 0.893,
+     "false_splits": 15,
+     "false_merges": 18
+    },
+    {
+     "threshold": 0.892,
+     "false_splits": 13,
+     "false_merges": 18
+    },
+    {
+     "threshold": 0.887,
+     "false_splits": 13,
+     "false_merges": 19
+    },
+    {
+     "threshold": 0.873,
+     "false_splits": 12,
+     "false_merges": 21
+    },
+    {
+     "threshold": 0.869,
+     "false_splits": 12,
+     "false_merges": 21
+    },
+    {
+     "threshold": 0.844,
+     "false_splits": 11,
+     "false_merges": 21
+    },
+    {
+     "threshold": 0.839,
+     "false_splits": 11,
+     "false_merges": 27
+    },
+    {
+     "threshold": 0.82,
+     "false_splits": 8,
+     "false_merges": 27
+    },
+    {
+     "threshold": 0.811,
+     "false_splits": 7,
+     "false_merges": 27
+    },
+    {
+     "threshold": 0.804,
+     "false_splits": 7,
+     "false_merges": 31
+    },
+    {
+     "threshold": 0.791,
+     "false_splits": 7,
+     "false_merges": 32
+    },
+    {
+     "threshold": 0.772,
+     "false_splits": 7,
+     "false_merges": 33
+    },
+    {
+     "threshold": 0.762,
+     "false_splits": 6,
+     "false_merges": 34
+    },
+    {
+     "threshold": 0.757,
+     "false_splits": 6,
+     "false_merges": 34
+    },
+    {
+     "threshold": 0.749,
+     "false_splits": 6,
+     "false_merges": 37
+    },
+    {
+     "threshold": 0.738,
+     "false_splits": 6,
+     "false_merges": 39
+    },
+    {
+     "threshold": 0.726,
+     "false_splits": 6,
+     "false_merges": 39
+    },
+    {
+     "threshold": 0.71,
+     "false_splits": 5,
+     "false_merges": 39
+    },
+    {
+     "threshold": 0.706,
+     "false_splits": 5,
+     "false_merges": 43
+    },
+    {
+     "threshold": 0.704,
+     "false_splits": 5,
+     "false_merges": 43
+    },
+    {
+     "threshold": 0.7,
+     "false_splits": 5,
+     "false_merges": 45
+    },
+    {
+     "threshold": 0.697,
+     "false_splits": 5,
+     "false_merges": 45
+    },
+    {
+     "threshold": 0.695,
+     "false_splits": 5,
+     "false_merges": 46
+    },
+    {
+     "threshold": 0.692,
+     "false_splits": 5,
+     "false_merges": 47
+    },
+    {
+     "threshold": 0.69,
+     "false_splits": 5,
+     "false_merges": 48
+    },
+    {
+     "threshold": 0.689,
+     "false_splits": 5,
+     "false_merges": 50
+    },
+    {
+     "threshold": 0.687,
+     "false_splits": 5,
+     "false_merges": 52
+    },
+    {
+     "threshold": 0.682,
+     "false_splits": 5,
+     "false_merges": 53
+    },
+    {
+     "threshold": 0.673,
+     "false_splits": 5,
+     "false_merges": 54
+    },
+    {
+     "threshold": 0.671,
+     "false_splits": 5,
+     "false_merges": 59
+    },
+    {
+     "threshold": 0.666,
+     "false_splits": 5,
+     "false_merges": 59
+    },
+    {
+     "threshold": 0.663,
+     "false_splits": 5,
+     "false_merges": 64
+    },
+    {
+     "threshold": 0.654,
+     "false_splits": 5,
+     "false_merges": 64
+    },
+    {
+     "threshold": 0.653,
+     "false_splits": 5,
+     "false_merges": 65
+    },
+    {
+     "threshold": 0.651,
+     "false_splits": 5,
+     "false_merges": 68
+    },
+    {
+     "threshold": 0.646,
+     "false_splits": 5,
+     "false_merges": 71
+    },
+    {
+     "threshold": 0.645,
+     "false_splits": 5,
+     "false_merges": 73
+    },
+    {
+     "threshold": 0.644,
+     "false_splits": 5,
+     "false_merges": 76
+    },
+    {
+     "threshold": 0.641,
+     "false_splits": 5,
+     "false_merges": 81
+    },
+    {
+     "threshold": 0.636,
+     "false_splits": 5,
+     "false_merges": 82
+    },
+    {
+     "threshold": 0.635,
+     "false_splits": 5,
+     "false_merges": 84
+    },
+    {
+     "threshold": 0.634,
+     "false_splits": 5,
+     "false_merges": 86
+    },
+    {
+     "threshold": 0.633,
+     "false_splits": 5,
+     "false_merges": 86
+    },
+    {
+     "threshold": 0.632,
+     "false_splits": 5,
+     "false_merges": 87
+    },
+    {
+     "threshold": 0.631,
+     "false_splits": 5,
+     "false_merges": 92
+    },
+    {
+     "threshold": 0.63,
+     "false_splits": 5,
+     "false_merges": 95
+    },
+    {
+     "threshold": 0.627,
+     "false_splits": 5,
+     "false_merges": 96
+    },
+    {
+     "threshold": 0.625,
+     "false_splits": 5,
+     "false_merges": 97
+    },
+    {
+     "threshold": 0.624,
+     "false_splits": 5,
+     "false_merges": 98
+    },
+    {
+     "threshold": 0.622,
+     "false_splits": 5,
+     "false_merges": 103
+    },
+    {
+     "threshold": 0.619,
+     "false_splits": 5,
+     "false_merges": 103
+    },
+    {
+     "threshold": 0.617,
+     "false_splits": 5,
+     "false_merges": 109
+    },
+    {
+     "threshold": 0.616,
+     "false_splits": 5,
+     "false_merges": 110
+    },
+    {
+     "threshold": 0.614,
+     "false_splits": 5,
+     "false_merges": 111
+    },
+    {
+     "threshold": 0.613,
+     "false_splits": 5,
+     "false_merges": 117
+    },
+    {
+     "threshold": 0.612,
+     "false_splits": 5,
+     "false_merges": 122
+    },
+    {
+     "threshold": 0.611,
+     "false_splits": 5,
+     "false_merges": 125
+    },
+    {
+     "threshold": 0.608,
+     "false_splits": 5,
+     "false_merges": 129
+    },
+    {
+     "threshold": 0.606,
+     "false_splits": 5,
+     "false_merges": 129
+    },
+    {
+     "threshold": 0.605,
+     "false_splits": 5,
+     "false_merges": 131
+    },
+    {
+     "threshold": 0.604,
+     "false_splits": 5,
+     "false_merges": 136
+    },
+    {
+     "threshold": 0.603,
+     "false_splits": 4,
+     "false_merges": 136
+    },
+    {
+     "threshold": 0.602,
+     "false_splits": 4,
+     "false_merges": 147
+    },
+    {
+     "threshold": 0.6,
+     "false_splits": 4,
+     "false_merges": 153
+    },
+    {
+     "threshold": 0.598,
+     "false_splits": 4,
+     "false_merges": 161
+    },
+    {
+     "threshold": 0.597,
+     "false_splits": 4,
+     "false_merges": 162
+    },
+    {
+     "threshold": 0.595,
+     "false_splits": 4,
+     "false_merges": 167
+    },
+    {
+     "threshold": 0.594,
+     "false_splits": 4,
+     "false_merges": 169
+    },
+    {
+     "threshold": 0.593,
+     "false_splits": 4,
+     "false_merges": 170
+    },
+    {
+     "threshold": 0.591,
+     "false_splits": 4,
+     "false_merges": 174
+    },
+    {
+     "threshold": 0.589,
+     "false_splits": 4,
+     "false_merges": 174
+    },
+    {
+     "threshold": 0.588,
+     "false_splits": 4,
+     "false_merges": 181
+    },
+    {
+     "threshold": 0.587,
+     "false_splits": 4,
+     "false_merges": 181
+    },
+    {
+     "threshold": 0.586,
+     "false_splits": 4,
+     "false_merges": 182
+    },
+    {
+     "threshold": 0.585,
+     "false_splits": 4,
+     "false_merges": 183
+    },
+    {
+     "threshold": 0.584,
+     "false_splits": 4,
+     "false_merges": 186
+    },
+    {
+     "threshold": 0.583,
+     "false_splits": 4,
+     "false_merges": 192
+    },
+    {
+     "threshold": 0.577,
+     "false_splits": 4,
+     "false_merges": 195
+    },
+    {
+     "threshold": 0.575,
+     "false_splits": 4,
+     "false_merges": 198
+    },
+    {
+     "threshold": 0.574,
+     "false_splits": 4,
+     "false_merges": 201
+    },
+    {
+     "threshold": 0.573,
+     "false_splits": 4,
+     "false_merges": 208
+    },
+    {
+     "threshold": 0.571,
+     "false_splits": 4,
+     "false_merges": 208
+    },
+    {
+     "threshold": 0.57,
+     "false_splits": 4,
+     "false_merges": 214
+    },
+    {
+     "threshold": 0.569,
+     "false_splits": 4,
+     "false_merges": 220
+    },
+    {
+     "threshold": 0.567,
+     "false_splits": 4,
+     "false_merges": 220
+    },
+    {
+     "threshold": 0.565,
+     "false_splits": 4,
+     "false_merges": 225
+    },
+    {
+     "threshold": 0.564,
+     "false_splits": 4,
+     "false_merges": 229
+    },
+    {
+     "threshold": 0.563,
+     "false_splits": 4,
+     "false_merges": 230
+    },
+    {
+     "threshold": 0.562,
+     "false_splits": 4,
+     "false_merges": 233
+    },
+    {
+     "threshold": 0.561,
+     "false_splits": 4,
+     "false_merges": 239
+    },
+    {
+     "threshold": 0.559,
+     "false_splits": 4,
+     "false_merges": 239
+    },
+    {
+     "threshold": 0.558,
+     "false_splits": 4,
+     "false_merges": 242
+    },
+    {
+     "threshold": 0.557,
+     "false_splits": 4,
+     "false_merges": 254
+    },
+    {
+     "threshold": 0.556,
+     "false_splits": 4,
+     "false_merges": 254
+    },
+    {
+     "threshold": 0.555,
+     "false_splits": 4,
+     "false_merges": 260
+    },
+    {
+     "threshold": 0.553,
+     "false_splits": 4,
+     "false_merges": 262
+    },
+    {
+     "threshold": 0.552,
+     "false_splits": 4,
+     "false_merges": 272
+    },
+    {
+     "threshold": 0.55,
+     "false_splits": 4,
+     "false_merges": 279
+    },
+    {
+     "threshold": 0.549,
+     "false_splits": 4,
+     "false_merges": 282
+    },
+    {
+     "threshold": 0.548,
+     "false_splits": 4,
+     "false_merges": 282
+    },
+    {
+     "threshold": 0.547,
+     "false_splits": 4,
+     "false_merges": 285
+    },
+    {
+     "threshold": 0.546,
+     "false_splits": 4,
+     "false_merges": 295
+    },
+    {
+     "threshold": 0.544,
+     "false_splits": 4,
+     "false_merges": 298
+    },
+    {
+     "threshold": 0.543,
+     "false_splits": 4,
+     "false_merges": 300
+    },
+    {
+     "threshold": 0.542,
+     "false_splits": 4,
+     "false_merges": 305
+    },
+    {
+     "threshold": 0.54,
+     "false_splits": 4,
+     "false_merges": 305
+    },
+    {
+     "threshold": 0.539,
+     "false_splits": 4,
+     "false_merges": 308
+    },
+    {
+     "threshold": 0.538,
+     "false_splits": 4,
+     "false_merges": 312
+    },
+    {
+     "threshold": 0.537,
+     "false_splits": 4,
+     "false_merges": 318
+    },
+    {
+     "threshold": 0.535,
+     "false_splits": 4,
+     "false_merges": 323
+    },
+    {
+     "threshold": 0.534,
+     "false_splits": 4,
+     "false_merges": 324
+    },
+    {
+     "threshold": 0.533,
+     "false_splits": 4,
+     "false_merges": 337
+    },
+    {
+     "threshold": 0.53,
+     "false_splits": 4,
+     "false_merges": 338
+    },
+    {
+     "threshold": 0.529,
+     "false_splits": 4,
+     "false_merges": 345
+    },
+    {
+     "threshold": 0.528,
+     "false_splits": 4,
+     "false_merges": 345
+    },
+    {
+     "threshold": 0.527,
+     "false_splits": 4,
+     "false_merges": 349
+    },
+    {
+     "threshold": 0.526,
+     "false_splits": 4,
+     "false_merges": 351
+    },
+    {
+     "threshold": 0.525,
+     "false_splits": 4,
+     "false_merges": 357
+    },
+    {
+     "threshold": 0.524,
+     "false_splits": 4,
+     "false_merges": 364
+    },
+    {
+     "threshold": 0.523,
+     "false_splits": 4,
+     "false_merges": 367
+    },
+    {
+     "threshold": 0.522,
+     "false_splits": 4,
+     "false_merges": 382
+    },
+    {
+     "threshold": 0.521,
+     "false_splits": 4,
+     "false_merges": 391
+    },
+    {
+     "threshold": 0.519,
+     "false_splits": 4,
+     "false_merges": 392
+    },
+    {
+     "threshold": 0.517,
+     "false_splits": 4,
+     "false_merges": 401
+    },
+    {
+     "threshold": 0.516,
+     "false_splits": 4,
+     "false_merges": 414
+    },
+    {
+     "threshold": 0.514,
+     "false_splits": 4,
+     "false_merges": 415
+    },
+    {
+     "threshold": 0.513,
+     "false_splits": 4,
+     "false_merges": 424
+    },
+    {
+     "threshold": 0.511,
+     "false_splits": 4,
+     "false_merges": 431
+    },
+    {
+     "threshold": 0.51,
+     "false_splits": 4,
+     "false_merges": 441
+    },
+    {
+     "threshold": 0.509,
+     "false_splits": 4,
+     "false_merges": 449
+    },
+    {
+     "threshold": 0.508,
+     "false_splits": 4,
+     "false_merges": 449
+    },
+    {
+     "threshold": 0.507,
+     "false_splits": 1,
+     "false_merges": 453
+    },
+    {
+     "threshold": 0.506,
+     "false_splits": 1,
+     "false_merges": 453
+    },
+    {
+     "threshold": 0.505,
+     "false_splits": 1,
+     "false_merges": 470
+    },
+    {
+     "threshold": 0.504,
+     "false_splits": 1,
+     "false_merges": 477
+    },
+    {
+     "threshold": 0.503,
+     "false_splits": 1,
+     "false_merges": 481
+    },
+    {
+     "threshold": 0.502,
+     "false_splits": 1,
+     "false_merges": 484
+    },
+    {
+     "threshold": 0.501,
+     "false_splits": 1,
+     "false_merges": 489
+    },
+    {
+     "threshold": 0.5,
+     "false_splits": 1,
+     "false_merges": 492
+    },
+    {
+     "threshold": 0.496,
+     "false_splits": 1,
+     "false_merges": 493
+    },
+    {
+     "threshold": 0.495,
+     "false_splits": 1,
+     "false_merges": 496
+    },
+    {
+     "threshold": 0.494,
+     "false_splits": 1,
+     "false_merges": 510
+    },
+    {
+     "threshold": 0.493,
+     "false_splits": 1,
+     "false_merges": 514
+    },
+    {
+     "threshold": 0.492,
+     "false_splits": 1,
+     "false_merges": 526
+    },
+    {
+     "threshold": 0.491,
+     "false_splits": 1,
+     "false_merges": 529
+    },
+    {
+     "threshold": 0.49,
+     "false_splits": 1,
+     "false_merges": 530
+    },
+    {
+     "threshold": 0.489,
+     "false_splits": 1,
+     "false_merges": 532
+    },
+    {
+     "threshold": 0.487,
+     "false_splits": 1,
+     "false_merges": 537
+    },
+    {
+     "threshold": 0.486,
+     "false_splits": 1,
+     "false_merges": 539
+    },
+    {
+     "threshold": 0.484,
+     "false_splits": 1,
+     "false_merges": 554
+    },
+    {
+     "threshold": 0.483,
+     "false_splits": 1,
+     "false_merges": 558
+    },
+    {
+     "threshold": 0.482,
+     "false_splits": 1,
+     "false_merges": 568
+    },
+    {
+     "threshold": 0.481,
+     "false_splits": 1,
+     "false_merges": 577
+    },
+    {
+     "threshold": 0.48,
+     "false_splits": 1,
+     "false_merges": 577
+    },
+    {
+     "threshold": 0.478,
+     "false_splits": 1,
+     "false_merges": 587
+    },
+    {
+     "threshold": 0.477,
+     "false_splits": 1,
+     "false_merges": 588
+    },
+    {
+     "threshold": 0.476,
+     "false_splits": 1,
+     "false_merges": 589
+    },
+    {
+     "threshold": 0.474,
+     "false_splits": 1,
+     "false_merges": 590
+    },
+    {
+     "threshold": 0.473,
+     "false_splits": 1,
+     "false_merges": 596
+    },
+    {
+     "threshold": 0.472,
+     "false_splits": 1,
+     "false_merges": 620
+    },
+    {
+     "threshold": 0.471,
+     "false_splits": 1,
+     "false_merges": 621
+    },
+    {
+     "threshold": 0.468,
+     "false_splits": 1,
+     "false_merges": 632
+    },
+    {
+     "threshold": 0.467,
+     "false_splits": 1,
+     "false_merges": 634
+    },
+    {
+     "threshold": 0.466,
+     "false_splits": 1,
+     "false_merges": 640
+    },
+    {
+     "threshold": 0.465,
+     "false_splits": 1,
+     "false_merges": 653
+    },
+    {
+     "threshold": 0.464,
+     "false_splits": 1,
+     "false_merges": 655
+    },
+    {
+     "threshold": 0.463,
+     "false_splits": 1,
+     "false_merges": 667
+    },
+    {
+     "threshold": 0.462,
+     "false_splits": 1,
+     "false_merges": 672
+    },
+    {
+     "threshold": 0.461,
+     "false_splits": 1,
+     "false_merges": 676
+    },
+    {
+     "threshold": 0.46,
+     "false_splits": 1,
+     "false_merges": 683
+    },
+    {
+     "threshold": 0.459,
+     "false_splits": 1,
+     "false_merges": 684
+    },
+    {
+     "threshold": 0.458,
+     "false_splits": 1,
+     "false_merges": 686
+    },
+    {
+     "threshold": 0.456,
+     "false_splits": 1,
+     "false_merges": 703
+    },
+    {
+     "threshold": 0.455,
+     "false_splits": 1,
+     "false_merges": 717
+    },
+    {
+     "threshold": 0.454,
+     "false_splits": 1,
+     "false_merges": 723
+    },
+    {
+     "threshold": 0.452,
+     "false_splits": 1,
+     "false_merges": 725
+    },
+    {
+     "threshold": 0.451,
+     "false_splits": 1,
+     "false_merges": 729
+    },
+    {
+     "threshold": 0.45,
+     "false_splits": 1,
+     "false_merges": 734
+    },
+    {
+     "threshold": 0.448,
+     "false_splits": 1,
+     "false_merges": 745
+    },
+    {
+     "threshold": 0.447,
+     "false_splits": 1,
+     "false_merges": 751
+    },
+    {
+     "threshold": 0.446,
+     "false_splits": 1,
+     "false_merges": 751
+    },
+    {
+     "threshold": 0.444,
+     "false_splits": 1,
+     "false_merges": 757
+    },
+    {
+     "threshold": 0.443,
+     "false_splits": 1,
+     "false_merges": 758
+    },
+    {
+     "threshold": 0.442,
+     "false_splits": 1,
+     "false_merges": 772
+    },
+    {
+     "threshold": 0.441,
+     "false_splits": 1,
+     "false_merges": 780
+    },
+    {
+     "threshold": 0.439,
+     "false_splits": 1,
+     "false_merges": 786
+    },
+    {
+     "threshold": 0.438,
+     "false_splits": 1,
+     "false_merges": 791
+    },
+    {
+     "threshold": 0.437,
+     "false_splits": 1,
+     "false_merges": 791
+    },
+    {
+     "threshold": 0.436,
+     "false_splits": 1,
+     "false_merges": 804
+    },
+    {
+     "threshold": 0.432,
+     "false_splits": 1,
+     "false_merges": 806
+    },
+    {
+     "threshold": 0.431,
+     "false_splits": 1,
+     "false_merges": 809
+    },
+    {
+     "threshold": 0.43,
+     "false_splits": 1,
+     "false_merges": 817
+    },
+    {
+     "threshold": 0.428,
+     "false_splits": 1,
+     "false_merges": 817
+    },
+    {
+     "threshold": 0.427,
+     "false_splits": 1,
+     "false_merges": 819
+    },
+    {
+     "threshold": 0.426,
+     "false_splits": 1,
+     "false_merges": 820
+    },
+    {
+     "threshold": 0.424,
+     "false_splits": 1,
+     "false_merges": 826
+    },
+    {
+     "threshold": 0.422,
+     "false_splits": 1,
+     "false_merges": 834
+    },
+    {
+     "threshold": 0.421,
+     "false_splits": 1,
+     "false_merges": 837
+    },
+    {
+     "threshold": 0.419,
+     "false_splits": 1,
+     "false_merges": 843
+    },
+    {
+     "threshold": 0.418,
+     "false_splits": 1,
+     "false_merges": 843
+    },
+    {
+     "threshold": 0.417,
+     "false_splits": 1,
+     "false_merges": 847
+    },
+    {
+     "threshold": 0.416,
+     "false_splits": 1,
+     "false_merges": 847
+    },
+    {
+     "threshold": 0.415,
+     "false_splits": 1,
+     "false_merges": 849
+    },
+    {
+     "threshold": 0.414,
+     "false_splits": 0,
+     "false_merges": 851
+    },
+    {
+     "threshold": 0.413,
+     "false_splits": 0,
+     "false_merges": 861
+    },
+    {
+     "threshold": 0.411,
+     "false_splits": 0,
+     "false_merges": 876
+    },
+    {
+     "threshold": 0.41,
+     "false_splits": 0,
+     "false_merges": 877
+    },
+    {
+     "threshold": 0.409,
+     "false_splits": 0,
+     "false_merges": 877
+    },
+    {
+     "threshold": 0.407,
+     "false_splits": 0,
+     "false_merges": 880
+    },
+    {
+     "threshold": 0.406,
+     "false_splits": 0,
+     "false_merges": 883
+    },
+    {
+     "threshold": 0.404,
+     "false_splits": 0,
+     "false_merges": 893
+    },
+    {
+     "threshold": 0.401,
+     "false_splits": 0,
+     "false_merges": 894
+    },
+    {
+     "threshold": 0.399,
+     "false_splits": 0,
+     "false_merges": 899
+    },
+    {
+     "threshold": 0.39,
+     "false_splits": 0,
+     "false_merges": 901
+    },
+    {
+     "threshold": 0.385,
+     "false_splits": 0,
+     "false_merges": 901
+    },
+    {
+     "threshold": 0.382,
+     "false_splits": 0,
+     "false_merges": 906
+    },
+    {
+     "threshold": 0.378,
+     "false_splits": 0,
+     "false_merges": 908
+    },
+    {
+     "threshold": 0.376,
+     "false_splits": 0,
+     "false_merges": 909
+    },
+    {
+     "threshold": 0.364,
+     "false_splits": 0,
+     "false_merges": 911
+    },
+    {
+     "threshold": 0.353,
+     "false_splits": 0,
+     "false_merges": 911
+    },
+    {
+     "threshold": 0.352,
+     "false_splits": 0,
+     "false_merges": 912
+    },
+    {
+     "threshold": 0.344,
+     "false_splits": 0,
+     "false_merges": 924
+    },
+    {
+     "threshold": 0.338,
+     "false_splits": 0,
+     "false_merges": 926
+    },
+    {
+     "threshold": 0.333,
+     "false_splits": 0,
+     "false_merges": 930
+    },
+    {
+     "threshold": 0.329,
+     "false_splits": 0,
+     "false_merges": 938
+    },
+    {
+     "threshold": 0.325,
+     "false_splits": 0,
+     "false_merges": 942
+    },
+    {
+     "threshold": 0.323,
+     "false_splits": 0,
+     "false_merges": 942
+    },
+    {
+     "threshold": 0.322,
+     "false_splits": 0,
+     "false_merges": 948
+    },
+    {
+     "threshold": 0.306,
+     "false_splits": 0,
+     "false_merges": 949
+    },
+    {
+     "threshold": 0.0,
+     "false_splits": 0,
+     "false_merges": 953
+    }
+   ],
+   "token-set ratio >= 85": [
+    {
+     "threshold": 100.0,
+     "false_splits": 22,
+     "false_merges": 3
+    },
+    {
+     "threshold": 97.436,
+     "false_splits": 22,
+     "false_merges": 3
+    },
+    {
+     "threshold": 96.552,
+     "false_splits": 20,
+     "false_merges": 3
+    },
+    {
+     "threshold": 96.0,
+     "false_splits": 20,
+     "false_merges": 6
+    },
+    {
+     "threshold": 94.737,
+     "false_splits": 20,
+     "false_merges": 6
+    },
+    {
+     "threshold": 92.857,
+     "false_splits": 18,
+     "false_merges": 8
+    },
+    {
+     "threshold": 92.308,
+     "false_splits": 18,
+     "false_merges": 8
+    },
+    {
+     "threshold": 91.667,
+     "false_splits": 18,
+     "false_merges": 10
+    },
+    {
+     "threshold": 90.909,
+     "false_splits": 16,
+     "false_merges": 11
+    },
+    {
+     "threshold": 89.655,
+     "false_splits": 16,
+     "false_merges": 12
+    },
+    {
+     "threshold": 88.235,
+     "false_splits": 15,
+     "false_merges": 12
+    },
+    {
+     "threshold": 88.0,
+     "false_splits": 14,
+     "false_merges": 12
+    },
+    {
+     "threshold": 86.957,
+     "false_splits": 14,
+     "false_merges": 12
+    },
+    {
+     "threshold": 85.714,
+     "false_splits": 11,
+     "false_merges": 15
+    },
+    {
+     "threshold": 83.333,
+     "false_splits": 8,
+     "false_merges": 23
+    },
+    {
+     "threshold": 80.0,
+     "false_splits": 8,
+     "false_merges": 25
+    },
+    {
+     "threshold": 78.788,
+     "false_splits": 8,
+     "false_merges": 25
+    },
+    {
+     "threshold": 78.261,
+     "false_splits": 8,
+     "false_merges": 26
+    },
+    {
+     "threshold": 75.0,
+     "false_splits": 3,
+     "false_merges": 27
+    },
+    {
+     "threshold": 72.0,
+     "false_splits": 3,
+     "false_merges": 28
+    },
+    {
+     "threshold": 70.968,
+     "false_splits": 3,
+     "false_merges": 28
+    },
+    {
+     "threshold": 69.231,
+     "false_splits": 3,
+     "false_merges": 29
+    },
+    {
+     "threshold": 64.516,
+     "false_splits": 3,
+     "false_merges": 31
+    },
+    {
+     "threshold": 62.5,
+     "false_splits": 1,
+     "false_merges": 32
+    },
+    {
+     "threshold": 61.538,
+     "false_splits": 1,
+     "false_merges": 33
+    },
+    {
+     "threshold": 58.824,
+     "false_splits": 1,
+     "false_merges": 33
+    },
+    {
+     "threshold": 57.143,
+     "false_splits": 1,
+     "false_merges": 35
+    },
+    {
+     "threshold": 56.25,
+     "false_splits": 0,
+     "false_merges": 36
+    },
+    {
+     "threshold": 54.545,
+     "false_splits": 0,
+     "false_merges": 39
+    },
+    {
+     "threshold": 53.846,
+     "false_splits": 0,
+     "false_merges": 42
+    },
+    {
+     "threshold": 53.333,
+     "false_splits": 0,
+     "false_merges": 44
+    },
+    {
+     "threshold": 51.852,
+     "false_splits": 0,
+     "false_merges": 44
+    },
+    {
+     "threshold": 50.0,
+     "false_splits": 0,
+     "false_merges": 50
+    },
+    {
+     "threshold": 48.276,
+     "false_splits": 0,
+     "false_merges": 50
+    },
+    {
+     "threshold": 48.0,
+     "false_splits": 0,
+     "false_merges": 57
+    },
+    {
+     "threshold": 47.619,
+     "false_splits": 0,
+     "false_merges": 61
+    },
+    {
+     "threshold": 47.059,
+     "false_splits": 0,
+     "false_merges": 61
+    },
+    {
+     "threshold": 46.667,
+     "false_splits": 0,
+     "false_merges": 69
+    },
+    {
+     "threshold": 46.154,
+     "false_splits": 0,
+     "false_merges": 71
+    },
+    {
+     "threshold": 45.714,
+     "false_splits": 0,
+     "false_merges": 74
+    },
+    {
+     "threshold": 45.455,
+     "false_splits": 0,
+     "false_merges": 74
+    },
+    {
+     "threshold": 44.444,
+     "false_splits": 0,
+     "false_merges": 82
+    },
+    {
+     "threshold": 43.478,
+     "false_splits": 0,
+     "false_merges": 90
+    },
+    {
+     "threshold": 42.857,
+     "false_splits": 0,
+     "false_merges": 98
+    },
+    {
+     "threshold": 42.424,
+     "false_splits": 0,
+     "false_merges": 104
+    },
+    {
+     "threshold": 42.105,
+     "false_splits": 0,
+     "false_merges": 108
+    },
+    {
+     "threshold": 41.667,
+     "false_splits": 0,
+     "false_merges": 108
+    },
+    {
+     "threshold": 41.379,
+     "false_splits": 0,
+     "false_merges": 122
+    },
+    {
+     "threshold": 41.176,
+     "false_splits": 0,
+     "false_merges": 130
+    },
+    {
+     "threshold": 41.026,
+     "false_splits": 0,
+     "false_merges": 130
+    },
+    {
+     "threshold": 40.0,
+     "false_splits": 0,
+     "false_merges": 156
+    },
+    {
+     "threshold": 38.889,
+     "false_splits": 0,
+     "false_merges": 156
+    },
+    {
+     "threshold": 38.71,
+     "false_splits": 0,
+     "false_merges": 160
+    },
+    {
+     "threshold": 38.462,
+     "false_splits": 0,
+     "false_merges": 163
+    },
+    {
+     "threshold": 38.095,
+     "false_splits": 0,
+     "false_merges": 181
+    },
+    {
+     "threshold": 37.838,
+     "false_splits": 0,
+     "false_merges": 181
+    },
+    {
+     "threshold": 37.5,
+     "false_splits": 0,
+     "false_merges": 191
+    },
+    {
+     "threshold": 37.037,
+     "false_splits": 0,
+     "false_merges": 210
+    },
+    {
+     "threshold": 36.842,
+     "false_splits": 0,
+     "false_merges": 211
+    },
+    {
+     "threshold": 36.364,
+     "false_splits": 0,
+     "false_merges": 211
+    },
+    {
+     "threshold": 35.714,
+     "false_splits": 0,
+     "false_merges": 237
+    },
+    {
+     "threshold": 35.294,
+     "false_splits": 0,
+     "false_merges": 247
+    },
+    {
+     "threshold": 35.0,
+     "false_splits": 0,
+     "false_merges": 248
+    },
+    {
+     "threshold": 34.783,
+     "false_splits": 0,
+     "false_merges": 248
+    },
+    {
+     "threshold": 34.483,
+     "false_splits": 0,
+     "false_merges": 266
+    },
+    {
+     "threshold": 34.286,
+     "false_splits": 0,
+     "false_merges": 276
+    },
+    {
+     "threshold": 33.333,
+     "false_splits": 0,
+     "false_merges": 340
+    },
+    {
+     "threshold": 32.558,
+     "false_splits": 0,
+     "false_merges": 341
+    },
+    {
+     "threshold": 32.432,
+     "false_splits": 0,
+     "false_merges": 342
+    },
+    {
+     "threshold": 32.258,
+     "false_splits": 0,
+     "false_merges": 357
+    },
+    {
+     "threshold": 32.0,
+     "false_splits": 0,
+     "false_merges": 388
+    },
+    {
+     "threshold": 31.579,
+     "false_splits": 0,
+     "false_merges": 388
+    },
+    {
+     "threshold": 31.25,
+     "false_splits": 0,
+     "false_merges": 429
+    },
+    {
+     "threshold": 30.769,
+     "false_splits": 0,
+     "false_merges": 457
+    },
+    {
+     "threshold": 30.303,
+     "false_splits": 0,
+     "false_merges": 463
+    },
+    {
+     "threshold": 30.0,
+     "false_splits": 0,
+     "false_merges": 477
+    },
+    {
+     "threshold": 29.63,
+     "false_splits": 0,
+     "false_merges": 477
+    },
+    {
+     "threshold": 29.412,
+     "false_splits": 0,
+     "false_merges": 503
+    },
+    {
+     "threshold": 28.571,
+     "false_splits": 0,
+     "false_merges": 548
+    },
+    {
+     "threshold": 27.778,
+     "false_splits": 0,
+     "false_merges": 548
+    },
+    {
+     "threshold": 27.586,
+     "false_splits": 0,
+     "false_merges": 567
+    },
+    {
+     "threshold": 27.273,
+     "false_splits": 0,
+     "false_merges": 567
+    },
+    {
+     "threshold": 26.667,
+     "false_splits": 0,
+     "false_merges": 600
+    },
+    {
+     "threshold": 26.316,
+     "false_splits": 0,
+     "false_merges": 619
+    },
+    {
+     "threshold": 26.087,
+     "false_splits": 0,
+     "false_merges": 621
+    },
+    {
+     "threshold": 25.806,
+     "false_splits": 0,
+     "false_merges": 673
+    },
+    {
+     "threshold": 25.0,
+     "false_splits": 0,
+     "false_merges": 705
+    },
+    {
+     "threshold": 24.242,
+     "false_splits": 0,
+     "false_merges": 711
+    },
+    {
+     "threshold": 24.0,
+     "false_splits": 0,
+     "false_merges": 739
+    },
+    {
+     "threshold": 23.529,
+     "false_splits": 0,
+     "false_merges": 758
+    },
+    {
+     "threshold": 23.077,
+     "false_splits": 0,
+     "false_merges": 758
+    },
+    {
+     "threshold": 22.222,
+     "false_splits": 0,
+     "false_merges": 824
+    },
+    {
+     "threshold": 21.429,
+     "false_splits": 0,
+     "false_merges": 824
+    },
+    {
+     "threshold": 21.053,
+     "false_splits": 0,
+     "false_merges": 827
+    },
+    {
+     "threshold": 20.69,
+     "false_splits": 0,
+     "false_merges": 846
+    },
+    {
+     "threshold": 20.0,
+     "false_splits": 0,
+     "false_merges": 879
+    },
+    {
+     "threshold": 19.048,
+     "false_splits": 0,
+     "false_merges": 879
+    },
+    {
+     "threshold": 18.182,
+     "false_splits": 0,
+     "false_merges": 898
+    },
+    {
+     "threshold": 17.391,
+     "false_splits": 0,
+     "false_merges": 919
+    },
+    {
+     "threshold": 17.143,
+     "false_splits": 0,
+     "false_merges": 919
+    },
+    {
+     "threshold": 16.667,
+     "false_splits": 0,
+     "false_merges": 920
+    },
+    {
+     "threshold": 16.0,
+     "false_splits": 0,
+     "false_merges": 928
+    },
+    {
+     "threshold": 15.385,
+     "false_splits": 0,
+     "false_merges": 928
+    },
+    {
+     "threshold": 13.333,
+     "false_splits": 0,
+     "false_merges": 938
+    },
+    {
+     "threshold": 12.5,
+     "false_splits": 0,
+     "false_merges": 943
+    },
+    {
+     "threshold": 11.765,
+     "false_splits": 0,
+     "false_merges": 943
+    },
+    {
+     "threshold": 11.111,
+     "false_splits": 0,
+     "false_merges": 948
+    },
+    {
+     "threshold": 10.0,
+     "false_splits": 0,
+     "false_merges": 951
+    },
+    {
+     "threshold": 9.524,
+     "false_splits": 0,
+     "false_merges": 951
+    },
+    {
+     "threshold": 8.333,
+     "false_splits": 0,
+     "false_merges": 953
+    }
+   ]
+  },
+  "direct": {
+   "jaro-winkler >= 0.9": {
+    "false_splits": 16,
+    "false_merges": 18
+   },
+   "token-set ratio >= 85": {
+    "false_splits": 11,
+    "false_merges": 15
+   }
+  },
+  "never_merged": [
+   [
+    "Jonathan Smith",
+    "Jon Smith"
+   ],
+   [
+    "Smith, Jonathan",
+    "Jon Smith"
+   ],
+   [
+    "Jonathon Smith",
+    "Jon Smith"
+   ],
+   [
+    "William Jones",
+    "Bill Jones"
+   ],
+   [
+    "Bill Jones",
+    "W. Jones"
+   ],
+   [
+    "Mohammed Al-Sayed",
+    "Mohamed Alsayed"
+   ],
+   [
+    "Mohamed Alsayed",
+    "Muhammad Al Sayed"
+   ]
+  ]
+ }
+}
