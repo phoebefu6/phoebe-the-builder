@@ -1,0 +1,1649 @@
+{
+ "main": {
+  "pop_n": 60000,
+  "export_n": 3000,
+  "sensitive_base": 352,
+  "postcodes": {
+   "postcodes": 600,
+   "min": 15,
+   "median": 46,
+   "max": 4438
+  },
+  "smallest_postcodes": [
+   [
+    "040800",
+    15
+   ],
+   [
+    "060001",
+    16
+   ],
+   [
+    "160000",
+    16
+   ]
+  ],
+  "subsets": [
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 525,
+    "k_min": 1,
+    "unique_export": 114,
+    "unique_pop": 0,
+    "below_k": 859,
+    "below_k_pop": 0,
+    "released": 2141,
+    "homog_classes": 1,
+    "homog_rows": 7,
+    "near_homog_rows": 40,
+    "sensitive_rows_released": 237,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "postcode"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 2841,
+    "k_min": 1,
+    "unique_export": 2687,
+    "unique_pop": 498,
+    "below_k": 3000,
+    "below_k_pop": 2565,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "date of birth"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 2,
+    "k_min": 1499,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "sex"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 2997,
+    "k_min": 1,
+    "unique_export": 2994,
+    "unique_pop": 2932,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "postcode",
+     "date of birth"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 848,
+    "k_min": 1,
+    "unique_export": 353,
+    "unique_pop": 0,
+    "below_k": 1257,
+    "below_k_pop": 0,
+    "released": 1743,
+    "homog_classes": 3,
+    "homog_rows": 15,
+    "near_homog_rows": 51,
+    "sensitive_rows_released": 190,
+    "sensitive_confident_rows": 3,
+    "n": 3000,
+    "columns": [
+     "postcode",
+     "sex"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 2923,
+    "k_min": 1,
+    "unique_export": 2851,
+    "unique_pop": 1186,
+    "below_k": 3000,
+    "below_k_pop": 2934,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "date of birth",
+     "sex"
+    ]
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 3000,
+    "k_min": 1,
+    "unique_export": 3000,
+    "unique_pop": 2964,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000,
+    "columns": [
+     "postcode",
+     "date of birth",
+     "sex"
+    ]
+   }
+  ],
+  "ladder": [
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 3000,
+    "k_min": 1,
+    "unique_export": 3000,
+    "unique_pop": 2964,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "dropped"
+    ],
+    "classes": 2997,
+    "k_min": 1,
+    "unique_export": 2994,
+    "unique_pop": 2932,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "month",
+     "kept"
+    ],
+    "classes": 2976,
+    "k_min": 1,
+    "unique_export": 2952,
+    "unique_pop": 2353,
+    "below_k": 3000,
+    "below_k_pop": 2941,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "month",
+     "dropped"
+    ],
+    "classes": 2944,
+    "k_min": 1,
+    "unique_export": 2891,
+    "unique_pop": 2043,
+    "below_k": 3000,
+    "below_k_pop": 2783,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "year",
+     "kept"
+    ],
+    "classes": 2707,
+    "k_min": 1,
+    "unique_export": 2487,
+    "unique_pop": 1097,
+    "below_k": 2983,
+    "below_k_pop": 2123,
+    "released": 17,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 5,
+    "sensitive_rows_released": 3,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "year",
+     "dropped"
+    ],
+    "classes": 2531,
+    "k_min": 1,
+    "unique_export": 2242,
+    "unique_pop": 715,
+    "below_k": 2881,
+    "below_k_pop": 1777,
+    "released": 119,
+    "homog_classes": 2,
+    "homog_rows": 11,
+    "near_homog_rows": 26,
+    "sensitive_rows_released": 11,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "decade",
+     "kept"
+    ],
+    "classes": 1950,
+    "k_min": 1,
+    "unique_export": 1494,
+    "unique_pop": 111,
+    "below_k": 2436,
+    "below_k_pop": 763,
+    "released": 564,
+    "homog_classes": 1,
+    "homog_rows": 5,
+    "near_homog_rows": 38,
+    "sensitive_rows_released": 58,
+    "sensitive_confident_rows": 4,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "decade",
+     "dropped"
+    ],
+    "classes": 1621,
+    "k_min": 1,
+    "unique_export": 1114,
+    "unique_pop": 23,
+    "below_k": 2161,
+    "below_k_pop": 313,
+    "released": 839,
+    "homog_classes": 2,
+    "homog_rows": 10,
+    "near_homog_rows": 53,
+    "sensitive_rows_released": 89,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "dropped",
+     "kept"
+    ],
+    "classes": 848,
+    "k_min": 1,
+    "unique_export": 353,
+    "unique_pop": 0,
+    "below_k": 1257,
+    "below_k_pop": 0,
+    "released": 1743,
+    "homog_classes": 3,
+    "homog_rows": 15,
+    "near_homog_rows": 51,
+    "sensitive_rows_released": 190,
+    "sensitive_confident_rows": 3,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "6 digits",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 525,
+    "k_min": 1,
+    "unique_export": 114,
+    "unique_pop": 0,
+    "below_k": 859,
+    "below_k_pop": 0,
+    "released": 2141,
+    "homog_classes": 1,
+    "homog_rows": 7,
+    "near_homog_rows": 40,
+    "sensitive_rows_released": 237,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "full date",
+     "kept"
+    ],
+    "classes": 3000,
+    "k_min": 1,
+    "unique_export": 3000,
+    "unique_pop": 2958,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "full date",
+     "dropped"
+    ],
+    "classes": 2997,
+    "k_min": 1,
+    "unique_export": 2994,
+    "unique_pop": 2910,
+    "below_k": 3000,
+    "below_k_pop": 2999,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "month",
+     "kept"
+    ],
+    "classes": 2966,
+    "k_min": 1,
+    "unique_export": 2932,
+    "unique_pop": 2123,
+    "below_k": 3000,
+    "below_k_pop": 2933,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "month",
+     "dropped"
+    ],
+    "classes": 2926,
+    "k_min": 1,
+    "unique_export": 2855,
+    "unique_pop": 1687,
+    "below_k": 3000,
+    "below_k_pop": 2736,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "year",
+     "kept"
+    ],
+    "classes": 2630,
+    "k_min": 1,
+    "unique_export": 2349,
+    "unique_pop": 532,
+    "below_k": 2978,
+    "below_k_pop": 1809,
+    "released": 22,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 5,
+    "sensitive_rows_released": 3,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "year",
+     "dropped"
+    ],
+    "classes": 2408,
+    "k_min": 1,
+    "unique_export": 2026,
+    "unique_pop": 206,
+    "below_k": 2867,
+    "below_k_pop": 1216,
+    "released": 133,
+    "homog_classes": 2,
+    "homog_rows": 11,
+    "near_homog_rows": 26,
+    "sensitive_rows_released": 13,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "decade",
+     "kept"
+    ],
+    "classes": 1601,
+    "k_min": 1,
+    "unique_export": 1008,
+    "unique_pop": 9,
+    "below_k": 2240,
+    "below_k_pop": 110,
+    "released": 760,
+    "homog_classes": 5,
+    "homog_rows": 26,
+    "near_homog_rows": 64,
+    "sensitive_rows_released": 75,
+    "sensitive_confident_rows": 4,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "decade",
+     "dropped"
+    ],
+    "classes": 1196,
+    "k_min": 1,
+    "unique_export": 594,
+    "unique_pop": 0,
+    "below_k": 1809,
+    "below_k_pop": 19,
+    "released": 1191,
+    "homog_classes": 2,
+    "homog_rows": 11,
+    "near_homog_rows": 71,
+    "sensitive_rows_released": 123,
+    "sensitive_confident_rows": 3,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "dropped",
+     "kept"
+    ],
+    "classes": 388,
+    "k_min": 1,
+    "unique_export": 29,
+    "unique_pop": 0,
+    "below_k": 477,
+    "below_k_pop": 0,
+    "released": 2523,
+    "homog_classes": 2,
+    "homog_rows": 12,
+    "near_homog_rows": 90,
+    "sensitive_rows_released": 292,
+    "sensitive_confident_rows": 13,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 199,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 95,
+    "below_k_pop": 0,
+    "released": 2905,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 35,
+    "sensitive_rows_released": 335,
+    "sensitive_confident_rows": 4,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "full date",
+     "kept"
+    ],
+    "classes": 2997,
+    "k_min": 1,
+    "unique_export": 2994,
+    "unique_pop": 2811,
+    "below_k": 3000,
+    "below_k_pop": 2997,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "full date",
+     "dropped"
+    ],
+    "classes": 2989,
+    "k_min": 1,
+    "unique_export": 2978,
+    "unique_pop": 2649,
+    "below_k": 3000,
+    "below_k_pop": 2995,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "month",
+     "kept"
+    ],
+    "classes": 2882,
+    "k_min": 1,
+    "unique_export": 2769,
+    "unique_pop": 724,
+    "below_k": 3000,
+    "below_k_pop": 2497,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "month",
+     "dropped"
+    ],
+    "classes": 2760,
+    "k_min": 1,
+    "unique_export": 2536,
+    "unique_pop": 240,
+    "below_k": 3000,
+    "below_k_pop": 1716,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "classes": 1899,
+    "k_min": 1,
+    "unique_export": 1203,
+    "unique_pop": 1,
+    "below_k": 2740,
+    "below_k_pop": 52,
+    "released": 260,
+    "homog_classes": 1,
+    "homog_rows": 5,
+    "near_homog_rows": 26,
+    "sensitive_rows_released": 24,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "dropped"
+    ],
+    "classes": 1369,
+    "k_min": 1,
+    "unique_export": 590,
+    "unique_pop": 0,
+    "below_k": 2350,
+    "below_k_pop": 5,
+    "released": 650,
+    "homog_classes": 2,
+    "homog_rows": 10,
+    "near_homog_rows": 27,
+    "sensitive_rows_released": 66,
+    "sensitive_confident_rows": 6,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "decade",
+     "kept"
+    ],
+    "classes": 395,
+    "k_min": 1,
+    "unique_export": 23,
+    "unique_pop": 0,
+    "below_k": 364,
+    "below_k_pop": 0,
+    "released": 2636,
+    "homog_classes": 2,
+    "homog_rows": 12,
+    "near_homog_rows": 53,
+    "sensitive_rows_released": 302,
+    "sensitive_confident_rows": 8,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "decade",
+     "dropped"
+    ],
+    "classes": 199,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 51,
+    "below_k_pop": 0,
+    "released": 2949,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 31,
+    "sensitive_rows_released": 345,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "kept"
+    ],
+    "classes": 40,
+    "k_min": 34,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 20,
+    "k_min": 70,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "full date",
+     "kept"
+    ],
+    "classes": 2923,
+    "k_min": 1,
+    "unique_export": 2851,
+    "unique_pop": 1186,
+    "below_k": 3000,
+    "below_k_pop": 2934,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "full date",
+     "dropped"
+    ],
+    "classes": 2841,
+    "k_min": 1,
+    "unique_export": 2687,
+    "unique_pop": 498,
+    "below_k": 3000,
+    "below_k_pop": 2565,
+    "released": 0,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 0,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "month",
+     "kept"
+    ],
+    "classes": 1607,
+    "k_min": 1,
+    "unique_export": 749,
+    "unique_pop": 0,
+    "below_k": 2806,
+    "below_k_pop": 6,
+    "released": 194,
+    "homog_classes": 1,
+    "homog_rows": 6,
+    "near_homog_rows": 22,
+    "sensitive_rows_released": 23,
+    "sensitive_confident_rows": 3,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "month",
+     "dropped"
+    ],
+    "classes": 1006,
+    "k_min": 1,
+    "unique_export": 208,
+    "unique_pop": 0,
+    "below_k": 1937,
+    "below_k_pop": 0,
+    "released": 1063,
+    "homog_classes": 5,
+    "homog_rows": 25,
+    "near_homog_rows": 89,
+    "sensitive_rows_released": 129,
+    "sensitive_confident_rows": 3,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "year",
+     "kept"
+    ],
+    "classes": 190,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 27,
+    "below_k_pop": 0,
+    "released": 2973,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 45,
+    "sensitive_rows_released": 351,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "year",
+     "dropped"
+    ],
+    "classes": 96,
+    "k_min": 4,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 4,
+    "below_k_pop": 0,
+    "released": 2996,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 351,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "kept"
+    ],
+    "classes": 20,
+    "k_min": 37,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "dropped"
+    ],
+    "classes": 10,
+    "k_min": 92,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "kept"
+    ],
+    "classes": 2,
+    "k_min": 1499,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 1,
+    "k_min": 3000,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   }
+  ],
+  "k_anonymous": [
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "kept"
+    ],
+    "classes": 40,
+    "k_min": 34,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 20,
+    "k_min": 70,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "kept"
+    ],
+    "classes": 20,
+    "k_min": 37,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "dropped"
+    ],
+    "classes": 10,
+    "k_min": 92,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "kept"
+    ],
+    "classes": 2,
+    "k_min": 1499,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 1,
+    "k_min": 3000,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   }
+  ],
+  "best": {
+   "levels": [
+    "sector (2 digits)",
+    "dropped",
+    "kept"
+   ],
+   "classes": 40,
+   "k_min": 34,
+   "unique_export": 0,
+   "unique_pop": 0,
+   "below_k": 0,
+   "below_k_pop": 0,
+   "released": 3000,
+   "homog_classes": 0,
+   "homog_rows": 0,
+   "near_homog_rows": 0,
+   "sensitive_rows_released": 352,
+   "sensitive_confident_rows": 0,
+   "n": 3000
+  },
+  "with_suppression": [
+   {
+    "levels": [
+     "sector (2 digits)",
+     "decade",
+     "dropped"
+    ],
+    "classes": 199,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 51,
+    "below_k_pop": 0,
+    "released": 2949,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 31,
+    "sensitive_rows_released": 345,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "4 digits",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 199,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 95,
+    "below_k_pop": 0,
+    "released": 2905,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 35,
+    "sensitive_rows_released": 335,
+    "sensitive_confident_rows": 4,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "year",
+     "kept"
+    ],
+    "classes": 190,
+    "k_min": 1,
+    "unique_export": 1,
+    "unique_pop": 0,
+    "below_k": 27,
+    "below_k_pop": 0,
+    "released": 2973,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 45,
+    "sensitive_rows_released": 351,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "year",
+     "dropped"
+    ],
+    "classes": 96,
+    "k_min": 4,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 4,
+    "below_k_pop": 0,
+    "released": 2996,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 351,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "kept"
+    ],
+    "classes": 40,
+    "k_min": 34,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 20,
+    "k_min": 70,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "kept"
+    ],
+    "classes": 20,
+    "k_min": 37,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "decade",
+     "dropped"
+    ],
+    "classes": 10,
+    "k_min": 92,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "kept"
+    ],
+    "classes": 2,
+    "k_min": 1499,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   },
+   {
+    "levels": [
+     "dropped",
+     "dropped",
+     "dropped"
+    ],
+    "classes": 1,
+    "k_min": 3000,
+    "unique_export": 0,
+    "unique_pop": 0,
+    "below_k": 0,
+    "below_k_pop": 0,
+    "released": 3000,
+    "homog_classes": 0,
+    "homog_rows": 0,
+    "near_homog_rows": 0,
+    "sensitive_rows_released": 352,
+    "sensitive_confident_rows": 0,
+    "n": 3000
+   }
+  ],
+  "release": {
+   "levels": [
+    "sector (2 digits)",
+    "decade",
+    "dropped"
+   ],
+   "classes": 199,
+   "k_min": 1,
+   "unique_export": 1,
+   "unique_pop": 0,
+   "below_k": 51,
+   "below_k_pop": 0,
+   "released": 2949,
+   "homog_classes": 0,
+   "homog_rows": 0,
+   "near_homog_rows": 31,
+   "sensitive_rows_released": 345,
+   "sensitive_confident_rows": 0,
+   "n": 3000
+  },
+  "sweep": [
+   {
+    "frac": 0.01,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 600,
+    "unique_export_pct": 100.0,
+    "unique_pop_pct": 98.16666666666667
+   },
+   {
+    "frac": 0.01,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 600,
+    "unique_export_pct": 78.5,
+    "unique_pop_pct": 0.0
+   },
+   {
+    "frac": 0.02,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 1200,
+    "unique_export_pct": 100.0,
+    "unique_pop_pct": 98.83333333333333
+   },
+   {
+    "frac": 0.02,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 1200,
+    "unique_export_pct": 65.75,
+    "unique_pop_pct": 0.0
+   },
+   {
+    "frac": 0.05,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 3000,
+    "unique_export_pct": 100.0,
+    "unique_pop_pct": 98.8
+   },
+   {
+    "frac": 0.05,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 3000,
+    "unique_export_pct": 40.1,
+    "unique_pop_pct": 0.03333333333333333
+   },
+   {
+    "frac": 0.1,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 6000,
+    "unique_export_pct": 99.83333333333333,
+    "unique_pop_pct": 98.61666666666666
+   },
+   {
+    "frac": 0.1,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 6000,
+    "unique_export_pct": 19.066666666666666,
+    "unique_pop_pct": 0.03333333333333333
+   },
+   {
+    "frac": 0.2,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 12000,
+    "unique_export_pct": 99.76666666666667,
+    "unique_pop_pct": 98.71666666666667
+   },
+   {
+    "frac": 0.2,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 12000,
+    "unique_export_pct": 6.05,
+    "unique_pop_pct": 0.06666666666666667
+   },
+   {
+    "frac": 0.5,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 30000,
+    "unique_export_pct": 99.38333333333334,
+    "unique_pop_pct": 98.79
+   },
+   {
+    "frac": 0.5,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 30000,
+    "unique_export_pct": 0.7166666666666667,
+    "unique_pop_pct": 0.07333333333333333
+   },
+   {
+    "frac": 1.0,
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "n": 60000,
+    "unique_export_pct": 98.79833333333333,
+    "unique_pop_pct": 98.79833333333333
+   },
+   {
+    "frac": 1.0,
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "n": 60000,
+    "unique_export_pct": 0.07333333333333333,
+    "unique_pop_pct": 0.07333333333333333
+   }
+  ],
+  "linkage": [
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "coverage": 1.0,
+    "register_n": 60000,
+    "right": 2964,
+    "wrong": 0,
+    "ambiguous": 36,
+    "none": 0
+   },
+   {
+    "levels": [
+     "6 digits",
+     "full date",
+     "kept"
+    ],
+    "coverage": 0.8,
+    "register_n": 48000,
+    "right": 2372,
+    "wrong": 1,
+    "ambiguous": 28,
+    "none": 599
+   },
+   {
+    "levels": [
+     "6 digits",
+     "year",
+     "kept"
+    ],
+    "coverage": 1.0,
+    "register_n": 60000,
+    "right": 1097,
+    "wrong": 0,
+    "ambiguous": 1903,
+    "none": 0
+   },
+   {
+    "levels": [
+     "6 digits",
+     "year",
+     "kept"
+    ],
+    "coverage": 0.8,
+    "register_n": 48000,
+    "right": 977,
+    "wrong": 101,
+    "ambiguous": 1665,
+    "none": 257
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "coverage": 1.0,
+    "register_n": 60000,
+    "right": 1,
+    "wrong": 0,
+    "ambiguous": 2999,
+    "none": 0
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "year",
+     "kept"
+    ],
+    "coverage": 0.8,
+    "register_n": 48000,
+    "right": 3,
+    "wrong": 4,
+    "ambiguous": 2993,
+    "none": 0
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "decade",
+     "dropped"
+    ],
+    "coverage": 1.0,
+    "register_n": 60000,
+    "right": 0,
+    "wrong": 0,
+    "ambiguous": 3000,
+    "none": 0
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "decade",
+     "dropped"
+    ],
+    "coverage": 0.8,
+    "register_n": 48000,
+    "right": 0,
+    "wrong": 0,
+    "ambiguous": 3000,
+    "none": 0
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "kept"
+    ],
+    "coverage": 1.0,
+    "register_n": 60000,
+    "right": 0,
+    "wrong": 0,
+    "ambiguous": 3000,
+    "none": 0
+   },
+   {
+    "levels": [
+     "sector (2 digits)",
+     "dropped",
+     "kept"
+    ],
+    "coverage": 0.8,
+    "register_n": 48000,
+    "right": 0,
+    "wrong": 0,
+    "ambiguous": 3000,
+    "none": 0
+   }
+  ]
+ }
+}

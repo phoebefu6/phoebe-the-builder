@@ -1,0 +1,69 @@
+k-anonymity-check evidence  (fictional town of 60,000 residents in 600 postcodes holding 15 to 4,438 people, median 46; a 3,000-row clinic export = 5% of the town; three quasi-identifiers: postcode, date of birth, sex; k = 5; seeded Random(206), every person fictional)
+
+1. How few columns make a row unique (full granularity; 'in the town' = no other resident shares the key)
+columns                               unique in export  unique in town  classes
+postcode                                 114 (  3.8%)      0 (  0.0%)      525
+date of birth                           2687 ( 89.6%)    498 ( 16.6%)     2841
+sex                                        0 (  0.0%)      0 (  0.0%)        2
+postcode + date of birth                2994 ( 99.8%)   2932 ( 97.7%)     2997
+postcode + sex                           353 ( 11.8%)      0 (  0.0%)      848
+date of birth + sex                     2851 ( 95.0%)   1186 ( 39.5%)     2923
+postcode + date of birth + sex          3000 (100.0%)   2964 ( 98.8%)     3000
+
+2. The generalisation ladder (16 of 40 combinations; all 40 in results.json)
+generalisation                                             classes k_min uniq export uniq town <5 export <5 town
+postcode 6 digits / dob full date / sex kept                  3000     1        3000      2964      3000    2999
+postcode 6 digits / dob month / sex kept                      2976     1        2952      2353      3000    2941
+postcode 6 digits / dob year / sex kept                       2707     1        2487      1097      2983    2123
+postcode 6 digits / dob decade / sex kept                     1950     1        1494       111      2436     763
+postcode 6 digits / dob dropped / sex kept                     848     1         353         0      1257       0
+postcode 4 digits / dob year / sex kept                       2630     1        2349       532      2978    1809
+postcode 4 digits / dob decade / sex kept                     1601     1        1008         9      2240     110
+postcode 4 digits / dob dropped / sex dropped                  199     1           1         0        95       0
+postcode sector (2 digits) / dob full date / sex kept         2997     1        2994      2811      3000    2997
+postcode sector (2 digits) / dob month / sex kept             2882     1        2769       724      3000    2497
+postcode sector (2 digits) / dob year / sex kept              1899     1        1203         1      2740      52
+postcode sector (2 digits) / dob decade / sex kept             395     1          23         0       364       0
+postcode sector (2 digits) / dob decade / sex dropped          199     1           1         0        51       0
+postcode sector (2 digits) / dob dropped / sex kept             40    34           0         0         0       0
+postcode dropped / dob year / sex kept                         190     1           1         0        27       0
+postcode dropped / dob decade / sex kept                        20    37           0         0         0       0
+k >= 5 in the export with nothing suppressed: 6 of 40 combinations, the finest = postcode sector (2 digits) / dob dropped / sex kept (40 classes)
+k >= 5 after suppressing at most 5% of rows: finest = postcode sector (2 digits) / dob decade / sex dropped (199 classes, 51 rows suppressed, 2,949 released)
+
+3. Unique in the export vs unique in the town, as the export grows (two keys)
+  export    rows  full key: export    town  sector+year+sex: export    town
+      1%     600            100.0%   98.2%                    78.5%   0.00%
+      2%   1,200            100.0%   98.8%                    65.8%   0.00%
+      5%   3,000            100.0%   98.8%                    40.1%   0.03%
+     10%   6,000             99.8%   98.6%                    19.1%   0.03%
+     20%  12,000             99.8%   98.7%                     6.0%   0.07%
+     50%  30,000             99.4%   98.8%                     0.7%   0.07%
+    100%  60,000             98.8%   98.8%                     0.1%   0.07%
+two attackers at sector+year+sex on the 3,000-row export: one who knows the person IS a patient needs only export-uniqueness and re-identifies 1,203; a stranger needs town-uniqueness and re-identifies 1
+
+4. Linkage with a public register (name + the three columns), complete and missing 20% of the town
+generalisation                                             register  right  wrong ambiguous  none
+postcode 6 digits / dob full date / sex kept                   100%   2964      0        36     0
+postcode 6 digits / dob full date / sex kept                    80%   2372      1        28   599
+postcode 6 digits / dob year / sex kept                        100%   1097      0      1903     0
+postcode 6 digits / dob year / sex kept                         80%    977    101      1665   257
+postcode sector (2 digits) / dob year / sex kept               100%      1      0      2999     0
+postcode sector (2 digits) / dob year / sex kept                80%      3      4      2993     0
+postcode sector (2 digits) / dob decade / sex dropped          100%      0      0      3000     0
+postcode sector (2 digits) / dob decade / sex dropped           80%      0      0      3000     0
+postcode sector (2 digits) / dob dropped / sex kept            100%      0      0      3000     0
+postcode sector (2 digits) / dob dropped / sex kept             80%      0      0      3000     0
+
+5. k does not protect the value (baseline: 11.7% of export rows carry a sensitive diagnosis)
+the release (postcode sector (2 digits) / dob decade / sex dropped): 0 classes where everyone shares one diagnosis (0 rows); 31 rows in classes where one diagnosis is >= 80%; 0 of 345 sensitive rows sit in a class that makes an attacker >= 50% sure of it
+generalisations whose k >= 5 release leaves an attacker >= 50% sure of a sensitive diagnosis: 10 of 40
+   postcode 4 digits / dob dropped / sex kept                13 rows (2 homogeneous classes, 477 suppressed)
+   postcode sector (2 digits) / dob decade / sex kept         8 rows (2 homogeneous classes, 364 suppressed)
+   postcode sector (2 digits) / dob year / sex dropped        6 rows (2 homogeneous classes, 2350 suppressed)
+   postcode 6 digits / dob decade / sex kept                  4 rows (1 homogeneous classes, 2436 suppressed)
+
+6. The ceiling
+smallest postcodes            : 040800 (15 residents), 060001 (16 residents), 160000 (16 residents) - a six-digit postcode can never be hidden among many
+export k is not town k        : at sector+year+sex the export has k_min 1 and 2,740 rows below 5; the town has 52 below 5. The right-hand column needs the town, which is not in the file
+two columns are already enough: postcode + date of birth make 2,932 of 3,000 rows unique in the town; adding sex makes 2,964
