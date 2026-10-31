@@ -2868,5 +2868,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/dedupe-key-choice",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/dedupe-key-choice/demo.ipynb"
+  },
+  {
+    "day": 206,
+    "slug": "k-anonymity-check",
+    "name": "The Anonymised Export Was Re-identified - Postcode + Date of Birth Make 2,932 of 3,000 Exported Residents Unique in a Town of 60,000, 6 of 40 Generalisations Reach k = 5 Without Suppression and All Drop the Birth Date or Cut the Postcode to Its Sector, 'Unique in the Export' Overstates 'Unique in the Town' 1,200-fold at a Coarse Key and Not at All at a Fine One, and a Register Missing 20% of the Town Names the Wrong Person 101 Times",
+    "task": "govern",
+    "task_title": "Control who sees what",
+    "problem": "The names were removed and the export still points at one person: in a town of 60,000, postcode plus date of birth make 2,932 of 3,000 exported residents the only person in town with that pair, only 6 of 40 ways of coarsening the columns reach k\u2026",
+    "status": "done",
+    "date": "2026-10-31",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/k-anonymity-check",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/k-anonymity-check/demo.ipynb"
   }
 ]

@@ -130,6 +130,7 @@ TASK_OF = {
     # Control who sees what
     "pii-detector": "govern", "pii-redactor": "govern", "dsar-extractor": "govern",
     "consent-tracker": "govern", "retention-enforcer": "govern", "access-auditor": "govern",
+    "k-anonymity-check": "govern",
     "compliance-checker": "govern", "data-catalog": "govern", "business-glossary": "govern",
     "data-dict-gen": "govern", "column-lineage": "govern", "data-lineage-viz": "govern",
     "erd-generator": "govern", "privacy-policy-gen": "govern", "model-card-gen": "govern",
