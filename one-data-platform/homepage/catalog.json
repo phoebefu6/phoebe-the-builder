@@ -2882,5 +2882,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/k-anonymity-check",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/k-anonymity-check/demo.ipynb"
+  },
+  {
+    "day": 207,
+    "slug": "table-checksum",
+    "name": "Are These Two Tables the Same? - a Dump Hash Calls a Shuffled Copy Different 7 Times of 7, Count Plus Column Sums Lets Two Swapped Amounts Through Every Time, XOR Cannot See a Duplicate Pair, and the Typed Fingerprint That Gets 12 of 13 Right False-Alarms on One Amount Sitting on a Half Cent",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "The table was copied to another system and you can compare one number from each side: a hash of the dump calls a shuffled copy different every time, row count plus column sums lets two swapped amounts through every time, an XOR of row hashes\u2026",
+    "status": "done",
+    "date": "2026-11-01",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/table-checksum",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/table-checksum/demo.ipynb"
   }
 ]

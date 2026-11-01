@@ -76,6 +76,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 
 | Tool | The problem it was built for |
 |------|------------------------------|
+| [Are These Two Tables the Same? - a Dump Hash Calls a Shuffled Copy Different 7 Times of 7, Count Plus Column Sums Lets Two Swapped Amounts Through Every Time, XOR Cannot See a Duplicate Pair, and the Typed Fingerprint That Gets 12 of 13 Right False-Alarms on One Amount Sitting on a Half Cent](data-quality-governance/table-checksum/) | The table was copied to another system and you can compare one number from each side: a hash of the dump calls a shuffled copy different every time, row… |
 | [Column Anomaly Detector](data-quality-governance/anomaly-detector/) | Bad values slip into columns and nobody notices until a dashboard breaks - scan every column and get triaged, explainable alerts before they do damage. |
 | [Data Contract Validator](data-engineering-pro/data-contract-validator/) | Producers break schemas without warning - put a YAML contract in CI so breaking changes block the merge and violating data never lands. |
 | [Data Quality Scorecard](analytics-accelerator/data-quality-scorecard/) | Stop guessing how bad your data is - get a 0-100 score, a letter grade, and a ranked list of what to fix first. |
