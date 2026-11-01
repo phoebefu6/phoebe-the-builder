@@ -1,0 +1,35 @@
+table-checksum evidence  (fictional keyless order-event export, 1,000 rows, 980 distinct, 20 exact duplicate pairs; note column 478 NULL and 151 empty string; amount = float sum of line items x 1.07; seeded Random(207); 100 seeded trials per random transform; every row fictional)
+
+1. Benign transforms: same data. Cell = share of trials where the fingerprint MATCHES (want 100%)
+                                             csv_md5  count_sums    xor_rows    sum_rows   canonical
+shuffle rows (100)                                0%        100%        100%        100%        100%
+reorder columns (100)                             0%        100%          0%          0%        100%
+CSV round trip (1)                                0%        100%          0%          0%        100%
+export at 15 digits (1)                           0%        100%          0%          0%        100%
+re-add line items (1)                             0%          0%          0%          0%          0%
+-0.0 discount (1)                                 0%        100%          0%          0%        100%
+5.0 stored as 5 (1)                               0%        100%          0%          0%        100%
+
+2. Mutations: different data. Cell = share of trials where the fingerprint still MATCHES (want 0%)
+                                             csv_md5  count_sums    xor_rows    sum_rows   canonical
+one amount +1 cent (100)                          0%          0%          0%          0%          0%
+two offsetting cents (100)                        0%         99%          0%          0%          0%
+two amounts swapped (100)                         0%        100%          0%          0%          0%
+NULL note became '' (100)                       100%        100%          0%          0%          0%
+dup pair dropped, another doubled (100)           0%          0%        100%          0%          0%
+'|' moved across a column (100)                   0%        100%        100%        100%          0%
+
+3. Score per fingerprint
+csv_md5     false alarms 7/7  misses 1/6  missed: NULL note became ''
+count_sums  false alarms 1/7  misses 4/6  missed: two offsetting cents, two amounts swapped, NULL note became '', '|' moved across a column
+xor_rows    false alarms 6/7  misses 2/6  missed: dup pair dropped, another doubled, '|' moved across a column
+sum_rows    false alarms 6/7  misses 1/6  missed: '|' moved across a column
+canonical   false alarms 1/7  misses 0/6  missed: none
+
+4. The ceiling: re-adding the same line items in the opposite order
+rows whose float amount differs in the bits           259 of 1000
+rows whose true amount sits exactly on a half cent    13
+rows that round to a DIFFERENT cent (half-even)       1
+  event 10459: 821.225 -> 821.22   vs   821.2250000000001 -> 821.23
+rows that change cent when exported at 15 digits      0
+Any fingerprint that rounds has a boundary; a value one ulp either side of it splits. Only storing the amount at its declared scale (NUMERIC(12,2)) before hashing removes it.
