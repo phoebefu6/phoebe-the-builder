@@ -1,0 +1,33 @@
+golden-record evidence  (fictional customers: 400 people, 364 captured by 2+ systems = 916 records from crm / billing / web; true details change over time; seeded Random(208); every person fictional)
+
+1. Field accuracy: share of clusters where the kept value equals the customer's value today
+rule-set               name       dob     email     phone   address   all five
+most_recent           76.6%     94.0%     82.4%     75.8%     70.9%      34.6%
+source_priority       98.1%     95.1%     76.9%     62.6%     54.4%      27.7%
+most_complete         89.0%     94.0%     81.3%     70.1%     62.9%      31.6%
+longest               87.6%     94.0%     69.2%     69.0%     64.8%      27.7%
+majority              85.7%     94.0%     85.4%     74.5%     66.5%      35.2%
+per_field             98.1%     95.1%     79.1%     78.0%     72.5%      42.0%
+ceiling               99.5%     96.4%     91.2%     83.0%     73.9%      55.2%
+ceiling = the true value is held by at least one record in the cluster; no rule can beat it
+
+2. Disagreement: the five generic rule-sets on the same cluster
+clusters where all five keep the same golden record   119 of 364 (32.7%)
+  1 distinct golden record(s)                        119
+  2 distinct golden record(s)                        165
+  3 distinct golden record(s)                        62
+  4 distinct golden record(s)                        18
+share of clusters where the five disagree, per field   name 24.7%  dob 3.8%  email 31.3%  phone 31.9%  address 22.5%
+
+3. Which timestamp does 'most recent' read? (address)
+record updated_at (an opt-in touch refreshes it)      70.9%
+the field's own capture day                           72.5%
+the field's capture day with lineage through the sync 73.9%
+ceiling                                               73.9%
+clusters where CRM and billing share a stale address (synced) and web has the true one: 20; majority keeps the stale one in 20
+
+4. The ceiling
+clusters where at least one true value is held by NO system  163 of 364 (44.8%)
+best rule-set, all five fields right                         per_field 42.0%
+a perfect chooser (picks the true value when one exists)     55.2%
+Survivorship chooses among the values the systems hold. When none holds today's value, only a fresh capture (ask the customer, verify against a payment) can fix the field.

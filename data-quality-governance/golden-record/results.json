@@ -1,0 +1,172 @@
+{
+ "customers": 400,
+ "clusters": 364,
+ "records": 916,
+ "acc": {
+  "most_recent": {
+   "name": 0.7664835164835165,
+   "dob": 0.9395604395604396,
+   "email": 0.8241758241758241,
+   "phone": 0.7582417582417582,
+   "address": 0.7087912087912088
+  },
+  "source_priority": {
+   "name": 0.9807692307692307,
+   "dob": 0.9505494505494505,
+   "email": 0.7692307692307693,
+   "phone": 0.6263736263736264,
+   "address": 0.5439560439560439
+  },
+  "most_complete": {
+   "name": 0.8901098901098901,
+   "dob": 0.9395604395604396,
+   "email": 0.8131868131868132,
+   "phone": 0.7005494505494505,
+   "address": 0.6291208791208791
+  },
+  "longest": {
+   "name": 0.8763736263736264,
+   "dob": 0.9395604395604396,
+   "email": 0.6923076923076923,
+   "phone": 0.6895604395604396,
+   "address": 0.6483516483516484
+  },
+  "majority": {
+   "name": 0.8571428571428571,
+   "dob": 0.9395604395604396,
+   "email": 0.8543956043956044,
+   "phone": 0.7445054945054945,
+   "address": 0.6648351648351648
+  },
+  "per_field": {
+   "name": 0.9807692307692307,
+   "dob": 0.9505494505494505,
+   "email": 0.7912087912087912,
+   "phone": 0.7802197802197802,
+   "address": 0.7252747252747253
+  }
+ },
+ "whole": {
+  "most_recent": 0.34615384615384615,
+  "source_priority": 0.2774725274725275,
+  "most_complete": 0.3159340659340659,
+  "longest": 0.2774725274725275,
+  "majority": 0.3516483516483517,
+  "per_field": 0.42032967032967034
+ },
+ "ceiling": {
+  "name": 0.9945054945054945,
+  "dob": 0.9642857142857143,
+  "email": 0.9120879120879121,
+  "phone": 0.8296703296703297,
+  "address": 0.739010989010989
+ },
+ "oracle_whole": 0.5521978021978022,
+ "missing_any": 163,
+ "distinct": {
+  "1": 119,
+  "2": 165,
+  "3": 62,
+  "4": 18
+ },
+ "disagree_field": {
+  "name": 0.24725274725274726,
+  "dob": 0.038461538461538464,
+  "email": 0.3131868131868132,
+  "phone": 0.31868131868131866,
+  "address": 0.22527472527472528
+ },
+ "all_agree": 0.3269230769230769,
+ "ts_fix": {
+  "record_ts": 0.7087912087912088,
+  "field_ts": 0.7252747252747253,
+  "lineage_ts": 0.739010989010989
+ },
+ "stale_sync": {
+  "clusters": 20,
+  "majority_stale": 20
+ },
+ "example": {
+  "cid": 15,
+  "truth": {
+   "name": "Robert Petrov",
+   "dob": "1960-01-14",
+   "email": "rpetrov66@mailbox.test",
+   "phone": "+44 7700 930022",
+   "address": "134 Mill Street, C6 7XY"
+  },
+  "records": [
+   {
+    "source": "crm",
+    "updated_at": 82,
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 998849",
+    "address": "57 Lantern Way, G18 4XY"
+   },
+   {
+    "source": "web",
+    "updated_at": 807,
+    "name": "Robert Petrov",
+    "dob": null,
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 930022",
+    "address": "134 Mill Street, C6 7XY"
+   },
+   {
+    "source": "billing",
+    "updated_at": 558,
+    "name": "ROBERT PETROV",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 998849",
+    "address": "134 Mill Street, C6 7XY"
+   }
+  ],
+  "golden": {
+   "most_recent": {
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 930022",
+    "address": "134 Mill Street, C6 7XY"
+   },
+   "source_priority": {
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 998849",
+    "address": "57 Lantern Way, G18 4XY"
+   },
+   "most_complete": {
+    "name": "ROBERT PETROV",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 998849",
+    "address": "134 Mill Street, C6 7XY"
+   },
+   "longest": {
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 930022",
+    "address": "134 Mill Street, C6 7XY"
+   },
+   "majority": {
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 998849",
+    "address": "134 Mill Street, C6 7XY"
+   },
+   "per_field": {
+    "name": "Robert Petrov",
+    "dob": "1960-01-14",
+    "email": "rpetrov570@post.test",
+    "phone": "+44 7700 930022",
+    "address": "134 Mill Street, C6 7XY"
+   }
+  }
+ }
+}
