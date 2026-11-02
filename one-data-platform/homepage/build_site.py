@@ -206,6 +206,7 @@ TASK_OF = {
     "name-splitter": "shape",
     "phone-normaliser": "shape",
     "dedupe-key-choice": "shape",
+    "golden-record": "shape",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",
