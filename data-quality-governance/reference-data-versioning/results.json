@@ -1,0 +1,70 @@
+{
+ "facts": 1481,
+ "ledger": 169618474,
+ "events": {
+  "move": 6,
+  "absorb": 1,
+  "rename": 2,
+  "split": 2,
+  "merge": 1,
+  "create": 1
+ },
+ "asw": {
+  "overwrite": {
+   "cells": 57,
+   "months": 10,
+   "reported": 0.9371346484345803,
+   "lost": 0.0628653515654197
+  },
+  "code_only": {
+   "cells": 53,
+   "months": 0,
+   "reported": 1.156551726788911,
+   "lost": 0.0
+  },
+  "scd2_asof": {
+   "cells": 165,
+   "months": 29,
+   "reported": 1.0,
+   "lost": 0.0
+  },
+  "bitemporal": {
+   "cells": 180,
+   "months": 36,
+   "reported": 1.0,
+   "lost": 0.0
+  }
+ },
+ "asis": {
+  "overwrite": {
+   "cells": 96,
+   "months": 13
+  },
+  "scd2_asof": {
+   "cells": 61,
+   "months": 10
+  },
+  "even": {
+   "cells": 153,
+   "months": 22
+  },
+  "post_share": {
+   "cells": 137,
+   "months": 18
+  }
+ },
+ "backdated": 3,
+ "split_pre_rev": 0.01749246959974419,
+ "misalloc_even": 0.10173114943280286,
+ "misalloc_post_share": 0.20521585789138502,
+ "reuse": {
+  "code": "RID",
+  "retired": 9,
+  "reused": 20,
+  "rev": 526934,
+  "old_region": "South",
+  "new_region": "North"
+ },
+ "rows_bitemporal": 57,
+ "rows_snapshots": 1445
+}

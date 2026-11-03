@@ -1,0 +1,31 @@
+reference-data-versioning evidence  (fictional territory list: 40 territories, 5 regions, 36 months; changes: 6 move, 1 absorb, 2 rename, 2 split, 1 merge, 1 create; 3 moves recorded 2-4 months late; 1481 monthly sales facts; seeded Random(209); every territory fictional)
+
+1. Rebuild last year's published reports (as-was): 180 region-month cells, 36 months
+strategy      cells same  months same  revenue reported  dropped by join
+overwrite             57           10             93.7%             6.3%
+code_only             53            0            115.7%             0.0%
+scd2_asof            165           29            100.0%             0.0%
+bitemporal           180           36            100.0%             0.0%
+overwrite = today's table only; code_only = the full history joined on code alone; scd2_asof = history joined on code and sale month; bitemporal = sale month AND what the table said on the run day
+
+2. The reused code
+code RID retired in month 9 (territory absorbed), reused in month 20 for a new territory in North
+revenue sold under the old RID (South), which overwrite files under North   526,934
+
+3. Backdated corrections: what valid time alone cannot reproduce
+months scd2_asof rebuilds differently from what was published   7 of 36 (15 cells)
+rows kept: bitemporal table 57   vs   a monthly snapshot of the table 1445
+
+4. Restate to today's regions (as-is), within 1% of the true restatement
+method         cells   months
+overwrite         96       13
+scd2_asof         61       10
+even             153       22
+post_share       137       18
+scd2_asof is the as-was answer: correct for what was reported, wrong for a trend on today's regions
+
+5. The split nobody can undo
+revenue sold under a code that later split          1.7% of all revenue
+of it put in the wrong region, 50/50 allocation      10.2%
+of it put in the wrong region, post-split shares     20.5%
+The sale never recorded which half it came from. No rule over the reference data recovers it; only capturing the finer location on the sale does.
