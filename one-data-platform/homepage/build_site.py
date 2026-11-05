@@ -208,6 +208,7 @@ TASK_OF = {
     "dedupe-key-choice": "shape",
     "golden-record": "shape",
     "reference-data-versioning": "trust",
+    "hierarchy-reconciliation": "trust",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

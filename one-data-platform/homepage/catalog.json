@@ -2924,5 +2924,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/reference-data-versioning",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/reference-data-versioning/demo.ipynb"
+  },
+  {
+    "day": 210,
+    "slug": "hierarchy-reconciliation",
+    "name": "The Regions Do Not Sum to the Total - 'Regions Sum to Total' Passed for All Five Roll-Ups, a Recursive Walk Counted 8.2% of Dollars Twice and Placed 15.6% Nowhere, a 7.5% Plug Hid 23.8% Misplaced, and After Validation 13.4% Stays Unplaceable Because One Mis-Keyed Parent Cut an Area Off the Tree",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "The cost report by region does not tie to the ledger, or it ties and the regions are still wrong, because the org hierarchy it rolls up through has moved cost centres listed under two parents, orphans whose area was retired, and one mis-keyed\u2026",
+    "status": "done",
+    "date": "2026-11-05",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/hierarchy-reconciliation",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/hierarchy-reconciliation/demo.ipynb"
   }
 ]
