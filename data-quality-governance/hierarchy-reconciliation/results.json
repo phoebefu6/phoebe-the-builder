@@ -1,0 +1,131 @@
+{
+ "nodes": 172,
+ "leaves": 137,
+ "areas": 26,
+ "rows": 180,
+ "posts": 1687,
+ "ledger": 14415445.0,
+ "methods": {
+  "naive_walk": {
+   "sums_to_total": true,
+   "total_is_ledger": false,
+   "regions_right": 2,
+   "total": 0.9250533715747242,
+   "right": 0.8435517599352639,
+   "misfiled": 0.0,
+   "dropped": 0.15644824006473612,
+   "double": 0.08150161163946032,
+   "wrong": 0.23794985170419644,
+   "buckets": {
+    "North": 2845393,
+    "South": 2578398,
+    "East": 2231990,
+    "West": 3359242,
+    "Central": 2320033,
+    "TOTAL": 13335056
+   }
+  },
+  "plug": {
+   "sums_to_total": true,
+   "total_is_ledger": true,
+   "regions_right": 2,
+   "total": 1.0,
+   "right": 0.8435517599352639,
+   "misfiled": 0.0,
+   "dropped": 0.15644824006473612,
+   "double": 0.08150161163946032,
+   "wrong": 0.23794985170419644,
+   "buckets": {
+    "North": 2845393,
+    "South": 2578398,
+    "East": 2231990,
+    "West": 3359242,
+    "Central": 2320033,
+    "TOTAL": 14415445,
+    "Other (plug)": 1080389
+   }
+  },
+  "first_parent": {
+   "sums_to_total": true,
+   "total_is_ledger": false,
+   "regions_right": 0,
+   "total": 0.8664025980467478,
+   "right": 0.8481152680336959,
+   "misfiled": 0.018287330013051974,
+   "dropped": 0.13359740195325223,
+   "double": 0.0,
+   "wrong": 0.1518847319663042,
+   "buckets": {
+    "North": 2411795,
+    "South": 2503643,
+    "East": 2160909,
+    "West": 3267902,
+    "Central": 2145330,
+    "TOTAL": 12489579
+   }
+  },
+  "latest_parent": {
+   "sums_to_total": true,
+   "total_is_ledger": false,
+   "regions_right": 0,
+   "total": 0.8664025980467478,
+   "right": 0.8664025980467478,
+   "misfiled": 0.0,
+   "dropped": 0.13359740195325223,
+   "double": 0.0,
+   "wrong": 0.13359740195325223,
+   "buckets": {
+    "North": 2286429,
+    "South": 2480993,
+    "East": 2160909,
+    "West": 3406156,
+    "Central": 2155092,
+    "TOTAL": 12489579
+   }
+  },
+  "validated": {
+   "sums_to_total": true,
+   "total_is_ledger": true,
+   "regions_right": 0,
+   "total": 1.0,
+   "right": 0.8664025980467478,
+   "misfiled": 0.0,
+   "dropped": 0.13359740195325223,
+   "double": 0.0,
+   "wrong": 0.13359740195325223,
+   "buckets": {
+    "North": 2286429,
+    "South": 2480993,
+    "East": 2160909,
+    "West": 3406156,
+    "Central": 2155092,
+    "Unassigned": 1925866,
+    "TOTAL": 14415445
+   }
+  }
+ },
+ "defects": {
+  "multi_parent": 12,
+  "orphan": 6,
+  "cycle": 9,
+  "unknown_code": 4
+ },
+ "share": {
+  "moved": 0.08150161163946032,
+  "orphan": 0.04333366052868989,
+  "cycle": 0.07182879196583941,
+  "unknown": 0.01843494945872292,
+  "internal": 0.024307192736679306
+ },
+ "plug_net": 0.0749466284252758,
+ "first_wrong_moves": 4,
+ "latest_wrong_moves": 0,
+ "quarantined": 0.13359740195325223,
+ "seeds": {
+  "n": 30,
+  "gross_over_net_median": 5.049231272489369,
+  "gross_over_net_min": 2.531562627421603,
+  "validated_err_min": 0.05846227590438863,
+  "validated_err_max": 0.1410063706063534
+ }
+}

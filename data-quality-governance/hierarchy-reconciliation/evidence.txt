@@ -1,0 +1,32 @@
+hierarchy-reconciliation evidence  (fictional cost-centre hierarchy: 5 regions, 26 areas, 137 cost centres, 180 extract rows; 1687 postings, ledger 14,415,445; seeded Random(210); every cost centre fictional)
+
+1. What a validator finds in the extract
+cost centres with two parent rows (moved, old row kept)   12   8.2% of postings
+orphans (parent area retired, row kept)                 6   4.3%
+nodes cut off by one cycle (area parent = own child)    9   7.2%
+codes posted to but missing from the extract            4   1.8%
+posted at area level, above the leaves                  -    2.4%
+
+2. Five roll-ups, scored per posted dollar
+method          regions=total total=ledger   total   right  misfiled  unplaced   twice
+naive_walk                yes           NO   92.5%   84.4%      0.0%     15.6%    8.2%
+plug                      yes          yes  100.0%   84.4%      0.0%     15.6%    8.2%
+first_parent              yes           NO   86.6%   84.8%      1.8%     13.4%    0.0%
+latest_parent             yes           NO   86.6%   86.6%      0.0%     13.4%    0.0%
+validated                 yes          yes  100.0%   86.6%      0.0%     13.4%    0.0%
+naive_walk = recursive descent on every edge, leaf postings only; plug = naive_walk + 'Other' = ledger minus regions; first_parent / latest_parent = one row per child by file order / by latest load; validated = latest_parent + unplaced dollars named in an Unassigned bucket
+
+3. The plug
+net plug that makes the regions tie to the ledger      7.5%
+dollars actually wrong underneath it                    23.8%   (3.2x the plug)
+across 30 seeds, wrong / plug: median 5.0x, smallest 2.5x
+
+4. Which parent row to keep
+moved cost centres filed under their OLD area, first row in file   4 of 12
+moved cost centres filed under their OLD area, latest load        0 of 12
+
+5. What no roll-up rule can place
+unplaced after validation (orphans + cycle + unknown codes)   13.4% of the ledger
+regions within 0.5% of the truth, validated                   0 of 5
+across 30 seeds, validated still leaves 5.8% to 14.1% unplaced
+The extract does not say where an orphan or a cycle belongs. Only a fix in the source hierarchy places it.
