@@ -1,0 +1,34 @@
+forecast-reconciliation evidence  (fictional retailer: 1 total, 4 regions, 12 stores; 48 months of history, 12 months scored; seeded Generator(211), 30 more worlds for the spread; every store fictional)
+
+1. Why the numbers do not add up
+same linear model on every series, raw scale: largest gap      0.00% of the total
+log-scale model on every series: regions vs national forecast  1.75%
+log-scale model on every series: stores vs national forecast   2.63%
+store mix moved between history and the scored year           9.1% of sales changed hands
+
+2. Seven ways to make them add up, RMSE change vs the unreconciled forecasts (minus = better)
+method          adds up    total   region    store    30 worlds: total   region    store  better at all 3
+base                 NO    +0.0%    +0.0%    +0.0%               +0.0%    +0.0%    +0.0%             0 / 30
+bottom_up           yes    -6.2%    -1.5%    +0.0%               -7.2%    -0.9%    +0.0%             0 / 30
+top_down_hist       yes    +0.0%  +102.6%   +99.7%               +0.0%   +77.6%   +89.5%             0 / 30
+prorate             yes    +0.0%    +1.7%    +1.7%               +0.0%    +1.7%    +1.4%             0 / 30
+ols                 yes    -1.2%    +1.0%    +1.2%               -1.8%    +0.9%    +1.6%             0 / 30
+wls                 yes    -3.4%    -0.2%    +0.7%               -5.0%    -0.3%    +0.7%             2 / 30
+mint_shrink         yes    -4.7%    -0.7%    +0.4%               -5.8%    -0.5%    +0.4%             2 / 30
+base = each series forecast on its own; bottom_up = sum the store forecasts; top_down_hist = split the national forecast by each store's average historical share; prorate = scale each level to the number above it; ols / wls / mint_shrink = least-squares reconciliation with identity, structural and shrunk-residual weights
+
+3. Which method wins where, across the worlds
+lowest total RMSE   bottom_up 23   ols 2   wls 2   (of 30)
+lowest region RMSE   bottom_up 15   base 8   mint_shrink 4   (of 30)
+lowest store RMSE   base 16   prorate 7   mint_shrink 6   (of 30)
+median bias of the national number   own model -2.4%   sum of store forecasts -0.8%
+Stores grow at different rates; their sum is not one exponential, so the national log model under-forecasts.
+
+4. The check that passes for the worst method
+top_down_hist adds up exactly, and its region RMSE is +102.6%, store +99.7% vs base
+'Do the regions sum to the forecast?' passes for all six reconciled methods; it tests arithmetic, not accuracy.
+
+5. What no reconciliation can fix
+one region's sales cut 15% in the scored year, a cut no history contains (30 worlds)
+median over-forecast of the cut region   base +14.3%   bottom_up +15.7%   wls +14.7%   mint_shrink +14.9%
+Every method redistributes the same forecasts; none of them contains the cut. Coherent and wrong.
