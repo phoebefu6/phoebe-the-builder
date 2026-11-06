@@ -249,6 +249,7 @@ Each one started with something breaking in a real pipeline: a metric that disag
 | [Probability Calibration Checker](ml-engineering-toolkit/calibration-checker/) | A "0.9" from your model should mean it happens 90% of the time. Often it doesn't. |
 | [Recommendation Engine](data-science-cookbook/recommender/) | "We have no 'you may also like'" - item-item collaborative filtering, with an explanation for every recommendation. |
 | [Text Classification Trainer](data-science-cookbook/text-classifier/) | "Auto-tag our support tickets" - train a TF-IDF + logistic-regression classifier and route new text by category. |
+| [The Regions Do Not Sum to the Forecast - 'Regions Sum to the Forecast' Passed for the Method That Doubled Region Error, Bottom-Up Beat MinT on the National Number in 23 of 30 Worlds, No Method Improved All Three Levels in More Than 2 of 30, and a 15% Cut Stayed a ~15% Miss Under Every Method](data-quality-governance/forecast-reconciliation/) | The national forecast, the region forecasts and the store forecasts were each made on their own and do not add up, so someone forces them to match, and… |
 | [Train/Eval Leaderboard](ml-engineering-toolkit/train-eval-harness/) | Model selection is ad-hoc - train a few classifiers, eyeball one accuracy number, ship whichever looked best on one lucky split. |
 
 

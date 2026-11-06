@@ -2938,5 +2938,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/hierarchy-reconciliation",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/hierarchy-reconciliation/demo.ipynb"
+  },
+  {
+    "day": 211,
+    "slug": "forecast-reconciliation",
+    "name": "The Regions Do Not Sum to the Forecast - 'Regions Sum to the Forecast' Passed for the Method That Doubled Region Error, Bottom-Up Beat MinT on the National Number in 23 of 30 Worlds, No Method Improved All Three Levels in More Than 2 of 30, and a 15% Cut Stayed a ~15% Miss Under Every Method",
+    "task": "predict",
+    "task_title": "Learn from it",
+    "problem": "The national forecast, the region forecasts and the store forecasts were each made on their own and do not add up, so someone forces them to match, and the check that it worked (\"do the regions sum to the forecast?\") passes even for the fix that\u2026",
+    "status": "done",
+    "date": "2026-11-06",
+    "product_line": "Data Quality & Governance Suite",
+    "product_slug": "data-quality-governance",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/forecast-reconciliation",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/forecast-reconciliation/demo.ipynb"
   }
 ]
