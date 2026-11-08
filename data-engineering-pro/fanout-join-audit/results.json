@@ -1,0 +1,201 @@
+{
+ "scenarios": {
+  "clean": {
+   "rows": 0.0,
+   "revenue": 0.0,
+   "worst_cell": "standard",
+   "worst": 0.0,
+   "fires": {
+    "row_count": false,
+    "revenue_total": false,
+    "declared_unique": false,
+    "join_key_unique": false,
+    "referenced_key_unique": false,
+    "pk_preserved": false
+   }
+  },
+  "scd2_no_filter": {
+   "rows": 0.0887500000000001,
+   "revenue": 0.14523138974542338,
+   "worst_cell": "gold",
+   "worst": 0.2648999994806154,
+   "fires": {
+    "row_count": true,
+    "revenue_total": true,
+    "declared_unique": false,
+    "join_key_unique": true,
+    "referenced_key_unique": true,
+    "pk_preserved": true
+   }
+  },
+  "dup_load": {
+   "rows": 0.02685000000000004,
+   "revenue": 0.025053944787950755,
+   "worst_cell": "kitchen",
+   "worst": 0.04251879076723464,
+   "fires": {
+    "row_count": true,
+    "revenue_total": true,
+    "declared_unique": true,
+    "join_key_unique": true,
+    "referenced_key_unique": true,
+    "pk_preserved": true
+   }
+  },
+  "promo_bridge": {
+   "rows": 0.013900000000000023,
+   "revenue": 0.0119206977862516,
+   "worst_cell": "standard",
+   "worst": 0.015082555399630992,
+   "fires": {
+    "row_count": true,
+    "revenue_total": true,
+    "declared_unique": false,
+    "join_key_unique": true,
+    "referenced_key_unique": true,
+    "pk_preserved": true
+   }
+  },
+  "late_inner": {
+   "rows": -0.030000000000000027,
+   "revenue": -0.028416652545579235,
+   "worst_cell": "gold",
+   "worst": -0.032060848923978646,
+   "fires": {
+    "row_count": true,
+    "revenue_total": true,
+    "declared_unique": false,
+    "join_key_unique": false,
+    "referenced_key_unique": false,
+    "pk_preserved": true
+   }
+  },
+  "rows_offset": {
+   "rows": 0.0,
+   "revenue": 0.06517221048043753,
+   "worst_cell": "gold",
+   "worst": 0.19084354486005806,
+   "fires": {
+    "row_count": false,
+    "revenue_total": true,
+    "declared_unique": false,
+    "join_key_unique": true,
+    "referenced_key_unique": true,
+    "pk_preserved": true
+   }
+  },
+  "revenue_offset": {
+   "rows": -0.06515000000000004,
+   "revenue": 1.345256557261365e-06,
+   "worst_cell": "platinum",
+   "worst": -0.1419793156384508,
+   "fires": {
+    "row_count": true,
+    "revenue_total": false,
+    "declared_unique": false,
+    "join_key_unique": true,
+    "referenced_key_unique": true,
+    "pk_preserved": true
+   }
+  },
+  "orphan_dups": {
+   "rows": 0.0,
+   "revenue": 0.0,
+   "worst_cell": "standard",
+   "worst": 0.0,
+   "fires": {
+    "row_count": false,
+    "revenue_total": false,
+    "declared_unique": true,
+    "join_key_unique": true,
+    "referenced_key_unique": false,
+    "pk_preserved": false
+   }
+  }
+ },
+ "n_upgraded": 98,
+ "scd2_rows": 2098,
+ "upgraded_order_share": 0.08875,
+ "upgraded_revenue_share": 0.14523138974542363,
+ "seeds": {
+  "n": 30,
+  "ratio_median": {
+   "scd2_no_filter": 1.7055754481109031,
+   "dup_load": 1.0048715797127141,
+   "promo_bridge": 0.9885359606111241
+  },
+  "ratio_min": {
+   "scd2_no_filter": 1.4823603980975557,
+   "dup_load": 0.9026627789690344,
+   "promo_bridge": 0.9058061839400431
+  },
+  "offset_revenue_median": 0.05787802931345176,
+  "offset_revenue_min": 0.03855072369908141,
+  "fires": {
+   "clean": {
+    "row_count": 0,
+    "revenue_total": 0,
+    "declared_unique": 0,
+    "join_key_unique": 0,
+    "referenced_key_unique": 0,
+    "pk_preserved": 0
+   },
+   "scd2_no_filter": {
+    "row_count": 30,
+    "revenue_total": 30,
+    "declared_unique": 0,
+    "join_key_unique": 30,
+    "referenced_key_unique": 30,
+    "pk_preserved": 30
+   },
+   "dup_load": {
+    "row_count": 30,
+    "revenue_total": 30,
+    "declared_unique": 30,
+    "join_key_unique": 30,
+    "referenced_key_unique": 30,
+    "pk_preserved": 30
+   },
+   "promo_bridge": {
+    "row_count": 30,
+    "revenue_total": 30,
+    "declared_unique": 0,
+    "join_key_unique": 30,
+    "referenced_key_unique": 30,
+    "pk_preserved": 30
+   },
+   "late_inner": {
+    "row_count": 30,
+    "revenue_total": 30,
+    "declared_unique": 0,
+    "join_key_unique": 0,
+    "referenced_key_unique": 0,
+    "pk_preserved": 30
+   },
+   "rows_offset": {
+    "row_count": 0,
+    "revenue_total": 30,
+    "declared_unique": 0,
+    "join_key_unique": 30,
+    "referenced_key_unique": 30,
+    "pk_preserved": 30
+   },
+   "revenue_offset": {
+    "row_count": 30,
+    "revenue_total": 0,
+    "declared_unique": 0,
+    "join_key_unique": 30,
+    "referenced_key_unique": 30,
+    "pk_preserved": 30
+   },
+   "orphan_dups": {
+    "row_count": 0,
+    "revenue_total": 0,
+    "declared_unique": 30,
+    "join_key_unique": 30,
+    "referenced_key_unique": 0,
+    "pk_preserved": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,48 @@
+fanout-join-audit evidence  (fictional shop: 2,000 customers, 200 products, 20,000 orders; report = revenue by tier and by category; seeded Generator(212), 30 more worlds; all fictional)
+
+1. What each broken join does to the report
+join                rows  revenue   worst report cell
+clean              +0.0%    +0.0%   standard +0.0%
+scd2_no_filter     +8.9%   +14.5%   gold +26.5%
+dup_load           +2.7%    +2.5%   kitchen +4.3%
+promo_bridge       +1.4%    +1.2%   standard +1.5%
+late_inner         -3.0%    -2.8%   gold -3.2%
+rows_offset        +0.0%    +6.5%   gold +19.1%
+revenue_offset     -6.5%    +0.0%   platinum -14.2%
+orphan_dups        +0.0%    +0.0%   standard +0.0%
+scd2_no_filter = customer history joined without WHERE is_current; dup_load = six product rows loaded twice; promo_bridge = promo codes joined in for display; late_inner = 3% of orders have a customer not loaded yet, inner join; rows_offset / revenue_offset = scd2_no_filter + late_inner, tuned so rows / revenue cancel; orphan_dups = duplicate keys only on products no order references
+
+2. Which pre-aggregate check fires (X = alarm), seeded world
+join                         row_count         revenue_total       declared_unique       join_key_unique referenced_key_unique          pk_preserved
+clean                                .                     .                     .                     .                     .                     .
+scd2_no_filter                       X                     X                     .                     X                     X                     X
+dup_load                             X                     X                     X                     X                     X                     X
+promo_bridge                         X                     X                     .                     X                     X                     X
+late_inner                           X                     X                     .                     .                     .                     X
+rows_offset                          .                     X                     .                     X                     X                     X
+revenue_offset                       X                     .                     .                     X                     X                     X
+orphan_dups                          .                     .                     X                     X                     .                     .
+row_count              catches 5 of 6 broken joins, false alarms on 0 of 2 correct reports
+revenue_total          catches 5 of 6 broken joins, false alarms on 0 of 2 correct reports
+declared_unique        catches 1 of 6 broken joins, false alarms on 1 of 2 correct reports
+join_key_unique        catches 5 of 6 broken joins, false alarms on 1 of 2 correct reports
+referenced_key_unique  catches 5 of 6 broken joins, false alarms on 0 of 2 correct reports
+pk_preserved           catches 6 of 6 broken joins, false alarms on 0 of 2 correct reports
+Across 30 more worlds every check gives the same verdict on every join in every world: True
+
+3. The declared test passes on the biggest defect
+customer history: 2,098 rows for 2,000 customers; 98 upgraded customers keep an old row
+declared test unique(customer_id, valid_from) passes; the join on customer_id alone adds +8.9% rows and +14.5% revenue
+
+4. The row count understates the revenue error when the duplicates are not random
+upgraded customers place 8.9% of orders and 14.5% of revenue
+scd2_no_filter   revenue inflation / row inflation   median 1.71x   lowest 1.48x   (30 worlds)
+dup_load         revenue inflation / row inflation   median 1.00x   lowest 0.90x   (30 worlds)
+promo_bridge     revenue inflation / row inflation   median 0.99x   lowest 0.91x   (30 worlds)
+A 1% row-tolerance check is a revenue tolerance only when the duplicated rows are average rows.
+
+5. Two defects that cancel
+rows_offset     row count matches exactly; revenue +6.5%, gold +19.1%
+revenue_offset  revenue total matches; rows -6.5%, platinum -14.2%
+rows_offset across 30 worlds: revenue overstated by median +5.8%, least +3.9%
+Only pk_preserved (every source order exactly once in the joined rows) catches all six broken joins with no false alarm. It cannot say WHICH join broke; referenced_key_unique names the dimension.
