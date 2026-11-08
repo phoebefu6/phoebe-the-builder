@@ -2952,5 +2952,19 @@
     "product_slug": "data-quality-governance",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-quality-governance/forecast-reconciliation",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-quality-governance/forecast-reconciliation/demo.ipynb"
+  },
+  {
+    "day": 212,
+    "slug": "fanout-join-audit",
+    "name": "Revenue Went Up After the Join - the Declared unique(key, valid_from) Test Passed While the Join on the Key Added 14.5% Revenue, Upgraded Customers' Duplicates Moved Revenue 1.71x as Far as Rows, Two Defects That Cancel Fooled the Row Count (+6.5% Revenue) and the Revenue Total (Platinum -14.2%), and Only the Grain Check Caught All Six Broken Joins With No False Alarm",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "A lookup table had two rows for some keys, so the join counted those orders twice and the revenue report went up with no error anywhere - and the uniqueness test the table declares passed.",
+    "status": "done",
+    "date": "2026-11-08",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/fanout-join-audit",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/fanout-join-audit/demo.ipynb"
   }
 ]
