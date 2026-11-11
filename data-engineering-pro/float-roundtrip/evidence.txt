@@ -1,0 +1,66 @@
+float-roundtrip evidence  (2,000 fictional values per group, seeded Generator(213); 30 more worlds for the computed column; bits compared, NaN read as NaN counts as exact)
+
+1. Exact / changed / lost per writer and value group
+writer                           entered              computed              measured                  edge   max ULP off
+repr                  2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+%.17g                 2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+pickle                2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+np.savetxt            2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+sqlite REAL           2000/     0/   0       2000/     0/   0       2000/     0/   0         10/     1/   1              0
+json                  2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+json strict           2000/     0/   0       2000/     0/   0       2000/     0/   0          9/     0/   3              0
+csv module            2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+pandas round_trip     2000/     0/   0       2000/     0/   0       2000/     0/   0         12/     0/   0              0
+pandas csv            2000/     0/   0       1713/   287/   0       1463/   537/   0         10/     2/   0          5,506
+pandas legacy         2000/     0/   0       1482/   518/   0       1395/   605/   0         12/     0/   0              2
+%.15g                 2000/     0/   0        682/  1318/   0        172/  1828/   0          6/     6/   0             36
+sqlite TEXT           2000/     0/   0        682/  1318/   0        172/  1828/   0          4/     7/   1             36
+pandas %.6f           2000/     0/   0         42/  1958/   0         74/  1926/   0          8/     4/   0   4,512,825,368,810,836,612
+float32                 70/  1930/   0          0/  2000/   0          0/  2000/   0          5/     7/   0   4,503,599,627,370,496
+max ULP off counts adjacent doubles between sent and received; across a flush to 0.0 (pandas %.6f, float32) it is astronomical and means the value was destroyed, not nudged
+bit-exact on all four groups: 7 of 15 (repr, %.17g, pickle, np.savetxt, json, csv module, pandas round_trip)
+
+2. A fixture of typed amounts passes every writer except float32
+entered (two decimals) exact for 14 of 15 writers; the same writers on the computed column: pandas csv 14.3% changed, pandas legacy 25.9% changed, %.15g 65.9% changed, sqlite TEXT 65.9% changed, pandas %.6f 97.9% changed
+
+3. The total does not move; the keys do (computed column, after the round trip)
+writer               total drift  join keys lost   30-world range
+repr                    0.00e+00            0.0%   0.0-0.0%
+%.17g                   0.00e+00            0.0%   0.0-0.0%
+pickle                  0.00e+00            0.0%   0.0-0.0%
+np.savetxt              0.00e+00            0.0%   0.0-0.0%
+sqlite REAL             0.00e+00            0.0%   0.0-0.0%
+json                    0.00e+00            0.0%   0.0-0.0%
+json strict             0.00e+00            0.0%   0.0-0.0%
+csv module              0.00e+00            0.0%   0.0-0.0%
+pandas round_trip       0.00e+00            0.0%   0.0-0.0%
+pandas csv              0.00e+00           14.3%   12.7-15.4%
+pandas legacy           0.00e+00           25.9%   25.9-30.5%
+%.15g                   0.00e+00           65.9%   65.9-69.4%
+sqlite TEXT             0.00e+00           65.9%   65.9-69.4%
+pandas %.6f             1.30e-05           97.9%   97.7-98.8%
+float32                -1.84e-02          100.0%   100.0-100.0%
+total before = 17,798,570.02; 'drift' is math.fsum(after) - math.fsum(before)
+
+4. Edge values: what came back
+in:  0.0 | -0.0 | nan | inf | -inf | 5e-324 | 2.2250738585072014e-308 | 1.7976931348623157e+308 | 0.30000000000000004 | 9007199254740994.0 | 1.0000000000000002e+16 | 123456789.12345679
+repr              all exact
+%.17g             all exact
+pickle            all exact
+np.savetxt        all exact
+sqlite REAL       -0.0 -> 0.0; nan -> lost
+json              all exact
+json strict       nan -> lost; inf -> lost; -inf -> lost
+csv module        all exact
+pandas round_trip all exact
+pandas csv        0.30000000000000004 -> 0.3; 123456789.12345679 -> 123456789.1234568
+pandas legacy     all exact
+%.15g             2.2250738585072014e-308 -> 2.2250738585072e-308; 1.7976931348623157e+308 -> inf; 0.30000000000000004 -> 0.3; 9007199254740994.0 -> 9007199254740990.0; 1.0000000000000002e+16 -> 1e+16; 123456789.12345679 -> 123456789.123457
+sqlite TEXT       -0.0 -> 0.0; nan -> lost; 2.2250738585072014e-308 -> 2.2250738585072e-308; 1.7976931348623157e+308 -> inf; 0.30000000000000004 -> 0.3; 9007199254740994.0 -> 9007199254740990.0; 1.0000000000000002e+16 -> 1e+16; 123456789.12345679 -> 123456789.123457
+pandas %.6f       5e-324 -> 0.0; 2.2250738585072014e-308 -> 0.0; 0.30000000000000004 -> 0.3; 123456789.12345679 -> 123456789.123457
+float32           5e-324 -> 0.0; 2.2250738585072014e-308 -> 0.0; 1.7976931348623157e+308 -> inf; 0.30000000000000004 -> 0.30000001192092896; 9007199254740994.0 -> 9007199254740992.0; 1.0000000000000002e+16 -> 1.0000000272564224e+16; 123456789.12345679 -> 123456792.0
+
+5. pandas: the file is exact, the default reader is not
+pandas round_trip  measured column: 0 of 2000 changed, worst 0 ULP
+pandas csv         measured column: 537 of 2000 changed, worst 5,506 ULP
+pandas legacy      measured column: 605 of 2000 changed, worst 2 ULP

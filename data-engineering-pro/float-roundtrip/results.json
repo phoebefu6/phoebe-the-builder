@@ -1,0 +1,855 @@
+{
+ "study": {
+  "writers": {
+   "repr": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "%.17g": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "pickle": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "np.savetxt": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "sqlite REAL": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 10,
+     "changed": 1,
+     "lost": 1,
+     "max_ulp": 0
+    }
+   },
+   "json": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "json strict": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 9,
+     "changed": 0,
+     "lost": 3,
+     "max_ulp": 0
+    }
+   },
+   "csv module": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "pandas round_trip": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "pandas csv": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 1713,
+     "changed": 287,
+     "lost": 0,
+     "max_ulp": 1
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 1463,
+     "changed": 537,
+     "lost": 0,
+     "max_ulp": 5506
+    },
+    "edge": {
+     "n": 12,
+     "exact": 10,
+     "changed": 2,
+     "lost": 0,
+     "max_ulp": 1
+    }
+   },
+   "pandas legacy": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 1482,
+     "changed": 518,
+     "lost": 0,
+     "max_ulp": 2
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 1395,
+     "changed": 605,
+     "lost": 0,
+     "max_ulp": 2
+    },
+    "edge": {
+     "n": 12,
+     "exact": 12,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    }
+   },
+   "%.15g": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 682,
+     "changed": 1318,
+     "lost": 0,
+     "max_ulp": 29
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 172,
+     "changed": 1828,
+     "lost": 0,
+     "max_ulp": 36
+    },
+    "edge": {
+     "n": 12,
+     "exact": 6,
+     "changed": 6,
+     "lost": 0,
+     "max_ulp": 14
+    }
+   },
+   "sqlite TEXT": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 682,
+     "changed": 1318,
+     "lost": 0,
+     "max_ulp": 29
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 172,
+     "changed": 1828,
+     "lost": 0,
+     "max_ulp": 36
+    },
+    "edge": {
+     "n": 12,
+     "exact": 4,
+     "changed": 7,
+     "lost": 1,
+     "max_ulp": 14
+    }
+   },
+   "pandas %.6f": {
+    "entered": {
+     "n": 2000,
+     "exact": 2000,
+     "changed": 0,
+     "lost": 0,
+     "max_ulp": 0
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 42,
+     "changed": 1958,
+     "lost": 0,
+     "max_ulp": 165131986
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 74,
+     "changed": 1926,
+     "lost": 0,
+     "max_ulp": 4512825368810836612
+    },
+    "edge": {
+     "n": 12,
+     "exact": 8,
+     "changed": 4,
+     "lost": 0,
+     "max_ulp": 4503599627370496
+    }
+   },
+   "float32": {
+    "entered": {
+     "n": 2000,
+     "exact": 70,
+     "changed": 1930,
+     "lost": 0,
+     "max_ulp": 257698038
+    },
+    "computed": {
+     "n": 2000,
+     "exact": 0,
+     "changed": 2000,
+     "lost": 0,
+     "max_ulp": 268411404
+    },
+    "measured": {
+     "n": 2000,
+     "exact": 0,
+     "changed": 2000,
+     "lost": 0,
+     "max_ulp": 268291565
+    },
+    "edge": {
+     "n": 12,
+     "exact": 5,
+     "changed": 7,
+     "lost": 0,
+     "max_ulp": 4503599627370496
+    }
+   }
+  },
+  "ledger": {
+   "repr": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "%.17g": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "pickle": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "np.savetxt": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "sqlite REAL": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "json": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "json strict": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "csv module": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "pandas round_trip": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "pandas csv": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.1435,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "pandas legacy": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.259,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "%.15g": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.659,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "sqlite TEXT": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016789984,
+    "drift": 0.0,
+    "join_miss": 0.659,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "pandas %.6f": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798570.016803,
+    "drift": 1.3016164302825928e-05,
+    "join_miss": 0.979,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   },
+   "float32": {
+    "total_before": 17798570.016789984,
+    "total_after": 17798569.998420715,
+    "drift": -0.018369268625974655,
+    "join_miss": 1.0,
+    "dedupe_after": 2000,
+    "dedupe_before": 2000
+   }
+  },
+  "edge": {
+   "repr": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "%.17g": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "pickle": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "np.savetxt": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "sqlite REAL": [
+    "0.0",
+    "0.0",
+    "lost",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "json": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "json strict": [
+    "0.0",
+    "-0.0",
+    "lost",
+    "lost",
+    "lost",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "csv module": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "pandas round_trip": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "pandas csv": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.3",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.1234568"
+   ],
+   "pandas legacy": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072014e-308",
+    "1.7976931348623157e+308",
+    "0.30000000000000004",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.12345679"
+   ],
+   "%.15g": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072e-308",
+    "inf",
+    "0.3",
+    "9007199254740990.0",
+    "1e+16",
+    "123456789.123457"
+   ],
+   "sqlite TEXT": [
+    "0.0",
+    "0.0",
+    "lost",
+    "inf",
+    "-inf",
+    "5e-324",
+    "2.2250738585072e-308",
+    "inf",
+    "0.3",
+    "9007199254740990.0",
+    "1e+16",
+    "123456789.123457"
+   ],
+   "pandas %.6f": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "0.0",
+    "0.0",
+    "1.7976931348623157e+308",
+    "0.3",
+    "9007199254740994.0",
+    "1.0000000000000002e+16",
+    "123456789.123457"
+   ],
+   "float32": [
+    "0.0",
+    "-0.0",
+    "nan",
+    "inf",
+    "-inf",
+    "0.0",
+    "0.0",
+    "inf",
+    "0.30000001192092896",
+    "9007199254740992.0",
+    "1.0000000272564224e+16",
+    "123456792.0"
+   ]
+  }
+ },
+ "seeds": {
+  "n": 30,
+  "range": {
+   "repr": [
+    0.0,
+    0.0
+   ],
+   "%.17g": [
+    0.0,
+    0.0
+   ],
+   "pickle": [
+    0.0,
+    0.0
+   ],
+   "np.savetxt": [
+    0.0,
+    0.0
+   ],
+   "sqlite REAL": [
+    0.0,
+    0.0
+   ],
+   "json": [
+    0.0,
+    0.0
+   ],
+   "json strict": [
+    0.0,
+    0.0
+   ],
+   "csv module": [
+    0.0,
+    0.0
+   ],
+   "pandas round_trip": [
+    0.0,
+    0.0
+   ],
+   "pandas csv": [
+    0.127,
+    0.154
+   ],
+   "pandas legacy": [
+    0.259,
+    0.305
+   ],
+   "%.15g": [
+    0.659,
+    0.694
+   ],
+   "sqlite TEXT": [
+    0.659,
+    0.694
+   ],
+   "pandas %.6f": [
+    0.9765,
+    0.988
+   ],
+   "float32": [
+    0.9995,
+    1.0
+   ]
+  }
+ }
+}
