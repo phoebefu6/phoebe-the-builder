@@ -212,6 +212,7 @@ TASK_OF = {
     "forecast-reconciliation": "predict",
     "fanout-join-audit": "trust",
     "float-roundtrip": "trust",
+    "json-number-precision": "trust",
     "prompt-linter": "evaluate", "prompt-registry": "evaluate",
     "fewshot-selector": "evaluate", "llm-router": "evaluate",
     "llm-cost-tracker": "evaluate", "token-cost-estimator": "evaluate",

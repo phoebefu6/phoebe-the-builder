@@ -2980,5 +2980,19 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/float-roundtrip",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/float-roundtrip/demo.ipynb"
+  },
+  {
+    "day": 214,
+    "slug": "json-number-precision",
+    "name": "The ID Lost Its Last Digits - Only 3 of 9 JSON Readers Give 64-bit IDs Back in Every Column, One Null or One 123.0 Turns pandas, pyarrow and duckdb Columns to Double With No Error, pandas Reports int64 While 1,960 of 2,000 Snowflake IDs Are Wrong, and dtype='Int64' and dtype=str Do Not Fix It",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "A 64-bit customer ID went through a JSON reader and came back a few digits different, with no error, because one null in the same column turned the whole column into floating point.",
+    "status": "done",
+    "date": "2026-11-13",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/json-number-precision",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/json-number-precision/demo.ipynb"
   }
 ]
