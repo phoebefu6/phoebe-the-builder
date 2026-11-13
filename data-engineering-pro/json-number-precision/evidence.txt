@@ -1,0 +1,55 @@
+json-number-precision evidence  (2,000 fictional IDs per group, seeded Generator(214); a value is wrong when it is null or != the integer sent; 'raised' means the reader refused the file)
+
+1. Wrong IDs out of 4,000 past 2**53 (boundary + snowflake), per reader and column context
+reader                         clean       one null      one 123.0    one > 2**63    one > 2**64
+json                              ok             ok             ok             ok             ok
+JSON.parse (double)      2,460 wrong    2,460 wrong    2,460 wrong    2,460 wrong    2,460 wrong
+ujson                             ok             ok             ok             ok             ok
+pydantic int                      ok             ok             ok             ok             ok
+pandas read_json                  ok    2,460 wrong    2,460 wrong             ok         raised
+pandas dtype=Int64                ok    2,460 wrong    2,460 wrong             ok         raised
+polars                            ok             ok         raised         raised         raised
+pyarrow                           ok             ok    2,460 wrong    2,460 wrong    2,460 wrong
+duckdb                            ok             ok    2,460 wrong             ok    2,460 wrong
+small IDs (< 2**31) wrong in 0 of 45 reader-contexts
+exact in every context: 3 of 9 (json, ujson, pydantic int)
+silently wrong (no error, no warning): 14 of 45 reader-contexts
+
+2. The column type still says integer while the values are wrong
+pandas read_json     one 123.0     dtype int64    1,960 of 2,000 snowflake IDs wrong
+pandas dtype=Int64   one null      dtype Int64    1,960 of 2,000 snowflake IDs wrong
+pandas dtype=Int64   one 123.0     dtype Int64    1,960 of 2,000 snowflake IDs wrong
+
+3. What a wrong ID looks like (JSON.parse (double), clean column)
+small          0 of 2,000 wrong;    0 distinct IDs merged into another; worst off by 0
+boundary     500 of 2,000 wrong;  499 distinct IDs merged into another; worst off by 1
+snowflake  1,960 of 2,000 wrong;    8 distinct IDs merged into another; worst off by 63
+
+4. The first positive integer a clean column gets wrong
+json                 never below 2**70 (or raises instead)
+JSON.parse (double)  9,007,199,254,740,993  (2**53 + 1)
+ujson                never below 2**70 (or raises instead)
+pydantic int         never below 2**70 (or raises instead)
+pandas read_json     never below 2**70 (or raises instead)
+pandas dtype=Int64   never below 2**70 (or raises instead)
+polars               never below 2**70 (or raises instead)
+pyarrow              9,223,372,036,854,775,809  (2**63 + 1)
+duckdb               18,446,744,073,709,551,617  (2**64 + 1)
+
+5. The documented fix, through the same five columns (2,000 snowflake IDs)
+fix                               clean       one null      one 123.0    one > 2**63    one > 2**64
+pandas dtype=Int64                   ok    1,960 wrong    1,960 wrong             ok         raised
+pandas dtype=str                     ok    2,000 wrong    2,000 wrong             ok         raised
+pyarrow explicit int64               ok             ok         raised         raised         raised
+duckdb columns=HUGEINT               ok             ok             ok             ok             ok
+json, then a DataFrame               ok             ok             ok             ok             ok
+
+6. Real binaries, clean column (wrong of 2,000; 'double' = identical to the Python double simulation)
+node v22.6.0 JSON.parse           small 0 double   boundary 500 double   snowflake 1,960 double
+node v22.6.0 reviver + BigInt     small 0   boundary 0   snowflake 0
+jq-1.6 .id                        small 0 double   boundary 500 double   snowflake 1,960 double
+
+7. Snowflake IDs merged with a null in the column, over 30 more seeds
+JSON.parse (double)  3-10 of 2,000 merged
+pandas read_json     3-10 of 2,000 merged
+pandas dtype=Int64   3-10 of 2,000 merged

@@ -1,0 +1,1502 @@
+{
+ "study": {
+  "readers": {
+   "json": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "JSON.parse (double)": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    }
+   },
+   "ujson": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "pydantic int": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Optional[int]",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "pandas read_json": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "float64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "float64",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "float64",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "pandas dtype=Int64": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "uint64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ValueError: Value is too big!",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "polars": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "Int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '123' (f64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '123' (f64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '123' (f64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '9223372036854775813' (u64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '9223372036854775813' (u64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '9223372036854775813' (u64) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '18446744073709551621' (u128) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '18446744073709551621' (u128) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 0,
+      "wrong": 0,
+      "raised": "ComputeError: cannot parse '18446744073709551621' (u128) as Int64",
+      "dtype": "-",
+      "merged": 0,
+      "max_off": 0
+     }
+    }
+   },
+   "pyarrow": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "int64",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "double",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "double",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "double",
+      "merged": 8,
+      "max_off": 63
+     }
+    }
+   },
+   "duckdb": {
+    "clean": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one null": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "BIGINT",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one 123.0": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 8,
+      "max_off": 63
+     }
+    },
+    "one > 2**63": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "HUGEINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "HUGEINT",
+      "merged": 0,
+      "max_off": 0
+     },
+     "snowflake": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "HUGEINT",
+      "merged": 0,
+      "max_off": 0
+     }
+    },
+    "one > 2**64": {
+     "small": {
+      "exact": 2000,
+      "wrong": 0,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 0,
+      "max_off": 0
+     },
+     "boundary": {
+      "exact": 1500,
+      "wrong": 500,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 499,
+      "max_off": 1
+     },
+     "snowflake": {
+      "exact": 40,
+      "wrong": 1960,
+      "raised": "",
+      "dtype": "DOUBLE",
+      "merged": 8,
+      "max_off": 63
+     }
+    }
+   }
+  },
+  "fixes": {
+   "pandas dtype=Int64": {
+    "clean": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "Int64",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one null": {
+     "exact": 40,
+     "wrong": 1960,
+     "raised": "",
+     "dtype": "Int64",
+     "merged": 8,
+     "max_off": 63
+    },
+    "one 123.0": {
+     "exact": 40,
+     "wrong": 1960,
+     "raised": "",
+     "dtype": "Int64",
+     "merged": 8,
+     "max_off": 63
+    },
+    "one > 2**63": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "uint64",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**64": {
+     "exact": 0,
+     "wrong": 0,
+     "raised": "ValueError: Value is too big!",
+     "dtype": "-",
+     "merged": 0,
+     "max_off": 0
+    }
+   },
+   "pandas dtype=str": {
+    "clean": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one null": {
+     "exact": 0,
+     "wrong": 2000,
+     "raised": "",
+     "dtype": "object",
+     "merged": 8,
+     "max_off": 0
+    },
+    "one 123.0": {
+     "exact": 0,
+     "wrong": 2000,
+     "raised": "",
+     "dtype": "object",
+     "merged": 8,
+     "max_off": 0
+    },
+    "one > 2**63": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**64": {
+     "exact": 0,
+     "wrong": 0,
+     "raised": "ValueError: Value is too big!",
+     "dtype": "-",
+     "merged": 0,
+     "max_off": 0
+    }
+   },
+   "pyarrow explicit int64": {
+    "clean": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "int64",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one null": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "int64",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one 123.0": {
+     "exact": 0,
+     "wrong": 0,
+     "raised": "ArrowInvalid: Failed to convert JSON to int64, couldn't parse:123.0",
+     "dtype": "-",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**63": {
+     "exact": 0,
+     "wrong": 0,
+     "raised": "ArrowInvalid: Failed to convert JSON to int64, couldn't parse:922337203685",
+     "dtype": "-",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**64": {
+     "exact": 0,
+     "wrong": 0,
+     "raised": "ArrowInvalid: Failed to convert JSON to int64, couldn't parse:184467440737",
+     "dtype": "-",
+     "merged": 0,
+     "max_off": 0
+    }
+   },
+   "duckdb columns=HUGEINT": {
+    "clean": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "HUGEINT",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one null": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "HUGEINT",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one 123.0": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "HUGEINT",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**63": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "HUGEINT",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**64": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "HUGEINT",
+     "merged": 0,
+     "max_off": 0
+    }
+   },
+   "json, then a DataFrame": {
+    "clean": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object (Python int)",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one null": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object (Python int)",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one 123.0": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object (Python int)",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**63": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object (Python int)",
+     "merged": 0,
+     "max_off": 0
+    },
+    "one > 2**64": {
+     "exact": 2000,
+     "wrong": 0,
+     "raised": "",
+     "dtype": "object (Python int)",
+     "merged": 0,
+     "max_off": 0
+    }
+   }
+  },
+  "first": {
+   "json": null,
+   "JSON.parse (double)": 9007199254740993,
+   "ujson": null,
+   "pydantic int": null,
+   "pandas read_json": null,
+   "pandas dtype=Int64": null,
+   "polars": null,
+   "pyarrow": 9223372036854775809,
+   "duckdb": 18446744073709551617
+  }
+ },
+ "seeds": {
+  "n": 30,
+  "range": {
+   "json": [
+    0,
+    0
+   ],
+   "JSON.parse (double)": [
+    3,
+    10
+   ],
+   "ujson": [
+    0,
+    0
+   ],
+   "pydantic int": [
+    0,
+    0
+   ],
+   "pandas read_json": [
+    3,
+    10
+   ],
+   "pandas dtype=Int64": [
+    3,
+    10
+   ],
+   "polars": [
+    0,
+    0
+   ],
+   "pyarrow": [
+    0,
+    0
+   ],
+   "duckdb": [
+    0,
+    0
+   ]
+  }
+ },
+ "external": {
+  "node v22.6.0 JSON.parse": {
+   "small": {
+    "wrong": 0,
+    "same_as_double": true
+   },
+   "boundary": {
+    "wrong": 500,
+    "same_as_double": true
+   },
+   "snowflake": {
+    "wrong": 1960,
+    "same_as_double": true
+   }
+  },
+  "node v22.6.0 reviver + BigInt": {
+   "small": {
+    "wrong": 0,
+    "same_as_double": false
+   },
+   "boundary": {
+    "wrong": 0,
+    "same_as_double": false
+   },
+   "snowflake": {
+    "wrong": 0,
+    "same_as_double": false
+   }
+  },
+  "jq-1.6 .id": {
+   "small": {
+    "wrong": 0,
+    "same_as_double": true
+   },
+   "boundary": {
+    "wrong": 500,
+    "same_as_double": true
+   },
+   "snowflake": {
+    "wrong": 1960,
+    "same_as_double": true
+   }
+  }
+ }
+}
