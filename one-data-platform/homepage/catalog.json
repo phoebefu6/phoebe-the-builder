@@ -2994,5 +2994,19 @@
     "product_slug": "data-engineering-pro",
     "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/json-number-precision",
     "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/json-number-precision/demo.ipynb"
+  },
+  {
+    "day": 215,
+    "slug": "duplicate-json-keys",
+    "name": "Which Value Wins? - {\"a\":1,\"a\":2} Through 14 JSON Readers: Last Wins in 7, First in 3, 4 Refuse and 61 of 91 Reader Pairs Disagree, polars and duckdb Lose All 46 Concatenated Refund Patches With No Error, ignore_errors Turns duckdb's Refusal Into First-Wins, and a Regex Pre-Flight Misses Every Escaped Key",
+    "task": "trust",
+    "task_title": "Prove it is right",
+    "problem": "The same order said \"paid\" in one system and \"refunded\" in another, because the JSON line named its status twice and the two readers kept different ones.",
+    "status": "done",
+    "date": "2026-11-16",
+    "product_line": "Data Engineering Pro",
+    "product_slug": "data-engineering-pro",
+    "repo_url": "https://github.com/phoebefu6/phoebe-the-builder/tree/main/data-engineering-pro/duplicate-json-keys",
+    "colab_url": "https://colab.research.google.com/github/phoebefu6/phoebe-the-builder/blob/main/data-engineering-pro/duplicate-json-keys/demo.ipynb"
   }
 ]
