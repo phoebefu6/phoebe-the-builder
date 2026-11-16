@@ -1,0 +1,312 @@
+{
+ "study": {
+  "matrix": {
+   "json": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "ujson": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "pydantic": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "PyYAML": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "Node JSON.parse": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "jq 1.6": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "last",
+    "case only (not a dup)": "ok"
+   },
+   "pandas read_json": {
+    "top level": "last",
+    "escaped key": "last",
+    "nested": "last",
+    "type change": "last",
+    "null last": "other (nan)",
+    "case only (not a dup)": "ok"
+   },
+   "polars read_ndjson": {
+    "top level": "first",
+    "escaped key": "first",
+    "nested": "refuse",
+    "type change": "other ('1')",
+    "null last": "refuse",
+    "case only (not a dup)": "ok"
+   },
+   "duckdb json_extract": {
+    "top level": "first",
+    "escaped key": "first",
+    "nested": "first",
+    "type change": "first",
+    "null last": "first",
+    "case only (not a dup)": "ok"
+   },
+   "duckdb ignore_errors": {
+    "top level": "first",
+    "escaped key": "first",
+    "nested": "first",
+    "type change": "other ('1')",
+    "null last": "first",
+    "case only (not a dup)": "WRONG (1)"
+   },
+   "json + strict hook": {
+    "top level": "refuse",
+    "escaped key": "refuse",
+    "nested": "refuse",
+    "type change": "refuse",
+    "null last": "refuse",
+    "case only (not a dup)": "ok"
+   },
+   "ruamel.yaml": {
+    "top level": "refuse",
+    "escaped key": "refuse",
+    "nested": "refuse",
+    "type change": "refuse",
+    "null last": "refuse",
+    "case only (not a dup)": "ok"
+   },
+   "pyarrow read_json": {
+    "top level": "refuse",
+    "escaped key": "refuse",
+    "nested": "refuse",
+    "type change": "refuse",
+    "null last": "refuse",
+    "case only (not a dup)": "ok"
+   },
+   "duckdb read_json": {
+    "top level": "refuse",
+    "escaped key": "refuse",
+    "nested": "refuse",
+    "type change": "refuse",
+    "null last": "refuse",
+    "case only (not a dup)": "WRONG (1)"
+   }
+  },
+  "feed": {
+   "json": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "ujson": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "pydantic": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "PyYAML": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "Node JSON.parse": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "jq 1.6": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "pandas read_json": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   },
+   "polars read_ndjson": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 0,
+    "amount": 0
+   },
+   "duckdb json_extract": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 0,
+    "amount": 0
+   },
+   "duckdb ignore_errors": {
+    "raised": "",
+    "rows": 2000,
+    "refunds": 0,
+    "amount": 0
+   },
+   "json + strict hook": {
+    "raised": "ValueError",
+    "rows": 0,
+    "refunds": 0,
+    "amount": 0.0
+   },
+   "ruamel.yaml": {
+    "raised": "DuplicateKeyError",
+    "rows": 0,
+    "refunds": 0,
+    "amount": 0.0
+   },
+   "pyarrow read_json": {
+    "raised": "ArrowInvalid",
+    "rows": 0,
+    "refunds": 0,
+    "amount": 0.0
+   },
+   "duckdb read_json": {
+    "raised": "InvalidInputException",
+    "rows": 0,
+    "refunds": 0,
+    "amount": 0.0
+   },
+   "_truth": {
+    "rows": 2000,
+    "refunds": 46,
+    "amount": 4549.4
+   }
+  },
+  "detect": {
+   "regex": 30,
+   "strict hook": 46
+  },
+  "n_lines": 2000
+ },
+ "seeds": {
+  "regex_missed": [
+   21,
+   20,
+   26,
+   26,
+   23,
+   21,
+   23,
+   21,
+   16,
+   20,
+   17,
+   18,
+   23,
+   18,
+   13,
+   22,
+   21,
+   17,
+   20,
+   18,
+   17,
+   11,
+   19,
+   15,
+   20,
+   15,
+   11,
+   22,
+   12,
+   20
+  ],
+  "refunds": [
+   58,
+   51,
+   61,
+   65,
+   64,
+   61,
+   54,
+   58,
+   41,
+   60,
+   59,
+   48,
+   56,
+   50,
+   57,
+   53,
+   57,
+   50,
+   60,
+   51,
+   70,
+   42,
+   57,
+   60,
+   60,
+   60,
+   58,
+   57,
+   50,
+   60
+  ],
+  "hook_missed": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ }
+}

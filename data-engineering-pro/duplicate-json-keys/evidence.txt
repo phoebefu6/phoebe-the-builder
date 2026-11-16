@@ -1,0 +1,46 @@
+duplicate-json-keys evidence: 14 readers, 6 fixtures, a 2,000-line order feed seeded Generator(215). Every value fictional.
+
+1. Which value each reader returns (fixture -> first / last / refuse)
+   reader                top level      escaped key    nested         type change    null last      case only (no  
+   json                  last           last           last           last           last           ok             
+   ujson                 last           last           last           last           last           ok             
+   pydantic              last           last           last           last           last           ok             
+   PyYAML                last           last           last           last           last           ok             
+   Node JSON.parse       last           last           last           last           last           ok             
+   jq 1.6                last           last           last           last           last           ok             
+   pandas read_json      last           last           last           last           other (nan)    ok             
+   polars read_ndjson    first          first          refuse         other ('1')    refuse         ok             
+   duckdb json_extract   first          first          first          first          first          ok             
+   duckdb ignore_errors  first          first          first          other ('1')    first          WRONG (1)      
+   json + strict hook    refuse         refuse         refuse         refuse         refuse         ok             
+   ruamel.yaml           refuse         refuse         refuse         refuse         refuse         ok             
+   pyarrow read_json     refuse         refuse         refuse         refuse         refuse         ok             
+   duckdb read_json      refuse         refuse         refuse         refuse         refuse         WRONG (1)      
+   top level: last 7; first 3; refuse 4
+   reader pairs that disagree on {"a":1,"a":2}: 61 of 91
+
+2. The order feed: 46 of 2,000 orders carry a refund patch (status twice, refund last), $4,549.40 refunded
+   reader                 rows read  refunds   refunded $  verdict
+   json                       2,000       46     4,549.40  matches intent
+   ujson                      2,000       46     4,549.40  matches intent
+   pydantic                   2,000       46     4,549.40  matches intent
+   PyYAML                     2,000       46     4,549.40  matches intent
+   Node JSON.parse            2,000       46     4,549.40  matches intent
+   jq 1.6                     2,000       46     4,549.40  matches intent
+   pandas read_json           2,000       46     4,549.40  matches intent
+   polars read_ndjson         2,000        0         0.00  missed 46 refunds, $4,549.40, no error
+   duckdb json_extract        2,000        0         0.00  missed 46 refunds, $4,549.40, no error
+   duckdb ignore_errors       2,000        0         0.00  missed 46 refunds, $4,549.40, no error
+   json + strict hook             0        0         0.00  refused the whole file (ValueError)
+   ruamel.yaml                    0        0         0.00  refused the whole file (DuplicateKeyError)
+   pyarrow read_json              0        0         0.00  refused the whole file (ArrowInvalid)
+   duckdb read_json               0        0         0.00  refused the whole file (InvalidInputException)
+
+3. Pre-flight detection on the same feed: 46 duplicated lines
+   regex for a repeated quoted key     30 found  (misses every "st\u0061tus")
+   json + object_pairs_hook (strict)   46 found
+   over 30 seeds the regex missed 11-26 duplicated lines per feed (feeds held 41-70); the strict hook missed 0-0
+
+4. One engine, three entry points, two behaviours (duckdb, same document {"a":1,"a":2})
+   read_json -> refuse; read_json(ignore_errors=true) -> first; json_extract -> first
+   and {"A":1,"a":2} - not a duplicate - selecting column a returns WRONG (1): identifiers are case-insensitive, 'a' became a_1
